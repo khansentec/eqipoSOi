@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C25C539228C7A51B00D91B1E /* portalPacienteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25C539128C7A51B00D91B1E /* portalPacienteApp.swift */; };
-		C25C539428C7A51B00D91B1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25C539328C7A51B00D91B1E /* ContentView.swift */; };
-		C25C539628C7A52200D91B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C539528C7A52200D91B1E /* Assets.xcassets */; };
-		C25C539928C7A52200D91B1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C539828C7A52200D91B1E /* Preview Assets.xcassets */; };
+		C25C53AC28C7AD3400D91B1E /* portalPacienteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25C53AB28C7AD3400D91B1E /* portalPacienteApp.swift */; };
+		C25C53AE28C7AD3400D91B1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25C53AD28C7AD3400D91B1E /* ContentView.swift */; };
+		C25C53B028C7AD3600D91B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C53AF28C7AD3600D91B1E /* Assets.xcassets */; };
+		C25C53B328C7AD3600D91B1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C25C538E28C7A51B00D91B1E /* portalPaciente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = portalPaciente.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C25C539128C7A51B00D91B1E /* portalPacienteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = portalPacienteApp.swift; sourceTree = "<group>"; };
-		C25C539328C7A51B00D91B1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C25C539528C7A52200D91B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C25C539828C7A52200D91B1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C25C53A828C7AD3400D91B1E /* portalPaciente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = portalPaciente.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C25C53AB28C7AD3400D91B1E /* portalPacienteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = portalPacienteApp.swift; sourceTree = "<group>"; };
+		C25C53AD28C7AD3400D91B1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C25C53AF28C7AD3600D91B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C25C538B28C7A51B00D91B1E /* Frameworks */ = {
+		C25C53A528C7AD3400D91B1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,37 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C25C538528C7A51B00D91B1E = {
+		C25C539F28C7AD3400D91B1E = {
 			isa = PBXGroup;
 			children = (
-				C25C539028C7A51B00D91B1E /* portalPaciente */,
-				C25C538F28C7A51B00D91B1E /* Products */,
+				C25C53AA28C7AD3400D91B1E /* portalPaciente */,
+				C25C53A928C7AD3400D91B1E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C25C538F28C7A51B00D91B1E /* Products */ = {
+		C25C53A928C7AD3400D91B1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C25C538E28C7A51B00D91B1E /* portalPaciente.app */,
+				C25C53A828C7AD3400D91B1E /* portalPaciente.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C25C539028C7A51B00D91B1E /* portalPaciente */ = {
+		C25C53AA28C7AD3400D91B1E /* portalPaciente */ = {
 			isa = PBXGroup;
 			children = (
-				C25C539128C7A51B00D91B1E /* portalPacienteApp.swift */,
-				C25C539328C7A51B00D91B1E /* ContentView.swift */,
-				C25C539528C7A52200D91B1E /* Assets.xcassets */,
-				C25C539728C7A52200D91B1E /* Preview Content */,
+				C25C53AB28C7AD3400D91B1E /* portalPacienteApp.swift */,
+				C25C53AD28C7AD3400D91B1E /* ContentView.swift */,
+				C25C53AF28C7AD3600D91B1E /* Assets.xcassets */,
+				C25C53B128C7AD3600D91B1E /* Preview Content */,
 			);
 			path = portalPaciente;
 			sourceTree = "<group>";
 		};
-		C25C539728C7A52200D91B1E /* Preview Content */ = {
+		C25C53B128C7AD3600D91B1E /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C25C539828C7A52200D91B1E /* Preview Assets.xcassets */,
+				C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C25C538D28C7A51B00D91B1E /* portalPaciente */ = {
+		C25C53A728C7AD3400D91B1E /* portalPaciente */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C25C539C28C7A52200D91B1E /* Build configuration list for PBXNativeTarget "portalPaciente" */;
+			buildConfigurationList = C25C53B628C7AD3600D91B1E /* Build configuration list for PBXNativeTarget "portalPaciente" */;
 			buildPhases = (
-				C25C538A28C7A51B00D91B1E /* Sources */,
-				C25C538B28C7A51B00D91B1E /* Frameworks */,
-				C25C538C28C7A51B00D91B1E /* Resources */,
+				C25C53A428C7AD3400D91B1E /* Sources */,
+				C25C53A528C7AD3400D91B1E /* Frameworks */,
+				C25C53A628C7AD3400D91B1E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +84,25 @@
 			);
 			name = portalPaciente;
 			productName = portalPaciente;
-			productReference = C25C538E28C7A51B00D91B1E /* portalPaciente.app */;
+			productReference = C25C53A828C7AD3400D91B1E /* portalPaciente.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C25C538628C7A51B00D91B1E /* Project object */ = {
+		C25C53A028C7AD3400D91B1E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					C25C538D28C7A51B00D91B1E = {
+					C25C53A728C7AD3400D91B1E = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = C25C538928C7A51B00D91B1E /* Build configuration list for PBXProject "portalPaciente" */;
+			buildConfigurationList = C25C53A328C7AD3400D91B1E /* Build configuration list for PBXProject "portalPaciente" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = C25C538528C7A51B00D91B1E;
-			productRefGroup = C25C538F28C7A51B00D91B1E /* Products */;
+			mainGroup = C25C539F28C7AD3400D91B1E;
+			productRefGroup = C25C53A928C7AD3400D91B1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C25C538D28C7A51B00D91B1E /* portalPaciente */,
+				C25C53A728C7AD3400D91B1E /* portalPaciente */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C25C538C28C7A51B00D91B1E /* Resources */ = {
+		C25C53A628C7AD3400D91B1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C25C539928C7A52200D91B1E /* Preview Assets.xcassets in Resources */,
-				C25C539628C7A52200D91B1E /* Assets.xcassets in Resources */,
+				C25C53B328C7AD3600D91B1E /* Preview Assets.xcassets in Resources */,
+				C25C53B028C7AD3600D91B1E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C25C538A28C7A51B00D91B1E /* Sources */ = {
+		C25C53A428C7AD3400D91B1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C25C539428C7A51B00D91B1E /* ContentView.swift in Sources */,
-				C25C539228C7A51B00D91B1E /* portalPacienteApp.swift in Sources */,
+				C25C53AE28C7AD3400D91B1E /* ContentView.swift in Sources */,
+				C25C53AC28C7AD3400D91B1E /* portalPacienteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C25C539A28C7A52200D91B1E /* Debug */ = {
+		C25C53B428C7AD3600D91B1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -205,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		C25C539B28C7A52200D91B1E /* Release */ = {
+		C25C53B528C7AD3600D91B1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -259,7 +259,7 @@
 			};
 			name = Release;
 		};
-		C25C539D28C7A52200D91B1E /* Debug */ = {
+		C25C53B728C7AD3600D91B1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -287,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		C25C539E28C7A52200D91B1E /* Release */ = {
+		C25C53B828C7AD3600D91B1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -318,25 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C25C538928C7A51B00D91B1E /* Build configuration list for PBXProject "portalPaciente" */ = {
+		C25C53A328C7AD3400D91B1E /* Build configuration list for PBXProject "portalPaciente" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C25C539A28C7A52200D91B1E /* Debug */,
-				C25C539B28C7A52200D91B1E /* Release */,
+				C25C53B428C7AD3600D91B1E /* Debug */,
+				C25C53B528C7AD3600D91B1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C25C539C28C7A52200D91B1E /* Build configuration list for PBXNativeTarget "portalPaciente" */ = {
+		C25C53B628C7AD3600D91B1E /* Build configuration list for PBXNativeTarget "portalPaciente" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C25C539D28C7A52200D91B1E /* Debug */,
-				C25C539E28C7A52200D91B1E /* Release */,
+				C25C53B728C7AD3600D91B1E /* Debug */,
+				C25C53B828C7AD3600D91B1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C25C538628C7A51B00D91B1E /* Project object */;
+	rootObject = C25C53A028C7AD3400D91B1E /* Project object */;
 }
