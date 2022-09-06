@@ -16,6 +16,9 @@ struct ResultView: View {
 }
 
 struct ContentView: View {
+    @State private var isShowingDetailView = false
+    @State private var selection: String? = nil
+    
     var body: some View {
         //        Text("Bienvenido")
         //            .fontWeight(.bold)
@@ -25,23 +28,33 @@ struct ContentView: View {
         //            .padding()
         //        Text("Por favor, elija una pagina para abrir.")
         //
+        
+        
         NavigationView {
-            VStack(spacing: 30) {
+            VStack(spacing: 10) {
                 Text("Por favor, seleccione una página para abrir")
                     .frame(alignment: .topLeading)
                     .navigationBarTitle("Página central", displayMode: .inline)
-                NavigationLink(destination: Text("Entre una medición para agregar: ")) {
-                    Text("Vista 1: Agregar medición")
+                NavigationLink(destination: Text("Entre una medición para agregar: "), tag: "Medicion", selection: $selection) { EmptyView() }
+                NavigationLink(destination: Text("Elija un doctor: "), tag: "Doctor", selection: $selection) { EmptyView() }
+                NavigationLink(destination: Text("Vista 3"), tag: "Vista 3", selection: $selection) { EmptyView() }
+                
+                Button("Agrega medición") {
+                    self.selection = "Medicion"
                 }
-                NavigationLink(destination: Text("Elija un doctor: ")) {
-                    Text("Vista 2: Platicar con doctor vinculado")
+                Button("Platicar con doctor") {
+                    self.selection = "Doctor"
                 }
+                Button("Muestra vista 3") {
+                    self.selection = "Vista 3"
+                }
+                
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+                .border(Color.red)
+                
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-            .border(Color.red)
             
         }
-        
     }
 }
 
