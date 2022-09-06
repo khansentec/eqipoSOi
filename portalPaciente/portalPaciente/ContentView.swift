@@ -28,6 +28,8 @@ struct ContentView: View {
         NavigationView {
             VStack(spacing: 30) {
                 Text("Por favor, seleccione una página para abrir")
+                    .frame(alignment: .topLeading)
+                    .navigationBarTitle("Página central", displayMode: .inline)
                 NavigationLink(destination: Text("Entre una medición para agregar: ")) {
                     Text("Vista 1: Agregar medición")
                 }
@@ -35,7 +37,8 @@ struct ContentView: View {
                     Text("Vista 2: Platicar con doctor vinculado")
                 }
             }
-            .navigationBarTitle("Navigación")
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .border(Color.red)
             
         }
         
@@ -44,6 +47,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ZStack{
+            ContentView()
+        }
     }
 }
+
