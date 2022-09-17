@@ -16,21 +16,23 @@ struct ResultView: View {
 }
 
 class User: ObservableObject {
-    @Published var score = 0
+    @Published var presion1 : Int?
+    @Published var presion2 : Int?
+    @Published var presion3 : Int?
 }
 
-struct ChangeView: View {
-    @EnvironmentObject var user: User
-    
-    var body: some View {
-        VStack {
-            Text("Score: \(user.score)")
-            Button("Increase") {
-                self.user.score += 1
-            }
-        }
-    }
-}
+//struct ChangeView: View {
+//    @EnvironmentObject var user: User
+//
+//    var body: some View {
+//        VStack {
+//            Text("Score: \(user.score)")
+//            Button("Increase") {
+//                self.user.presion1 += 1
+//            }
+//        }
+//    }
+//}
 
 struct ContentView: View {
     
@@ -52,79 +54,26 @@ struct ContentView: View {
         
         NavigationView {
             
-//            let columns = [GridItem(.flexible()), GridItem(.flexible())]
-//
-//            ScrollView {
-//                LazyVGrid(columns: columns) {
-//                    ForEach(0x1f600...0x1f679, id: \.self) { value in
-//                        Text(String(format: "%x", value))
-//                        Text("Hi")
-//                            .font(.largeTitle)
-//                    }
-//                }
-//            }
-//
+            //            let columns = [GridItem(.flexible()), GridItem(.flexible())]
+            //
+            //            ScrollView {
+            //                LazyVGrid(columns: columns) {
+            //                    ForEach(0x1f600...0x1f679, id: \.self) { value in
+            //                        Text(String(format: "%x", value))
+            //                        Text("Hi")
+            //                            .font(.largeTitle)
+            //                    }
+            //                }
+            //            }
+            //
             VStack(spacing: 10) {
-                Text("Por favor, seleccione una página para abrir")
-                    .frame(alignment: .topLeading)
-                    .navigationBarTitle("Página central", displayMode: .inline)
-                NavigationLink(destination: Text("Entre una medición para agregar: "), tag: "Medicion", selection: $selection) { EmptyView() }
-                NavigationLink(destination: Text("Elija un doctor: "), tag: "Doctor", selection: $selection) { EmptyView() }
-                NavigationLink(destination: Text("Vista 3"), tag: "Vista 3", selection: $selection) { EmptyView() }
-                VStack {
-                    HStack {
-                        Button("Agrega medición") {
-                            self.selection = "Medicion"
-                        }
-                        .frame(width: 160, height: 100)
-                        .border(Color.black)
-                        .background(Color.white)
-                        .foregroundColor(Color.black)
-                        .clipShape(Rectangle())
-                        .aspectRatio(contentMode: .fit)
-                        
-                        
-                        Button("Platicar con doctor") {
-                            self.selection = "Doctor"
-                        }
-                        .frame(width: 160, height: 100)
-                        .border(Color.black)
-                        .background(Color.white)
-                        .foregroundColor(Color.black)
-                        .clipShape(Rectangle())
-                        
-                        
-                    }
-                    
-                    HStack{
-                        Button("Muestra vista 3") {
-                            self.selection = "Doctor"
-                        }
-                        .frame(width: 160, height: 100)
-                        .border(Color.black)
-                        .background(Color.white)
-                        .foregroundColor(Color.black)
-                        .clipShape(Rectangle())
-                        
-                        Button("Muestra vista 4") {
-                            self.selection = "Doctor"
-                        }
-                        .frame(width: 160, height: 100)
-                        .border(Color.black)
-                        .background(Color.white)
-                        .foregroundColor(Color.black)
-                        .clipShape(Rectangle())
-                    }
-                }
-                
-                
-                Text("ChangeView score: \(user.score)")
-                NavigationLink(destination: ChangeView()) {
-                    Text("Show Detail View")
-                }
-                
+                VistaTablero(user: user)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .navigationTitle("Página central")
+            .padding()
+            .frame(minWidth: 10, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .background(Color("azulFondo"))
+
         }
         .environmentObject(user)
     }
@@ -138,5 +87,4 @@ struct ContentView_Previews: PreviewProvider {
         .previewDevice("iPhone 11")
     }
 }
-
 

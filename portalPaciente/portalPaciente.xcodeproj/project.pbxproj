@@ -11,8 +11,11 @@
 		C25C53AE28C7AD3400D91B1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25C53AD28C7AD3400D91B1E /* ContentView.swift */; };
 		C25C53B028C7AD3600D91B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C53AF28C7AD3600D91B1E /* Assets.xcassets */; };
 		C25C53B328C7AD3600D91B1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */; };
-		C2841CDA28D3E445006358CE /* VistaRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CD928D3E445006358CE /* VistaRegistrar.swift */; };
-		C2841CDD28D3EE9A006358CE /* VistaTablero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CDC28D3EE9A006358CE /* VistaTablero.swift */; };
+		C2841CE128D6736D006358CE /* PresionImagen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE028D6736C006358CE /* PresionImagen.swift */; };
+		C2841CE328D675E3006358CE /* VistaGraficos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE228D675E3006358CE /* VistaGraficos.swift */; };
+		C2841CE528D67E6F006358CE /* VistaTablero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE428D67E6F006358CE /* VistaTablero.swift */; };
+		C2841CE728D684A9006358CE /* VistaRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE628D684A8006358CE /* VistaRegistrar.swift */; };
+		C2841CE928D68644006358CE /* VistaPresionArterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE828D68644006358CE /* VistaPresionArterial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +24,11 @@
 		C25C53AD28C7AD3400D91B1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C25C53AF28C7AD3600D91B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C2841CD928D3E445006358CE /* VistaRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaRegistrar.swift; sourceTree = "<group>"; };
-		C2841CDC28D3EE9A006358CE /* VistaTablero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTablero.swift; sourceTree = "<group>"; };
+		C2841CE028D6736C006358CE /* PresionImagen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresionImagen.swift; sourceTree = "<group>"; };
+		C2841CE228D675E3006358CE /* VistaGraficos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaGraficos.swift; sourceTree = "<group>"; };
+		C2841CE428D67E6F006358CE /* VistaTablero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTablero.swift; sourceTree = "<group>"; };
+		C2841CE628D684A8006358CE /* VistaRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaRegistrar.swift; sourceTree = "<group>"; };
+		C2841CE828D68644006358CE /* VistaPresionArterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaPresionArterial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +61,13 @@
 		C25C53AA28C7AD3400D91B1E /* portalPaciente */ = {
 			isa = PBXGroup;
 			children = (
+				C2841CE228D675E3006358CE /* VistaGraficos.swift */,
+				C2841CE028D6736C006358CE /* PresionImagen.swift */,
+				C2841CE628D684A8006358CE /* VistaRegistrar.swift */,
+				C2841CE428D67E6F006358CE /* VistaTablero.swift */,
+				C2841CE828D68644006358CE /* VistaPresionArterial.swift */,
 				C25C53AB28C7AD3400D91B1E /* portalPacienteApp.swift */,
 				C25C53AD28C7AD3400D91B1E /* ContentView.swift */,
-				C2841CD928D3E445006358CE /* VistaRegistrar.swift */,
-				C2841CDC28D3EE9A006358CE /* VistaTablero.swift */,
 				C2841CDB28D3E6B8006358CE /* New Group */,
 				C25C53AF28C7AD3600D91B1E /* Assets.xcassets */,
 				C25C53B128C7AD3600D91B1E /* Preview Content */,
@@ -151,10 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2841CDA28D3E445006358CE /* VistaRegistrar.swift in Sources */,
-				C2841CDD28D3EE9A006358CE /* VistaTablero.swift in Sources */,
 				C25C53AE28C7AD3400D91B1E /* ContentView.swift in Sources */,
+				C2841CE728D684A9006358CE /* VistaRegistrar.swift in Sources */,
 				C25C53AC28C7AD3400D91B1E /* portalPacienteApp.swift in Sources */,
+				C2841CE328D675E3006358CE /* VistaGraficos.swift in Sources */,
+				C2841CE528D67E6F006358CE /* VistaTablero.swift in Sources */,
+				C2841CE128D6736D006358CE /* PresionImagen.swift in Sources */,
+				C2841CE928D68644006358CE /* VistaPresionArterial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

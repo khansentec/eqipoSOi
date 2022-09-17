@@ -2,22 +2,22 @@
 //  VistaRegistrar.swift
 //  portalPaciente
 //
-//  Created by Katie Hansen on 9/15/22.
+//  Created by Katie Hansen on 9/17/22.
 //
 
-import Foundation
 import SwiftUI
 
 struct VistaRegistrar: View {
-    
-    var nombre : String
-    var apellidos : String
-    var correo : String
-    var fechaDeNac : String
-    var doctorVinculado : String!
-    var contrasena : String
-    
+
     var body: some View {
+        
+        var nombre : String = ""
+        var apellidos : String = ""
+        var correo : String = ""
+        var fechaDeNac : String = ""
+        var doctorVinculado : String! = nil
+        var contrasena : String = ""
+        
         Text("Por favor provea la siguiente información para crear una cuenta.")
         Text("Nombre: ")
         Text("Appelido(s): ")
@@ -25,6 +25,12 @@ struct VistaRegistrar: View {
         Text("Fecha de nacimiento: ")
         Text("Doctor vinculado: ")
         Text("Contraseña: ")
+    }
+}
+
+struct VistaRegistrar_Previews: PreviewProvider {
+    static var previews: some View {
+        VistaRegistrar()
     }
 }
 
