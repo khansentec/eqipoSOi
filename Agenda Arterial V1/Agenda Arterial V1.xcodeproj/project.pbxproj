@@ -29,6 +29,7 @@
 		C0E6ACC028D55D6F00712337 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACBF28D55D6F00712337 /* FirebaseFirestoreSwift */; };
 		C0E6ACC228D55D6F00712337 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC128D55D6F00712337 /* FirebaseStorage */; };
 		C0E6ACC428D55D6F00712337 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC328D55D6F00712337 /* FirebaseStorageCombine-Community */; };
+		C0FCF8D328D90D81001D2B5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C0E6ACA628D55C2C00712337 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0E6ACA828D55C2C00712337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0E6ACAB28D55C2C00712337 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				C0DC91E828D5E67D00177389 /* View Controllers */,
 				C0DC91E728D5E65800177389 /* Data Structures */,
 				C0E6ACA428D55C2C00712337 /* Agenda_Arterial_V1App.swift */,
+				C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */,
 				C0E6ACA628D55C2C00712337 /* ContentView.swift */,
 				C0E6ACA828D55C2C00712337 /* Assets.xcassets */,
 				C0E6ACAA28D55C2C00712337 /* Preview Content */,
@@ -226,6 +229,7 @@
 			files = (
 				C0E6ACAC28D55C2C00712337 /* Preview Assets.xcassets in Resources */,
 				C0E6ACA928D55C2C00712337 /* Assets.xcassets in Resources */,
+				C0FCF8D328D90D81001D2B5D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +392,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Soi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -417,6 +422,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Soi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

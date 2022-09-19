@@ -13,8 +13,8 @@ struct Login: View {
     @State private var pass = ""
     @State private var widthMenu = UIScreen.main.bounds.width
     
-    //@StateObject var login = FirebaseViewController()
-    //@EnvironmentObject var loginShow : FirebaseViewController
+    @StateObject var login = FirebaseViewController()
+    @EnvironmentObject var loginShow : FirebaseViewController
     
     @State private var showError = false
     @State private var errorMessage = ""
@@ -40,17 +40,17 @@ struct Login: View {
                     SecureField("Pass", text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: device == .pad ? 400 : 275).padding(.bottom,40)
                 }
                 Button(action: {
-                    /*
+                    
                     login.login(email: email, pass: pass){
                         (done) in
                         if done{
                             UserDefaults.standard.set(true, forKey: "sesion")
-                            loginShow.show.toggle()
+                            loginShow.show = "Home"
                             showError = false
                         }else{
                             showError = true
                         }
-                    }*/
+                    }
                 }){
                     Text("Iniciar").font(.custom("Helvetica", size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5).bold()
                 }.background(

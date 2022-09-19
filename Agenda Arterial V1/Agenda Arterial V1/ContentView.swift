@@ -14,21 +14,18 @@ struct ContentView: View {
     @State private var menu = false
     
     var body: some View {
-        /*
+        
         return Group{
             if loginShow.show == "Home" {
-                //Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             }else if loginShow.show == "Login"{
-                //Login()
+                Login()
             }
         }.onAppear(){
             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                 loginShow.show = "Home"
             }
-        }*/
-//        Login()
-//       Home()
-//       CapturesView()
+        }
         
     }
 }
