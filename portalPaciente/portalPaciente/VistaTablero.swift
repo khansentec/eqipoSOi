@@ -14,9 +14,13 @@ struct VistaTablero: View {
 
     var body: some View {
        
-        NavigationLink(destination: VistaPresionArterial(presion1: ""), tag: "Presion", selection: $selection) { EmptyView() }
-        NavigationLink(destination: Text("Elija un doctor: "), tag: "Doctor", selection: $selection) { EmptyView() }
-        NavigationLink(destination: Text("Vista 3"), tag: "Vista 3", selection: $selection) { EmptyView() }
+        NavigationLink(destination: VistaPresionArterial(presion1: ""), tag: "Presion", selection: $selection) { }
+        NavigationLink(destination: VistaHabitos(), tag: "Habitos", selection: $selection) { }
+        NavigationLink(destination: VistaMedicamentos(), tag: "Vista 3", selection: $selection) { }
+        NavigationLink(destination: VistaEstadoSalud(descanso: "", sentimiento: ""), tag: "Estado", selection: $selection) { }
+        NavigationLink(destination: VistaCalendario(), tag: "Calendario", selection: $selection) { }
+        NavigationLink(destination: VistaEstadisticas(), tag: "Estadisticas", selection: $selection) { }
+        NavigationLink(destination: VistaMedico(), tag: "Medico", selection: $selection) { }
         
         VStack {
             HStack {
@@ -33,7 +37,7 @@ struct VistaTablero: View {
                 Spacer()
                 
                 Button("Habitos saludables") {
-                    self.selection = "Doctor"
+                    self.selection = "Habitos"
                 }
                 .frame(width: 160, height: 100)
 //                        .border(Color.black)
@@ -47,7 +51,7 @@ struct VistaTablero: View {
             
             HStack{
                 Button("Medicamentos") {
-                    self.selection = "Doctor"
+                    self.selection = "Medicamentos"
                 }
                 .frame(width: 160, height: 100)
                 .border(Color.black)
@@ -58,7 +62,7 @@ struct VistaTablero: View {
                 Spacer()
                 
                 Button("Estado de salud") {
-                    self.selection = "Doctor"
+                    self.selection = "Estado"
                 }
                 .frame(width: 160, height: 100)
                 .border(Color.black)
@@ -71,7 +75,7 @@ struct VistaTablero: View {
             
             HStack{
                 Button("Calendario") {
-                    self.selection = "Doctor"
+                    self.selection = "Calendario"
                 }
                 .frame(width: 160, height: 100)
                 .border(Color.black)
@@ -82,7 +86,7 @@ struct VistaTablero: View {
                 Spacer()
                 
                 Button("Estadísticas semanales") {
-                    self.selection = "Doctor"
+                    self.selection = "Estadisticas"
                 }
                 .frame(width: 160, height: 100)
                 .border(Color.black)
@@ -92,9 +96,9 @@ struct VistaTablero: View {
             }
             .padding()
 
-            HStack{
+            HStack {
                 Button("Médico vinculado") {
-                    self.selection = "Doctor"
+                    self.selection = "Medico"
                 }
                 .frame(width: 160, height: 100)
                 .border(Color.black)
@@ -104,11 +108,10 @@ struct VistaTablero: View {
             }
             .padding()
 
-        }
-        
-        Text("Entra una presión arterial para mostrarla aquí: ")
-        if (user.presion1 != nil) {
-            Text("Presión agregada: \(user.presion1!)")
+            Text("Entra una presión arterial para mostrarla aquí: ")
+            if (user.presion1 != nil) {
+                Text("Presión agregada: \(user.presion1!)")
+            }
         }
         
     }
@@ -117,9 +120,7 @@ struct VistaTablero: View {
 struct VistaTablero_Previews: PreviewProvider {
     static var previews: some View {
         VistaTablero()
-        PresionImagen()
     }
 }
-
 
 

@@ -16,11 +16,7 @@ struct VistaPresionArterial: View {
         
         NavigationView {
             
-            //            Text("Por favor, seleccione una página para abrir")
-            //                .frame(alignment: .topLeading)
-            //                .navigationBarTitle("Presión arterial", displayMode: .inline)
-            //
-            HStack (alignment: .top){
+            HStack {
                 VStack {
                     Image("blood-pressure")
                         .resizable()
@@ -31,8 +27,7 @@ struct VistaPresionArterial: View {
                         }
                         .shadow(radius: 7)
                     
-                    Spacer()
-                                        
+                    
                     HStack {
                         Text("Presión 1: ")
                         TextField("presion1", text: $presion1)
@@ -41,13 +36,14 @@ struct VistaPresionArterial: View {
                         }
                     }
                     .scenePadding()
+                    .padding()
                     
                 }
                 .padding()
-                .frame(width: .infinity, height: 350, alignment: .top)
-                
+                .frame(width: .infinity, height: 300, alignment: .top)
             }
-            .ignoresSafeArea(edges: .top)
+            .frame(width: 400, height: 600, alignment: .top)
+            .navigationTitle("Registro de presión arterial")
             .border(Color.red)
         }
     }

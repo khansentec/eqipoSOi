@@ -16,6 +16,14 @@
 		C2841CE528D67E6F006358CE /* VistaTablero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE428D67E6F006358CE /* VistaTablero.swift */; };
 		C2841CE728D684A9006358CE /* VistaRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE628D684A8006358CE /* VistaRegistrar.swift */; };
 		C2841CE928D68644006358CE /* VistaPresionArterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CE828D68644006358CE /* VistaPresionArterial.swift */; };
+		C2841CEB28D696C4006358CE /* VistaHabitos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CEA28D696C4006358CE /* VistaHabitos.swift */; };
+		C2841CED28D6974F006358CE /* VistaMedicamentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CEC28D6974F006358CE /* VistaMedicamentos.swift */; };
+		C2841CEF28D6976D006358CE /* VistaEstadoSalud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CEE28D6976D006358CE /* VistaEstadoSalud.swift */; };
+		C2841CF128D6977E006358CE /* VistaCalendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CF028D6977E006358CE /* VistaCalendario.swift */; };
+		C2841CF328D69798006358CE /* VistaEstadisticas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CF228D69798006358CE /* VistaEstadisticas.swift */; };
+		C2841CF528D697A9006358CE /* VistaMedico.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2841CF428D697A9006358CE /* VistaMedico.swift */; };
+		C29C9A5B28D8EF85003CA571 /* VistaDescanso.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C9A5A28D8EF85003CA571 /* VistaDescanso.swift */; };
+		C29C9A5D28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C9A5C28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +37,14 @@
 		C2841CE428D67E6F006358CE /* VistaTablero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTablero.swift; sourceTree = "<group>"; };
 		C2841CE628D684A8006358CE /* VistaRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaRegistrar.swift; sourceTree = "<group>"; };
 		C2841CE828D68644006358CE /* VistaPresionArterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaPresionArterial.swift; sourceTree = "<group>"; };
+		C2841CEA28D696C4006358CE /* VistaHabitos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaHabitos.swift; sourceTree = "<group>"; };
+		C2841CEC28D6974F006358CE /* VistaMedicamentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaMedicamentos.swift; sourceTree = "<group>"; };
+		C2841CEE28D6976D006358CE /* VistaEstadoSalud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaEstadoSalud.swift; sourceTree = "<group>"; };
+		C2841CF028D6977E006358CE /* VistaCalendario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaCalendario.swift; sourceTree = "<group>"; };
+		C2841CF228D69798006358CE /* VistaEstadisticas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaEstadisticas.swift; sourceTree = "<group>"; };
+		C2841CF428D697A9006358CE /* VistaMedico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaMedico.swift; sourceTree = "<group>"; };
+		C29C9A5A28D8EF85003CA571 /* VistaDescanso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaDescanso.swift; sourceTree = "<group>"; };
+		C29C9A5C28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaPreguntasFrecuentes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +78,20 @@
 			isa = PBXGroup;
 			children = (
 				C2841CE228D675E3006358CE /* VistaGraficos.swift */,
+				C29C9A5C28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift */,
+				C29C9A5A28D8EF85003CA571 /* VistaDescanso.swift */,
+				C2841CEA28D696C4006358CE /* VistaHabitos.swift */,
 				C2841CE028D6736C006358CE /* PresionImagen.swift */,
+				C2841CF028D6977E006358CE /* VistaCalendario.swift */,
+				C2841CEE28D6976D006358CE /* VistaEstadoSalud.swift */,
+				C2841CEC28D6974F006358CE /* VistaMedicamentos.swift */,
 				C2841CE628D684A8006358CE /* VistaRegistrar.swift */,
+				C2841CF228D69798006358CE /* VistaEstadisticas.swift */,
+				C2841CF428D697A9006358CE /* VistaMedico.swift */,
 				C2841CE428D67E6F006358CE /* VistaTablero.swift */,
 				C2841CE828D68644006358CE /* VistaPresionArterial.swift */,
 				C25C53AB28C7AD3400D91B1E /* portalPacienteApp.swift */,
 				C25C53AD28C7AD3400D91B1E /* ContentView.swift */,
-				C2841CDB28D3E6B8006358CE /* New Group */,
 				C25C53AF28C7AD3600D91B1E /* Assets.xcassets */,
 				C25C53B128C7AD3600D91B1E /* Preview Content */,
 			);
@@ -81,13 +104,6 @@
 				C25C53B228C7AD3600D91B1E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		C2841CDB28D3E6B8006358CE /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,12 +177,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25C53AE28C7AD3400D91B1E /* ContentView.swift in Sources */,
+				C2841CED28D6974F006358CE /* VistaMedicamentos.swift in Sources */,
 				C2841CE728D684A9006358CE /* VistaRegistrar.swift in Sources */,
+				C2841CF528D697A9006358CE /* VistaMedico.swift in Sources */,
 				C25C53AC28C7AD3400D91B1E /* portalPacienteApp.swift in Sources */,
+				C29C9A5B28D8EF85003CA571 /* VistaDescanso.swift in Sources */,
+				C29C9A5D28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift in Sources */,
 				C2841CE328D675E3006358CE /* VistaGraficos.swift in Sources */,
 				C2841CE528D67E6F006358CE /* VistaTablero.swift in Sources */,
+				C2841CF328D69798006358CE /* VistaEstadisticas.swift in Sources */,
 				C2841CE128D6736D006358CE /* PresionImagen.swift in Sources */,
+				C2841CEB28D696C4006358CE /* VistaHabitos.swift in Sources */,
 				C2841CE928D68644006358CE /* VistaPresionArterial.swift in Sources */,
+				C2841CEF28D6976D006358CE /* VistaEstadoSalud.swift in Sources */,
+				C2841CF128D6977E006358CE /* VistaCalendario.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
