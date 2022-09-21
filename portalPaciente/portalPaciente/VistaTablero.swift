@@ -14,13 +14,13 @@ struct VistaTablero: View {
 
     var body: some View {
        
-        NavigationLink(destination: VistaPresionArterial(presion1: ""), tag: "Presion", selection: $selection) { }
-        NavigationLink(destination: VistaHabitos(), tag: "Habitos", selection: $selection) { }
-        NavigationLink(destination: VistaMedicamentos(), tag: "Vista 3", selection: $selection) { }
-        NavigationLink(destination: VistaEstadoSalud(descanso: "", sentimiento: ""), tag: "Estado", selection: $selection) { }
-        NavigationLink(destination: VistaCalendario(), tag: "Calendario", selection: $selection) { }
-        NavigationLink(destination: VistaEstadisticas(), tag: "Estadisticas", selection: $selection) { }
-        NavigationLink(destination: VistaMedico(), tag: "Medico", selection: $selection) { }
+//        NavigationLink(destination: VistaPresionArterial(presion1: ""), tag: "Presion", selection: $selection) { }
+//        NavigationLink(destination: VistaHabitos(), tag: "Habitos", selection: $selection) { }
+//        NavigationLink(destination: VistaMedicamentos(), tag: "Vista 3", selection: $selection) { }
+//        NavigationLink(destination: VistaEstadoSalud(descanso: "", sentimiento: "", comentarios: ""), tag: "Estado", selection: $selection) { }
+//        NavigationLink(destination: VistaCalendario(), tag: "Calendario", selection: $selection) { }
+//        NavigationLink(destination: VistaEstadisticas(), tag: "Estadisticas", selection: $selection) { }
+//        NavigationLink(destination: VistaMedico(), tag: "Medico", selection: $selection) { }
         
         VStack {
             HStack {
@@ -122,5 +122,4 @@ struct VistaTablero_Previews: PreviewProvider {
         VistaTablero()
     }
 }
-
 

@@ -27,6 +27,7 @@ struct VistaEstadoSalud: View {
                     )
                     Text("\(Int(speed))")
                 }
+                .padding()
                 
                 HStack {
                     Text("Horas de descanso: ")
@@ -34,23 +35,26 @@ struct VistaEstadoSalud: View {
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
-                .scenePadding()
+                .padding()
                 HStack {
                     Text("Sentimiento del día: ")
                     TextField("", text: $sentimiento)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 .scenePadding()
-                HStack {
+                
+                VStack (alignment: .leading, spacing: 20) {
                     Text("Síntomas nuevas: ")
                     TextField("", text: $sentimiento)
+                        .frame(height: 10.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 .scenePadding()
                 
-                HStack {
+                VStack (alignment: .leading, spacing: 20) {
                     Text("Otros comentarios: ")
                     TextField("", text: $comentarios)
+                        .frame(height: 10.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 .scenePadding()
@@ -69,3 +73,4 @@ struct VistaEstadoSalud_Previews: PreviewProvider {
         VistaEstadoSalud(descanso: "", sentimiento: "", comentarios: "")
     }
 }
+
