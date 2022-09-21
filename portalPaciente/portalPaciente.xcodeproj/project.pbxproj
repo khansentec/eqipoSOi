@@ -80,10 +80,9 @@
 				C2841CE228D675E3006358CE /* VistaGraficos.swift */,
 				C29C9A6028D90BEC003CA571 /* Katie vistas */,
 				C29C9A5A28D8EF85003CA571 /* VistaDescanso.swift */,
+				C2841CF228D69798006358CE /* VistaEstadisticas.swift */,
 				C2841CEA28D696C4006358CE /* VistaHabitos.swift */,
 				C2841CE028D6736C006358CE /* PresionImagen.swift */,
-				C2841CF028D6977E006358CE /* VistaCalendario.swift */,
-				C2841CEE28D6976D006358CE /* VistaEstadoSalud.swift */,
 				C2841CEC28D6974F006358CE /* VistaMedicamentos.swift */,
 				C2841CE628D684A8006358CE /* VistaRegistrar.swift */,
 				C2841CF428D697A9006358CE /* VistaMedico.swift */,
@@ -109,7 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				C29C9A5C28D8FE5F003CA571 /* VistaPreguntasFrecuentes.swift */,
-				C2841CF228D69798006358CE /* VistaEstadisticas.swift */,
+				C2841CEE28D6976D006358CE /* VistaEstadoSalud.swift */,
+				C2841CF028D6977E006358CE /* VistaCalendario.swift */,
 			);
 			path = "Katie vistas";
 			sourceTree = "<group>";
