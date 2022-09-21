@@ -26,7 +26,7 @@ struct Login: View {
             Color.white.edgesIgnoringSafeArea(.all)
             HStack(){
                 Text("Titulo").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
-            }.padding(.top, 30).background(Color.blue)
+            }.padding(.top, widthMenu == 375 ? 10 : 30).background(Color.blue)
             VStack(alignment: .center){
                 Spacer().frame(minHeight: 10, maxHeight: 150)
                 Image("isosceles").resizable().aspectRatio(contentMode: .fit).frame(width: widthMenu == 375 ? 70 : 130, height: widthMenu == 375 ? 70 : 130)
@@ -79,14 +79,14 @@ struct Login: View {
                             Text("Registrarse").foregroundColor(.black)
                         }
                     }.frame(height: 60).padding(.trailing, 30)
-                   
+                    
                 }.padding(.bottom, 45).padding(.top, 5)
             }
         }.frame(width: widthMenu).onTapGesture {
             hideKeyboard()
-
+            
         }
-    
+        
     }
 }
 

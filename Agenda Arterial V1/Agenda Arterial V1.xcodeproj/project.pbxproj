@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0550C7F28D96838007C1F35 /* MedicamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C7E28D96838007C1F35 /* MedicamentsView.swift */; };
+		C0550C8428D96950007C1F35 /* Medicament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8328D96950007C1F35 /* Medicament.swift */; };
+		C0550C8628DA387E007C1F35 /* MedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8528DA387E007C1F35 /* MedicamentView.swift */; };
+		C0550C8828DA5661007C1F35 /* MedicamentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */; };
+		C0550C8C28DA5DE9007C1F35 /* AddMedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */; };
 		C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */; };
 		C0DC91ED28D5E80500177389 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EC28D5E80500177389 /* Login.swift */; };
 		C0DC91EF28D696E200177389 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EE28D696E200177389 /* Home.swift */; };
@@ -30,9 +35,16 @@
 		C0E6ACC228D55D6F00712337 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC128D55D6F00712337 /* FirebaseStorage */; };
 		C0E6ACC428D55D6F00712337 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC328D55D6F00712337 /* FirebaseStorageCombine-Community */; };
 		C0FCF8D328D90D81001D2B5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */; };
+		C0FCF8D528D914EC001D2B5D /* NavBarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */; };
+		C0FCF8D728D94A0A001D2B5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCF8D628D94A0A001D2B5D /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0550C7E28D96838007C1F35 /* MedicamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentsView.swift; sourceTree = "<group>"; };
+		C0550C8328D96950007C1F35 /* Medicament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicament.swift; sourceTree = "<group>"; };
+		C0550C8528DA387E007C1F35 /* MedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentView.swift; sourceTree = "<group>"; };
+		C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentDetailsView.swift; sourceTree = "<group>"; };
+		C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicamentView.swift; sourceTree = "<group>"; };
 		C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 		C0DC91EC28D5E80500177389 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		C0DC91EE28D696E200177389 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -48,6 +60,8 @@
 		C0E6ACA828D55C2C00712337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0E6ACAB28D55C2C00712337 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViews.swift; sourceTree = "<group>"; };
+		C0FCF8D628D94A0A001D2B5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +89,7 @@
 			children = (
 				C0DC920228D799C500177389 /* Medition.swift */,
 				C0DC920428D799EF00177389 /* Capture.swift */,
+				C0550C8328D96950007C1F35 /* Medicament.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -94,6 +109,7 @@
 				C0DC91F028D696F600177389 /* Elements */,
 				C0DC91EC28D5E80500177389 /* Login.swift */,
 				C0DC91EE28D696E200177389 /* Home.swift */,
+				C0550C7E28D96838007C1F35 /* MedicamentsView.swift */,
 				C0DC920628D79A6D00177389 /* CapturesView.swift */,
 			);
 			path = Views;
@@ -104,6 +120,11 @@
 			children = (
 				C0DC91F328D778A300177389 /* ButtonNavbar.swift */,
 				C0DC91FE28D7875400177389 /* NavBarHome.swift */,
+				C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */,
+				C0FCF8D628D94A0A001D2B5D /* TimerView.swift */,
+				C0550C8528DA387E007C1F35 /* MedicamentView.swift */,
+				C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */,
+				C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -240,17 +261,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FCF8D528D914EC001D2B5D /* NavBarViews.swift in Sources */,
+				C0550C8628DA387E007C1F35 /* MedicamentView.swift in Sources */,
+				C0550C7F28D96838007C1F35 /* MedicamentsView.swift in Sources */,
 				C0DC920328D799C500177389 /* Medition.swift in Sources */,
 				C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */,
 				C0E6ACA728D55C2C00712337 /* ContentView.swift in Sources */,
 				C0DC920728D79A6D00177389 /* CapturesView.swift in Sources */,
+				C0FCF8D728D94A0A001D2B5D /* TimerView.swift in Sources */,
 				C0DC91F828D780CE00177389 /* MenuAndy.swift in Sources */,
 				C0DC91FF28D7875400177389 /* NavBarHome.swift in Sources */,
 				C0DC91EF28D696E200177389 /* Home.swift in Sources */,
 				C0DC91F428D778A300177389 /* ButtonNavbar.swift in Sources */,
 				C0DC920528D799EF00177389 /* Capture.swift in Sources */,
+				C0550C8828DA5661007C1F35 /* MedicamentDetailsView.swift in Sources */,
+				C0550C8428D96950007C1F35 /* Medicament.swift in Sources */,
 				C0E6ACA528D55C2C00712337 /* Agenda_Arterial_V1App.swift in Sources */,
 				C0DC91ED28D5E80500177389 /* Login.swift in Sources */,
+				C0550C8C28DA5DE9007C1F35 /* AddMedicamentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var loginShow : FirebaseViewController
     @State private var index = "Apartado 1"
     @State private var menu = false
+    @State var medicamentosList : [Medicament] = []
     
     var body: some View {
         
@@ -20,6 +21,10 @@ struct ContentView: View {
                 Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             }else if loginShow.show == "Login"{
                 Login()
+            }else if loginShow.show == "CapturesView"{
+                CapturesView()
+            }else if loginShow.show == "MedicamentsView"{
+                MedicamentsView()
             }
         }.onAppear(){
             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
