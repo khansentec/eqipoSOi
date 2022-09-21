@@ -12,23 +12,36 @@ struct ContentView: View {
     @EnvironmentObject var loginShow : FirebaseViewController
     @State private var index = "Apartado 1"
     @State private var menu = false
+    @State var medicamentosList : [Medicament] = []
     
     var body: some View {
-        /*
+        
         return Group{
             if loginShow.show == "Home" {
-                //Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             }else if loginShow.show == "Login"{
-                //Login()
+                Login().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }else if loginShow.show == "CapturesView"{
+                CapturesView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }else if loginShow.show == "MedicamentsView"{
+                MedicamentsView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }else if loginShow.show == "WeekReportView"{
+                WeekReportView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }else if loginShow.show == "RestorePasswordView"{
+                RestorePasswordView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }else if loginShow.show == "RestoreCodeView"{
+                RestoreCodeView().edgesIgnoringSafeArea(.all)
+            }else if loginShow.show == "ChangePasswordView"{
+                ChangePasswordView().edgesIgnoringSafeArea(.all)
+            }else if loginShow.show == "HealthStateView"{
+                HealthStateView().edgesIgnoringSafeArea(.all)
             }
+            
         }.onAppear(){
             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                 loginShow.show = "Home"
             }
-        }*/
-//        Login()
-//       Home()
-//       CapturesView()
+        }
         
     }
 }

@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Home: View {
     
     @State private var index = ""
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
+    
+    @StateObject var login = FirebaseViewController()
+    @EnvironmentObject var loginShow : FirebaseViewController
     
     var body: some View {
         ZStack(alignment: .leading){
@@ -20,103 +24,121 @@ struct Home: View {
                 ZStack{
                     ScrollView{
                         VStack{
-                            HStack(spacing : 10){
+                            HStack{
                                 Button(action:{
-                                    
+                                    withAnimation{
+                                        loginShow.show = "CapturesView"
+                                    }
                                 }){
-                                    Text("Captura tu Presion")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
-                                }
-                                Button(action:{
-                                    
-                                }){
-                                    Text("Tus Medicamentos")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 21)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
-                                        .minimumScaleFactor(0.8)
-                                }
+                                    Image(systemName: "arrow.up.heart").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                    Text("Captura tu Presion").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                        
+                                }.fixedSize(horizontal: false, vertical: true)
+                                    .multilineTextAlignment(.center)
+                                    .padding()
+                                    .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                    .background(RoundedRectangle(cornerRadius: 25).fill(Color("RedSoft")).shadow(radius: 3))
+                                    .foregroundColor(.white)
                             }
-                            HStack(spacing : 10){
-                                Button(action:{
-                                    
-                                }){
-                                    Text("Reporte Semanal")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
+                            
+                           
+                            Button(action:{
+                                withAnimation{
+                                    loginShow.show = "MedicamentsView"
                                 }
-                                Button(action:{
+                            }){
+                                Image(systemName: "pills.fill").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Text("Tus Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
                                     
-                                }){
-                                    Text("Tu Estado de Salud")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
-                                        .minimumScaleFactor(0.8)
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            Button(action:{
+                                withAnimation{
+                                    loginShow.show = "WeekReportView"
                                 }
-                            }
-                            HStack(spacing : 10){
-                                Button(action:{
-                                    
-                                }){
-                                    Text("Calendario")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
+                            }){
+                                Image(systemName: "list.bullet.clipboard").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            Button(action:{
+                                withAnimation{
+                                    loginShow.show = "HealthStateView"
                                 }
-                                Button(action:{
-                                    
-                                }){
-                                    Text("Estadisticas Semanales")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding().font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 172 : 180, height: widthMenu == 375 ? 140 : 190)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
-                                        .minimumScaleFactor(0.8)
-                                }
-                            }
-                            HStack(spacing : 10){
-                                Button(action:{
-                                    
-                                }){
-                                    Text("Medico Vinculado")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .padding()
-                                        .font(.system(size: widthMenu == 375 ? 18 : 22)).bold()
-                                        .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 80 : 110)
-                                        .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                        .foregroundColor(.white)
-                                }
-                            }
+                            }){
+                                Image(systemName: "stethoscope").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Text("Tu Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            
+                            
+                            Button(action:{
+                                
+                            }){
+                                Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Spacer().frame(maxWidth: 60)
+                                Text("Calendario").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            
+                            Button(action:{
+                                
+                            }){
+                                Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Spacer().frame(maxWidth: 50)
+                                Text("Estadisticas Semanales").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            
+                            
+                            Button(action:{
+                                
+                            }){
+                                Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Spacer().frame(maxWidth: 10)
+                                Text("Medico Vinculado").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .foregroundColor(.white)
+                                .minimumScaleFactor(0.8)
+                            
                             
                         }
                         
-                    }
+                    }.padding(.all)
                     
                 }
                 
-            }.onTapGesture {
+            }.background(.white).onTapGesture {
                 withAnimation{
                     menu = false
                 }
@@ -142,17 +164,17 @@ struct Home: View {
                             ButtonNavbar(index: $index, menu: $menu, title: "Apartado 1")
                             ButtonNavbar(index: $index, menu: $menu, title: "Apartado 2")
                             ButtonNavbar(index: $index, menu: $menu, title: "Apartado 3")
-                            /*
-                             Button(action: {
-                             try! Auth.auth().signOut()
-                             UserDefaults.standard.removeObject(forKey: "sesion")
-                             loginShow.show = false
-                             }){
-                             Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.white)
-                             }*/
+                            
+                            Button(action: {
+                                try! Auth.auth().signOut()
+                                UserDefaults.standard.removeObject(forKey: "sesion")
+                                loginShow.show = "Login"
+                            }){
+                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.white)
+                            }
                         }
                         Spacer()
-                    }.frame(width: widthMenu-200).background(Color("BackgroundColorSide"))
+                    }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
                 }
                 
             }

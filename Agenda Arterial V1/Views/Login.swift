@@ -13,8 +13,9 @@ struct Login: View {
     @State private var pass = ""
     @State private var widthMenu = UIScreen.main.bounds.width
     
-    //@StateObject var login = FirebaseViewController()
-    //@EnvironmentObject var loginShow : FirebaseViewController
+    
+    @StateObject var login = FirebaseViewController()
+    @EnvironmentObject var loginShow : FirebaseViewController
     
     @State private var showError = false
     @State private var errorMessage = ""
@@ -25,8 +26,8 @@ struct Login: View {
         ZStack(alignment: .top){
             Color.white.edgesIgnoringSafeArea(.all)
             HStack(){
-                Text("Titulo").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
-            }.padding(.top, 30).background(Color.blue)
+                Text("Iniciar Sesion").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
+            }.padding(.top, widthMenu == 375 ? 10 : 35).background(Color.blue)
             VStack(alignment: .center){
                 Spacer().frame(minHeight: 10, maxHeight: 150)
                 Image("isosceles").resizable().aspectRatio(contentMode: .fit).frame(width: widthMenu == 375 ? 70 : 130, height: widthMenu == 375 ? 70 : 130)
@@ -37,20 +38,20 @@ struct Login: View {
                         .disableAutocorrection(true).autocapitalization(.none)
                         .frame(width: device == .pad ? 400 : 275)
                     Text("Contraseña").font(.body).foregroundColor(.black)
-                    SecureField("Pass", text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: device == .pad ? 400 : 275).padding(.bottom,40)
+                    SecureField("Pass", text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: device == .pad ? 400 : 275).padding(.bottom,20)
                 }
                 Button(action: {
-                    /*
+                    
                     login.login(email: email, pass: pass){
                         (done) in
                         if done{
                             UserDefaults.standard.set(true, forKey: "sesion")
-                            loginShow.show.toggle()
+                            loginShow.show = "Home"
                             showError = false
                         }else{
                             showError = true
                         }
-                    }*/
+                    }
                 }){
                     Text("Iniciar").font(.custom("Helvetica", size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5).bold()
                 }.background(
@@ -68,7 +69,9 @@ struct Login: View {
                     Spacer()
                     HStack{
                         Button(action:{
-                            
+                            withAnimation{
+                                loginShow.show = "RestorePasswordView"
+                            }
                         }){
                             Text("Olvidé mi contraseña").foregroundColor(.black).frame(width: 100)
                         }
@@ -79,14 +82,14 @@ struct Login: View {
                             Text("Registrarse").foregroundColor(.black)
                         }
                     }.frame(height: 60).padding(.trailing, 30)
-                   
+                    
                 }.padding(.bottom, 45).padding(.top, 5)
             }
         }.frame(width: widthMenu).onTapGesture {
             hideKeyboard()
-
+            
         }
-    
+        
     }
 }
 

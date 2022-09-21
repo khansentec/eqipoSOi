@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0550C7F28D96838007C1F35 /* MedicamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C7E28D96838007C1F35 /* MedicamentsView.swift */; };
+		C0550C8428D96950007C1F35 /* Medicament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8328D96950007C1F35 /* Medicament.swift */; };
+		C0550C8628DA387E007C1F35 /* MedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8528DA387E007C1F35 /* MedicamentView.swift */; };
+		C0550C8828DA5661007C1F35 /* MedicamentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */; };
+		C0550C8C28DA5DE9007C1F35 /* AddMedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */; };
+		C0B9017028DB90E50047360C /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9016F28DB90E50047360C /* RestorePasswordView.swift */; };
+		C0B9017228DB92930047360C /* NavbarLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017128DB92930047360C /* NavbarLogin.swift */; };
+		C0B9017628DB95CA0047360C /* RestoreCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017528DB95CA0047360C /* RestoreCodeView.swift */; };
+		C0B9017828DB989B0047360C /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017728DB989B0047360C /* ChangePasswordView.swift */; };
+		C0B9017A28DB9AE80047360C /* HealthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017928DB9AE80047360C /* HealthStateView.swift */; };
+		C0D39C3E28DAAE070009E2FF /* WeekReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D39C3D28DAAE070009E2FF /* WeekReportView.swift */; };
 		C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */; };
 		C0DC91ED28D5E80500177389 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EC28D5E80500177389 /* Login.swift */; };
 		C0DC91EF28D696E200177389 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EE28D696E200177389 /* Home.swift */; };
 		C0DC91F428D778A300177389 /* ButtonNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91F328D778A300177389 /* ButtonNavbar.swift */; };
-		C0DC91F828D780CE00177389 /* MenuAndy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91F728D780CE00177389 /* MenuAndy.swift */; };
 		C0DC91FF28D7875400177389 /* NavBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91FE28D7875400177389 /* NavBarHome.swift */; };
 		C0DC920328D799C500177389 /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC920228D799C500177389 /* Medition.swift */; };
 		C0DC920528D799EF00177389 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC920428D799EF00177389 /* Capture.swift */; };
@@ -29,14 +39,27 @@
 		C0E6ACC028D55D6F00712337 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACBF28D55D6F00712337 /* FirebaseFirestoreSwift */; };
 		C0E6ACC228D55D6F00712337 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC128D55D6F00712337 /* FirebaseStorage */; };
 		C0E6ACC428D55D6F00712337 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0E6ACC328D55D6F00712337 /* FirebaseStorageCombine-Community */; };
+		C0FCF8D328D90D81001D2B5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */; };
+		C0FCF8D528D914EC001D2B5D /* NavBarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */; };
+		C0FCF8D728D94A0A001D2B5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCF8D628D94A0A001D2B5D /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0550C7E28D96838007C1F35 /* MedicamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentsView.swift; sourceTree = "<group>"; };
+		C0550C8328D96950007C1F35 /* Medicament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicament.swift; sourceTree = "<group>"; };
+		C0550C8528DA387E007C1F35 /* MedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentView.swift; sourceTree = "<group>"; };
+		C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentDetailsView.swift; sourceTree = "<group>"; };
+		C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicamentView.swift; sourceTree = "<group>"; };
+		C0B9016F28DB90E50047360C /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
+		C0B9017128DB92930047360C /* NavbarLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarLogin.swift; sourceTree = "<group>"; };
+		C0B9017528DB95CA0047360C /* RestoreCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreCodeView.swift; sourceTree = "<group>"; };
+		C0B9017728DB989B0047360C /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		C0B9017928DB9AE80047360C /* HealthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStateView.swift; sourceTree = "<group>"; };
+		C0D39C3D28DAAE070009E2FF /* WeekReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportView.swift; sourceTree = "<group>"; };
 		C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 		C0DC91EC28D5E80500177389 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		C0DC91EE28D696E200177389 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		C0DC91F328D778A300177389 /* ButtonNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNavbar.swift; sourceTree = "<group>"; };
-		C0DC91F728D780CE00177389 /* MenuAndy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAndy.swift; sourceTree = "<group>"; };
 		C0DC91FE28D7875400177389 /* NavBarHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHome.swift; sourceTree = "<group>"; };
 		C0DC920228D799C500177389 /* Medition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medition.swift; sourceTree = "<group>"; };
 		C0DC920428D799EF00177389 /* Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
@@ -46,6 +69,9 @@
 		C0E6ACA628D55C2C00712337 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0E6ACA828D55C2C00712337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0E6ACAB28D55C2C00712337 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViews.swift; sourceTree = "<group>"; };
+		C0FCF8D628D94A0A001D2B5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +94,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0B9017328DB95690047360C /* RestorePasswordViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0B9016F28DB90E50047360C /* RestorePasswordView.swift */,
+				C0B9017528DB95CA0047360C /* RestoreCodeView.swift */,
+				C0B9017728DB989B0047360C /* ChangePasswordView.swift */,
+			);
+			path = RestorePasswordViews;
+			sourceTree = "<group>";
+		};
+		C0B9017428DB95870047360C /* HomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0D39C3D28DAAE070009E2FF /* WeekReportView.swift */,
+				C0DC920628D79A6D00177389 /* CapturesView.swift */,
+				C0550C7E28D96838007C1F35 /* MedicamentsView.swift */,
+				C0B9017928DB9AE80047360C /* HealthStateView.swift */,
+			);
+			path = HomeViews;
+			sourceTree = "<group>";
+		};
 		C0DC91E728D5E65800177389 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
 				C0DC920228D799C500177389 /* Medition.swift */,
 				C0DC920428D799EF00177389 /* Capture.swift */,
+				C0550C8328D96950007C1F35 /* Medicament.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -88,11 +136,11 @@
 		C0DC91E928D5E69000177389 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0DC91F928D7812A00177389 /* AndyViews */,
+				C0B9017428DB95870047360C /* HomeViews */,
+				C0B9017328DB95690047360C /* RestorePasswordViews */,
 				C0DC91F028D696F600177389 /* Elements */,
 				C0DC91EC28D5E80500177389 /* Login.swift */,
 				C0DC91EE28D696E200177389 /* Home.swift */,
-				C0DC920628D79A6D00177389 /* CapturesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,16 +150,14 @@
 			children = (
 				C0DC91F328D778A300177389 /* ButtonNavbar.swift */,
 				C0DC91FE28D7875400177389 /* NavBarHome.swift */,
+				C0FCF8D428D914EC001D2B5D /* NavBarViews.swift */,
+				C0FCF8D628D94A0A001D2B5D /* TimerView.swift */,
+				C0550C8528DA387E007C1F35 /* MedicamentView.swift */,
+				C0550C8728DA5661007C1F35 /* MedicamentDetailsView.swift */,
+				C0550C8B28DA5DE9007C1F35 /* AddMedicamentView.swift */,
+				C0B9017128DB92930047360C /* NavbarLogin.swift */,
 			);
 			path = Elements;
-			sourceTree = "<group>";
-		};
-		C0DC91F928D7812A00177389 /* AndyViews */ = {
-			isa = PBXGroup;
-			children = (
-				C0DC91F728D780CE00177389 /* MenuAndy.swift */,
-			);
-			path = AndyViews;
 			sourceTree = "<group>";
 		};
 		C0E6AC9828D55C2C00712337 = {
@@ -137,6 +183,7 @@
 				C0DC91E828D5E67D00177389 /* View Controllers */,
 				C0DC91E728D5E65800177389 /* Data Structures */,
 				C0E6ACA428D55C2C00712337 /* Agenda_Arterial_V1App.swift */,
+				C0FCF8D228D90D81001D2B5D /* GoogleService-Info.plist */,
 				C0E6ACA628D55C2C00712337 /* ContentView.swift */,
 				C0E6ACA828D55C2C00712337 /* Assets.xcassets */,
 				C0E6ACAA28D55C2C00712337 /* Preview Content */,
@@ -226,6 +273,7 @@
 			files = (
 				C0E6ACAC28D55C2C00712337 /* Preview Assets.xcassets in Resources */,
 				C0E6ACA928D55C2C00712337 /* Assets.xcassets in Resources */,
+				C0FCF8D328D90D81001D2B5D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,17 +284,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FCF8D528D914EC001D2B5D /* NavBarViews.swift in Sources */,
+				C0B9017828DB989B0047360C /* ChangePasswordView.swift in Sources */,
+				C0550C8628DA387E007C1F35 /* MedicamentView.swift in Sources */,
+				C0B9017028DB90E50047360C /* RestorePasswordView.swift in Sources */,
+				C0550C7F28D96838007C1F35 /* MedicamentsView.swift in Sources */,
 				C0DC920328D799C500177389 /* Medition.swift in Sources */,
 				C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */,
 				C0E6ACA728D55C2C00712337 /* ContentView.swift in Sources */,
+				C0B9017228DB92930047360C /* NavbarLogin.swift in Sources */,
 				C0DC920728D79A6D00177389 /* CapturesView.swift in Sources */,
-				C0DC91F828D780CE00177389 /* MenuAndy.swift in Sources */,
+				C0FCF8D728D94A0A001D2B5D /* TimerView.swift in Sources */,
 				C0DC91FF28D7875400177389 /* NavBarHome.swift in Sources */,
 				C0DC91EF28D696E200177389 /* Home.swift in Sources */,
 				C0DC91F428D778A300177389 /* ButtonNavbar.swift in Sources */,
 				C0DC920528D799EF00177389 /* Capture.swift in Sources */,
+				C0550C8828DA5661007C1F35 /* MedicamentDetailsView.swift in Sources */,
+				C0D39C3E28DAAE070009E2FF /* WeekReportView.swift in Sources */,
+				C0550C8428D96950007C1F35 /* Medicament.swift in Sources */,
 				C0E6ACA528D55C2C00712337 /* Agenda_Arterial_V1App.swift in Sources */,
 				C0DC91ED28D5E80500177389 /* Login.swift in Sources */,
+				C0550C8C28DA5DE9007C1F35 /* AddMedicamentView.swift in Sources */,
+				C0B9017A28DB9AE80047360C /* HealthStateView.swift in Sources */,
+				C0B9017628DB95CA0047360C /* RestoreCodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,11 +443,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Soi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -412,11 +474,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Soi.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
