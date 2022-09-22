@@ -10,12 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var loginShow : FirebaseViewController
-    @State private var index = "Apartado 1"
-    @State private var menu = false
-    @State var medicamentosList : [Medicament] = []
     
     var body: some View {
-        
         return Group{
             if loginShow.show == "Home" {
                 Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -35,6 +31,10 @@ struct ContentView: View {
                 ChangePasswordView().edgesIgnoringSafeArea(.all)
             }else if loginShow.show == "HealthStateView"{
                 HealthStateView().edgesIgnoringSafeArea(.all)
+            }else if loginShow.show == "RemindersView"{
+                RemindersViews().edgesIgnoringSafeArea(.all)
+            }else if loginShow.show == "FrecuentlyAskedQuestionsView"{
+                FrecuentlyAskedCuestionsView().edgesIgnoringSafeArea(.all)
             }
             
         }.onAppear(){

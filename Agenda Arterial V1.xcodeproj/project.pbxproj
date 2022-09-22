@@ -17,6 +17,9 @@
 		C0B9017628DB95CA0047360C /* RestoreCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017528DB95CA0047360C /* RestoreCodeView.swift */; };
 		C0B9017828DB989B0047360C /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017728DB989B0047360C /* ChangePasswordView.swift */; };
 		C0B9017A28DB9AE80047360C /* HealthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017928DB9AE80047360C /* HealthStateView.swift */; };
+		C0B9017F28DBE29A0047360C /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9017E28DBE29A0047360C /* Remind.swift */; };
+		C0B9018128DBE4720047360C /* RemindersViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9018028DBE4720047360C /* RemindersViews.swift */; };
+		C0B9018428DBECD00047360C /* FrecuentlyAskedCuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9018328DBECD00047360C /* FrecuentlyAskedCuestionsView.swift */; };
 		C0D39C3E28DAAE070009E2FF /* WeekReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D39C3D28DAAE070009E2FF /* WeekReportView.swift */; };
 		C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */; };
 		C0DC91ED28D5E80500177389 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DC91EC28D5E80500177389 /* Login.swift */; };
@@ -55,6 +58,9 @@
 		C0B9017528DB95CA0047360C /* RestoreCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreCodeView.swift; sourceTree = "<group>"; };
 		C0B9017728DB989B0047360C /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		C0B9017928DB9AE80047360C /* HealthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStateView.swift; sourceTree = "<group>"; };
+		C0B9017E28DBE29A0047360C /* Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
+		C0B9018028DBE4720047360C /* RemindersViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViews.swift; sourceTree = "<group>"; };
+		C0B9018328DBECD00047360C /* FrecuentlyAskedCuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrecuentlyAskedCuestionsView.swift; sourceTree = "<group>"; };
 		C0D39C3D28DAAE070009E2FF /* WeekReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportView.swift; sourceTree = "<group>"; };
 		C0DC91EA28D5E6C600177389 /* FirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 		C0DC91EC28D5E80500177389 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -111,8 +117,17 @@
 				C0DC920628D79A6D00177389 /* CapturesView.swift */,
 				C0550C7E28D96838007C1F35 /* MedicamentsView.swift */,
 				C0B9017928DB9AE80047360C /* HealthStateView.swift */,
+				C0B9018028DBE4720047360C /* RemindersViews.swift */,
 			);
 			path = HomeViews;
+			sourceTree = "<group>";
+		};
+		C0B9018228DBECB60047360C /* SideBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0B9018328DBECD00047360C /* FrecuentlyAskedCuestionsView.swift */,
+			);
+			path = SideBarViews;
 			sourceTree = "<group>";
 		};
 		C0DC91E728D5E65800177389 /* Data Structures */ = {
@@ -121,6 +136,7 @@
 				C0DC920228D799C500177389 /* Medition.swift */,
 				C0DC920428D799EF00177389 /* Capture.swift */,
 				C0550C8328D96950007C1F35 /* Medicament.swift */,
+				C0B9017E28DBE29A0047360C /* Remind.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -136,6 +152,7 @@
 		C0DC91E928D5E69000177389 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0B9018228DBECB60047360C /* SideBarViews */,
 				C0B9017428DB95870047360C /* HomeViews */,
 				C0B9017328DB95690047360C /* RestorePasswordViews */,
 				C0DC91F028D696F600177389 /* Elements */,
@@ -287,10 +304,13 @@
 				C0FCF8D528D914EC001D2B5D /* NavBarViews.swift in Sources */,
 				C0B9017828DB989B0047360C /* ChangePasswordView.swift in Sources */,
 				C0550C8628DA387E007C1F35 /* MedicamentView.swift in Sources */,
+				C0B9017F28DBE29A0047360C /* Remind.swift in Sources */,
 				C0B9017028DB90E50047360C /* RestorePasswordView.swift in Sources */,
 				C0550C7F28D96838007C1F35 /* MedicamentsView.swift in Sources */,
 				C0DC920328D799C500177389 /* Medition.swift in Sources */,
 				C0DC91EB28D5E6C600177389 /* FirebaseViewController.swift in Sources */,
+				C0B9018128DBE4720047360C /* RemindersViews.swift in Sources */,
+				C0B9018428DBECD00047360C /* FrecuentlyAskedCuestionsView.swift in Sources */,
 				C0E6ACA728D55C2C00712337 /* ContentView.swift in Sources */,
 				C0B9017228DB92930047360C /* NavbarLogin.swift in Sources */,
 				C0DC920728D79A6D00177389 /* CapturesView.swift in Sources */,

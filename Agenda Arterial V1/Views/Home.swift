@@ -10,7 +10,7 @@ import Firebase
 
 struct Home: View {
     
-    @State private var index = ""
+    @State private var index = "Menu Principal"
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
     
@@ -88,7 +88,9 @@ struct Home: View {
                             
                             
                             Button(action:{
-                                
+                                withAnimation{
+                                    loginShow.show = "RemindersView"
+                                }
                             }){
                                 Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,10)
                                 Spacer().frame(maxWidth: 60)
@@ -155,23 +157,24 @@ struct Home: View {
                                 Image(systemName: "arrow.left")
                                     .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
                                     .foregroundColor(.white)
-                                Text("Configuraciones").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                                Text("Menu Principal").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
                             }
                             Spacer()
                         }.padding()
                             .padding(.top, 50)
-                        VStack(alignment: .center){
-                            ButtonNavbar(index: $index, menu: $menu, title: "Apartado 1")
-                            ButtonNavbar(index: $index, menu: $menu, title: "Apartado 2")
-                            ButtonNavbar(index: $index, menu: $menu, title: "Apartado 3")
-                            
+                        VStack(alignment: .leading){
+                            ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "gearshape.fill", title: "Configuración").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
+                            ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "person.crop.circle", title: "Datos Generales").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
+                            ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
+                            ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal").padding(.leading,widthMenu == 375 ? 20 : 22)
+                            Spacer()
                             Button(action: {
                                 try! Auth.auth().signOut()
                                 UserDefaults.standard.removeObject(forKey: "sesion")
                                 loginShow.show = "Login"
                             }){
-                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.white)
-                            }
+                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
+                            }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
                         }
                         Spacer()
                     }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
