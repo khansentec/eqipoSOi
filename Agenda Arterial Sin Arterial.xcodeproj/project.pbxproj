@@ -78,7 +78,7 @@
 		C065D71928E0D3B300AC046F /* Remind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Remind.swift; path = "../../../../../../../Swift Course/Swift Code/Agenda Arterial V1/Agenda Arterial V1/Remind.swift"; sourceTree = "<group>"; };
 		C065D71A28E0D3B300AC046F /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medic.swift; path = "../../../../../../../Swift Course/Swift Code/Agenda Arterial V1/Agenda Arterial V1/Medic.swift"; sourceTree = "<group>"; };
 		C065D71E28E0D41200AC046F /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medition.swift; path = "../../../../../../../Swift Course/Swift Code/Agenda Arterial V1/Agenda Arterial V1/Medition.swift"; sourceTree = "<group>"; };
-		C065D72328E0D48D00AC046F /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
+		C065D72328E0D48D00AC046F /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseViewController.swift; path = "../../../../../Docs/Tec/5° Semestre/Integración de Seguridad Informática en Redes y Sistemas de Software/Swift/Agenda Arterial Sin Arterial/Agenda Arterial Sin Arterial/Views/FirebaseViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
