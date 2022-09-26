@@ -23,65 +23,60 @@ struct Home: View {
                 ZStack{
                     ScrollView{
                         VStack{
-                            HStack{
-                                Button(action:{
-                                    withAnimation{
-                                        loginShow.show = "CapturesView"
-                                    }
-                                }){
-                                    Image(systemName: "arrow.up.heart").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                    Text("Captura tu Presion").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
-                                        
-                                }.fixedSize(horizontal: false, vertical: true)
-                                    .multilineTextAlignment(.center)
-                                    .padding()
-                                    .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                    .background(RoundedRectangle(cornerRadius: 25).fill(Color("RedSoft")).shadow(radius: 3))
-                                    .foregroundColor(.white)
-                            }
                             
-                           
+                            Button(action:{
+                                withAnimation{
+                                    loginShow.show = "CapturesView"
+                                }
+                            }){
+                                Image(systemName: "arrow.up.heart").resizable().frame(width: 55, height: 50).padding(.trailing,10).foregroundColor(.red)
+                                Text("Captura tu Presion").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                
+                            }.fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90,alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
+
                             Button(action:{
                                 withAnimation{
                                     loginShow.show = "MedicamentsView"
                                 }
                             }){
-                                Image(systemName: "pills.fill").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                Text("Tus Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
-                                    
+                                Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(.blue)
+                                Text("Tus Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                .foregroundColor(.white)
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .minimumScaleFactor(0.8)
                             Button(action:{
                                 withAnimation{
                                     loginShow.show = "WeekReportView"
                                 }
                             }){
-                                Image(systemName: "list.bullet.clipboard").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 65, height: 60)
+                                Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
-                                .foregroundColor(.white)
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .minimumScaleFactor(0.8)
                             Button(action:{
                                 withAnimation{
                                     loginShow.show = "HealthStateView"
                                 }
                             }){
-                                Image(systemName: "stethoscope").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                Text("Tu Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
+                                Text("Tu Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .foregroundColor(.white)
                                 .minimumScaleFactor(0.8)
                             
@@ -91,28 +86,26 @@ struct Home: View {
                                     loginShow.show = "RemindersView"
                                 }
                             }){
-                                Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                Spacer().frame(maxWidth: 60)
-                                Text("Calendario").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,17).foregroundColor(Color("ReportColor"))
+                                Text("Recordatorios").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .foregroundColor(.white)
                                 .minimumScaleFactor(0.8)
                             
                             Button(action:{
                                 
                             }){
-                                Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10)
-                                Spacer().frame(maxWidth: 50)
-                                Text("Estadisticas Semanales").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.green)
+                                Text("Estadisticas Semanales").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .foregroundColor(.white)
                                 .minimumScaleFactor(0.8)
                             
@@ -122,15 +115,15 @@ struct Home: View {
                                     loginShow.show = "LikYourMedicView"
                                 }
                             }){
-                                Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10)
+                                Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.gray)
                                 Spacer().frame(maxWidth: 10)
-                                Text("Medico Vinculado").font(.system(size: widthMenu == 375 ? 25 : 30)).bold()
+                                Text("Medico Vinculado").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                                 .padding()
-                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(.blue).shadow(radius: 3))
+                                .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
                                 .foregroundColor(.white)
                                 .minimumScaleFactor(0.8)
                             
