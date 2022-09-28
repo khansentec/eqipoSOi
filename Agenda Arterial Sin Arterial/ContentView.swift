@@ -59,6 +59,8 @@ struct ContentView: View {
                 FrecuentlyAskedCuestionsView(listaPreguntas: ejemplosPreguntas).edgesIgnoringSafeArea(.all)
             }else if loginShow.show == "LikYourMedicView"{
                 LinkYourMedicView(listMedics: ejemploMedicos).edgesIgnoringSafeArea(.all)
+            }else if loginShow.show == "GDV"{
+                GeneralDataView().edgesIgnoringSafeArea(.all)
             }
             
         }
