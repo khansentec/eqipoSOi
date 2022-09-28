@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct GeneralDataView: View {
     
@@ -73,9 +72,7 @@ struct GeneralDataView: View {
                             Text("Library")
                         }
                         
-                    }).sheet(isPresented: $imagePicker){
-                        ImagePicker(show: $imagePicker, image: $imageData, source: source)
-                    }.padding(.bottom, 20)
+                    }).padding(.bottom, 20)
                     
                     
                     if progress{
@@ -151,8 +148,6 @@ struct GeneralDataView: View {
                             ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal").padding(.leading,widthMenu == 375 ? 25 : 32)
                             Spacer()
                             Button(action: {
-                                try! Auth.auth().signOut()
-                                UserDefaults.standard.removeObject(forKey: "sesion")
                                 loginShow.show = "Login"
                             }){
                                 Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
