@@ -56,7 +56,7 @@ struct MedicamentsView: View {
                         }
                     })
                     
-                    .navigationTitle("Medicamentos").navigationBarTitleDisplayMode(.inline)
+                    .navigationBarTitle("Medicamentos", displayMode: .inline)
                     .sheet(isPresented: $agregarMedicamento){
                         
                         AddMedicamentView(medicamentosList: $medicamentosList, agregarMedicamento: $agregarMedicamento)
@@ -73,12 +73,17 @@ struct MedicamentsView: View {
                 self.agregarMedicamento.toggle()
                 
                 
-            }){
-                Image(systemName: "plus").font(.system(size: 40, weight: .heavy))
-                    .foregroundColor(.white).padding(.bottom,40).padding(.trailing,40).frame(width: 100, height: 100)
-            }.background{
+            })
+            {
+            Image(systemName: "plus")
+                    .font(.system(size: 40, weight: .heavy))
+                    .foregroundColor(.white).padding(.bottom,40)
+                    .padding(.trailing,40).frame(width: 100, height: 100)
+            }
+            .background{
                 Circle().fill(Color.blue).padding(.bottom,40).padding(.trailing,40)
-            }.opacity(showNavbar ? 1 : 0)
+            }
+            .opacity(showNavbar ? 1 : 0)
         }.onAppear{
             showNavbar = true
             UITableView.appearance().backgroundColor = .clear

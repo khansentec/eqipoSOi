@@ -20,36 +20,39 @@ struct Home: View {
         ZStack(alignment: .leading){
             VStack{
                 NavBarHome(menu: $menu)
-                ZStack{
-                    ScrollView{
-                        VStack{
-                            
+                ZStack {
+                    ScrollView {
+                        VStack {
                             Button(action:{
                                 withAnimation{
                                     loginShow.show = "CapturesView"
                                 }
                             }){
-                                HStack {
+                                HStack (alignment: .center){
                                     Image(systemName: "arrow.up.heart").resizable().frame(width: 55, height: 50).padding(.trailing,10).foregroundColor(.red)
                                 }
-                                Text("Captura tu Presion").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                .frame(width: 70, alignment: .center)
+                                Text("Capturas de Presion").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90,alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
-
+                            
                             Button(action:{
                                 withAnimation{
                                     loginShow.show = "MedicamentsView"
                                 }
                             }){
-                                Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(.blue)
-                                Text("Tus Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                HStack {
+                                    Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(.blue)
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
+                                Text("Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -59,10 +62,13 @@ struct Home: View {
                                     loginShow.show = "WeekReportView"
                                 }
                             }){
-                                Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 65, height: 60)
+                                HStack {
+                                    Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 60, height: 60)
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
                                 Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -72,10 +78,13 @@ struct Home: View {
                                     loginShow.show = "HealthStateView"
                                 }
                             }){
-                                Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
-                                Text("Tu Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                HStack {
+                                    Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
+                                Text("Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -88,10 +97,13 @@ struct Home: View {
                                     loginShow.show = "RemindersView"
                                 }
                             }){
-                                Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,17).foregroundColor(Color("ReportColor"))
+                                HStack {
+                                    Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,17).foregroundColor(Color("ReportColor"))
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
                                 Text("Recordatorios").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -101,10 +113,13 @@ struct Home: View {
                             Button(action:{
                                 
                             }){
-                                Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.green)
-                                Text("Estadisticas Semanales").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                HStack {
+                                    Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.green)
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
+                                Text("Estadísticas Semanales").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -117,12 +132,14 @@ struct Home: View {
                                     loginShow.show = "LikYourMedicView"
                                 }
                             }){
-                                Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.gray)
-                                Spacer().frame(maxWidth: 10)
-                                Text("Medico Vinculado").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                                HStack {
+                                    Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.gray)
+                                }
+                                .frame(width: 70, height: 60, alignment: .center)
+                                Text("Médico Vinculado").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(.leading)
                                 .padding()
                                 .frame(width: widthMenu == 375 ? 350 : 370, height: widthMenu == 375 ? 90 : 90, alignment: .leading)
                                 .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
@@ -153,14 +170,14 @@ struct Home: View {
                                 Image(systemName: "arrow.left")
                                     .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
                                     .foregroundColor(.white)
-                                Text("Menu Principal").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                                Text("Menu Principal").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 14 : 16))
                             }
                             Spacer()
                         }.padding()
                             .padding(.top, 50)
                         VStack(alignment: .leading){
                             ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "gearshape.fill", title: "Configuración").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
-                            ButtonNavbar(index: $index, menu: $menu,whereto: "GDV", img: "person.crop.circle", title: "Datos Generales").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
+                            ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "person.crop.circle", title: "Datos Generales").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
                             ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
                             ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal").padding(.leading,widthMenu == 375 ? 20 : 22)
                             Spacer()
@@ -171,11 +188,10 @@ struct Home: View {
                             }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
                         }
                         Spacer()
-                    }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
+                    }
+                    .frame(width: widthMenu-200).background(Color("BlueBBVA"))
                 }
-                
             }
-            
         }
     }
 }
