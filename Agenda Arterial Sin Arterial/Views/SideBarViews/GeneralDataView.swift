@@ -27,7 +27,7 @@ struct GeneralDataView: View {
     @State var height = 0
     @State var cirAbdominal = 0
     @State var weight = 0
-    @State var bloodType = 0
+    @State var bloodType = ""
     @State private var padecimientos: String = "This is some editable text..."
     
     
@@ -39,51 +39,73 @@ struct GeneralDataView: View {
                         menu = false
                     }
                 }
-                if imageData.count != 0{
-                    Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
-                }else{
-                    Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
-                }
-                Button(action:{
-                    showMenu.toggle()
-                }){
-                    Text("Tomar Foto de Perfil").foregroundColor(.black).bold().font(.system( size: 17, weight: .heavy))
-                }.confirmationDialog("Select an option: ", isPresented: $showMenu, actions: {
-                    Button(action: {
-                        source = .camera
-                        imagePicker.toggle()
-                    }){
-                        Text("Camera")
+                ScrollView{
+                    if imageData.count != 0{
+                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
+                    }else{
+                        Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
                     }
-                    Button(action: {
-                        source = .photoLibrary
-                        imagePicker.toggle()
+                    Button(action:{
+                        showMenu.toggle()
                     }){
-                        Text("Library")
+                        Text("Tomar Foto de Perfil").foregroundColor(.black).bold().font(.system( size: 17, weight: .heavy))
+                    }.confirmationDialog("Select an option: ", isPresented: $showMenu, actions: {
+                        Button(action: {
+                            source = .camera
+                            imagePicker.toggle()
+                        }){
+                            Text("Camera")
+                        }
+                        Button(action: {
+                            source = .photoLibrary
+                            imagePicker.toggle()
+                        }){
+                            Text("Library")
+                        }
+                        
+                    }).padding(.bottom, 20)
+                    
+                    
+                    if progress{
+                        Text("Please Wait One Moment...").foregroundColor(.black)
+                        ProgressView()
                     }
                     
-                })
-                
-                
-                if progress{
-                    Text("Please Wait One Moment...").foregroundColor(.black)
-                    ProgressView()
+                    
+                    HStack{
+                        Text("Altura").fontWeight(.bold)
+                        TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                        
+                    }.padding(.bottom, 20)
+                    
+                    HStack{
+                        Text("Circuferencia Abdominal").fontWeight(.bold)
+                        TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                        
+                    }.padding(.bottom, 20)
+                    
+                    HStack{
+                        Text("Peso").fontWeight(.bold)
+                        TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                        
+                    }.padding(.bottom, 20)
+                    
+                    HStack{
+                        Text("Tipo de Sangre").fontWeight(.bold)
+                        TextField("Tipo de Sangre", text: $bloodType).textFieldStyle(RoundedBorderTextFieldStyle()).keyboardType(.emailAddress)
+                            .disableAutocorrection(true).autocapitalization(.none)
+                    }.padding(.bottom, 20)
+                    
+                    
+                    Text("Padecimientos").fontWeight(.bold)
+                    HStack{
+                        TextEditor(text: $padecimientos).frame(width: widthMenu == 375 ? 270 : 270, height: 300, alignment: .leading)
+                        
+                    }.overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 1))
+                    Spacer().frame(height: 50)
                 }
                 
-                HStack{
-                    Text("Altura").fontWeight(.bold)
-                    TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                    
-                }.padding(.bottom, 20)
-                
-                Text("Padecimientos").fontWeight(.bold)
-                HStack{
-                    TextEditor(text: $padecimientos)
-                        .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading)
-                }.overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 1))
-                
-                Spacer()
             }.onTapGesture {
                 withAnimation{
                     menu = false
