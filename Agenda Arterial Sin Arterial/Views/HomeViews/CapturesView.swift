@@ -34,8 +34,11 @@ struct CapturesView: View {
     @State var mensaje1 = ""
     @State var mensaje2 = ""
     @State var mensaje3 = ""
-    @State var alertaCapturaInvalida = false
     
+    @State var meditionIsValid = true
+    @State var meditionIsInvalid = false
+    @State var alertMessage = ""
+    @State var newCaptures : [Capture] = []
     
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var heighthMenu = UIScreen.main.bounds.height
@@ -214,71 +217,30 @@ struct CapturesView: View {
                                     med.cambiarIDPaciente(nuevoIdPaciente: idPaciente)
                                     med.cambiarFecha(nuevaFecha: fecha)
                                     
-                                    
-                                    // quita esto
-                                    let validacionCaptura1 = med.validarCaptura(presionSupStr: presionSupStr1, presionInfStr: presionInfStr1, pulso: pulso1)
-                                    
-                                    validacion1 = validacionCaptura1.0
-                                    mensaje1 = validacionCaptura1.1
-                                    
-                                    let validacionCaptura2 = med.validarCaptura(presionSupStr: presionSupStr2, presionInfStr: presionInfStr2, pulso: pulso2)
-                                    
-                                    validacion2 = validacionCaptura2.0
-                                    mensaje2 = validacionCaptura2.1
-                                    
-                                    let validacionCaptura3 = med.validarCaptura(presionSupStr: presionSupStr3, presionInfStr: presionInfStr3, pulso: pulso3)
-                                    
-                                    validacion3 = validacionCaptura3.0
-                                    mensaje3 = validacionCaptura3.1
-                                    
-                                    if (!validacion1 || !validacion2 || !validacion3) || mensaje1 == "Sin datos" {
-                                        alertaCapturaInvalida = true
-                                    } else {
-                                        
-                                        print("info enviada")
-                                        
-                                        if validacion1{
-                                            let presionSup1 = Int(presionSupStr1)!
-                                            let presionInf1 = Int(presionInfStr1)!
-                                            
-                                            let cap1 = Capture(presionSup: presionSup1, presionInf: presionInf1, pulso: pulso1)
-                                            med.agregarCaptura(nuevaCaptura: cap1)
-                                            
-                                        }
-                                        if validacion2{
-                                            let presionSup2 = Int(presionSupStr2)!
-                                            let presionInf2 = Int(presionInfStr2)!
-                                            
-                                            let cap2 = Capture(presionSup: presionSup2, presionInf: presionInf2, pulso: pulso2)
-                                            
-                                            med.agregarCaptura(nuevaCaptura: cap2)
-                                            
-                                        }
-                                        if validacion3{
-                                            let presionSup3 = Int(presionSupStr3)!
-                                            let presionInf3 = Int(presionInfStr3)!
-                                            
-                                            let cap3 = Capture(presionSup: presionSup3, presionInf: presionInf3, pulso: pulso3)
-                                            med.agregarCaptura(nuevaCaptura: cap3)
-                                        }
-                                        
-                                    }
+                                    // Tuple containing validation status, alert message, and new medition object
+                                    let validationResults = validateMedition(med: med,
+                                                                             presionSupStr1: presionSupStr1, presionInfStr1: presionInfStr1, pulso1: pulso1,
+                                                                             presionSupStr2: presionSupStr2, presionInfStr2: presionInfStr2, pulso2: pulso2,
+                                                                             presionSupStr3: presionSupStr3, presionInfStr3: presionInfStr3, pulso3: pulso3)
+                                    meditionIsValid = validationResults.0
+                                    meditionIsInvalid = !meditionIsValid
+                                    alertMessage = validationResults.1
+                                    newCaptures = validationResults.2
                                 }
-                                .alert("Error", isPresented: $alertaCapturaInvalida){
-                                    
+                                .alert("Success", isPresented: $meditionIsValid){
                                     Button("OK"){
                                         //si se oprime quitar el ok
                                     }
                                 } message: {
-                                    if !validacion1 && mensaje1 != "Sin datos"{
-                                        Text(mensaje1)
-                                    } else if !validacion2 && mensaje2 != "Sin datos" {
-                                        Text(mensaje2)
-                                    } else if !validacion3 && mensaje3 != "Sin datos" {
-                                        Text(mensaje3)
-                                    } else {
-                                        Text("Debe ingresar datos en Captura 1")
+                                    Text("Datos guardados con éxito.")
+                                }
+                                
+                                .alert("Error", isPresented: $meditionIsInvalid){
+                                    Button("OK"){
+                                        //si se oprime quitar el ok
                                     }
+                                } message: {
+                                    Text(alertMessage)
                                 }
                                 .background(RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.red, lineWidth: 1)
