@@ -12,6 +12,7 @@ struct GeneralDataView: View {
     @State private var index = "Datos Generales"
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
+    @State private var heightMenu = UIScreen.main.bounds.height
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
@@ -33,12 +34,20 @@ struct GeneralDataView: View {
     
     var body: some View {
         ZStack(alignment: .leading){
+            Button(action: {
+                
+            }){
+                Text("Guardar").foregroundColor(.white).font(.system(size: 25, weight: .bold))
+            }.padding(.bottom, heightMenu-275).zIndex(1).padding(.leading, widthMenu-120).background{
+                Capsule().fill(Color("ButtonColor")).frame(width: 110, height: 50).padding(.bottom, heightMenu-275).padding(.leading, widthMenu-120)
+            }
             VStack{
                 NavBarHome(menu:$menu).onTapGesture {
                     withAnimation{
                         menu = false
                     }
                 }
+                
                 ScrollView{
                     if imageData.count != 0{
                         Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
@@ -78,15 +87,17 @@ struct GeneralDataView: View {
                         
                     }.padding(.bottom, 20)
                     
-                    HStack{
-                        Text("Circuferencia Abdominal").fontWeight(.bold)
-                        TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                        
-                    }.padding(.bottom, 20)
+                    
                     
                     HStack{
                         Text("Peso").fontWeight(.bold)
                         TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                        
+                    }.padding(.bottom, 20)
+                    
+                    HStack{
+                        Text("Circuferencia Abdominal").fontWeight(.bold)
+                        TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                         
                     }.padding(.bottom, 20)
                     
