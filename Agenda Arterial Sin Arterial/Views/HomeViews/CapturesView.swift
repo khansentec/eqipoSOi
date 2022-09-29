@@ -19,8 +19,6 @@ struct CapturesView: View {
     @State var presionInfStr3 = ""
     @State var pulso3 = 0
     
-    @State var alertaCapturaInvalida = false
-    
     @State var fecha = Date.now
     
     @State var estado = true
@@ -29,12 +27,15 @@ struct CapturesView: View {
     @State var timerShow = false
     @State var tiempoRestante = 0
     
+    // Quita despues de exportar toda la validación
     @State var validacion1 = false
     @State var validacion2 = false
     @State var validacion3 = false
     @State var mensaje1 = ""
     @State var mensaje2 = ""
     @State var mensaje3 = ""
+    @State var alertaCapturaInvalida = false
+    
     
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var heighthMenu = UIScreen.main.bounds.height
@@ -213,6 +214,8 @@ struct CapturesView: View {
                                     med.cambiarIDPaciente(nuevoIdPaciente: idPaciente)
                                     med.cambiarFecha(nuevaFecha: fecha)
                                     
+                                    
+                                    // quita esto
                                     let validacionCaptura1 = med.validarCaptura(presionSupStr: presionSupStr1, presionInfStr: presionInfStr1, pulso: pulso1)
                                     
                                     validacion1 = validacionCaptura1.0
@@ -228,15 +231,15 @@ struct CapturesView: View {
                                     validacion3 = validacionCaptura3.0
                                     mensaje3 = validacionCaptura3.1
                                     
-                                    if (!validacion1  || !validacion2 || !validacion3) || mensaje1 == "Sin datos" {
+                                    if (!validacion1 || !validacion2 || !validacion3) || mensaje1 == "Sin datos" {
                                         alertaCapturaInvalida = true
-                                    }else{
+                                    } else {
+                                        
                                         print("info enviada")
                                         
                                         if validacion1{
                                             let presionSup1 = Int(presionSupStr1)!
                                             let presionInf1 = Int(presionInfStr1)!
-                                            
                                             
                                             let cap1 = Capture(presionSup: presionSup1, presionInf: presionInf1, pulso: pulso1)
                                             med.agregarCaptura(nuevaCaptura: cap1)
@@ -260,7 +263,8 @@ struct CapturesView: View {
                                         }
                                         
                                     }
-                                }.alert("Error", isPresented: $alertaCapturaInvalida){
+                                }
+                                .alert("Error", isPresented: $alertaCapturaInvalida){
                                     
                                     Button("OK"){
                                         //si se oprime quitar el ok
@@ -268,23 +272,21 @@ struct CapturesView: View {
                                 } message: {
                                     if !validacion1 && mensaje1 != "Sin datos"{
                                         Text(mensaje1)
-                                    }else if !validacion2 && mensaje2 != "Sin datos" {
+                                    } else if !validacion2 && mensaje2 != "Sin datos" {
                                         Text(mensaje2)
                                     } else if !validacion3 && mensaje3 != "Sin datos" {
                                         Text(mensaje3)
-                                    }else {
+                                    } else {
                                         Text("Debe ingresar datos en Captura 1")
                                     }
-                                }.background(RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.red, lineWidth: 1)
-                                    .frame(minWidth: 100,minHeight: 40))
+                                }
+                                .background(RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.red, lineWidth: 1)
+                                .frame(minWidth: 100,minHeight: 40))
                                 .foregroundColor(Color.red)
-                                
                             }
-                            
                         }
                         .padding(.all).padding(.bottom, 50)
-                        
                     }
                     .navigationBarTitle("Capturas de presión", displayMode: .inline)
                 }
