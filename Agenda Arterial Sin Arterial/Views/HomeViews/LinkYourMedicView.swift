@@ -40,7 +40,7 @@ struct LinkYourMedicView: View {
                         .padding(.all).background(Color.clear)
                         .padding(.bottom, 10).overlay(Group{
                             if listMedics.isEmpty{
-                                Text("No hay Medicos Vinculados")
+                                Text("No hay ningunos médicos vinculados")
                             }
                         })
                         
