@@ -31,7 +31,7 @@ struct MedicamentsView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             VStack{
-                if showNavbar{
+                if showNavbar {
                     NavBarViews()
                 }
                 NavigationView{
@@ -39,31 +39,31 @@ struct MedicamentsView: View {
                         ForEach(medicamentosList, id : \.self){
                             medicamento in
                             
-                            NavigationLink(destination:MedicamentDetailsView(fechaInicio: medicamento.fechaInicio, medicamento: medicamento, info: medicamento.informacion, showNabar: $showNavbar), label: {
+                            NavigationLink(destination:MedicamentDetailsView(fechaInicio: medicamento.fechaInicio, medicamento: medicamento, info: medicamento.informacion, showNavbar: $showNavbar), label: {
                                 MedicamentView(medicamento: medicamento)
-                            }).background(Color.clear)
-                        }.onDelete(perform: { idxSet in
+                            })
+                            .background(Color.clear)
+                        }
+                        .onDelete(perform: { idxSet in
                             medicamentosList.remove(atOffsets: idxSet)
                         })
-                        
-                        
-                    }.padding(.all)
-                        .background(Color.clear)
-                        .padding(.bottom,100)
-                        .overlay(Group{
+                    }
+                    .padding(.all)
+                    .background(Color.clear)
+                    .padding(.bottom,100)
+                    .overlay(Group{
                         if medicamentosList.isEmpty{
                             Text("No hay medicamentos")
                         }
                     })
-                    
                     .navigationBarTitle("Medicamentos", displayMode: .inline)
                     .sheet(isPresented: $agregarMedicamento){
                         
                         AddMedicamentView(medicamentosList: $medicamentosList, agregarMedicamento: $agregarMedicamento)
                     }
                     
-                }.background(Color.clear)
-                
+                }
+                .background(Color.clear)
             }
             Button(action: {
                 self.nombreMedicamento = ""
@@ -71,11 +71,9 @@ struct MedicamentsView: View {
                 self.frecuencia = ""
                 self.dosis = ""
                 self.agregarMedicamento.toggle()
-                
-                
             })
             {
-            Image(systemName: "plus")
+                Image(systemName: "plus")
                     .font(.system(size: 40, weight: .heavy))
                     .foregroundColor(.white).padding(.bottom,40)
                     .padding(.trailing,40).frame(width: 100, height: 100)

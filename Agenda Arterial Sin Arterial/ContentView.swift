@@ -22,7 +22,7 @@ struct ContentView: View {
             ["P: ¿Cómo puedo cerrer una sesión?", "R: Da clic en el butón 'Cerrar sesión'."],
             ["P: No tengo un médico vinculado. ¿Cómo puedo conseguir uno?", "R: Naviga a la página de Médico vinculado y da clic en el búton 'Registrar'."]
         ]
-        var ejemploRecordatorios = [
+        let ejemploRecordatorios = [
             Remind(fecha: "28/2/19", eventos: ["Próxima cita"]),
             Remind(fecha: "29/2/19", eventos: ["Próxima medición", "Próxima toma de presión"])
         ]
@@ -54,7 +54,7 @@ struct ContentView: View {
             }else if loginShow.show == "HealthStateView"{
                 HealthStateView().edgesIgnoringSafeArea(.all)
             }else if loginShow.show == "RemindersView"{
-                RemindersViews(listaRecordatorios: ejemploRecordatorios).edgesIgnoringSafeArea(.all)
+                RemindersViews(remindersList: ejemploRecordatorios).edgesIgnoringSafeArea(.all)
             }else if loginShow.show == "FrecuentlyAskedQuestionsView"{
                 FrecuentlyAskedCuestionsView(listaPreguntas: ejemplosPreguntas).edgesIgnoringSafeArea(.all)
             }else if loginShow.show == "LikYourMedicView"{

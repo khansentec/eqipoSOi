@@ -47,7 +47,7 @@ struct LinkYourMedicView: View {
                         Button(action:{
                             linkMedic.toggle()
                         }){
-                            Text("Vincular").font(.system(size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
+                            Text("Vincular").font(.system(size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                         }
                         .background(
                             Capsule().fill(Color("ButtonColor"))

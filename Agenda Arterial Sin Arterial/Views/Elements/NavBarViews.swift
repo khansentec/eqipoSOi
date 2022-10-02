@@ -27,13 +27,14 @@ struct NavBarViews: View {
                     }
                 }){
                     Image(systemName: "arrow.left")
-                        .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
+                        .font(.system(size:  widthMenu == 375 ? 18 : 19)).foregroundColor(.white)
                         .foregroundColor(.white)
-                    Text("Menu Principal").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                    Text("Menu Principal").foregroundColor(.white).font(.system(size: widthMenu == 375 ? 16 : 18))
                 }
             }
             Spacer()
-        }.padding(.top, widthMenu == 375 ? 20 : 35).padding().background(Color("NavbarViewsColor"))
+        }
+        .padding(.top, widthMenu == 375 ? 20 : 35).padding().background(Color("ButtonColor"))
         
     }
 }

@@ -42,6 +42,26 @@ struct CapturesView: View {
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
     
+    func validateData() {
+        med.cambiarIDPaciente(nuevoIdPaciente: idPaciente)
+        med.cambiarFecha(nuevaFecha: fecha)
+        
+        // Tuple containing validation status, alert message, and new medition object
+        let validationResults = validateMedition(med: med,
+                                                 presionSupStr1: presionSupStr1, presionInfStr1: presionInfStr1, pulso1: pulso1,
+                                                 presionSupStr2: presionSupStr2, presionInfStr2: presionInfStr2, pulso2: pulso2,
+                                                 presionSupStr3: presionSupStr3, presionInfStr3: presionInfStr3, pulso3: pulso3)
+        meditionIsValid = validationResults.0
+        if meditionIsValid {
+            alertTitle = "¡Éxito!"
+        } else {
+            alertTitle = "¡Oops!"
+        }
+        alertMessage = validationResults.1
+        newCaptures = validationResults.2
+        meditionSubmitted = true
+    }
+    
     var body: some View {
         
         ZStack{
@@ -206,25 +226,14 @@ struct CapturesView: View {
                                     .padding(.trailing,70)
                                     .padding(.leading,0)
                                 
-                                Button("Enviar") {
-                                    med.cambiarIDPaciente(nuevoIdPaciente: idPaciente)
-                                    med.cambiarFecha(nuevaFecha: fecha)
-                                    
-                                    // Tuple containing validation status, alert message, and new medition object
-                                    let validationResults = validateMedition(med: med,
-                                                                             presionSupStr1: presionSupStr1, presionInfStr1: presionInfStr1, pulso1: pulso1,
-                                                                             presionSupStr2: presionSupStr2, presionInfStr2: presionInfStr2, pulso2: pulso2,
-                                                                             presionSupStr3: presionSupStr3, presionInfStr3: presionInfStr3, pulso3: pulso3)
-                                    meditionIsValid = validationResults.0
-                                    if meditionIsValid {
-                                        alertTitle = "¡Éxito!"
-                                    } else {
-                                        alertTitle = "¡Oops!"
-                                    }
-                                    alertMessage = validationResults.1
-                                    newCaptures = validationResults.2
-                                    meditionSubmitted = true
+                                Button(action:{
+                                    validateData()
+                                }){
+                                    Text("Enviar").font(.system(size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                                 }
+                                .background(
+                                    Capsule().fill(Color("ButtonColor"))
+                                )
                                 .alert(alertTitle, isPresented: $meditionSubmitted){
                                     Button("OK"){
                                         //si se oprime quitar el ok
@@ -236,10 +245,6 @@ struct CapturesView: View {
                                         Text(alertMessage)
                                     }
                                 }
-                                .background(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.red, lineWidth: 1)
-                                .frame(minWidth: 100,minHeight: 40))
-                                .foregroundColor(Color.red)
                             }
                         }
                         .padding(.all).padding(.bottom, 50)

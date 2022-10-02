@@ -14,7 +14,7 @@ struct MedicamentDetailsView: View {
     @State var medicamento : Medicament
     @State var info : String
     
-    @Binding var showNabar : Bool
+    @Binding var showNavbar : Bool
     
     var device = UIDevice.current.userInterfaceIdiom
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -46,7 +46,7 @@ struct MedicamentDetailsView: View {
                     .font(.system(.title))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Divider().frame(width : 250)
-                HStack{
+                HStack {
                     Text("Fecha de inicio: ")
                     DatePicker("", selection: $fechaInicio, displayedComponents : .date)
                         .padding(.trailing,70).disabled(!editando)
@@ -55,9 +55,10 @@ struct MedicamentDetailsView: View {
                     TextEditor(text: $info)
                         .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading)
                     
-                }.overlay(RoundedRectangle(cornerRadius: 10)
+                }
+                .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(editando ? Color.gray : Color.clear, lineWidth: 1))
-                    .disabled(!editando)
+                .disabled(!editando)
                 
             }.padding(.leading, 60)
             
@@ -74,18 +75,18 @@ struct MedicamentDetailsView: View {
                         .padding(.top, 3.5)
                     
                 })
-            }.padding(.trailing,60).padding(.top,10)
+            }
+            .padding(.trailing,60).padding(.top,10)
         }
         .onTapGesture {
             hideKeyboard()
         }
-        .padding(.top,0).onAppear{
-            showNabar = false
-        }.onDisappear{
-            withAnimation{
-                showNabar = true
-            }
-            
+        .padding(.top,0)
+        .onAppear{
+            showNavbar = false
+        }
+        .onDisappear{
+            showNavbar = true
         }
         Spacer().frame(maxHeight: widthMenu == 375 ? 170 : 150)
     }

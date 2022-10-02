@@ -13,14 +13,12 @@ struct NavBarHome: View {
     @Binding var menu : Bool
     @State private var widthMenu = UIScreen.main.bounds.width
     
-    
     var body: some View {
         
         HStack{
-            
-            if device == .pad{
+            if device == .pad {
                 
-            }else{
+            } else {
                 
                 Button(action: {
                     withAnimation{
@@ -38,7 +36,8 @@ struct NavBarHome: View {
                 .foregroundColor(.white)
                 .font(.system(size: device == .phone ? 25 : 35))
             Spacer()
-        }.padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color.blue)
+        }
+        .padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color("ButtonColor"))
         
     }
 }

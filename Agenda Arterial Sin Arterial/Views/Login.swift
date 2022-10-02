@@ -28,7 +28,7 @@ struct Login: View {
         ZStack(alignment: .top){
             Color.white.edgesIgnoringSafeArea(.all)
             HStack(){
-                Text("Iniciar Sesion").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
+                Text("Iniciar Sesión").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
             }.padding(.top, widthMenu == 375 ? 10 : 35).background(Color.blue)
             VStack(alignment: .center){
                 Spacer().frame(minHeight: 10, maxHeight: 150)
@@ -46,7 +46,7 @@ struct Login: View {
                     progress = true
                     loginShow.show = "Home"
                 }){
-                    Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
+                    Text("Iniciar").font(.system( size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                 }.background(
                     Capsule().fill(Color("ButtonColor"))
                 ).alert("The password is invalid or the user does not have a password.", isPresented: $showError) {
