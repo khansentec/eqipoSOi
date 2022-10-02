@@ -27,17 +27,10 @@ struct CapturesView: View {
     @State var timerShow = false
     @State var tiempoRestante = 0
     
-    // Quita despues de exportar toda la validación
-    @State var validacion1 = false
-    @State var validacion2 = false
-    @State var validacion3 = false
-    @State var mensaje1 = ""
-    @State var mensaje2 = ""
-    @State var mensaje3 = ""
-    
-    @State var meditionIsValid = true
-    @State var meditionIsInvalid = false
+    @State var meditionIsValid = false
+    @State var meditionSubmitted = false
     @State var alertMessage = ""
+    @State var alertTitle = ""
     @State var newCaptures : [Capture] = []
     
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -223,24 +216,25 @@ struct CapturesView: View {
                                                                              presionSupStr2: presionSupStr2, presionInfStr2: presionInfStr2, pulso2: pulso2,
                                                                              presionSupStr3: presionSupStr3, presionInfStr3: presionInfStr3, pulso3: pulso3)
                                     meditionIsValid = validationResults.0
-                                    meditionIsInvalid = !meditionIsValid
+                                    if meditionIsValid {
+                                        alertTitle = "¡Éxito!"
+                                    } else {
+                                        alertTitle = "¡Oops!"
+                                    }
                                     alertMessage = validationResults.1
                                     newCaptures = validationResults.2
+                                    meditionSubmitted = true
                                 }
-                                .alert("Success", isPresented: $meditionIsValid){
+                                .alert(alertTitle, isPresented: $meditionSubmitted){
                                     Button("OK"){
                                         //si se oprime quitar el ok
                                     }
                                 } message: {
-                                    Text("Datos guardados con éxito.")
-                                }
-                                
-                                .alert("Error", isPresented: $meditionIsInvalid){
-                                    Button("OK"){
-                                        //si se oprime quitar el ok
+                                    if meditionIsValid {
+                                        Text("Datos subidos con éxito.")
+                                    } else {
+                                        Text(alertMessage)
                                     }
-                                } message: {
-                                    Text(alertMessage)
                                 }
                                 .background(RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.red, lineWidth: 1)

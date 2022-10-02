@@ -42,7 +42,7 @@ func validateMedition (med : Medition,
     currAlertMessage = currValidation.1
     
     // If valid, add first capture to medition and validate second capture
-    if currValidationStatus {
+    if currValidationStatus && currAlertMessage != "Sin datos" {
         
         let presionSup1 = Int(presionSupStr1)!
         let presionInf1 = Int(presionInfStr1)!
@@ -55,7 +55,7 @@ func validateMedition (med : Medition,
     }
     
     // If still valid, add second catpure to medition and validate third capture
-    if currValidationStatus {
+    if currValidationStatus && currAlertMessage != "Sin datos" {
         
         let presionSup2 = Int(presionSupStr2)!
         let presionInf2 = Int(presionInfStr2)!
@@ -68,7 +68,7 @@ func validateMedition (med : Medition,
     }
     
     // If still valid, add third capture to medition
-    if currValidationStatus {
+    if currValidationStatus && currAlertMessage != "Sin datos" {
         let presionSup3 = Int(presionSupStr3)!
         let presionInf3 = Int(presionInfStr3)!
         let cap3 = Capture(presionSup: presionSup3, presionInf: presionInf3, pulso: pulso3)
