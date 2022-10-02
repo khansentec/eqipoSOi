@@ -46,7 +46,8 @@ struct Home: View {
                                 }
                             }){
                                 HStack {
-                                    Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(.blue)
+                                    let extractedExpr = .blue
+                                    Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(extractedExpr)
                                 }
                                 .frame(width: 70, height: 60, alignment: .center)
                                 Text("Medicamentos").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
