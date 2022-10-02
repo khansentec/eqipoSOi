@@ -32,7 +32,7 @@ struct Home: View {
                                     Image(systemName: "arrow.up.heart").resizable().frame(width: 55, height: 50).padding(.trailing,10).foregroundColor(.red)
                                 }
                                 .frame(width: 70, alignment: .center)
-                                Text("Capturas de Presion").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
+                                Text("Capturas de presión").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.leading)
@@ -66,7 +66,7 @@ struct Home: View {
                                     Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 60, height: 60)
                                 }
                                 .frame(width: 70, height: 60, alignment: .center)
-                                Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                                Text("Reporte semanal").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.leading)
                                 .padding()
@@ -82,7 +82,7 @@ struct Home: View {
                                     Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
                                 }
                                 .frame(width: 70, height: 60, alignment: .center)
-                                Text("Estado de Salud").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                                Text("Estado de salud").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.leading)
                                 .padding()
@@ -117,7 +117,7 @@ struct Home: View {
                                     Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.green)
                                 }
                                 .frame(width: 70, height: 60, alignment: .center)
-                                Text("Estadísticas Semanales").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
+                                Text("Estadísticas semanales").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.leading)
                                 .padding()
@@ -136,7 +136,7 @@ struct Home: View {
                                     Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.gray)
                                 }
                                 .frame(width: 70, height: 60, alignment: .center)
-                                Text("Médicos Vinculados").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                                Text("Médicos vinculados").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
                                 
                             }.fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.leading)
