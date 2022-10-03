@@ -34,31 +34,29 @@ struct LinkYourMedicView: View {
                             }.onDelete(perform: { idxSet in
                                 listMedics.remove(atOffsets: idxSet)
                             })
-                            
-                            
                         }
                         .padding(.all).background(Color.clear)
-                        .padding(.bottom, 10).overlay(Group{
+                        .overlay(Group{
                             if listMedics.isEmpty{
                                 Text("No hay ningunos médicos vinculados")
                             }
                         })
                         
-                        Button(action:{
+                        Button("Vincular médico"){
                             linkMedic.toggle()
-                        }){
-                            Text("Vincular").font(.system(size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                         }
-                        .background(
-                            Capsule().fill(Color("ButtonColor"))
-                        )
+                        .foregroundColor(.white)
+                        .background(RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(Color("ButtonColor"))
+                            .frame(minWidth: 150, minHeight: 40))
+                        
                         .sheet(isPresented: $linkMedic){
                             AddMedicView()
                         }
                     }
                     .navigationBarTitle("Médicos vinculados", displayMode: .inline)
-                    
-                }.padding(.bottom, widthMenu == 375 ? 20 : 30)
+                    .padding(.bottom, 100)
+                }
             }
         }
     }

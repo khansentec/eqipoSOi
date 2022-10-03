@@ -50,7 +50,7 @@ struct MedicamentsView: View {
                     }
                     .padding(.all)
                     .background(Color.clear)
-                    .padding(.bottom,100)
+                    .padding(.bottom, 100)
                     .overlay(Group{
                         if medicamentosList.isEmpty{
                             Text("No hay medicamentos")
@@ -82,7 +82,8 @@ struct MedicamentsView: View {
                 Circle().fill(Color.blue).padding(.bottom,40).padding(.trailing,40)
             }
             .opacity(showNavbar ? 1 : 0)
-        }.onAppear{
+        }
+        .onAppear{
             showNavbar = true
             UITableView.appearance().backgroundColor = .clear
         }

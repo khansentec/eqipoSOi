@@ -22,13 +22,12 @@ struct ReminderView: View {
                 evento in
                 HStack {
                     Text(evento)
-                        .padding(.leading,20)
+                        .padding(.leading, 20)
                         .lineLimit(1)
                 }
             }
-            
         }
-        .padding(.vertical,10)
+        .padding(.bottom, 100)
     }
 }
 

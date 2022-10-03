@@ -226,14 +226,14 @@ struct CapturesView: View {
                                     .padding(.trailing,70)
                                     .padding(.leading,0)
                                 
-                                Button(action:{
+                                Button("Enviar"){
                                     validateData()
-                                }){
-                                    Text("Enviar").font(.system(size: 25)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                                 }
-                                .background(
-                                    Capsule().fill(Color("ButtonColor"))
-                                )
+                                .foregroundColor(.white)
+                                .background(RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(Color("ButtonColor"))
+                                    .frame(minWidth: 100,minHeight: 40))
+                                
                                 .alert(alertTitle, isPresented: $meditionSubmitted){
                                     Button("OK"){
                                         //si se oprime quitar el ok

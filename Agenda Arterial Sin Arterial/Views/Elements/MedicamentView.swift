@@ -13,12 +13,10 @@ struct MedicamentView: View {
         var body: some View{
             VStack(alignment:.leading, spacing : 5){
                Text(medicamento.nombreMedicamento)
-//                Text("medicamento.nombreMedicamento")
                     .fontWeight(.bold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.9).foregroundColor(.blue)
                 Text(medicamento.informacion)
-//                Text("medicamento.informacion")
                     .padding(.leading,20)
                     .lineLimit(1)
                     

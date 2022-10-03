@@ -78,7 +78,7 @@ struct WeekReportView: View {
                                 
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.cyan)
+                            Divider().background(Color.blue)
                             
                             DisclosureGroup("Ejercicio") {
                                 VStack(spacing : 15){
@@ -102,7 +102,7 @@ struct WeekReportView: View {
                                 
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.cyan)
+                            Divider().background(Color.blue)
                             
                             DisclosureGroup("Descanso") {
                                 VStack{
@@ -121,7 +121,7 @@ struct WeekReportView: View {
                                 }.padding()
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.cyan)
+                            Divider().background(Color.blue)
                             
                             DisclosureGroup("Medicamentos") {
                                 VStack{
@@ -173,7 +173,7 @@ struct WeekReportView: View {
                             }.padding(.bottom,5)
                             
                             
-                            Divider().background(Color.cyan)
+                            Divider().background(Color.blue)
                             
                             VStack{
                                 Button("Enviar") {
@@ -191,7 +191,6 @@ struct WeekReportView: View {
                                     print("Fecha reporte actual :", fechaReporte)
                                     print("Fecha sig :", fechaSigReporte!)
                                     
-                                    
                                 }.alert("Error", isPresented: $alerta){
                                     
                                     Button("OK"){
@@ -200,18 +199,19 @@ struct WeekReportView: View {
                                 } message: {
                                     Text(mensajeAlerta)
                                 }
-                                .foregroundColor(.red)
+                                .foregroundColor(.white)
                                 .background(RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.red, lineWidth: 1)
+                                    .foregroundColor(Color("ButtonColor"))
                                     .frame(minWidth: 100,minHeight: 40))
-                                
+                           
                             }.padding()
                             
                         }
                         .navigationBarTitle("Reporte semanal", displayMode: .inline)
                         .padding(.all,30)
                     }
-                }.onTapGesture {
+                }
+                .onTapGesture {
                     hideKeyboard()
                 }
             }
