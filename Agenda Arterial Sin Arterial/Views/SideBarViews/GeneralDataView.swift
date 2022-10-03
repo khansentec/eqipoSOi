@@ -31,16 +31,19 @@ struct GeneralDataView: View {
     @State var bloodType = ""
     @State private var padecimientos: String = "This is some editable text..."
     
+    @State var dataSubmitted = false
+    @State var dataIsValid = false
+    @State var alertTitle = ""
+    @State var alertMessage = ""
+    
+    func validateData() {
+        
+    }
     
     var body: some View {
+        
         ZStack(alignment: .leading){
-            Button(action: {
-                
-            }){
-                Text("Guardar").foregroundColor(.white).font(.system(size: 25, weight: .bold))
-            }.padding(.bottom, heightMenu-275).zIndex(1).padding(.leading, widthMenu-120).background{
-                Capsule().fill(Color("ButtonColor")).frame(width: 110, height: 50).padding(.bottom, heightMenu-275).padding(.leading, widthMenu-120)
-            }
+            
             VStack{
                 NavBarHome(menu:$menu).onTapGesture {
                     withAnimation{
@@ -49,31 +52,39 @@ struct GeneralDataView: View {
                 }
                 
                 ScrollView{
-                    if imageData.count != 0{
-                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
-                    }else{
-                        Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
-                    }
-                    Button(action:{
-                        showMenu.toggle()
-                    }){
-                        Text("Tomar Foto de Perfil").foregroundColor(.black).bold().font(.system( size: 17, weight: .heavy))
-                    }.confirmationDialog("Select an option: ", isPresented: $showMenu, actions: {
-                        Button(action: {
-                            source = .camera
-                            imagePicker.toggle()
-                        }){
-                            Text("Camera")
-                        }
-                        Button(action: {
-                            source = .photoLibrary
-                            imagePicker.toggle()
-                        }){
-                            Text("Library")
+                    
+                    VStack {
+                        
+                        if imageData.count != 0{
+                            Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
+                        } else{
+                            Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
                         }
                         
-                    }).padding(.bottom, 20)
-                    
+                        Spacer(minLength: 15)
+                        
+                        Button(action: {showMenu.toggle()}){
+                            Text("Tomar foto de pérfil")
+                                .underline()
+                        }
+                        .confirmationDialog("Select an option: ", isPresented: $showMenu, actions: {
+                            Button(action: {
+                                source = .camera
+                                imagePicker.toggle()
+                            }){
+                                Text("Camera")
+                            }
+                            Button(action: {
+                                source = .photoLibrary
+                                imagePicker.toggle()
+                            }){
+                                Text("Library")
+                            }
+                            
+                        })
+                        .foregroundColor(Color("ButtonColor"))
+                        
+                    }
                     
                     if progress{
                         Text("Please Wait One Moment...").foregroundColor(.black)
@@ -86,8 +97,6 @@ struct GeneralDataView: View {
                         TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                         
                     }.padding(.bottom, 20)
-                    
-                    
                     
                     HStack{
                         Text("Peso").fontWeight(.bold)
@@ -114,10 +123,31 @@ struct GeneralDataView: View {
                         
                     }.overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 1))
-                    Spacer().frame(height: 50)
+                    
+                    Button("Enviar"){
+                        validateData()
+                    }
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(Color("ButtonColor"))
+                        .frame(minWidth: 100,minHeight: 40))
+                    
+                    .alert(alertTitle, isPresented: $dataSubmitted){
+                        Button("OK"){
+                            //si se oprime quitar el ok
+                        }
+                    } message: {
+                        if dataIsValid {
+                            Text("Datos subidos con éxito.")
+                        } else {
+                            Text(alertMessage)
+                        }
+                    }
+                    
                 }
                 
-            }.onTapGesture {
+            }
+            .onTapGesture {
                 withAnimation{
                     menu = false
                 }
@@ -150,17 +180,23 @@ struct GeneralDataView: View {
                             Button(action: {
                                 loginShow.show = "Login"
                             }){
-                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
-                            }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
+                                Text("Sign Out")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.blue)
+                            }
+                            .padding(.all)
+                            .padding(.leading, 30)
+                            .padding(.bottom, 20)
                         }
                         Spacer()
-                    }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
+                    }
+                    .frame(width: widthMenu-200).background(Color("BlueBBVA"))
                 }
                 
             }
-            
-            
-        }.onTapGesture {
+        }
+        .onTapGesture {
             hideKeyboard()
         }
     }

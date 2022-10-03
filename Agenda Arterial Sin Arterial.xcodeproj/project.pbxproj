@@ -41,6 +41,7 @@
 		C065D71D28E0D3B300AC046F /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71A28E0D3B300AC046F /* Medic.swift */; };
 		C065D71F28E0D41200AC046F /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71E28E0D41200AC046F /* Medition.swift */; };
 		C065D72528E0D48D00AC046F /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D72328E0D48D00AC046F /* FirebaseViewController.swift */; };
+		C25F8D8528EB8B1700BEDE4C /* Pacient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F8D8428EB8B1700BEDE4C /* Pacient.swift */; };
 		C2E671F128E91AA5005E8E44 /* ReminderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E671F028E91AA5005E8E44 /* ReminderDetailsView.swift */; };
 		C2E671F328E9EF64005E8E44 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E671F228E9EF64005E8E44 /* ReminderView.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		C065D71A28E0D3B300AC046F /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medic.swift; path = Views/Medic.swift; sourceTree = "<group>"; };
 		C065D71E28E0D41200AC046F /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medition.swift; path = Views/Medition.swift; sourceTree = "<group>"; };
 		C065D72328E0D48D00AC046F /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
+		C25F8D8428EB8B1700BEDE4C /* Pacient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pacient.swift; sourceTree = "<group>"; };
 		C2E671F028E91AA5005E8E44 /* ReminderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsView.swift; sourceTree = "<group>"; };
 		C2E671F228E9EF64005E8E44 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 				C065D72328E0D48D00AC046F /* FirebaseViewController.swift */,
 				C065D71A28E0D3B300AC046F /* Medic.swift */,
 				C065D71828E0D3B300AC046F /* Medicament.swift */,
+				C25F8D8428EB8B1700BEDE4C /* Pacient.swift */,
 				C065D71928E0D3B300AC046F /* Remind.swift */,
 				C065D71528E0D36F00AC046F /* Capture.swift */,
 				C065D6DF28E0D2F800AC046F /* Views */,
@@ -293,6 +296,7 @@
 				C065D70E28E0D2F900AC046F /* NavBarHome.swift in Sources */,
 				C065D71628E0D36F00AC046F /* Capture.swift in Sources */,
 				C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */,
+				C25F8D8528EB8B1700BEDE4C /* Pacient.swift in Sources */,
 				C2E671F128E91AA5005E8E44 /* ReminderDetailsView.swift in Sources */,
 				C065D71128E0D2F900AC046F /* ChangePasswordView.swift in Sources */,
 				C065D70D28E0D2F900AC046F /* SignIn.swift in Sources */,
