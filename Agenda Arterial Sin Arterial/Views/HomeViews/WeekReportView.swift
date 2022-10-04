@@ -57,7 +57,7 @@ struct WeekReportView: View {
                                             Text("Sí").tag(true)
                                             Text("No").tag(false)
                                         }.frame(width : widthMenu == 375 ? 80 : 70, height: 10)
-                                            .accentColor(.blue)
+                                            .accentColor(Color("ButtonColor"))
                                             .padding(.top,-5)
                                     }.padding(.leading,-50)
                                     HStack{
@@ -78,7 +78,7 @@ struct WeekReportView: View {
                                 
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.blue)
+                            Divider().background(Color("ButtonColor"))
                             
                             DisclosureGroup("Ejercicio") {
                                 VStack(spacing : 15){
@@ -102,7 +102,7 @@ struct WeekReportView: View {
                                 
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.blue)
+                            Divider().background(Color("ButtonColor"))
                             
                             DisclosureGroup("Descanso") {
                                 VStack{
@@ -121,7 +121,7 @@ struct WeekReportView: View {
                                 }.padding()
                             }.padding(.bottom,5)
                             
-                            Divider().background(Color.blue)
+                            Divider().background(Color("ButtonColor"))
                             
                             DisclosureGroup("Medicamentos") {
                                 VStack{
@@ -132,7 +132,7 @@ struct WeekReportView: View {
                                             Text("Sí").tag(true)
                                             Text("No").tag(false)
                                         }.frame(width : widthMenu == 375 ? 60 : 70, height: 10)
-                                            .accentColor(.blue)
+                                            .accentColor(Color("ButtonColor"))
                                             .padding(.top,-5)
                                         
                                     }.padding()
@@ -173,7 +173,7 @@ struct WeekReportView: View {
                             }.padding(.bottom,5)
                             
                             
-                            Divider().background(Color.blue)
+                            Divider().background(Color("ButtonColor"))
                             
                             VStack{
                                 Button("Enviar") {

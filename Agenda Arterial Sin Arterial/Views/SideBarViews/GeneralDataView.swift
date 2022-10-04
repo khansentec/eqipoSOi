@@ -110,37 +110,36 @@ struct GeneralDataView: View {
                         .foregroundColor(Color("ButtonColor"))
                         
                     }
+                    .padding(.bottom, 20)
                     
                     if progress{
                         Text("Please Wait One Moment...").foregroundColor(.black)
                         ProgressView()
                     }
                     
-                    VStack {
+                    
+                    VStack (spacing: 10) {
                         HStack{
                             Text("Altura")
-                            TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
-                        }.padding(.bottom, 20)
+                            TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
                         
                         HStack{
                             Text("Peso")
-                            TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
-                        }.padding(.bottom, 20)
+                            TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
                         
                         HStack{
                             Text("Circuferencia Abdominal")
-                            TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
-                        }.padding(.bottom, 20)
+                            TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
                         
                         HStack{
                             Text("Tipo de Sangre")
                             TextField("Tipo de Sangre", text: $bloodType).textFieldStyle(RoundedBorderTextFieldStyle()).keyboardType(.emailAddress)
-                                .disableAutocorrection(true).autocapitalization(.none)
-                        }.padding(.bottom, 20)
-                        
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                        }
                         
                         Text("Padecimientos")
                         HStack{
@@ -165,8 +164,8 @@ struct GeneralDataView: View {
                             Text(alertMessage)
                         }
                     }
-                    .padding(.bottom, 70)
-
+                    .padding(.init(top: 0, leading: 20, bottom: 50, trailing: 20))
+                    
                 }
                 
             }
@@ -176,6 +175,7 @@ struct GeneralDataView: View {
                 }
                 hideKeyboard()
             }
+
             
             if menu{
                 HStack{
@@ -187,9 +187,9 @@ struct GeneralDataView: View {
                                 }
                             }){
                                 Image(systemName: "arrow.left")
-                                    .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
+                                    .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
                                     .foregroundColor(.white)
-                                Text("Datos Generales").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                                Text("Datos Generales").foregroundColor(Color("ButtonColor")).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
                             }
                             Spacer()
                         }.padding()
@@ -205,7 +205,7 @@ struct GeneralDataView: View {
                             }){
                                 Text("Sign Out")
                                     .font(.title)
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color("ButtonColor"))
                             }
                             .padding(.all)
                             .padding(.leading, 30)

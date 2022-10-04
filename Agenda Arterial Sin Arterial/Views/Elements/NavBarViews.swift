@@ -19,23 +19,25 @@ struct NavBarViews: View {
             
             if device == .pad{
                 
-            }else{
-                
+            }
+            else{
                 Button(action: {
-                    withAnimation{
-                        loginShow.show = "Home"
-                    }
+                    loginShow.show = "Home"
                 }){
                     Image(systemName: "arrow.left")
                         .font(.system(size:  widthMenu == 375 ? 18 : 19)).foregroundColor(.white)
                         .foregroundColor(.white)
-                    Text("Menu Principal").foregroundColor(.white).font(.system(size: widthMenu == 375 ? 16 : 18))
+                    Text("Menu Principal")
+                        .foregroundColor(.white)
+                        .font(.system(size: widthMenu == 375 ? 16 : 18))
                 }
             }
+            
             Spacer()
         }
-        .padding(.top, widthMenu == 375 ? 20 : 35).padding().background(Color("ButtonColor"))
-        
+        .padding(.top, widthMenu == 375 ? 20 : 35)
+        .padding()
+        .background(Color("ButtonColor"))
     }
 }
 

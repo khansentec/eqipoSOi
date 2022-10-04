@@ -168,9 +168,9 @@ struct Home: View {
                                 }
                             }){
                                 Image(systemName: "arrow.left")
-                                    .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
+                                    .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
                                     .foregroundColor(.white)
-                                Text("Menu Principal").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 14 : 16))
+                                Text("Menu Principal").foregroundColor(Color("ButtonColor")).font(.system(size:  widthMenu == 375 ? 14 : 16))
                             }
                             Spacer()
                         }.padding()
@@ -184,12 +184,16 @@ struct Home: View {
                             Button(action: {
                                 loginShow.show = "Login"
                             }){
-                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
-                            }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
+                                Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(Color("ButtonColor"))
+                            }
+                            .padding(.all)
+                            .padding(.leading, 30)
+                            .padding(.bottom, 20)
                         }
                         Spacer()
                     }
-                    .frame(width: widthMenu-200).background(Color("BlueBBVA"))
+                    .frame(width: widthMenu-200)
+                    .background(Color("BlueBBVA"))
                 }
             }
         }

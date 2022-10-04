@@ -48,7 +48,7 @@ struct HealthStateView: View {
                                 Text("No").tag(false)
                             }
                             .frame(width : 70, height: 10)
-                                .accentColor(.blue)
+                                .accentColor(Color("ButtonColor"))
                                 .padding(.top,-5)
                         }
                         .padding()

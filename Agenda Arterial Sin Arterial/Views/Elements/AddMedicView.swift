@@ -23,22 +23,22 @@ struct AddMedicView: View {
             HStack{
                 Text("1").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.blue, lineWidth: 2)
+                        .stroke(Color("ButtonColor"), lineWidth: 2)
                 )
                 .fixedSize()
                 Text("2").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.blue, lineWidth: 2)
+                        .stroke(Color("ButtonColor"), lineWidth: 2)
                 )
                 .fixedSize()
                 Text("3").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.blue, lineWidth: 2)
+                        .stroke(Color("ButtonColor"), lineWidth: 2)
                 )
                 .fixedSize()
                 Text("4").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(.blue, lineWidth: 2)
+                        .stroke(Color("ButtonColor"), lineWidth: 2)
                 )
                 .fixedSize()
             }

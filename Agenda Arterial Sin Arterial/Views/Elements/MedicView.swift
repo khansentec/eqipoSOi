@@ -17,7 +17,7 @@ struct MedicView: View {
             VStack{
                 Text(medic.nombre+" "+medic.apellidoPaterno).fontWeight(.bold)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.9).foregroundColor(.blue)
+                    .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
                 Text(medic.cedulaProfesional).padding(.leading,20)
                     .lineLimit(1)
             }

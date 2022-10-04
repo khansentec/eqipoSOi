@@ -21,12 +21,11 @@ struct NavbarLogin: View {
             
             if device == .pad{
                 
-            }else{
+            }
+            else{
                 
                 Button(action: {
-                    withAnimation{
-                        loginShow.show = whereTo
-                    }
+                    loginShow.show = whereTo
                 }){
                     Image(systemName: "arrow.left")
                         .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.white)
@@ -35,7 +34,7 @@ struct NavbarLogin: View {
                 }
             }
             Spacer()
-        }.padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color.blue)
+        }.padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color("ButtonColor"))
         
     }
 }

@@ -30,8 +30,8 @@ struct ButtonNavbar: View {
                 
             }
         }){
-            Image(systemName: img).foregroundColor(index == title ? .black : Color.blue.opacity(0.6))
-            Text(title).font(.system(size: widthMenu == 375 ? 18 : 20)).fontWeight(index == title ? .bold : .none).foregroundColor(index == title ? .black : Color.blue.opacity(0.6))
+            Image(systemName: img).foregroundColor(index == title ? .black : Color("ButtonColor").opacity(0.6))
+            Text(title).font(.system(size: widthMenu == 375 ? 18 : 20)).fontWeight(index == title ? .bold : .none).foregroundColor(index == title ? .black : Color("ButtonColor").opacity(0.6))
         }
     }
 }

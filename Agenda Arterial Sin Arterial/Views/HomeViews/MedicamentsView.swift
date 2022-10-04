@@ -79,7 +79,7 @@ struct MedicamentsView: View {
                     .padding(.trailing,40).frame(width: 100, height: 100)
             }
             .background{
-                Circle().fill(Color.blue).padding(.bottom,40).padding(.trailing,40)
+                Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
             }
             .opacity(showNavbar ? 1 : 0)
         }

@@ -16,7 +16,7 @@ struct ReminderView: View {
             Text(reminder.fecha)
                 .fontWeight(.bold)
                 .lineLimit(1)
-                .minimumScaleFactor(0.9).foregroundColor(.blue)
+                .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
             
             ForEach(reminder.eventos, id: \.self) {
                 evento in

@@ -54,9 +54,9 @@ struct FrecuentlyAskedCuestionsView: View {
                                    }
                                }){
                                    Image(systemName: "arrow.left")
-                                       .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
+                                       .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
                                        .foregroundColor(.white)
-                                   Text("Preguntas Frecuentes").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                                   Text("Preguntas Frecuentes").foregroundColor(Color("ButtonColor")).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
                                }
                                Spacer()
                            }.padding()
@@ -70,7 +70,7 @@ struct FrecuentlyAskedCuestionsView: View {
                                Button(action: {
                                    loginShow.show = "Login"
                                }){
-                                   Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
+                                   Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(Color("ButtonColor"))
                                }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
                            }
                            Spacer()

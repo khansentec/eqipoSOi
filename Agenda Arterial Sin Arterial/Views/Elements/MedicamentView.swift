@@ -15,7 +15,7 @@ struct MedicamentView: View {
                Text(medicamento.nombreMedicamento)
                     .fontWeight(.bold)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.9).foregroundColor(.blue)
+                    .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
                 Text(medicamento.informacion)
                     .padding(.leading,20)
                     .lineLimit(1)

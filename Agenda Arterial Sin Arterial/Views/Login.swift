@@ -29,7 +29,7 @@ struct Login: View {
             Color.white.edgesIgnoringSafeArea(.all)
             HStack(){
                 Text("Iniciar Sesión").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
-            }.padding(.top, widthMenu == 375 ? 10 : 35).background(Color.blue)
+            }.padding(.top, widthMenu == 375 ? 10 : 35).background(Color("ButtonColor"))
             VStack(alignment: .center){
                 Spacer().frame(minHeight: 10, maxHeight: 150)
                 Image("isosceles").resizable().aspectRatio(contentMode: .fit).frame(width: widthMenu == 375 ? 70 : 130, height: widthMenu == 375 ? 70 : 130)

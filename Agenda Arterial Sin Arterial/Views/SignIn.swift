@@ -58,7 +58,7 @@ struct SignIn: View {
                             Text("Mujer").tag(sex.female)
                             Text("Prefiero no decir").tag(sex.rathernot)
                         }.frame(width : 200, height: 20)
-                            .accentColor(.blue)
+                            .accentColor(Color("ButtonColor"))
                         
                     }
                     HStack{
