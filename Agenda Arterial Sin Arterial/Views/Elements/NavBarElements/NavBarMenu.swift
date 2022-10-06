@@ -18,7 +18,7 @@ struct NavBarMenu: View {
     
     var body: some View {
         HStack {
-            VStack {
+            VStack (alignment: .leading){
                 HStack {
                     Button(action: {
                         withAnimation{
@@ -30,10 +30,11 @@ struct NavBarMenu: View {
                                 .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
                                 .foregroundColor(.white)
                                 .padding(3)
-                            Text("Menu principal")
+                            Text("Menu Principal")
                                 .foregroundColor(Color("ButtonColor"))
-                                .font(.system(size:  widthMenu == 375 ? 14 : 16, weight: .bold))
+                                .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
                         }
+                        .multilineTextAlignment(.leading)
                     }
                     Spacer()
                 }
@@ -41,8 +42,8 @@ struct NavBarMenu: View {
                 .padding(.top, 50)
                 
                 VStack(alignment: .leading, spacing: 10){
-                    ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal")
-                        .padding(.leading,widthMenu == 375 ? 15 : 21)
+                    ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house", title: "Menu Principal")
+                        .padding(.leading,widthMenu == 375 ? 18 : 24)
                     ButtonNavbar(index: $index, menu: $menu,whereto: "GDV", img: "person.crop.circle", title: "Datos Generales")
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
                     ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes")
@@ -57,13 +58,13 @@ struct NavBarMenu: View {
                     }){
                         Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(Color("ButtonColor"))
                     }
-                    .multilineTextAlignment(.leading)
-                    .padding(.all)
-                    .padding(.leading, 30).padding(.bottom, 20)
+                    .padding(30)
                 }
+                .multilineTextAlignment(.leading)
+                
                 Spacer()
             }
-            .frame(width: widthMenu-200)
+            .frame(width: widthMenu-150)
             .background(Color("BlueBBVA"))
             .padding(.trailing, 30)
         }

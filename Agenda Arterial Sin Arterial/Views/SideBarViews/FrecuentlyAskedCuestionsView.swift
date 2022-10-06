@@ -45,6 +45,7 @@ struct FrecuentlyAskedCuestionsView: View {
                    }
                }
                if menu{
+                   /*
                    HStack{
                        VStack{
                            HStack{
@@ -76,7 +77,8 @@ struct FrecuentlyAskedCuestionsView: View {
                            Spacer()
                        }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
                    }
-                   
+                   */
+                   NavBarMenu(index: "Preguntas frecuentes", menu: false)
                }
            }
        }
