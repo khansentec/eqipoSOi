@@ -42,6 +42,7 @@
 		C065D71F28E0D41200AC046F /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71E28E0D41200AC046F /* Medition.swift */; };
 		C065D72528E0D48D00AC046F /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D72328E0D48D00AC046F /* FirebaseViewController.swift */; };
 		C25F8D8528EB8B1700BEDE4C /* Pacient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F8D8428EB8B1700BEDE4C /* Pacient.swift */; };
+		C29BCB7428EF7E7A0064B8A5 /* NavBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BCB7328EF7E7A0064B8A5 /* NavBarMenu.swift */; };
 		C2E671F128E91AA5005E8E44 /* ReminderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E671F028E91AA5005E8E44 /* ReminderDetailsView.swift */; };
 		C2E671F328E9EF64005E8E44 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E671F228E9EF64005E8E44 /* ReminderView.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		C065D71E28E0D41200AC046F /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medition.swift; path = Views/Medition.swift; sourceTree = "<group>"; };
 		C065D72328E0D48D00AC046F /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 		C25F8D8428EB8B1700BEDE4C /* Pacient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pacient.swift; sourceTree = "<group>"; };
+		C29BCB7328EF7E7A0064B8A5 /* NavBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarMenu.swift; sourceTree = "<group>"; };
 		C2E671F028E91AA5005E8E44 /* ReminderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsView.swift; sourceTree = "<group>"; };
 		C2E671F228E9EF64005E8E44 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,18 +160,15 @@
 		C065D6E328E0D2F800AC046F /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				C065D6E928E0D2F900AC046F /* NavBarViews.swift */,
+				C29BCB7228EF7E050064B8A5 /* NavBarElements */,
 				C065D6EB28E0D2F900AC046F /* MedicamentDetailsView.swift */,
-				C065D6E728E0D2F900AC046F /* ButtonNavbar.swift */,
 				C065D6E828E0D2F900AC046F /* TimerView.swift */,
 				C2E671F028E91AA5005E8E44 /* ReminderDetailsView.swift */,
 				C065D6E628E0D2F900AC046F /* AddMedicamentView.swift */,
 				C2E671F228E9EF64005E8E44 /* ReminderView.swift */,
 				C065D6E528E0D2F900AC046F /* MedicamentView.swift */,
-				C065D6ED28E0D2F900AC046F /* NavBarHome.swift */,
 				C065D6EC28E0D2F900AC046F /* MedicView.swift */,
 				C065D6EA28E0D2F900AC046F /* AddMedicView.swift */,
-				C065D6E428E0D2F900AC046F /* NavbarLogin.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -204,6 +203,18 @@
 				C065D6FB28E0D2F900AC046F /* GeneralDataView.swift */,
 			);
 			path = SideBarViews;
+			sourceTree = "<group>";
+		};
+		C29BCB7228EF7E050064B8A5 /* NavBarElements */ = {
+			isa = PBXGroup;
+			children = (
+				C065D6E928E0D2F900AC046F /* NavBarViews.swift */,
+				C065D6E728E0D2F900AC046F /* ButtonNavbar.swift */,
+				C065D6ED28E0D2F900AC046F /* NavBarHome.swift */,
+				C065D6E428E0D2F900AC046F /* NavbarLogin.swift */,
+				C29BCB7328EF7E7A0064B8A5 /* NavBarMenu.swift */,
+			);
+			path = NavBarElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +310,7 @@
 				C25F8D8528EB8B1700BEDE4C /* Pacient.swift in Sources */,
 				C2E671F128E91AA5005E8E44 /* ReminderDetailsView.swift in Sources */,
 				C065D71128E0D2F900AC046F /* ChangePasswordView.swift in Sources */,
+				C29BCB7428EF7E7A0064B8A5 /* NavBarMenu.swift in Sources */,
 				C065D70D28E0D2F900AC046F /* SignIn.swift in Sources */,
 				C065D70828E0D2F900AC046F /* MedicamentView.swift in Sources */,
 				C065D71328E0D2F900AC046F /* WeekReportView.swift in Sources */,

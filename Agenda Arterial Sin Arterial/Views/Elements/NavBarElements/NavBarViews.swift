@@ -35,7 +35,7 @@ struct NavBarViews: View {
             
             Spacer()
         }
-        .padding(.top, widthMenu == 375 ? 20 : 35)
+        .padding(.top, widthMenu == 375 ? 40 : 60)
         .padding()
         .background(Color("ButtonColor"))
     }
