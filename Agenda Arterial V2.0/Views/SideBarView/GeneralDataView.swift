@@ -20,6 +20,12 @@ struct GeneralDataView: View {
     @State private var imagePicker = false
     @State private var source : UIImagePickerController.SourceType = .camera
     
+    enum bloodT: String, CaseIterable, Identifiable {
+        case nonseleceted, oP, oN, aP, aN, bP, bN, abP, abN
+        var id: Self { self }
+    }
+    @State private var bloodType: bloodT = .nonseleceted
+    
     @StateObject var save = FirebaseViewController()
     
     @Binding var data : Pacient!
@@ -29,18 +35,18 @@ struct GeneralDataView: View {
     @State var name = ""
     @State var lastNameP = ""
     @State var lastNameM = ""
+    @State var phoneNumber = ""
     @State var height :Float = 0.0
     @State var cirAbdominal :Float = 0
     @State var weight :Float = 0
-    @State var bloodType = ""
     @State private var disease: String = "No hay padecimientos ..."
     @State private var email = Auth.auth().currentUser?.email
-    
+
     var body: some View {
         ZStack(alignment: .leading){
             Button(action: {
                 progress = true
-                save.saveGD(height: height, abdominalCir: Float(cirAbdominal), sintoms: disease, weight: Float(weight), bType: bloodType, photo: imageData){
+                save.saveGD(height: height, abdominalCir: Float(cirAbdominal), diseases: disease, weight: Float(weight), bType: bloodType.rawValue, photo: imageData){
                     (done)in
                     if done{
                         progress = false
@@ -49,18 +55,18 @@ struct GeneralDataView: View {
             }){
                 Text("Guardar").foregroundColor(.white).font(.system(size: 25, weight: .bold))
             }.padding(.bottom, heightMenu-360)
-            .zIndex(1)
-            .padding(.leading, widthMenu-120)
-            .background{
+                .zIndex(1)
+                .padding(.leading, widthMenu-120)
+                .background{
                     RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(Color("ButtonColor"))
-                    .frame(width: 100,height: 40)
-                    .padding(.bottom, heightMenu-360)
-                    .zIndex(1)
-                    .padding(.leading, widthMenu-120)
+                        .foregroundColor(Color("ButtonColor"))
+                        .frame(width: 100,height: 40)
+                        .padding(.bottom, heightMenu-360)
+                        .zIndex(1)
+                        .padding(.leading, widthMenu-120)
                     
                 }
-                
+            
             VStack{
                 NavBarHome(menu:$menu, index: $index).onTapGesture {
                     withAnimation{
@@ -71,10 +77,12 @@ struct GeneralDataView: View {
                 ScrollView{
                     if imageData.count != 0{
                         Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
-                    }else if data.photo != ""{
-                        ImageFirebase(imageUrl: data.photo)
                     }else{
-                        Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
+                        if data.photo != nil{
+                            ImageFirebase(imageUrl: data.photo)
+                        }else{
+                            Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
+                        }
                     }
                     Button(action:{
                         showMenu.toggle()
@@ -130,6 +138,14 @@ struct GeneralDataView: View {
                             
                         }
                         HStack{
+                            Text("Teléfono")
+                            TextField("Teléfono", text: $phoneNumber).textFieldStyle(RoundedBorderTextFieldStyle())
+                                .disableAutocorrection(true).onAppear{
+                                    phoneNumber = data.phoneNumber
+                                }
+                            
+                        }
+                        HStack{
                             Text("Altura")
                             TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).onAppear{
                                 height = data.height
@@ -153,9 +169,39 @@ struct GeneralDataView: View {
                         
                         HStack{
                             Text("Tipo de Sangre")
-                            TextField("Tipo de Sangre", text: $bloodType).textFieldStyle(RoundedBorderTextFieldStyle())
-                                .disableAutocorrection(true).onAppear{
-                                    bloodType = data.bloodType
+                            Picker("Selecione una opcion", selection: $bloodType) {
+                                Text("Selecione una opcion").tag(GeneralDataView.bloodT.nonseleceted)
+                                Text("O+").tag(bloodT.oP)
+                                Text("O-").tag(bloodT.oN)
+                                Text("AB+").tag(bloodT.abP)
+                                Text("AB-").tag(bloodT.abN)
+                                Text("A+").tag(bloodT.aP)
+                                Text("A-").tag(bloodT.aN)
+                                Text("B+").tag(bloodT.bP)
+                                Text("B-").tag(bloodT.bN)
+                            }.frame(width : 200, height: 20)
+                                .accentColor(Color("ButtonColor")).onAppear{
+                                    switch data.bloodType {
+                                    case "O+" :
+                                        bloodType = bloodT.oP
+                                    case "O-" :
+                                        bloodType = bloodT.oN
+                                    case "AB+" :
+                                        bloodType = bloodT.abP
+                                    case "AB-" :
+                                        bloodType = bloodT.abN
+                                    case "A+" :
+                                        bloodType = bloodT.aP
+                                    case "A-" :
+                                        bloodType = bloodT.aN
+                                    case "B+" :
+                                        bloodType = bloodT.bP
+                                    case "B-" :
+                                        bloodType = bloodT.bN
+                                    default:
+                                        bloodType = bloodT.nonseleceted
+                                    }
+                                    
                                 }
                         }
                         
@@ -169,14 +215,14 @@ struct GeneralDataView: View {
                             .stroke(Color.gray, lineWidth: 1))
                         /*
                          Button("Enviar"){
-                            validateData()
+                         validateData()
                          }
                          .foregroundColor(.white)
                          .background(RoundedRectangle(cornerRadius: 5)
                          .foregroundColor(Color("ButtonColor"))
                          .frame(minWidth: 100,minHeight: 40))
                          */
-                       
+                        
                     }
                     .padding(.init(top: 0, leading: 20, bottom: 350, trailing: 20))
                 }

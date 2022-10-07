@@ -116,7 +116,7 @@ class FirebaseViewController: ObservableObject{
         //End Saving Text
     }
     
-    func saveGD(height: Float, abdominalCir: Float, sintoms: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
+    func saveGD(height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
         guard let email = Auth.auth().currentUser?.email else{
             return
@@ -155,7 +155,7 @@ class FirebaseViewController: ObservableObject{
                                                       } else {
                                                         // Get the download URL for each item storage location
                                                           dir = String(describing: url!)
-                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":sintoms]
+                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                           
                                                           db.collection("pacientes").document(docId).updateData(info){error in
                                                               if let error = error?.localizedDescription{
@@ -205,7 +205,7 @@ class FirebaseViewController: ObservableObject{
                                                       } else {
                                                         // Get the download URL for each item storage location
                                                           dir = String(describing: url!)
-                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":sintoms]
+                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                           
                                                           db.collection("pacientes").document(docId).updateData(info){error in
                                                               if let error = error?.localizedDescription{
@@ -239,14 +239,17 @@ class FirebaseViewController: ObservableObject{
     }
     
     func getPacient(email : String){
+        print(email)
         let db = Firestore.firestore()
         db.collection("pacientes").whereField("email", isEqualTo: email)
             .getDocuments() {
+                
                 (QuerySnapshot, error) in
                 if let error = error?.localizedDescription{
                     print("error to show data ", error)
                 }else{
                     for document in QuerySnapshot!.documents{
+                        
                         let value = document.data()
                         let id = value["uid"] as? String ?? "no user"
                         let name = value["nombre"] as? String ?? "no name"
@@ -266,8 +269,10 @@ class FirebaseViewController: ObservableObject{
                         let lastAppointment = value["fechaNacimiento"] as? Date ?? Date()
                         let vinculationCode = value["codigoVinculacion"] as? String ?? "no code"
                         let associatedMedic = value["listaMedicosVinculados"] as? [String] ?? []
+
                         DispatchQueue.main.async {
                             let register = Pacient(id: id, name: name, patName: patName, matName: matName, photo: foto, sex: sex, pacientStatus: pacientStatus, birthDate: birthDate, phone: phone, height: height, weight: weight, cirAbdominal: cirAbdominal, medDisease: diseases, bloodType: bloodType, nextAppointment: nextAppointment, lastAppointment: lastAppointment, vinculationCode: vinculationCode, associatedMedic: associatedMedic)
+                            print(vinculationCode)
                             self.data = register
                            
                         }

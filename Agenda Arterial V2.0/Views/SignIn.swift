@@ -14,13 +14,16 @@ struct SignIn: View {
     @State var email: String = ""
     @State var pass: String = ""
     @State var confPassword: String = ""
+    @State var number = ""
+    
     enum sex: String, CaseIterable, Identifiable {
         case nonseleceted, male, female, rathernot
         var id: Self { self }
     }
     @State private var selectedSex: sex = .nonseleceted
+    
     @State private var date = Date()
-    @State private var number = 0
+    
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     @State private var showError = false
@@ -38,30 +41,36 @@ struct SignIn: View {
                         HStack{
                             Text("Nombre").fontWeight(.bold)
                             TextField("Nombre",text: $name).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Apellido Paterno").fontWeight(.bold)
                             TextField("Apellido Paterno",text: $patName).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Apellido Materno").fontWeight(.bold)
                             TextField("Apellido Materno",text: $matName).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Correo Electronico").fontWeight(.bold)
                             TextField("Correo",text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true).autocapitalization(.none)
                         }
                         HStack{
                             Text("Contraseña").fontWeight(.bold)
                             SecureField("",text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Confirmar Contraseña").fontWeight(.bold)
                             SecureField("",text: $confPassword).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                         }
                         HStack{
                             Text("Sexo").fontWeight(.bold)
@@ -80,7 +89,8 @@ struct SignIn: View {
                         }
                         HStack{
                             Text("Numero de Celular").fontWeight(.bold)
-                            TextField("Numero",value: $number,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                            TextField("Numero",text: $number).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }.padding(.bottom, 20)
                         //                    Spacer().frame(minHeight: 50, maxHeight: 100)
