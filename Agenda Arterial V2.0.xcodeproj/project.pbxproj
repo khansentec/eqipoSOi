@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C00DF2C928F06DCA008C7D45 /* ReminderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2C828F06DCA008C7D45 /* ReminderDetailsView.swift */; };
+		C00DF2CB28F06DFD008C7D45 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CA28F06DFD008C7D45 /* ReminderView.swift */; };
+		C059113A28EE936A00FE7115 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059113928EE936900FE7115 /* AppsView.swift */; };
+		C08A5ED828EFB5D70082B479 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A5ED728EFB5D70082B479 /* WeekReport.swift */; };
+		C0C1F88928E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */; };
+		C0C1F88B28E6B1C700C53297 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F88A28E6B1C700C53297 /* ContentView.swift */; };
+		C0C1F88D28E6B1C800C53297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F88C28E6B1C800C53297 /* Assets.xcassets */; };
+		C0C1F89028E6B1C800C53297 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F88F28E6B1C800C53297 /* Preview Assets.xcassets */; };
+		C0C1F89728E6B2CB00C53297 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */; };
+		C0C1F89A28E6B33200C53297 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89928E6B33200C53297 /* FirebaseAuth */; };
+		C0C1F89C28E6B33200C53297 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89B28E6B33200C53297 /* FirebaseAuthCombine-Community */; };
+		C0C1F89E28E6B33200C53297 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89D28E6B33200C53297 /* FirebaseFirestore */; };
+		C0C1F8A028E6B33200C53297 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89F28E6B33200C53297 /* FirebaseFirestoreCombine-Community */; };
+		C0C1F8A228E6B33200C53297 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F8A128E6B33200C53297 /* FirebaseFirestoreSwift */; };
+		C0C1F8A428E6B33200C53297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F8A328E6B33200C53297 /* FirebaseStorage */; };
+		C0C1F8A628E6B33200C53297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F8A528E6B33200C53297 /* FirebaseStorageCombine-Community */; };
+		C0C1F8A928E6B60400C53297 /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8A828E6B60400C53297 /* FirebaseViewController.swift */; };
+		C0C1F8AC28E6B77200C53297 /* Pacient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8AB28E6B77200C53297 /* Pacient.swift */; };
+		C0C1F8B228E6B99C00C53297 /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8AE28E6B99C00C53297 /* Medic.swift */; };
+		C0C1F8B328E6B99C00C53297 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8AF28E6B99C00C53297 /* Capture.swift */; };
+		C0C1F8B728E6BB7F00C53297 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8B528E6BB7F00C53297 /* Remind.swift */; };
+		C0C1F8B828E6BB7F00C53297 /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8B628E6BB7F00C53297 /* Medition.swift */; };
+		C0C1F8BA28E6BB9300C53297 /* Medicament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8B928E6BB9300C53297 /* Medicament.swift */; };
+		C0C1F8BC28E6BC1100C53297 /* ImageFirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8BB28E6BC1100C53297 /* ImageFirebaseViewController.swift */; };
+		C0C1F90028E6BD9700C53297 /* FrecuentlyAskedQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F8FF28E6BD9700C53297 /* FrecuentlyAskedQuestions.swift */; };
+		C0C1F90228E72FAC00C53297 /* GeneralDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90128E72FAC00C53297 /* GeneralDataView.swift */; };
+		C0C1F90528E7304400C53297 /* ButtonNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90428E7304400C53297 /* ButtonNavbar.swift */; };
+		C0C1F90728E7326600C53297 /* NavBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90628E7326600C53297 /* NavBarHome.swift */; };
+		C0C1F90B28E732B600C53297 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90A28E732B600C53297 /* TimerView.swift */; };
+		C0C1F90D28E732FB00C53297 /* MedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90C28E732FB00C53297 /* MedicamentView.swift */; };
+		C0C1F90F28E7334D00C53297 /* MedicamentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F90E28E7334D00C53297 /* MedicamentDetailsView.swift */; };
+		C0C1F91128E7341B00C53297 /* AddMedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91028E7341B00C53297 /* AddMedicamentView.swift */; };
+		C0C1F91328E7345200C53297 /* NavbarLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91228E7345200C53297 /* NavbarLogin.swift */; };
+		C0C1F91528E734BE00C53297 /* MedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91428E734BE00C53297 /* MedicView.swift */; };
+		C0C1F91728E734E200C53297 /* AddMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91628E734E200C53297 /* AddMedicView.swift */; };
+		C0C1F91928E7350B00C53297 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91828E7350B00C53297 /* ImagePicker.swift */; };
+		C0C1F91B28E7354900C53297 /* ImageFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91A28E7354900C53297 /* ImageFirebase.swift */; };
+		C0C1F91E28E735F700C53297 /* WeekReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91D28E735F700C53297 /* WeekReportView.swift */; };
+		C0C1F92028E7361900C53297 /* CapturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F91F28E7361900C53297 /* CapturesView.swift */; };
+		C0C1F92228E7368B00C53297 /* MedicamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92128E7368B00C53297 /* MedicamentsView.swift */; };
+		C0C1F92428E736B200C53297 /* HealthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92328E736B200C53297 /* HealthStateView.swift */; };
+		C0C1F92628E737C900C53297 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92528E737C900C53297 /* RemindersView.swift */; };
+		C0C1F92828E737EA00C53297 /* LinkYourMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92728E737EA00C53297 /* LinkYourMedicView.swift */; };
+		C0C1F92A28E7383400C53297 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92928E7383400C53297 /* Login.swift */; };
+		C0C1F92C28E7384A00C53297 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92B28E7384A00C53297 /* Home.swift */; };
+		C0C1F92E28E7387F00C53297 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F92D28E7387F00C53297 /* SignIn.swift */; };
+		C0C1F93128E739C800C53297 /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F93028E739C800C53297 /* RestorePasswordView.swift */; };
+		C0C1F93328E739FC00C53297 /* RestoreCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F93228E739FC00C53297 /* RestoreCodeView.swift */; };
+		C0C1F93528E73A1C00C53297 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F93428E73A1C00C53297 /* ChangePasswordView.swift */; };
+		C0C1F93728E73E1800C53297 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F93628E73E1800C53297 /* SettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C00DF2C828F06DCA008C7D45 /* ReminderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsView.swift; sourceTree = "<group>"; };
+		C00DF2CA28F06DFD008C7D45 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		C059113928EE936900FE7115 /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
+		C08A5ED728EFB5D70082B479 /* WeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
+		C0C1F88528E6B1C700C53297 /* Agenda Arterial V2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agenda Arterial V2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda_Arterial_V2_0App.swift; sourceTree = "<group>"; };
+		C0C1F88A28E6B1C700C53297 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C0C1F88C28E6B1C800C53297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0C1F88F28E6B1C800C53297 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0C1F8A828E6B60400C53297 /* FirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
+		C0C1F8AB28E6B77200C53297 /* Pacient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pacient.swift; sourceTree = "<group>"; };
+		C0C1F8AE28E6B99C00C53297 /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
+		C0C1F8AF28E6B99C00C53297 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		C0C1F8B528E6BB7F00C53297 /* Remind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
+		C0C1F8B628E6BB7F00C53297 /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medition.swift; sourceTree = "<group>"; };
+		C0C1F8B928E6BB9300C53297 /* Medicament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medicament.swift; sourceTree = "<group>"; };
+		C0C1F8BB28E6BC1100C53297 /* ImageFirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFirebaseViewController.swift; sourceTree = "<group>"; };
+		C0C1F8FF28E6BD9700C53297 /* FrecuentlyAskedQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrecuentlyAskedQuestions.swift; sourceTree = "<group>"; };
+		C0C1F90128E72FAC00C53297 /* GeneralDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataView.swift; sourceTree = "<group>"; };
+		C0C1F90428E7304400C53297 /* ButtonNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNavbar.swift; sourceTree = "<group>"; };
+		C0C1F90628E7326600C53297 /* NavBarHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHome.swift; sourceTree = "<group>"; };
+		C0C1F90A28E732B600C53297 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		C0C1F90C28E732FB00C53297 /* MedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentView.swift; sourceTree = "<group>"; };
+		C0C1F90E28E7334D00C53297 /* MedicamentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentDetailsView.swift; sourceTree = "<group>"; };
+		C0C1F91028E7341B00C53297 /* AddMedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicamentView.swift; sourceTree = "<group>"; };
+		C0C1F91228E7345200C53297 /* NavbarLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarLogin.swift; sourceTree = "<group>"; };
+		C0C1F91428E734BE00C53297 /* MedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicView.swift; sourceTree = "<group>"; };
+		C0C1F91628E734E200C53297 /* AddMedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicView.swift; sourceTree = "<group>"; };
+		C0C1F91828E7350B00C53297 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C0C1F91A28E7354900C53297 /* ImageFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFirebase.swift; sourceTree = "<group>"; };
+		C0C1F91D28E735F700C53297 /* WeekReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportView.swift; sourceTree = "<group>"; };
+		C0C1F91F28E7361900C53297 /* CapturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturesView.swift; sourceTree = "<group>"; };
+		C0C1F92128E7368B00C53297 /* MedicamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentsView.swift; sourceTree = "<group>"; };
+		C0C1F92328E736B200C53297 /* HealthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStateView.swift; sourceTree = "<group>"; };
+		C0C1F92528E737C900C53297 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		C0C1F92728E737EA00C53297 /* LinkYourMedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkYourMedicView.swift; sourceTree = "<group>"; };
+		C0C1F92928E7383400C53297 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		C0C1F92B28E7384A00C53297 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		C0C1F92D28E7387F00C53297 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		C0C1F93028E739C800C53297 /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
+		C0C1F93228E739FC00C53297 /* RestoreCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreCodeView.swift; sourceTree = "<group>"; };
+		C0C1F93428E73A1C00C53297 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		C0C1F93628E73E1800C53297 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0C1F88228E6B1C700C53297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C1F8A228E6B33200C53297 /* FirebaseFirestoreSwift in Frameworks */,
+				C0C1F8A628E6B33200C53297 /* FirebaseStorageCombine-Community in Frameworks */,
+				C0C1F89A28E6B33200C53297 /* FirebaseAuth in Frameworks */,
+				C0C1F8A028E6B33200C53297 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				C0C1F89C28E6B33200C53297 /* FirebaseAuthCombine-Community in Frameworks */,
+				C0C1F89E28E6B33200C53297 /* FirebaseFirestore in Frameworks */,
+				C0C1F8A428E6B33200C53297 /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0C1F87C28E6B1C700C53297 = {
+			isa = PBXGroup;
+			children = (
+				C0C1F88728E6B1C700C53297 /* Agenda Arterial V2.0 */,
+				C0C1F88628E6B1C700C53297 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0C1F88628E6B1C700C53297 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F88528E6B1C700C53297 /* Agenda Arterial V2.0.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0C1F88728E6B1C700C53297 /* Agenda Arterial V2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F8FD28E6BD5400C53297 /* Views */,
+				C0C1F8AA28E6B6EF00C53297 /* Data Structures */,
+				C0C1F8A728E6B5E900C53297 /* ViewControllers */,
+				C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */,
+				C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */,
+				C0C1F88A28E6B1C700C53297 /* ContentView.swift */,
+				C0C1F88C28E6B1C800C53297 /* Assets.xcassets */,
+				C0C1F88E28E6B1C800C53297 /* Preview Content */,
+			);
+			path = "Agenda Arterial V2.0";
+			sourceTree = "<group>";
+		};
+		C0C1F88E28E6B1C800C53297 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F88F28E6B1C800C53297 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C0C1F8A728E6B5E900C53297 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F8BB28E6BC1100C53297 /* ImageFirebaseViewController.swift */,
+				C0C1F8A828E6B60400C53297 /* FirebaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C0C1F8AA28E6B6EF00C53297 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F8B928E6BB9300C53297 /* Medicament.swift */,
+				C0C1F8B628E6BB7F00C53297 /* Medition.swift */,
+				C0C1F8B528E6BB7F00C53297 /* Remind.swift */,
+				C0C1F8AF28E6B99C00C53297 /* Capture.swift */,
+				C0C1F8AE28E6B99C00C53297 /* Medic.swift */,
+				C0C1F8AB28E6B77200C53297 /* Pacient.swift */,
+				C08A5ED728EFB5D70082B479 /* WeekReport.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		C0C1F8FD28E6BD5400C53297 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F92F28E7398A00C53297 /* RestorePasswordViews */,
+				C0C1F91C28E735D000C53297 /* HomeViews */,
+				C0C1F90328E7300800C53297 /* Elements */,
+				C0C1F8FE28E6BD6C00C53297 /* SideBarView */,
+				C0C1F92928E7383400C53297 /* Login.swift */,
+				C0C1F92B28E7384A00C53297 /* Home.swift */,
+				C0C1F92D28E7387F00C53297 /* SignIn.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C0C1F8FE28E6BD6C00C53297 /* SideBarView */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F8FF28E6BD9700C53297 /* FrecuentlyAskedQuestions.swift */,
+				C0C1F90128E72FAC00C53297 /* GeneralDataView.swift */,
+				C0C1F93628E73E1800C53297 /* SettingsView.swift */,
+			);
+			path = SideBarView;
+			sourceTree = "<group>";
+		};
+		C0C1F90328E7300800C53297 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F90428E7304400C53297 /* ButtonNavbar.swift */,
+				C0C1F90628E7326600C53297 /* NavBarHome.swift */,
+				C0C1F90A28E732B600C53297 /* TimerView.swift */,
+				C0C1F90C28E732FB00C53297 /* MedicamentView.swift */,
+				C0C1F90E28E7334D00C53297 /* MedicamentDetailsView.swift */,
+				C0C1F91028E7341B00C53297 /* AddMedicamentView.swift */,
+				C0C1F91228E7345200C53297 /* NavbarLogin.swift */,
+				C0C1F91428E734BE00C53297 /* MedicView.swift */,
+				C0C1F91628E734E200C53297 /* AddMedicView.swift */,
+				C0C1F91828E7350B00C53297 /* ImagePicker.swift */,
+				C0C1F91A28E7354900C53297 /* ImageFirebase.swift */,
+				C00DF2C828F06DCA008C7D45 /* ReminderDetailsView.swift */,
+				C00DF2CA28F06DFD008C7D45 /* ReminderView.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		C0C1F91C28E735D000C53297 /* HomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F91D28E735F700C53297 /* WeekReportView.swift */,
+				C0C1F91F28E7361900C53297 /* CapturesView.swift */,
+				C0C1F92128E7368B00C53297 /* MedicamentsView.swift */,
+				C0C1F92328E736B200C53297 /* HealthStateView.swift */,
+				C0C1F92528E737C900C53297 /* RemindersView.swift */,
+				C0C1F92728E737EA00C53297 /* LinkYourMedicView.swift */,
+				C059113928EE936900FE7115 /* AppsView.swift */,
+			);
+			path = HomeViews;
+			sourceTree = "<group>";
+		};
+		C0C1F92F28E7398A00C53297 /* RestorePasswordViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0C1F93028E739C800C53297 /* RestorePasswordView.swift */,
+				C0C1F93228E739FC00C53297 /* RestoreCodeView.swift */,
+				C0C1F93428E73A1C00C53297 /* ChangePasswordView.swift */,
+			);
+			path = RestorePasswordViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0C1F88428E6B1C700C53297 /* Agenda Arterial V2.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0C1F89328E6B1C800C53297 /* Build configuration list for PBXNativeTarget "Agenda Arterial V2.0" */;
+			buildPhases = (
+				C0C1F88128E6B1C700C53297 /* Sources */,
+				C0C1F88228E6B1C700C53297 /* Frameworks */,
+				C0C1F88328E6B1C700C53297 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Agenda Arterial V2.0";
+			packageProductDependencies = (
+				C0C1F89928E6B33200C53297 /* FirebaseAuth */,
+				C0C1F89B28E6B33200C53297 /* FirebaseAuthCombine-Community */,
+				C0C1F89D28E6B33200C53297 /* FirebaseFirestore */,
+				C0C1F89F28E6B33200C53297 /* FirebaseFirestoreCombine-Community */,
+				C0C1F8A128E6B33200C53297 /* FirebaseFirestoreSwift */,
+				C0C1F8A328E6B33200C53297 /* FirebaseStorage */,
+				C0C1F8A528E6B33200C53297 /* FirebaseStorageCombine-Community */,
+			);
+			productName = "Agenda Arterial V2.0";
+			productReference = C0C1F88528E6B1C700C53297 /* Agenda Arterial V2.0.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0C1F87D28E6B1C700C53297 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					C0C1F88428E6B1C700C53297 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = C0C1F88028E6B1C700C53297 /* Build configuration list for PBXProject "Agenda Arterial V2.0" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0C1F87C28E6B1C700C53297;
+			packageReferences = (
+				C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = C0C1F88628E6B1C700C53297 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0C1F88428E6B1C700C53297 /* Agenda Arterial V2.0 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0C1F88328E6B1C700C53297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C1F89028E6B1C800C53297 /* Preview Assets.xcassets in Resources */,
+				C0C1F88D28E6B1C800C53297 /* Assets.xcassets in Resources */,
+				C0C1F89728E6B2CB00C53297 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0C1F88128E6B1C700C53297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C1F91E28E735F700C53297 /* WeekReportView.swift in Sources */,
+				C0C1F91528E734BE00C53297 /* MedicView.swift in Sources */,
+				C0C1F93128E739C800C53297 /* RestorePasswordView.swift in Sources */,
+				C0C1F92628E737C900C53297 /* RemindersView.swift in Sources */,
+				C0C1F92A28E7383400C53297 /* Login.swift in Sources */,
+				C0C1F8AC28E6B77200C53297 /* Pacient.swift in Sources */,
+				C0C1F93728E73E1800C53297 /* SettingsView.swift in Sources */,
+				C0C1F8A928E6B60400C53297 /* FirebaseViewController.swift in Sources */,
+				C0C1F90F28E7334D00C53297 /* MedicamentDetailsView.swift in Sources */,
+				C0C1F92228E7368B00C53297 /* MedicamentsView.swift in Sources */,
+				C0C1F8B828E6BB7F00C53297 /* Medition.swift in Sources */,
+				C0C1F91128E7341B00C53297 /* AddMedicamentView.swift in Sources */,
+				C0C1F88B28E6B1C700C53297 /* ContentView.swift in Sources */,
+				C0C1F92028E7361900C53297 /* CapturesView.swift in Sources */,
+				C0C1F91328E7345200C53297 /* NavbarLogin.swift in Sources */,
+				C0C1F92C28E7384A00C53297 /* Home.swift in Sources */,
+				C00DF2CB28F06DFD008C7D45 /* ReminderView.swift in Sources */,
+				C0C1F90728E7326600C53297 /* NavBarHome.swift in Sources */,
+				C0C1F91B28E7354900C53297 /* ImageFirebase.swift in Sources */,
+				C0C1F92428E736B200C53297 /* HealthStateView.swift in Sources */,
+				C0C1F90B28E732B600C53297 /* TimerView.swift in Sources */,
+				C0C1F8B728E6BB7F00C53297 /* Remind.swift in Sources */,
+				C0C1F92828E737EA00C53297 /* LinkYourMedicView.swift in Sources */,
+				C0C1F90528E7304400C53297 /* ButtonNavbar.swift in Sources */,
+				C0C1F91928E7350B00C53297 /* ImagePicker.swift in Sources */,
+				C0C1F8BC28E6BC1100C53297 /* ImageFirebaseViewController.swift in Sources */,
+				C0C1F90D28E732FB00C53297 /* MedicamentView.swift in Sources */,
+				C0C1F92E28E7387F00C53297 /* SignIn.swift in Sources */,
+				C059113A28EE936A00FE7115 /* AppsView.swift in Sources */,
+				C0C1F91728E734E200C53297 /* AddMedicView.swift in Sources */,
+				C0C1F8B328E6B99C00C53297 /* Capture.swift in Sources */,
+				C0C1F90228E72FAC00C53297 /* GeneralDataView.swift in Sources */,
+				C0C1F8BA28E6BB9300C53297 /* Medicament.swift in Sources */,
+				C0C1F93528E73A1C00C53297 /* ChangePasswordView.swift in Sources */,
+				C0C1F90028E6BD9700C53297 /* FrecuentlyAskedQuestions.swift in Sources */,
+				C00DF2C928F06DCA008C7D45 /* ReminderDetailsView.swift in Sources */,
+				C08A5ED828EFB5D70082B479 /* WeekReport.swift in Sources */,
+				C0C1F8B228E6B99C00C53297 /* Medic.swift in Sources */,
+				C0C1F88928E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift in Sources */,
+				C0C1F93328E739FC00C53297 /* RestoreCodeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C0C1F89128E6B1C800C53297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0C1F89228E6B1C800C53297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0C1F89428E6B1C800C53297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Agenda Arterial V2.0/Preview Content\"";
+				DEVELOPMENT_TEAM = 8D757858GR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0C1F89528E6B1C800C53297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Agenda Arterial V2.0/Preview Content\"";
+				DEVELOPMENT_TEAM = 8D757858GR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0C1F88028E6B1C700C53297 /* Build configuration list for PBXProject "Agenda Arterial V2.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C1F89128E6B1C800C53297 /* Debug */,
+				C0C1F89228E6B1C800C53297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0C1F89328E6B1C800C53297 /* Build configuration list for PBXNativeTarget "Agenda Arterial V2.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C1F89428E6B1C800C53297 /* Debug */,
+				C0C1F89528E6B1C800C53297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C0C1F89928E6B33200C53297 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C0C1F89B28E6B33200C53297 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		C0C1F89D28E6B33200C53297 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		C0C1F89F28E6B33200C53297 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		C0C1F8A128E6B33200C53297 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		C0C1F8A328E6B33200C53297 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		C0C1F8A528E6B33200C53297 /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1F89828E6B33200C53297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C0C1F87D28E6B1C700C53297 /* Project object */;
+}
