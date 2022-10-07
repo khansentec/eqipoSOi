@@ -1,45 +1,44 @@
 //
 //  CapturesView.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 18/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct CapturesView: View {
-    
     @State var presionSupStr1 = ""
     @State var presionInfStr1 = ""
-    @State var pulso1 = 0
+    @State var pulse1 = 0
     @State var presionSupStr2 = ""
     @State var presionInfStr2 = ""
-    @State var pulso2 = 0
+    @State var pulse2 = 0
     @State var presionSupStr3 = ""
     @State var presionInfStr3 = ""
-    @State var pulso3 = 0
+    @State var pulse3 = 0
     
-    @State var alertaCapturaInvalida = false
+    @State var invalidCaptureError = false
     
-    @State var fecha = Date.now
+    @State var dateCapture = Date.now
     
-    @State var estado = true
-    @State var idPaciente = "12345"
-    
+    @State var status = true
     @State var timerShow = false
-    @State var tiempoRestante = 0
+    @State var timerTime = 0
     
-    @State var validacion1 = false
-    @State var validacion2 = false
-    @State var validacion3 = false
-    @State var mensaje1 = ""
-    @State var mensaje2 = ""
-    @State var mensaje3 = ""
+    @State var validation1 = false
+    @State var validation2 = false
+    @State var validation3 = false
+    @State var message1 = ""
+    @State var message2 = ""
+    @State var message3 = ""
     
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var heighthMenu = UIScreen.main.bounds.height
     
-    var med = Medition(idPaciente: "", fecha: Date.now)
+    var med = Medition(fecha: Date.now)
+    @StateObject var login = FirebaseViewController()
+    @EnvironmentObject var loginShow : FirebaseViewController
     
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
@@ -47,9 +46,8 @@ struct CapturesView: View {
     var body: some View {
         
         ZStack{
-            VStack{
-                NavBarViews().padding(.bottom, 15)
-                
+            VStack(alignment: .center){
+                Text("Capturas De Presión").font(.title)
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 1), spacing: 20){
                         VStack() {
@@ -57,7 +55,7 @@ struct CapturesView: View {
                                 HStack{
                                     Text("¿Se encuentra relajado?")
                                         .padding(.bottom,5)
-                                    Picker(selection: $estado, label: Text("Picker")) {
+                                    Picker(selection: $status, label: Text("Picker")) {
                                         Text("Sí").tag(true)
                                         Text("No").tag(false)
                                     }.frame(width : 80, height: 10)
@@ -79,36 +77,36 @@ struct CapturesView: View {
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize()
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     Text("/")
                                     TextField("Inferior", text: $presionInfStr1)
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     Button(action:{
-                                        tiempoRestante =  300
+                                        timerTime =  300
                                         timerShow.toggle()
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
                                             .foregroundColor(.blue)
                                     }.sheet(isPresented: $timerShow, content: {
-                                        TimerView(timerTime: $tiempoRestante)
+                                        TimerView(timerTime: $timerTime)
                                     })
                                     
                                 }
                                 
                                 HStack{
                                     Text("Pulso")
-                                    TextField("Pulso", value: $pulso1, formatter: NumberFormatter())
+                                    TextField("Pulso", value: $pulse1, formatter: NumberFormatter())
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize()
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     
                                 }
                                 .padding(.top,15)
@@ -121,34 +119,34 @@ struct CapturesView: View {
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize() .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     Text("/")
                                     TextField("Inferior", text: $presionInfStr2)
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     Button(action:{
-                                        tiempoRestante =  120
+                                        timerTime =  120
                                         timerShow.toggle()
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
                                             .foregroundColor(.blue)
                                     }.sheet(isPresented: $timerShow, content: {
-                                        TimerView(timerTime: $tiempoRestante)
+                                        TimerView(timerTime: $timerTime)
                                     })
                                 }
                                 HStack{
                                     Text("Pulso")
-                                    TextField("Pulso", value: $pulso2, formatter: NumberFormatter())
+                                    TextField("Pulso", value: $pulse2, formatter: NumberFormatter())
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize()
-                                        .keyboardType(.numberPad).disabled(!estado)
-                                        .disabled(!estado)
+                                        .keyboardType(.numberPad).disabled(!status)
+                                        .disabled(!status)
                                 }
                                 .padding(.top,15)
                                 .padding(.bottom,20)
@@ -161,35 +159,35 @@ struct CapturesView: View {
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize()
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     Text("/")
                                     TextField("Inferior", text: $presionInfStr3)
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                     
                                     Button(action:{
-                                        tiempoRestante =  120
+                                        timerTime =  120
                                         timerShow.toggle()
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
                                             .foregroundColor(.blue)
                                     }.sheet(isPresented: $timerShow, content: {
-                                        TimerView(timerTime: $tiempoRestante)
+                                        TimerView(timerTime: $timerTime)
                                     })
                                 }
                                 HStack{
                                     Text("Pulso")
-                                    TextField("Pulso", value: $pulso3, formatter: NumberFormatter())
+                                    TextField("Pulso", value: $pulse3, formatter: NumberFormatter())
                                         .font(.system(size: device == .pad ? 16 : 12))
                                         .frame(width:device == .pad ? 80 : 65)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .fixedSize()
                                         .keyboardType(.numberPad)
-                                        .disabled(!estado)
+                                        .disabled(!status)
                                 }
                                 .padding(.top,15)
                                 .padding(.bottom,20)
@@ -199,93 +197,110 @@ struct CapturesView: View {
                             Text("Ingresa la fecha y hora:")
                                 .padding(.bottom,20)
                             
-                            DatePicker("", selection: $fecha)
+                            DatePicker("", selection: $dateCapture)
                                 .foregroundColor(.blue)
                                 .padding(.bottom,20)
                                 .padding(.trailing,70)
                                 .padding(.leading,0)
                             
                             Button("Enviar") {
-                                med.cambiarIDPaciente(nuevoIdPaciente: idPaciente)
-                                med.cambiarFecha(nuevaFecha: fecha)
+                                med.changeDate(newDate: dateCapture)
+                                let validacionCaptura1 = med.validateCapture(presionSupStr: presionSupStr1, presionInfStr: presionInfStr1, pulse: pulse1)
                                 
-                                let validacionCaptura1 = med.validarCaptura(presionSupStr: presionSupStr1, presionInfStr: presionInfStr1, pulso: pulso1)
+                                validation1 = validacionCaptura1.0
+                                message1 = validacionCaptura1.1
                                 
-                                validacion1 = validacionCaptura1.0
-                                mensaje1 = validacionCaptura1.1
+                                print(validacionCaptura1)
                                 
-                                let validacionCaptura2 = med.validarCaptura(presionSupStr: presionSupStr2, presionInfStr: presionInfStr2, pulso: pulso2)
+                                let validacionCaptura2 = med.validateCapture(presionSupStr: presionSupStr2, presionInfStr: presionInfStr2, pulse: pulse2)
                                 
-                                validacion2 = validacionCaptura2.0
-                                mensaje2 = validacionCaptura2.1
+                                validation2 = validacionCaptura2.0
+                                message2 = validacionCaptura2.1
                                 
-                                let validacionCaptura3 = med.validarCaptura(presionSupStr: presionSupStr3, presionInfStr: presionInfStr3, pulso: pulso3)
+                                print(validacionCaptura2)
                                 
-                                validacion3 = validacionCaptura3.0
-                                mensaje3 = validacionCaptura3.1
+                                let validacionCaptura3 = med.validateCapture(presionSupStr: presionSupStr3, presionInfStr: presionInfStr3, pulse: pulse3)
                                 
-                                if (!validacion1  || !validacion2 || !validacion3) || mensaje1 == "Sin datos" {
-                                    alertaCapturaInvalida = true
+                                validation3 = validacionCaptura3.0
+                                message3 = validacionCaptura3.1
+                                
+                                print(validacionCaptura3)
+                                
+                                if (!validation1  || !validation2 || !validation3) || message1 == "Sin datos" {
+                                    invalidCaptureError = true
                                 }else{
-                                    print("info enviada")
                                     
-                                    if validacion1{
+                                    if validation1{
                                         let presionSup1 = Int(presionSupStr1)!
                                         let presionInf1 = Int(presionInfStr1)!
                                         
                                         
-                                        let cap1 = Capture(presionSup: presionSup1, presionInf: presionInf1, pulso: pulso1)
-                                        med.agregarCaptura(nuevaCaptura: cap1)
+                                        let cap1 = Capture(presionSup: presionSup1, presionInf: presionInf1, pulse: pulse1)
+                                        med.addCapture(newCapture: cap1)
                                         
                                     }
-                                    if validacion2{
+                                    if validation2 && message2 != "Sin datos"{
                                         let presionSup2 = Int(presionSupStr2)!
                                         let presionInf2 = Int(presionInfStr2)!
                                         
-                                        let cap2 = Capture(presionSup: presionSup2, presionInf: presionInf2, pulso: pulso2)
-                                        
-                                        med.agregarCaptura(nuevaCaptura: cap2)
+                                        let cap2 = Capture(presionSup: presionSup2, presionInf: presionInf2, pulse: pulse2)
+                                        med.addCapture(newCapture: cap2)
                                         
                                     }
-                                    if validacion3{
+                                    if validation3 && message3 != "Sin datos" {
                                         let presionSup3 = Int(presionSupStr3)!
                                         let presionInf3 = Int(presionInfStr3)!
                                         
-                                        let cap3 = Capture(presionSup: presionSup3, presionInf: presionInf3, pulso: pulso3)
-                                        med.agregarCaptura(nuevaCaptura: cap3)
+                                        let cap3 = Capture(presionSup: presionSup3, presionInf: presionInf3, pulse: pulse3)
+                                        med.addCapture(newCapture: cap3)
                                     }
                                     
+                                    med.calculateAvg()
+                                    print(med.avgSup)
+                                    print(med.avgInf)
+                                    print(med.avgPulse)
+                                    
+//                                    loginShow.saveBP(state: "verde", dateC: med.meditionDate, pressureS: med.avgSup, pressureD: med.avgInf, pulse: med.avgPulse){(done)
+//                                        in
+//                                        if done{
+//                                            pulse1 = 0
+//                                            pulse2 = 0
+//                                            pulse3 = 0
+//                                        }
+//                                    }
+                                    
+                                    
+                                    
                                 }
-                            }.alert("Error", isPresented: $alertaCapturaInvalida){
+                            }.alert("Error", isPresented: $invalidCaptureError){
                                 
                                 Button("OK"){
                                     //si se oprime quitar el ok
                                 }
                             } message: {
-                                if !validacion1 && mensaje1 != "Sin datos"{
-                                    Text(mensaje1)
-                                }else if !validacion2 && mensaje2 != "Sin datos" {
-                                    Text(mensaje2)
-                                } else if !validacion3 && mensaje3 != "Sin datos" {
-                                    Text(mensaje3)
+                                if !validation1 && message1 != "Sin datos"{
+                                    Text(message1)
+                                }else if !validation2 && message2 != "Sin datos" {
+                                    Text(message2)
+                                } else if !validation3 && message3 != "Sin datos" {
+                                    Text(message3)
                                 }else {
                                     Text("Debe ingresar datos en Captura 1")
                                 }
-                            }.background(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.red, lineWidth: 1)
-                                .frame(minWidth: 100,minHeight: 40))
-                            .foregroundColor(Color.red)
+                            }.foregroundColor(.white)
+                                .background(RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(Color("ButtonColor"))
+                                    .frame(minWidth: 100,minHeight: 40))
                             
                         }
                         
                     }.padding(.all).padding(.bottom, 50)
                     
                 }
-                
             }
-            
+        }.onTapGesture {
+            hideKeyboard()
         }
     }
-    
 }
 

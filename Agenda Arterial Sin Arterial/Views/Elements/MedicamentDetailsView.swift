@@ -1,17 +1,16 @@
 //
 //  MedicamentDetailsView.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 20/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct MedicamentDetailsView: View {
-    
-    @State var editando = false
-    @State var fechaInicio : Date
-    @State var medicamento : Medicament
+    @State var editing = false
+    @State var startDate : Date
+    @State var medicament : Medicament
     @State var info : String
     
     @Binding var showNabar : Bool
@@ -24,17 +23,17 @@ struct MedicamentDetailsView: View {
         VStack(alignment : .trailing){
             VStack{
                 Button(action: {
-                    if editando {
-                        editando = false
+                    if editing {
+                        editing = false
                     }else{
-                        editando = true
+                        editing = true
                     }
                 }, label: {
-                    Image(systemName: editando ? "square.and.arrow.down": "square.and.pencil")
+                    Image(systemName: editing ? "square.and.arrow.down": "square.and.pencil")
                         .foregroundColor(.blue)
                         .padding(.trailing, 5)
                         .frame(width : 5)
-                    Text(editando ? "Guadar" : "Editar")
+                    Text(editing ? "Guadar" : "Editar")
                         .foregroundColor(.blue)
                         .padding(.top, 3.5)
                     
@@ -42,22 +41,22 @@ struct MedicamentDetailsView: View {
             }.padding(.trailing,60).padding(.top,0)
             
             VStack(alignment : .leading, spacing : 20){
-                Text(medicamento.nombreMedicamento)
+                Text(medicament.medicamentName)
                     .font(.system(.title))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Divider().frame(width : 250)
                 HStack{
                     Text("Fecha de inicio: ")
-                    DatePicker("", selection: $fechaInicio, displayedComponents : .date)
-                        .padding(.trailing,70).disabled(!editando)
+                    DatePicker("", selection: $startDate, displayedComponents : .date)
+                        .padding(.trailing,70).disabled(!editing)
                 }
                 HStack{
                     TextEditor(text: $info)
                         .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading)
                     
                 }.overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(editando ? Color.gray : Color.clear, lineWidth: 1))
-                    .disabled(!editando)
+                    .stroke(editing ? Color.gray : Color.clear, lineWidth: 1))
+                    .disabled(!editing)
                 
             }.padding(.leading, 60)
             
@@ -75,10 +74,13 @@ struct MedicamentDetailsView: View {
                     
                 })
             }.padding(.trailing,60).padding(.top,10)
-        }
-        .onTapGesture {
+                
+            
+//            Spacer().frame(maxHeight: widthMenu == 375 ? 170 : 150)
+        }.onTapGesture {
             hideKeyboard()
         }
+        
         .padding(.top,0).onAppear{
             showNabar = false
         }.onDisappear{
@@ -87,6 +89,7 @@ struct MedicamentDetailsView: View {
             }
             
         }
-        Spacer().frame(maxHeight: widthMenu == 375 ? 170 : 150)
+        
     }
 }
+

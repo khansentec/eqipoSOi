@@ -1,14 +1,13 @@
 //
 //  Login.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 17/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct Login: View {
-    
     @State private var email = ""
     @State private var pass = ""
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -27,9 +26,7 @@ struct Login: View {
     var body: some View {
         ZStack(alignment: .top){
             Color.white.edgesIgnoringSafeArea(.all)
-            HStack(){
-                Text("Iniciar Sesion").font(.system(.title, design: .rounded)).bold().foregroundColor(.white).padding().frame(width: widthMenu,alignment: .leading)
-            }.padding(.top, widthMenu == 375 ? 10 : 35).background(Color.blue)
+            
             VStack(alignment: .center){
                 Spacer().frame(minHeight: 10, maxHeight: 150)
                 Image("isosceles").resizable().aspectRatio(contentMode: .fit).frame(width: widthMenu == 375 ? 70 : 130, height: widthMenu == 375 ? 70 : 130)
@@ -40,11 +37,13 @@ struct Login: View {
                         .disableAutocorrection(true).autocapitalization(.none)
                         .frame(width: device == .pad ? 400 : 275)
                     Text("Contraseña").font(.body).foregroundColor(.black)
-                    SecureField("Pass", text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: device == .pad ? 400 : 275).padding(.bottom,20)
+                    SecureField("Contrseseña", text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: device == .pad ? 400 : 275).padding(.bottom,20)
                 }
                 Button(action: {
                     progress = true
+                    
                     loginShow.show = "Home"
+                    
                 }){
                     Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                 }.background(
@@ -69,14 +68,6 @@ struct Login: View {
                     HStack{
                         Button(action:{
                             withAnimation{
-                                loginShow.show = "RestorePasswordView"
-                            }
-                        }){
-                            Text("Olvidé mi contraseña").foregroundColor(.black).frame(width: 100)
-                        }
-                        Divider().frame(width: 1).overlay(.black)
-                        Button(action:{
-                            withAnimation{
                                 loginShow.show = "SignIn"
                             }
                         }){
@@ -94,6 +85,3 @@ struct Login: View {
         
     }
 }
-
-
-

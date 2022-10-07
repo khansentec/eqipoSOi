@@ -8,17 +8,17 @@
 import Foundation
 
 class Capture : Identifiable{
-    var idCaptura : String
+    var idCapture : String
     var presion : (Int, Int)
-    var pulso : Int
+    var pulse : Int
     
-    init(presionSup : Int, presionInf : Int, pulso : Int){
-        self.idCaptura = ""
+    init(presionSup : Int, presionInf : Int, pulse : Int){
+        self.idCapture = ""
         self.presion = (presionSup, presionInf)
-        self.pulso = pulso
+        self.pulse = pulse
     }
     
     var description : String {
-        return "\(self.presion) \(self.pulso)"
+        return "\(self.presion) \(self.pulse)"
     }
 }

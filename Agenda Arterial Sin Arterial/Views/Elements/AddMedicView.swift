@@ -1,14 +1,13 @@
 //
 //  AddMedicView.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 21/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct AddMedicView: View {
-    
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -48,5 +47,3 @@ struct AddMedicView: View {
         }
     }
 }
-
-

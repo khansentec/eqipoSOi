@@ -9,11 +9,11 @@ import Foundation
 
 class Remind : Identifiable {
     var id = UUID()
-    var fecha : String
-    var eventos : [String]
+    var date : String
+    var events : [String]
     
-    init(fecha : String, eventos: [String]) {
-        self.fecha = fecha
-        self.eventos = eventos
+    init(date : String, events: [String]) {
+        self.date = date
+        self.events = events
     }
 }

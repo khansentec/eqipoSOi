@@ -9,12 +9,12 @@ import Foundation
 
 struct Medic : Hashable, Identifiable{
     /*paciente/medico*/
-    var correo: String
-    var apellidoPaterno: String
-    var apellidoMaterno: String
-    var nombre: String
+    var email: String
+    var patName: String
+    var matName: String
+    var name: String
     var foto: String
     var id: String
-    var cedulaProfesional: String
+    var proflicense: String
 }
 

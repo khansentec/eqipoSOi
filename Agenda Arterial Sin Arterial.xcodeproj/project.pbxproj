@@ -7,78 +7,82 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00DF2E428F0862C008C7D45 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CD28F0862C008C7D45 /* Capture.swift */; };
+		C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CE28F0862C008C7D45 /* Medic.swift */; };
+		C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CF28F0862C008C7D45 /* WeekReport.swift */; };
+		C00DF2E728F0862C008C7D45 /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D028F0862C008C7D45 /* Medition.swift */; };
+		C00DF2E828F0862C008C7D45 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D128F0862C008C7D45 /* Remind.swift */; };
+		C00DF2E928F0862C008C7D45 /* Pacient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D228F0862C008C7D45 /* Pacient.swift */; };
+		C00DF2EA28F0862C008C7D45 /* Medicament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D328F0862C008C7D45 /* Medicament.swift */; };
+		C00DF2EC28F0862C008C7D45 /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D628F0862C008C7D45 /* FirebaseViewController.swift */; };
+		C00DF2ED28F0862C008C7D45 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2D928F0862C008C7D45 /* SettingsView.swift */; };
+		C00DF2EE28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2DA28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift */; };
+		C00DF2EF28F0862C008C7D45 /* GeneralDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2DB28F0862C008C7D45 /* GeneralDataView.swift */; };
+		C00DF2F028F0862C008C7D45 /* ReminderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2DD28F0862C008C7D45 /* ReminderDetailsView.swift */; };
+		C00DF2F128F0862C008C7D45 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2DE28F0862C008C7D45 /* ReminderView.swift */; };
+		C00DF2F428F0862C008C7D45 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2E228F0862C008C7D45 /* RemindersView.swift */; };
+		C00DF2F528F0862C008C7D45 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2E328F0862C008C7D45 /* AppsView.swift */; };
+		C00DF2F728F086CD008C7D45 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2F628F086CD008C7D45 /* TimerView.swift */; };
+		C00DF30028F086D8008C7D45 /* MedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2F828F086D8008C7D45 /* MedicamentView.swift */; };
+		C00DF30128F086D8008C7D45 /* NavBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2F928F086D8008C7D45 /* NavBarHome.swift */; };
+		C00DF30228F086D8008C7D45 /* MedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FA28F086D8008C7D45 /* MedicView.swift */; };
+		C00DF30328F086D8008C7D45 /* AddMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FB28F086D8008C7D45 /* AddMedicView.swift */; };
+		C00DF30428F086D8008C7D45 /* AddMedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FC28F086D8008C7D45 /* AddMedicamentView.swift */; };
+		C00DF30528F086D8008C7D45 /* ButtonNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FD28F086D8008C7D45 /* ButtonNavbar.swift */; };
+		C00DF30628F086D8008C7D45 /* MedicamentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FE28F086D8008C7D45 /* MedicamentDetailsView.swift */; };
+		C00DF30728F086D8008C7D45 /* NavbarLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2FF28F086D8008C7D45 /* NavbarLogin.swift */; };
+		C00DF30D28F08731008C7D45 /* CapturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF30828F08731008C7D45 /* CapturesView.swift */; };
+		C00DF30E28F08731008C7D45 /* MedicamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF30928F08731008C7D45 /* MedicamentsView.swift */; };
+		C00DF30F28F08731008C7D45 /* HealthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF30A28F08731008C7D45 /* HealthStateView.swift */; };
+		C00DF31028F08731008C7D45 /* WeekReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF30B28F08731008C7D45 /* WeekReportView.swift */; };
+		C00DF31128F08731008C7D45 /* LinkYourMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF30C28F08731008C7D45 /* LinkYourMedicView.swift */; };
+		C00DF31528F08776008C7D45 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31228F08776008C7D45 /* Home.swift */; };
+		C00DF31628F08776008C7D45 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31328F08776008C7D45 /* Login.swift */; };
+		C00DF31728F08776008C7D45 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31428F08776008C7D45 /* SignIn.swift */; };
 		C065D69C28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69B28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift */; };
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
-		C065D6FD28E0D2F900AC046F /* AddMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6EA28E0D2F900AC046F /* AddMedicView.swift */; };
-		C065D6FE28E0D2F900AC046F /* MedicamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6EF28E0D2F900AC046F /* MedicamentsView.swift */; };
-		C065D6FF28E0D2F900AC046F /* MedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6EC28E0D2F900AC046F /* MedicView.swift */; };
-		C065D70028E0D2F900AC046F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E128E0D2F800AC046F /* Home.swift */; };
-		C065D70128E0D2F900AC046F /* RemindersViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F328E0D2F900AC046F /* RemindersViews.swift */; };
-		C065D70228E0D2F900AC046F /* RestoreCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F728E0D2F900AC046F /* RestoreCodeView.swift */; };
-		C065D70328E0D2F900AC046F /* MedicamentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6EB28E0D2F900AC046F /* MedicamentDetailsView.swift */; };
-		C065D70428E0D2F900AC046F /* CapturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F228E0D2F900AC046F /* CapturesView.swift */; };
-		C065D70528E0D2F900AC046F /* NavBarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E928E0D2F900AC046F /* NavBarViews.swift */; };
-		C065D70628E0D2F900AC046F /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F828E0D2F900AC046F /* RestorePasswordView.swift */; };
-		C065D70728E0D2F900AC046F /* HealthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F428E0D2F900AC046F /* HealthStateView.swift */; };
-		C065D70828E0D2F900AC046F /* MedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E528E0D2F900AC046F /* MedicamentView.swift */; };
-		C065D70928E0D2F900AC046F /* NavbarLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E428E0D2F900AC046F /* NavbarLogin.swift */; };
-		C065D70A28E0D2F900AC046F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E828E0D2F900AC046F /* TimerView.swift */; };
-		C065D70B28E0D2F900AC046F /* AddMedicamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E628E0D2F900AC046F /* AddMedicamentView.swift */; };
-		C065D70C28E0D2F900AC046F /* ButtonNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E728E0D2F900AC046F /* ButtonNavbar.swift */; };
-		C065D70D28E0D2F900AC046F /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E028E0D2F800AC046F /* SignIn.swift */; };
-		C065D70E28E0D2F900AC046F /* NavBarHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6ED28E0D2F900AC046F /* NavBarHome.swift */; };
-		C065D70F28E0D2F900AC046F /* LinkYourMedicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F028E0D2F900AC046F /* LinkYourMedicView.swift */; };
-		C065D71028E0D2F900AC046F /* GeneralDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6FB28E0D2F900AC046F /* GeneralDataView.swift */; };
-		C065D71128E0D2F900AC046F /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F628E0D2F900AC046F /* ChangePasswordView.swift */; };
-		C065D71228E0D2F900AC046F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6E228E0D2F800AC046F /* Login.swift */; };
-		C065D71328E0D2F900AC046F /* WeekReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6F128E0D2F900AC046F /* WeekReportView.swift */; };
-		C065D71428E0D2F900AC046F /* FrecuentlyAskedCuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D6FA28E0D2F900AC046F /* FrecuentlyAskedCuestionsView.swift */; };
-		C065D71628E0D36F00AC046F /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71528E0D36F00AC046F /* Capture.swift */; };
-		C065D71B28E0D3B300AC046F /* Medicament.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71828E0D3B300AC046F /* Medicament.swift */; };
-		C065D71C28E0D3B300AC046F /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71928E0D3B300AC046F /* Remind.swift */; };
-		C065D71D28E0D3B300AC046F /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71A28E0D3B300AC046F /* Medic.swift */; };
-		C065D71F28E0D41200AC046F /* Medition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D71E28E0D41200AC046F /* Medition.swift */; };
-		C065D72528E0D48D00AC046F /* FirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D72328E0D48D00AC046F /* FirebaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C00DF2CD28F0862C008C7D45 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		C00DF2CE28F0862C008C7D45 /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
+		C00DF2CF28F0862C008C7D45 /* WeekReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
+		C00DF2D028F0862C008C7D45 /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medition.swift; sourceTree = "<group>"; };
+		C00DF2D128F0862C008C7D45 /* Remind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
+		C00DF2D228F0862C008C7D45 /* Pacient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pacient.swift; sourceTree = "<group>"; };
+		C00DF2D328F0862C008C7D45 /* Medicament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medicament.swift; sourceTree = "<group>"; };
+		C00DF2D628F0862C008C7D45 /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
+		C00DF2D928F0862C008C7D45 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C00DF2DA28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrecuentlyAskedQuestions.swift; sourceTree = "<group>"; };
+		C00DF2DB28F0862C008C7D45 /* GeneralDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralDataView.swift; sourceTree = "<group>"; };
+		C00DF2DD28F0862C008C7D45 /* ReminderDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailsView.swift; sourceTree = "<group>"; };
+		C00DF2DE28F0862C008C7D45 /* ReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		C00DF2E228F0862C008C7D45 /* RemindersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		C00DF2E328F0862C008C7D45 /* AppsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
+		C00DF2F628F086CD008C7D45 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		C00DF2F828F086D8008C7D45 /* MedicamentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicamentView.swift; sourceTree = "<group>"; };
+		C00DF2F928F086D8008C7D45 /* NavBarHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarHome.swift; sourceTree = "<group>"; };
+		C00DF2FA28F086D8008C7D45 /* MedicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicView.swift; sourceTree = "<group>"; };
+		C00DF2FB28F086D8008C7D45 /* AddMedicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedicView.swift; sourceTree = "<group>"; };
+		C00DF2FC28F086D8008C7D45 /* AddMedicamentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedicamentView.swift; sourceTree = "<group>"; };
+		C00DF2FD28F086D8008C7D45 /* ButtonNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNavbar.swift; sourceTree = "<group>"; };
+		C00DF2FE28F086D8008C7D45 /* MedicamentDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicamentDetailsView.swift; sourceTree = "<group>"; };
+		C00DF2FF28F086D8008C7D45 /* NavbarLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavbarLogin.swift; sourceTree = "<group>"; };
+		C00DF30828F08731008C7D45 /* CapturesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturesView.swift; sourceTree = "<group>"; };
+		C00DF30928F08731008C7D45 /* MedicamentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicamentsView.swift; sourceTree = "<group>"; };
+		C00DF30A28F08731008C7D45 /* HealthStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthStateView.swift; sourceTree = "<group>"; };
+		C00DF30B28F08731008C7D45 /* WeekReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekReportView.swift; sourceTree = "<group>"; };
+		C00DF30C28F08731008C7D45 /* LinkYourMedicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkYourMedicView.swift; sourceTree = "<group>"; };
+		C00DF31228F08776008C7D45 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = "Agenda Arterial Sin Arterial/Home.swift"; sourceTree = SOURCE_ROOT; };
+		C00DF31328F08776008C7D45 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = "Agenda Arterial Sin Arterial/Login.swift"; sourceTree = SOURCE_ROOT; };
+		C00DF31428F08776008C7D45 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignIn.swift; path = "Agenda Arterial Sin Arterial/SignIn.swift"; sourceTree = SOURCE_ROOT; };
 		C065D69828E0D2A900AC046F /* Agenda Arterial Sin Arterial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agenda Arterial Sin Arterial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065D69B28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda_Arterial_Sin_ArterialApp.swift; sourceTree = "<group>"; };
 		C065D69D28E0D2A900AC046F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C065D6E028E0D2F800AC046F /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
-		C065D6E128E0D2F800AC046F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		C065D6E228E0D2F800AC046F /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		C065D6E428E0D2F900AC046F /* NavbarLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarLogin.swift; sourceTree = "<group>"; };
-		C065D6E528E0D2F900AC046F /* MedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentView.swift; sourceTree = "<group>"; };
-		C065D6E628E0D2F900AC046F /* AddMedicamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicamentView.swift; sourceTree = "<group>"; };
-		C065D6E728E0D2F900AC046F /* ButtonNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNavbar.swift; sourceTree = "<group>"; };
-		C065D6E828E0D2F900AC046F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		C065D6E928E0D2F900AC046F /* NavBarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViews.swift; sourceTree = "<group>"; };
-		C065D6EA28E0D2F900AC046F /* AddMedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicView.swift; sourceTree = "<group>"; };
-		C065D6EB28E0D2F900AC046F /* MedicamentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentDetailsView.swift; sourceTree = "<group>"; };
-		C065D6EC28E0D2F900AC046F /* MedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicView.swift; sourceTree = "<group>"; };
-		C065D6ED28E0D2F900AC046F /* NavBarHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarHome.swift; sourceTree = "<group>"; };
-		C065D6EF28E0D2F900AC046F /* MedicamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicamentsView.swift; sourceTree = "<group>"; };
-		C065D6F028E0D2F900AC046F /* LinkYourMedicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkYourMedicView.swift; sourceTree = "<group>"; };
-		C065D6F128E0D2F900AC046F /* WeekReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportView.swift; sourceTree = "<group>"; };
-		C065D6F228E0D2F900AC046F /* CapturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturesView.swift; sourceTree = "<group>"; };
-		C065D6F328E0D2F900AC046F /* RemindersViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViews.swift; sourceTree = "<group>"; };
-		C065D6F428E0D2F900AC046F /* HealthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStateView.swift; sourceTree = "<group>"; };
-		C065D6F628E0D2F900AC046F /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
-		C065D6F728E0D2F900AC046F /* RestoreCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreCodeView.swift; sourceTree = "<group>"; };
-		C065D6F828E0D2F900AC046F /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
-		C065D6FA28E0D2F900AC046F /* FrecuentlyAskedCuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrecuentlyAskedCuestionsView.swift; sourceTree = "<group>"; };
-		C065D6FB28E0D2F900AC046F /* GeneralDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataView.swift; sourceTree = "<group>"; };
-		C065D71528E0D36F00AC046F /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Capture.swift; path = Views/Capture.swift; sourceTree = "<group>"; };
-		C065D71828E0D3B300AC046F /* Medicament.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medicament.swift; path = Views/Medicament.swift; sourceTree = "<group>"; };
-		C065D71928E0D3B300AC046F /* Remind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Remind.swift; path = Views/Remind.swift; sourceTree = "<group>"; };
-		C065D71A28E0D3B300AC046F /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medic.swift; path = Views/Medic.swift; sourceTree = "<group>"; };
-		C065D71E28E0D41200AC046F /* Medition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Medition.swift; path = Views/Medition.swift; sourceTree = "<group>"; };
-		C065D72328E0D48D00AC046F /* FirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C00DF2CC28F0862C008C7D45 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF2CD28F0862C008C7D45 /* Capture.swift */,
+				C00DF2CE28F0862C008C7D45 /* Medic.swift */,
+				C00DF2CF28F0862C008C7D45 /* WeekReport.swift */,
+				C00DF2D028F0862C008C7D45 /* Medition.swift */,
+				C00DF2D128F0862C008C7D45 /* Remind.swift */,
+				C00DF2D228F0862C008C7D45 /* Pacient.swift */,
+				C00DF2D328F0862C008C7D45 /* Medicament.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		C00DF2D428F0862C008C7D45 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF2D628F0862C008C7D45 /* FirebaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C00DF2D728F0862C008C7D45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF31228F08776008C7D45 /* Home.swift */,
+				C00DF31328F08776008C7D45 /* Login.swift */,
+				C00DF31428F08776008C7D45 /* SignIn.swift */,
+				C00DF2D828F0862C008C7D45 /* SideBarView */,
+				C00DF2DC28F0862C008C7D45 /* Elements */,
+				C00DF2E128F0862C008C7D45 /* HomeViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C00DF2D828F0862C008C7D45 /* SideBarView */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF2D928F0862C008C7D45 /* SettingsView.swift */,
+				C00DF2DA28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift */,
+				C00DF2DB28F0862C008C7D45 /* GeneralDataView.swift */,
+			);
+			path = SideBarView;
+			sourceTree = "<group>";
+		};
+		C00DF2DC28F0862C008C7D45 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF2FC28F086D8008C7D45 /* AddMedicamentView.swift */,
+				C00DF2FB28F086D8008C7D45 /* AddMedicView.swift */,
+				C00DF2FD28F086D8008C7D45 /* ButtonNavbar.swift */,
+				C00DF2FE28F086D8008C7D45 /* MedicamentDetailsView.swift */,
+				C00DF2F828F086D8008C7D45 /* MedicamentView.swift */,
+				C00DF2FA28F086D8008C7D45 /* MedicView.swift */,
+				C00DF2F928F086D8008C7D45 /* NavBarHome.swift */,
+				C00DF2FF28F086D8008C7D45 /* NavbarLogin.swift */,
+				C00DF2F628F086CD008C7D45 /* TimerView.swift */,
+				C00DF2DD28F0862C008C7D45 /* ReminderDetailsView.swift */,
+				C00DF2DE28F0862C008C7D45 /* ReminderView.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		C00DF2E128F0862C008C7D45 /* HomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				C00DF30828F08731008C7D45 /* CapturesView.swift */,
+				C00DF30A28F08731008C7D45 /* HealthStateView.swift */,
+				C00DF30C28F08731008C7D45 /* LinkYourMedicView.swift */,
+				C00DF30928F08731008C7D45 /* MedicamentsView.swift */,
+				C00DF30B28F08731008C7D45 /* WeekReportView.swift */,
+				C00DF2E228F0862C008C7D45 /* RemindersView.swift */,
+				C00DF2E328F0862C008C7D45 /* AppsView.swift */,
+			);
+			path = HomeViews;
+			sourceTree = "<group>";
+		};
 		C065D68F28E0D2A900AC046F = {
 			isa = PBXGroup;
 			children = (
@@ -111,13 +192,9 @@
 		C065D69A28E0D2A900AC046F /* Agenda Arterial Sin Arterial */ = {
 			isa = PBXGroup;
 			children = (
-				C065D71E28E0D41200AC046F /* Medition.swift */,
-				C065D72328E0D48D00AC046F /* FirebaseViewController.swift */,
-				C065D71A28E0D3B300AC046F /* Medic.swift */,
-				C065D71828E0D3B300AC046F /* Medicament.swift */,
-				C065D71928E0D3B300AC046F /* Remind.swift */,
-				C065D71528E0D36F00AC046F /* Capture.swift */,
-				C065D6DF28E0D2F800AC046F /* Views */,
+				C00DF2CC28F0862C008C7D45 /* Data Structures */,
+				C00DF2D428F0862C008C7D45 /* ViewControllers */,
+				C00DF2D728F0862C008C7D45 /* Views */,
 				C065D69B28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift */,
 				C065D69D28E0D2A900AC046F /* ContentView.swift */,
 				C065D69F28E0D2A900AC046F /* Assets.xcassets */,
@@ -132,69 +209,6 @@
 				C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		C065D6DF28E0D2F800AC046F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C065D6E228E0D2F800AC046F /* Login.swift */,
-				C065D6F928E0D2F900AC046F /* SideBarViews */,
-				C065D6E128E0D2F800AC046F /* Home.swift */,
-				C065D6E328E0D2F800AC046F /* Elements */,
-				C065D6E028E0D2F800AC046F /* SignIn.swift */,
-				C065D6EE28E0D2F900AC046F /* HomeViews */,
-				C065D6F528E0D2F900AC046F /* RestorePasswordViews */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		C065D6E328E0D2F800AC046F /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				C065D6E928E0D2F900AC046F /* NavBarViews.swift */,
-				C065D6EB28E0D2F900AC046F /* MedicamentDetailsView.swift */,
-				C065D6E728E0D2F900AC046F /* ButtonNavbar.swift */,
-				C065D6E828E0D2F900AC046F /* TimerView.swift */,
-				C065D6E628E0D2F900AC046F /* AddMedicamentView.swift */,
-				C065D6E528E0D2F900AC046F /* MedicamentView.swift */,
-				C065D6ED28E0D2F900AC046F /* NavBarHome.swift */,
-				C065D6EC28E0D2F900AC046F /* MedicView.swift */,
-				C065D6EA28E0D2F900AC046F /* AddMedicView.swift */,
-				C065D6E428E0D2F900AC046F /* NavbarLogin.swift */,
-			);
-			path = Elements;
-			sourceTree = "<group>";
-		};
-		C065D6EE28E0D2F900AC046F /* HomeViews */ = {
-			isa = PBXGroup;
-			children = (
-				C065D6F228E0D2F900AC046F /* CapturesView.swift */,
-				C065D6F428E0D2F900AC046F /* HealthStateView.swift */,
-				C065D6EF28E0D2F900AC046F /* MedicamentsView.swift */,
-				C065D6F128E0D2F900AC046F /* WeekReportView.swift */,
-				C065D6F328E0D2F900AC046F /* RemindersViews.swift */,
-				C065D6F028E0D2F900AC046F /* LinkYourMedicView.swift */,
-			);
-			path = HomeViews;
-			sourceTree = "<group>";
-		};
-		C065D6F528E0D2F900AC046F /* RestorePasswordViews */ = {
-			isa = PBXGroup;
-			children = (
-				C065D6F628E0D2F900AC046F /* ChangePasswordView.swift */,
-				C065D6F828E0D2F900AC046F /* RestorePasswordView.swift */,
-				C065D6F728E0D2F900AC046F /* RestoreCodeView.swift */,
-			);
-			path = RestorePasswordViews;
-			sourceTree = "<group>";
-		};
-		C065D6F928E0D2F900AC046F /* SideBarViews */ = {
-			isa = PBXGroup;
-			children = (
-				C065D6FA28E0D2F900AC046F /* FrecuentlyAskedCuestionsView.swift */,
-				C065D6FB28E0D2F900AC046F /* GeneralDataView.swift */,
-			);
-			path = SideBarViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,38 +281,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C065D72528E0D48D00AC046F /* FirebaseViewController.swift in Sources */,
-				C065D70928E0D2F900AC046F /* NavbarLogin.swift in Sources */,
-				C065D6FE28E0D2F900AC046F /* MedicamentsView.swift in Sources */,
-				C065D70F28E0D2F900AC046F /* LinkYourMedicView.swift in Sources */,
-				C065D6FD28E0D2F900AC046F /* AddMedicView.swift in Sources */,
-				C065D6FF28E0D2F900AC046F /* MedicView.swift in Sources */,
-				C065D70428E0D2F900AC046F /* CapturesView.swift in Sources */,
-				C065D71C28E0D3B300AC046F /* Remind.swift in Sources */,
-				C065D70C28E0D2F900AC046F /* ButtonNavbar.swift in Sources */,
-				C065D70228E0D2F900AC046F /* RestoreCodeView.swift in Sources */,
-				C065D71228E0D2F900AC046F /* Login.swift in Sources */,
-				C065D71D28E0D3B300AC046F /* Medic.swift in Sources */,
-				C065D70628E0D2F900AC046F /* RestorePasswordView.swift in Sources */,
-				C065D71F28E0D41200AC046F /* Medition.swift in Sources */,
-				C065D71B28E0D3B300AC046F /* Medicament.swift in Sources */,
-				C065D71028E0D2F900AC046F /* GeneralDataView.swift in Sources */,
-				C065D70E28E0D2F900AC046F /* NavBarHome.swift in Sources */,
-				C065D71628E0D36F00AC046F /* Capture.swift in Sources */,
+				C00DF30728F086D8008C7D45 /* NavbarLogin.swift in Sources */,
+				C00DF31628F08776008C7D45 /* Login.swift in Sources */,
+				C00DF2F728F086CD008C7D45 /* TimerView.swift in Sources */,
+				C00DF2EC28F0862C008C7D45 /* FirebaseViewController.swift in Sources */,
+				C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */,
+				C00DF30F28F08731008C7D45 /* HealthStateView.swift in Sources */,
+				C00DF30128F086D8008C7D45 /* NavBarHome.swift in Sources */,
+				C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */,
+				C00DF30328F086D8008C7D45 /* AddMedicView.swift in Sources */,
+				C00DF30028F086D8008C7D45 /* MedicamentView.swift in Sources */,
+				C00DF31028F08731008C7D45 /* WeekReportView.swift in Sources */,
+				C00DF2E428F0862C008C7D45 /* Capture.swift in Sources */,
+				C00DF2E828F0862C008C7D45 /* Remind.swift in Sources */,
+				C00DF31128F08731008C7D45 /* LinkYourMedicView.swift in Sources */,
+				C00DF2E928F0862C008C7D45 /* Pacient.swift in Sources */,
+				C00DF30E28F08731008C7D45 /* MedicamentsView.swift in Sources */,
+				C00DF30428F086D8008C7D45 /* AddMedicamentView.swift in Sources */,
+				C00DF2F428F0862C008C7D45 /* RemindersView.swift in Sources */,
+				C00DF2F528F0862C008C7D45 /* AppsView.swift in Sources */,
+				C00DF30628F086D8008C7D45 /* MedicamentDetailsView.swift in Sources */,
 				C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */,
-				C065D71128E0D2F900AC046F /* ChangePasswordView.swift in Sources */,
-				C065D70D28E0D2F900AC046F /* SignIn.swift in Sources */,
-				C065D70828E0D2F900AC046F /* MedicamentView.swift in Sources */,
-				C065D71328E0D2F900AC046F /* WeekReportView.swift in Sources */,
-				C065D70528E0D2F900AC046F /* NavBarViews.swift in Sources */,
+				C00DF2EA28F0862C008C7D45 /* Medicament.swift in Sources */,
+				C00DF30228F086D8008C7D45 /* MedicView.swift in Sources */,
+				C00DF30D28F08731008C7D45 /* CapturesView.swift in Sources */,
+				C00DF2ED28F0862C008C7D45 /* SettingsView.swift in Sources */,
+				C00DF31528F08776008C7D45 /* Home.swift in Sources */,
+				C00DF2F028F0862C008C7D45 /* ReminderDetailsView.swift in Sources */,
+				C00DF2E728F0862C008C7D45 /* Medition.swift in Sources */,
 				C065D69C28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift in Sources */,
-				C065D70028E0D2F900AC046F /* Home.swift in Sources */,
-				C065D71428E0D2F900AC046F /* FrecuentlyAskedCuestionsView.swift in Sources */,
-				C065D70A28E0D2F900AC046F /* TimerView.swift in Sources */,
-				C065D70128E0D2F900AC046F /* RemindersViews.swift in Sources */,
-				C065D70B28E0D2F900AC046F /* AddMedicamentView.swift in Sources */,
-				C065D70728E0D2F900AC046F /* HealthStateView.swift in Sources */,
-				C065D70328E0D2F900AC046F /* MedicamentDetailsView.swift in Sources */,
+				C00DF2EE28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift in Sources */,
+				C00DF2F128F0862C008C7D45 /* ReminderView.swift in Sources */,
+				C00DF31728F08776008C7D45 /* SignIn.swift in Sources */,
+				C00DF2EF28F0862C008C7D45 /* GeneralDataView.swift in Sources */,
+				C00DF30528F086D8008C7D45 /* ButtonNavbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
