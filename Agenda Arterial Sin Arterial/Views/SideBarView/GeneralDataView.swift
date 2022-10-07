@@ -21,6 +21,12 @@ struct GeneralDataView: View {
     
     @StateObject var save = FirebaseViewController()
     
+    enum bloodT: String, CaseIterable, Identifiable {
+        case nonseleceted, oP, oN, aP, aN, bP, bN, abP, abN
+        var id: Self { self }
+    }
+    @State private var bloodType: bloodT = .nonseleceted
+    
     @Binding var data : Pacient!
     
     @State private var progress = false
@@ -31,7 +37,6 @@ struct GeneralDataView: View {
     @State var height :Float = 0.0
     @State var cirAbdominal :Float = 0
     @State var weight :Float = 0
-    @State var bloodType = ""
     @State private var disease: String = "No hay padecimientos ..."
     
     var body: some View {
@@ -131,8 +136,18 @@ struct GeneralDataView: View {
                         
                         HStack{
                             Text("Tipo de Sangre")
-                            TextField("Tipo de Sangre", text: $bloodType).textFieldStyle(RoundedBorderTextFieldStyle())
-                                .disableAutocorrection(true)
+                            Picker("Selecione una opcion", selection: $bloodType) {
+                                Text("Selecione una opcion").tag(GeneralDataView.bloodT.nonseleceted)
+                                Text("O+").tag(bloodT.oP)
+                                Text("O-").tag(bloodT.oN)
+                                Text("AB+").tag(bloodT.abP)
+                                Text("AB-").tag(bloodT.abN)
+                                Text("A+").tag(bloodT.aP)
+                                Text("A-").tag(bloodT.aN)
+                                Text("B+").tag(bloodT.bP)
+                                Text("B-").tag(bloodT.bN)
+                            }.frame(width : 200, height: 20)
+                                .accentColor(Color("ButtonColor"))
                         }
                         
                         Text("Padecimientos")
