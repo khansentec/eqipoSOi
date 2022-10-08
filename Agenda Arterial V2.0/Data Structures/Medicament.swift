@@ -14,19 +14,45 @@ struct Medicament : Identifiable, Hashable {
     var startDate : Date
     var finishDate : Date
     var forgetTimes : Int
+    var active : Bool
 
-    init(id: String?, medicamentName: String, information: String, startDate: Date, finishDate: Date, forgetTimes: Int){
+    init(id: String?, medicamentName: String, information: String, startDate: Date, finishDate: Date?, forgetTimes: Int?, active : Bool?){
         self.id = id ?? ""
         self.medicamentName = medicamentName
         self.information = information
         self.startDate = startDate
-        self.finishDate = finishDate
-        self.forgetTimes = forgetTimes
+        self.finishDate = finishDate ?? startDate
+        self.forgetTimes = forgetTimes ?? 0
+        self.active = active ?? true
     }
     
 }
 
+/*
 
+let id = UUID().uuidString
+
+guard let idUser = Auth.auth().currentUser?.uid else{
+    return
+}
+
+let info : [String: Any] = ["id": id,"idPaciente":idUser,"fechaInicio":self.startDate, "fechaDesactivacion":self.finishDate,  "nombreMedicamento": self.medicamentName, "informacion": self.information, "activo": self.active, "vecesOlvidado": self.forgetTimes]
+     
+loginShow.saveData(collectionName: "medicamentos", id: id, info: info){(done)
+            in
+                if done{
+                    alertTitle = "¡Éxito!"
+                    alertMessage = "Los datos se han guardado correctamente"
+                    meditionUploaded = true
+                }else{
+                    alertTitle = "¡Oops!"
+                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                    meditionUploaded = false
+
+                }
+            }
+
+*/
 
     
 extension Medicament {

@@ -215,20 +215,13 @@ class FirebaseViewController: ObservableObject{
         
     }
 
-    func saveBP(state: String, dateC: Date, pressureS: Int, pressureD: Int, pulse: Int, completion: @escaping(_ done: Bool)->Void){
+    func saveData(collectionName: String, id: String, info: [String: Any] , completion: @escaping(_ done: Bool)->Void){
         
         //        let storage = Storage.storage().reference()
         //Save Text
         let db = Firestore.firestore()
-        let id = UUID().uuidString
         
-        guard let idUser = Auth.auth().currentUser?.uid else{
-            return
-        }
-        
-        let info : [String: Any] = ["id": id,"idPaciente":idUser, "estado":state,  "fecha": dateC, "presionInfPromedio":pressureS, "presionSupPromedio":pressureD, "pulsoPromedio":pulse ]
-        
-        db.collection("mediciones").document(id).setData(info){error in
+        db.collection(collectionName).document(id).setData(info){error in
             if let error = error?.localizedDescription{
                 print("Error al guardar en firestore ", error)
                 completion(false)
@@ -242,7 +235,6 @@ class FirebaseViewController: ObservableObject{
     
     //Get 
     func getPacient(email : String){
-        print(email)
         let db = Firestore.firestore()
         db.collection("pacientes").whereField("email", isEqualTo: email)
             .getDocuments() {
@@ -289,8 +281,12 @@ class FirebaseViewController: ObservableObject{
     func getMeditionsByDate(startDate : Date){
         var color : Color
 
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
         let db = Firestore.firestore()
-        db.collection("pacientes").whereField("email", isEqualTo: email)
+        db.collection("pacientes").whereField("idPaciente", isEqualTo: idUser).order(by: "fecha")
             .getDocuments() {
                 
                 (QuerySnapshot, error) in
@@ -321,7 +317,51 @@ class FirebaseViewController: ObservableObject{
 
                             DispatchQueue.main.async {
                                 let register = Medition(id: id, date: date, avgSup : avgSup, avgInf : avgInf, avgPulse : avgPulse, state : state, color: color)
-                                self.meditions.push(register)
+                                self.meditions.append(register)
+                            }
+
+                        }else{
+                            break
+                        }
+                        
+                        
+                    }
+                }
+            }
+        
+    }
+
+    func getMedicaments(){
+        var color : Color
+
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        let db = Firestore.firestore()
+        db.collection("pacientes").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        
+                        let value = document.data()
+                        let active = value["activo"] as ? Bool ?? true
+
+                        if active {
+                            let id = value["id"] as? String ?? UUID().uuidString
+                            let medName = value["nombreMedicamento"] as? String ?? "no name"
+                            let info = value["informacion"] as? String ?? "no id"
+                            let startDate = value["fechaInicio"] as? Date ?? Date()
+                            let endDate = value["fechaDesactivacion"] as? Date ?? Date()
+                            let forgetTimes = value["vecesOlvidado"] as? Int ?? 0
+
+                            DispatchQueue.main.async {
+                                let register = Medicament(id: id, medicamentName: medName, information: info, startDate: startDate, finishDate: endDate, forgetTimes: forgetTimes)
+                                self.meds.append(register)
                             }
 
                         }
@@ -332,6 +372,12 @@ class FirebaseViewController: ObservableObject{
             }
         
     }
+
+    //Delete
+
+
+
+
     
     /*
      func delete(index: FirebaseModel, platform: String){

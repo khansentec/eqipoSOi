@@ -167,8 +167,16 @@ class Medition : Identifiable {
         if meditionIsValid {
             self.prepareToUpload(date: Date)
             //método para subir a firebase regresa booleano
-            var uploadStatus = true //cambiar aqui metodo firebase
-            loginShow.saveBP(estado: self.state, fecha: self.meditionDate, presionS: self.avgSup, presionD: self.avgInf, pulso: self.avgPulse){(done)
+
+            let id = UUID().uuidString
+
+            guard let idUser = Auth.auth().currentUser?.uid else{
+                return
+            }
+
+            let info : [String: Any] = ["id": id,"idPaciente":idUser, "estado":self.state,  "fecha": self.meditionDate, "presionInfPromedio":self.avgInf, "presionSupPromedio":self.avgSup, "pulsoPromedio":self.avgPulse ]
+        
+            loginShow.saveData(collectionName: "mediciones", id: id, info: info){(done)
             in
                 if done{
                     alertTitle = "¡Éxito!"
