@@ -7,8 +7,7 @@
 
 import Foundation
 
-class Capture : Identifiable{
-    var idCapture : String
+class Capture {
     var presion : (Int, Int)
     var pulse : Int
     

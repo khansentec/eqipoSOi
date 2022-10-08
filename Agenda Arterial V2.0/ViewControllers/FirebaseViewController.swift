@@ -19,6 +19,7 @@ class FirebaseViewController: ObservableObject{
     @Published var medUpdate : Medicament!
     @Published var reminds = [Remind]()
     @Published var remindUpdate : Remind!
+    @Published var meditions = [Medition]()
     
     func sendMed(item: Medicament){
         medUpdate = item
@@ -91,30 +92,6 @@ class FirebaseViewController: ObservableObject{
     
     //Save
     //
-    func saveBP(state: String, dateC: Date, pressureS: Int, pressureD: Int, pulse: Int, completion: @escaping(_ done: Bool)->Void){
-        
-        //        let storage = Storage.storage().reference()
-        //Save Text
-        let db = Firestore.firestore()
-        let id = UUID().uuidString
-        
-        guard let idUser = Auth.auth().currentUser?.uid else{
-            return
-        }
-        
-        let info : [String: Any] = ["idUsuario":idUser, "estado":state,  "fecha": dateC, "presionInfPromedio":pressureS, "presionSupPromedio":pressureD, "pulsoPromedio":pulse ]
-        
-        db.collection("mediciones").document(id).setData(info){error in
-            if let error = error?.localizedDescription{
-                print("Error al guardar en firestore ", error)
-                completion(false)
-            }else{
-                print("Sucessfully save info")
-                completion(true)
-            }
-        }
-        //End Saving Text
-    }
     
     func saveGD(name: String, ptName: String, mtName: String, phone: String, date: Date, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
@@ -237,7 +214,33 @@ class FirebaseViewController: ObservableObject{
         
         
     }
+
+    func saveBP(state: String, dateC: Date, pressureS: Int, pressureD: Int, pulse: Int, completion: @escaping(_ done: Bool)->Void){
+        
+        //        let storage = Storage.storage().reference()
+        //Save Text
+        let db = Firestore.firestore()
+        let id = UUID().uuidString
+        
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        let info : [String: Any] = ["id": id,"idPaciente":idUser, "estado":state,  "fecha": dateC, "presionInfPromedio":pressureS, "presionSupPromedio":pressureD, "pulsoPromedio":pulse ]
+        
+        db.collection("mediciones").document(id).setData(info){error in
+            if let error = error?.localizedDescription{
+                print("Error al guardar en firestore ", error)
+                completion(false)
+            }else{
+                print("Sucessfully save info")
+                completion(true)
+            }
+        }
+        //End Saving Text
+    }
     
+    //Get 
     func getPacient(email : String){
         print(email)
         let db = Firestore.firestore()
@@ -275,6 +278,48 @@ class FirebaseViewController: ObservableObject{
                             print(vinculationCode)
                             self.data = register
                            
+                        }
+                        
+                    }
+                }
+            }
+        
+    }
+
+    func getMeditionsByDate(date : Date){
+        var color : Color
+
+        let db = Firestore.firestore()
+        db.collection("pacientes").whereField("email", isEqualTo: email)
+            .getDocuments() {
+                
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        
+                        let value = document.data()
+                        let id = value["id"] as? String ?? "no id"
+                        let date = value["fecha"] as? Date ?? Date()
+                        let avgSup = value["presionSupPromedio"] as? Int ?? 0
+                        let avgInf = value["presionInfPromedio"] as? Int ?? 0
+                        let avgPulse = value["pulsoPromedio"] as? Int ?? 0
+                        let state = value["estado"] as? String ?? "no state"
+
+                        if state == "mal" {
+                            color = Color.red
+                        }else if state == "regular" {
+                            color = Color.yellow
+                        }else if state == "bien" {
+                            color = Color.green
+                        }else{
+                            color = Color.gray
+                        }
+
+                        DispatchQueue.main.async {
+                            let register = Medition(id: id, date: date, avgSup : avgSup, avgInf : avgInf, avgPulse : avgPulse, state : state, color: color)
+                            self.meditions.push(register)
                         }
                         
                     }
