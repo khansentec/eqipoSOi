@@ -286,7 +286,7 @@ class FirebaseViewController: ObservableObject{
         
     }
 
-    func getMeditionsByDate(date : Date){
+    func getMeditionsByDate(startDate : Date){
         var color : Color
 
         let db = Firestore.firestore()
@@ -300,27 +300,32 @@ class FirebaseViewController: ObservableObject{
                     for document in QuerySnapshot!.documents{
                         
                         let value = document.data()
-                        let id = value["id"] as? String ?? "no id"
                         let date = value["fecha"] as? Date ?? Date()
-                        let avgSup = value["presionSupPromedio"] as? Int ?? 0
-                        let avgInf = value["presionInfPromedio"] as? Int ?? 0
-                        let avgPulse = value["pulsoPromedio"] as? Int ?? 0
-                        let state = value["estado"] as? String ?? "no state"
 
-                        if state == "mal" {
-                            color = Color.red
-                        }else if state == "regular" {
-                            color = Color.yellow
-                        }else if state == "bien" {
-                            color = Color.green
-                        }else{
-                            color = Color.gray
-                        }
+                        if date > startDate{
+                            let id = value["id"] as? String ?? "no id"
+                            let avgSup = value["presionSupPromedio"] as? Int ?? 0
+                            let avgInf = value["presionInfPromedio"] as? Int ?? 0
+                            let avgPulse = value["pulsoPromedio"] as? Int ?? 0
+                            let state = value["estado"] as? String ?? "no state"
 
-                        DispatchQueue.main.async {
-                            let register = Medition(id: id, date: date, avgSup : avgSup, avgInf : avgInf, avgPulse : avgPulse, state : state, color: color)
-                            self.meditions.push(register)
+                            if state == "mal" {
+                                color = Color.red
+                            }else if state == "regular" {
+                                color = Color.yellow
+                            }else if state == "bien" {
+                                color = Color.green
+                            }else{
+                                color = Color.gray
+                            }
+
+                            DispatchQueue.main.async {
+                                let register = Medition(id: id, date: date, avgSup : avgSup, avgInf : avgInf, avgPulse : avgPulse, state : state, color: color)
+                                self.meditions.push(register)
+                            }
+
                         }
+                        
                         
                     }
                 }
