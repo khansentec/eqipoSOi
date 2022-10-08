@@ -25,6 +25,12 @@ struct GeneralDataView: View {
         var id: Self { self }
     }
     @State private var bloodType: bloodT = .nonseleceted
+
+    enum sex: String, CaseIterable, Identifiable {
+        case nonseleceted, male, female, rathernot
+        var id: Self { self }
+    }
+    @State private var selectedSex: sex = .nonseleceted
     
     @StateObject var save = FirebaseViewController()
     
@@ -41,17 +47,24 @@ struct GeneralDataView: View {
     @State var weight :Float = 0
     @State private var disease: String = "No hay padecimientos ..."
     @State private var email = Auth.auth().currentUser?.email
+    @State private var date = Date()
+    @State var infoSubmitted = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
 
     var body: some View {
         ZStack(alignment: .leading){
             Button(action: {
-                progress = true
-                save.saveGD(height: height, abdominalCir: Float(cirAbdominal), diseases: disease, weight: Float(weight), bType: bloodType.rawValue, photo: imageData){
-                    (done)in
-                    if done{
-                        progress = false
-                    }
-                }
+
+                progress = true        
+                let processResults = data.updateGD(name: name, ptName: lastNameP, mtName: lastNameM, phone: phoneNumber, date: date, sex: sex.rawValue, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType.rawValue, photo: imageData)
+                        
+                alertTitle = processResults.1
+                alertMessage =  processResults.2
+
+                infoSubmitted = true
+                progress = false
+
             }){
                 Text("Guardar").foregroundColor(.white).font(.system(size: 25, weight: .bold))
             }.padding(.bottom, heightMenu-360)
@@ -66,6 +79,12 @@ struct GeneralDataView: View {
                         .padding(.leading, widthMenu-120)
                     
                 }
+            .alert(alertTitle, isPresented: $infoSubmitted) {
+                        Button("OK", role: .cancel) {
+                            progress = false
+                            Text(alertMessage)
+                        }
+                    }
             
             VStack{
                 NavBarHome(menu:$menu, index: $index).onTapGesture {
@@ -144,6 +163,38 @@ struct GeneralDataView: View {
                                     phoneNumber = data.phoneNumber
                                 }
                             
+                        }
+                        HStack{
+                            Text("Sexo").fontWeight(.bold)
+                            Picker("", selection: $selectedSex) {
+                                Text("Selecione una opcion").tag(sex.nonseleceted)
+                                Text("Masculino").tag(sex.male)
+                                Text("Femenino").tag(sex.female)
+                                Text("Prefiero no decir").tag(sex.rathernot)
+                            }.frame(width : 200, height: 20)
+                                .accentColor(Color("ButtonColor"))
+                            .onAppear{
+                                switch data.sex {
+                                    case "Selecione una opcion" :
+                                        selectedSex = sex.nonseleceted
+                                    case "Masculino" :
+                                        selectedSex = sex.male
+                                    case "Femenino" :
+                                        selectedSex = sex.female
+                                    case "Prefiero no decir":
+                                        selectedSex = bsex.rathernot
+                                    default:
+                                        selectedSex = sex.nonseleceted
+                                    }
+                            }
+                            
+                        }
+                        HStack{
+                            Text("Fecha de Nacimiento").fontWeight(.bold)
+                            DatePicker("",selection: $date,displayedComponents: [.date])
+                            .onAppear{
+                                    date = data.birthDate
+                                }
                         }
                         HStack{
                             Text("Altura")
@@ -278,4 +329,3 @@ struct GeneralDataView: View {
         }
     }
 }
-

@@ -61,7 +61,7 @@ class FirebaseViewController: ObservableObject{
                 guard let idUser = Auth.auth().currentUser?.uid else{
                     return
                 }
-                let info : [String: Any] = ["idUsuario":idUser,"apellidoMaterno":mtName, "apellidoPaterno": ptName, "email":email, "fechaNacimiento": bDate, "nombre":name, "sexo":sex, "telefono": phone, "altura":0, "circunferenciaAbdominal":0, "foto": "", "peso": 0, "tipoSangre": "", "padecimientosMedicos": "", "codigoVinculacion":"","estadoPacient":"", "fechaProximaConsulta":Date(),"fechUltimaConsulta":Date(), "medicoProximaConsulta":"", "MedicoUltimaConsulta":"", "listaMedicosVinculados":[]]
+                let info : [String: Any] = ["idPaciente":idUser,"apellidoMaterno":mtName, "apellidoPaterno": ptName, "email":email, "fechaNacimiento": bDate, "nombre":name, "sexo":sex, "telefono": phone, "altura":0, "circunferenciaAbdominal":0, "foto": "", "peso": 0, "tipoSangre": "", "padecimientosMedicos": "", "codigoVinculacion":"","estadoPacient":"", "fechaProximaConsulta":Date(),"fechUltimaConsulta":Date(), "medicoProximaConsulta":"", "MedicoUltimaConsulta":"", "listaMedicosVinculados":[]]
                 let id = UUID().uuidString
                 
                 db.collection("pacientes").document(id).setData(info){error in
@@ -116,7 +116,7 @@ class FirebaseViewController: ObservableObject{
         //End Saving Text
     }
     
-    func saveGD(height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
+    func saveGD(name: String, ptName: String, mtName: String, phone: String, date: Date, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
         guard let email = Auth.auth().currentUser?.email else{
             return
@@ -155,7 +155,7 @@ class FirebaseViewController: ObservableObject{
                                                       } else {
                                                         // Get the download URL for each item storage location
                                                           dir = String(describing: url!)
-                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                          let info : [String: Any] = ["fechaNacimiento": bDate, "nombre":name, "sexo":sex, "telefono": phone,"apellidoMaterno":mtName, "apellidoPaterno": ptName,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                           
                                                           db.collection("pacientes").document(docId).updateData(info){error in
                                                               if let error = error?.localizedDescription{
@@ -205,7 +205,7 @@ class FirebaseViewController: ObservableObject{
                                                       } else {
                                                         // Get the download URL for each item storage location
                                                           dir = String(describing: url!)
-                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                          let info : [String: Any] = ["altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":sintoms]
                                                           
                                                           db.collection("pacientes").document(docId).updateData(info){error in
                                                               if let error = error?.localizedDescription{

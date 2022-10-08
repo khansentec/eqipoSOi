@@ -26,8 +26,11 @@ struct SignIn: View {
     
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
-    @State private var showError = false
-    @State private var errorMessage = ""
+
+    @State var userSubmitted = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
+
     @State private var progress = false
     
     var body: some View {
@@ -76,8 +79,8 @@ struct SignIn: View {
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
                                 Text("Selecione una opcion").tag(sex.nonseleceted)
-                                Text("Hombre").tag(sex.male)
-                                Text("Mujer").tag(sex.female)
+                                Text("Masculino").tag(sex.male)
+                                Text("Femenino").tag(sex.female)
                                 Text("Prefiero no decir").tag(sex.rathernot)
                             }.frame(width : 200, height: 20)
                                 .accentColor(Color("ButtonColor"))
@@ -97,31 +100,33 @@ struct SignIn: View {
                     }
                     Button(action: {
                         progress = true
-                        if pass == confPassword{
-                            
-                            login.createUser(email: email, pass: pass, name: name, ptName: matName, mtName: patName, bDate: date, phone: String(number), sex: selectedSex.rawValue){
-                                (done, errorM) in
-                                if done{
-                                    UserDefaults.standard.set(true, forKey: "sesion")
-                                    
-                                    loginShow.show = "Home"
-                                    showError = false
-                                }else{
-                                    showError = true
-                                    errorMessage = errorM
-                                }
-                            }
-                        }else{
-                            showError = true
-                            errorMessage = "Contraseñas no coinciden"
+                        let newUser = User(email: email, pass: pass, confPass: confPassword, name: name, ptName: matName, mtName: patName, bDate: date, phone: number, sex: selectedSex.rawValue)
+                        
+                        let processResults = newUser.uploadUser()
+                        
+                        alertTitle = processResults.1
+                        alertMessage =  processResults.2
+
+                        userSubmitted = true
+
+                        if processResults.0 {
+                            name = ""
+                            patName = ""
+                            matName = ""
+                            email = ""
+                            pass = ""
+                            confPassword = ""
+                            number = ""
+                            selectedSex: sex = .nonseleceted
                         }
                     }){
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                     }.background(
                         Capsule().fill(Color("ButtonColor"))
-                    ).alert(errorMessage, isPresented: $showError) {
+                    ).alert(alertTitle, isPresented: $userSubmitted) {
                         Button("OK", role: .cancel) {
                             progress = false
+                            Text(alertMessage)
                         }
                     }
                     if progress{
@@ -138,4 +143,3 @@ struct SignIn: View {
         }
     }
 }
-
