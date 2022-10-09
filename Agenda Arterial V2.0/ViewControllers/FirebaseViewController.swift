@@ -22,9 +22,10 @@ class FirebaseViewController: ObservableObject{
     @Published var meditions = [Medition]()
 
     //config notificaciones
-    meditionsRem = true
-    healthReportsRem = true
-    weekReportsRem = true
+    var meditionsRem = true
+    var healthReportsRem = true
+    var weekReportsRem = true
+    var appointmentsRem = true
     
     
     func sendMed(item: Medicament){
@@ -296,6 +297,39 @@ class FirebaseViewController: ObservableObject{
         
     }
 
+    func getMedic(idMedic : String) -> Medic {
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        db.collection("medicos").whereField("uid", isEqualTo: idMedic)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let id = value["uid"] as? String ?? "no id"
+                        let name = value["nombres"] as? String ?? "no name"
+                        let matName = value["apellidoMaterno"] as? String ?? "no matName"
+                        let patName = value["apellidoPaterno"] as? String ?? "no patName"
+                        let proflicense = value["cedulaProfesional"] as? String ?? "no proflicense"
+                        let email = value["email"] as? String ?? "no email"
+                        let foto = value["foto"] as? String ?? "no foto"
+                        
+                        DispatchQueue.main.async {
+                            let register =  (id: id, email: email, patName: patName, matName: matName, name: name, foto: foto, proflicense: proflicense)
+                            return register
+                        }
+                        
+                    }
+                }
+            }
+        
+    }
+
     func getMeditionsByDate(startDate : Date){
         var color : Color
 
@@ -431,6 +465,47 @@ class FirebaseViewController: ObservableObject{
         }
         
     }
+
+    func getAppointment(){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        db.collection("consultas").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let date = value["fecha"] as? Date ?? Date()
+                        let currentDate = Date()
+                        if (date >= currentDate && appointments){
+                            let comments = value["comentarios"] as? String ?? ""
+                            let idMedic = value["idMedico"] as? String ?? ""
+                            let medic = self.getMedic(idMedic)
+                            let type = "consulta"
+                            let title = "Consulta con " + medic.name + " " + medic.patName
+                            
+                            DispatchQueue.main.async {
+                                let register =  Remind(date : date, type : type, title : title, description : comments, color : "Color.yellow")
+                                self.reminds.append(register)
+                            
+                            }
+
+                        }
+
+                        
+                        
+                    }
+                }
+            }
+        
+    }
+
+    
 
     //Delete
     func deleteOldRemindByType(type: String, date: String){

@@ -1,3 +1,9 @@
+//
+//  User.swift
+//  Agenda Arterial V2.0
+//
+//  Created by Gabriel Crisostomo on 18/09/22.
+//
 import Foundation
 
 class User : Identifiable {
