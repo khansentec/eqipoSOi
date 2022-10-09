@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct HealthStateView: View {
-    @State var rest = ""
-    @State var feeling = ""
+    @State var symptoms = ""
     @State var comments = ""
-    @State var syptoms = false
-    @State private var speed = 5.0
+    @State var symptomsPresent = false
+    @State var feeling = 5.0
+    @State var healthReportSubmitted = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
     
     var body: some View {
         ZStack{
@@ -22,10 +24,10 @@ struct HealthStateView: View {
                     VStack (alignment: .leading){
                         HStack {
                             Text("Sentimiento del día: ")
-                            Text("\(speed, specifier:"%.1f")")
+                            Text("\(feeling, specifier:"%.1f")")
                         }
                         Slider(
-                            value: $speed,
+                            value: $feeling,
                             in: 0...10,
                             minimumValueLabel: Text("Mal"),
                             maximumValueLabel: Text("Bien")
@@ -37,7 +39,7 @@ struct HealthStateView: View {
                         Text("¿Ha tenido síntomas?")
                             .multilineTextAlignment(.leading)
                         
-                        Picker(selection: $syptoms, label: Text("Picker")) {
+                        Picker(selection: $symptomsPresent, label: Text("Picker")) {
                             Text("Sí").tag(true)
                             Text("No").tag(false)
                         }
@@ -50,9 +52,9 @@ struct HealthStateView: View {
                     VStack (alignment: .leading) {
                         Text("Síntomas nuevas: ")
                         HStack {
-                            TextEditor(text: $feeling)
+                            TextEditor(text: $symptoms)
                                 .frame(maxHeight: 100, alignment: .center)
-                                .disabled(!syptoms)
+                                .disabled(!symptomsPresent)
                         }
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray, lineWidth: 1)).frame(alignment: .center)
@@ -71,7 +73,40 @@ struct HealthStateView: View {
                         
                     }
                     .padding(.all)
-                    
+
+                    VStack{
+                        Button("Enviar") {
+                            
+                            var newWR = HealthReport
+
+                            let processResults = newWR.uploadWR(feeling : feeling, symptomsPresent : symptomsPresent, symptoms : symptoms, comments : comments)
+                            
+                            alertTitle = processResults.1
+                            alertMessage =  processResults.2
+
+                            if processResults.0 {
+                                symptoms = ""
+                                comments = ""
+                                symptomsPresent = false
+                                feeling = 5.0
+                            }
+
+                            healthReportSubmitted = true
+
+                        }
+                        .foregroundColor(Color("ButtonColor"))
+                        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color("ButtonColor"), lineWidth: 1)
+                        .frame(minWidth: 100,minHeight: 40))
+                        .alert(alertTitle, isPresented: $healthReportSubmitted){
+                            
+                            Button("OK"){
+                                //si se oprime quitar el ok
+                            }
+                        } message: {
+                            Text(alertMessage)
+                        }
+                    }.padding()
                     
                     Spacer()
                 }
