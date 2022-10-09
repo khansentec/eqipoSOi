@@ -55,13 +55,13 @@ class HealthReport: Identifiable {
             guard let idUser = Auth.auth().currentUser?.uid else{
                 return (false, alertTitle, "Usuario no encontrado")
             }
-            let info : [String: Any] = ["fecha":self.date, "estadoSalud":self.feeling,  "sintomasPresentes": self.symptomsPresent, "sintomas":self.symptoms, "comentariosAdicionales":self.comments]
+            let info : [String: Any] = ["id": id, "idPaciente": idUser,"fecha":self.date, "estadoSalud":self.feeling,  "sintomasPresentes": self.symptomsPresent, "sintomas":self.symptoms, "comentariosAdicionales":self.comments]
         
             loginShow.saveData(collectionName: "reportesSalud", id: id, info: info){(done)
                 in
                     if done{
                         var nextReportDate = Calendar.current.date(byAdding: DateComponents(day: 7), to: self.date)!
-                        var newRemind = Remind(date: nextReportDate, type: "reporteSalud", title: "Próximo Reporte Salud", description: "Llena tu reporte de salud")
+                        var newRemind = Remind(date: nextReportDate, type: "reporteSalud", title: "Próximo Reporte Salud", description: "Llena tu reporte de salud", color : "Color.green")
                         
                         var remindsUpdated = newRemind.updateRemind()
 

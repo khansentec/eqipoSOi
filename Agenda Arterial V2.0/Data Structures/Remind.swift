@@ -48,7 +48,7 @@ class Remind: Identifiable {
         // Deletes all previous reminds
         do {
             try login.deleteOldRemindByType(self.type, date: self.date = date)
-            print("Success! Yum.")
+            print("Success!")
         } catch {
                 print("Unexpected error: \(error).")
         }

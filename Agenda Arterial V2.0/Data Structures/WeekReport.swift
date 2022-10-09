@@ -111,7 +111,7 @@ class WeekReport {
         var reportIsValid = validationResults.0
         var alertTitle = "¡Oops!"
         var alertMessage = validationResults.1
-        var meditionUploaded = false
+        var weekRUploaded = false
             
         if reportIsValid {
             //método para subir a firebase regresa booleano
@@ -136,24 +136,24 @@ class WeekReport {
                     if medicamentsUpdated && remindsUpdated {
                         alertTitle = "¡Éxito!"
                         alertMessage = "Los datos se han guardado correctamente"
-                        meditionUploaded = true
+                        weekRUploaded = true
 
                     }else {
                         alertTitle = "¡Oops!"
                         alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                        meditionUploaded = false
+                        weekRUploaded = false
                     }
 
                 }else{
                     alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    meditionUploaded = false
+                    weekRUploaded = false
 
                 }
             }
                 
         } 
-        return (meditionUploaded, alertTitle, alertMessage)
+        return (weekRUploaded, alertTitle, alertMessage)
     }
         
         
