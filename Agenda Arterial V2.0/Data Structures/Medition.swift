@@ -15,16 +15,16 @@ class Medition : Identifiable {
     var avgInf : Int
     var avgPulse : Int
     var state : String
-    var color : Color
+    var color : String
     
-    init(id: String?, date: Date?, avgSup : Int?, avgInf : Int?, avgPulse : Int?, state : String?, color: Color?){
+    init(id: String?, date: Date?, avgSup : Int?, avgInf : Int?, avgPulse : Int?, state : String?, color: String?){
         self.id = id ?? ""
         self.date = date ?? Date()
         self.avgSup = avgSup ?? 0
         self.avgInf = avgInf ?? 0
         self.avgPulse = avgPulse ?? 0
         self.state = state ?? "Sin determinar"
-        self.color = color ?? Color.clear
+        self.color = color ?? "Color.clear"
     }
 
     func calculateAvg() {
@@ -171,7 +171,7 @@ class Medition : Identifiable {
             let id = UUID().uuidString
 
             guard let idUser = Auth.auth().currentUser?.uid else{
-                return
+                return (false, alertTitle, "Usuario no encontrado")
             }
 
             let info : [String: Any] = ["id": id,"idPaciente":idUser, "estado":self.state,  "fecha": self.meditionDate, "presionInfPromedio":self.avgInf, "presionSupPromedio":self.avgSup, "pulsoPromedio":self.avgPulse ]

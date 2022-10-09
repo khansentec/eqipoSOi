@@ -20,6 +20,12 @@ class FirebaseViewController: ObservableObject{
     @Published var reminds = [Remind]()
     @Published var remindUpdate : Remind!
     @Published var meditions = [Medition]()
+
+    //config notificaciones
+    meditionsRem = true
+    healthReportsRem = true
+    weekReportsRem = true
+    
     
     func sendMed(item: Medicament){
         medUpdate = item
@@ -90,9 +96,7 @@ class FirebaseViewController: ObservableObject{
     
     //Database
     
-    //Save
-    //
-    
+    //Save Methods
     func saveGD(name: String, ptName: String, mtName: String, phone: String, date: Date, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
         guard let email = Auth.auth().currentUser?.email else{
@@ -215,10 +219,8 @@ class FirebaseViewController: ObservableObject{
         
     }
 
-    func saveData(collectionName: String, id: String, info: [String: Any] , completion: @escaping(_ done: Bool)->Void){
+    func saveData(collectionName: String, id: String, info: [String: Any], completion: @escaping(_ done: Bool)->Void){
         
-        //        let storage = Storage.storage().reference()
-        //Save Text
         let db = Firestore.firestore()
         
         db.collection(collectionName).document(id).setData(info){error in
@@ -230,7 +232,23 @@ class FirebaseViewController: ObservableObject{
                 completion(true)
             }
         }
-        //End Saving Text
+    }
+
+    //Update
+
+    func updateData(collectionName: String, id: String, info: [String: Any], completion: @escaping(_ done: Bool)->Void){
+        
+        let db = Firestore.firestore()
+        db.collection(collectionName).document(id).updateData(info)
+        {error in
+            if let error = error?.localizedDescription{
+                print("Error al actualizar en firestore ", error)
+                completion(false)
+            }else{
+                print("Sucessfully update info")
+                completion(true)
+            }
+        }
     }
     
     //Get 
@@ -286,7 +304,7 @@ class FirebaseViewController: ObservableObject{
         }
 
         let db = Firestore.firestore()
-        db.collection("pacientes").whereField("idPaciente", isEqualTo: idUser).order(by: "fecha")
+        db.collection("pacientes").whereField("idPaciente", isEqualTo: idUser)
             .getDocuments() {
                 
                 (QuerySnapshot, error) in
@@ -306,25 +324,20 @@ class FirebaseViewController: ObservableObject{
                             let state = value["estado"] as? String ?? "no state"
 
                             if state == "mal" {
-                                color = Color.red
+                                color = "Color.red"
                             }else if state == "regular" {
-                                color = Color.yellow
+                                color = "Color.yellow"
                             }else if state == "bien" {
-                                color = Color.green
+                                color = "Color.green"
                             }else{
-                                color = Color.gray
+                                color = "Color.gray"
                             }
 
                             DispatchQueue.main.async {
                                 let register = Medition(id: id, date: date, avgSup : avgSup, avgInf : avgInf, avgPulse : avgPulse, state : state, color: color)
                                 self.meditions.append(register)
                             }
-
-                        }else{
-                            break
-                        }
-                        
-                        
+                          
                     }
                 }
             }
@@ -332,7 +345,6 @@ class FirebaseViewController: ObservableObject{
     }
 
     func getMedicaments(){
-        var color : Color
 
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
@@ -373,7 +385,105 @@ class FirebaseViewController: ObservableObject{
         
     }
 
+    func getReminds(){
+        var color : String
+
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let id = value["id"] as? String ?? "no id"
+                        let type = value["tipo"] as? String ?? "no type"
+
+                        if (type == "medicion" && meditionsRem) || (type == "reporteSalud" && healthReportsRem) || (type == "reporteSemanal" && weekReportsRem){
+                            let title = value["titulo"] as? String ?? "title"
+                            let description = value["descripcion"] as? String ?? "no description"
+                            let date = value["fecha"] as? Date ?? Date()
+
+                            if type == "medicion"{
+                                color = "Color.red"
+                            }else type == "reporteSalud"{
+                                color = "Color.green"
+
+                            }else type == "reporteSemanal"{
+                                color = "Color.blue"
+
+                            }
+
+                            DispatchQueue.main.async {
+                                let register =  Remind(date : date, description : description, type : type, title : title, color : color)
+                                self.reminds.append(register)
+                            
+                            }
+                        }
+                        
+                    }
+                }
+        }
+        
+    }
+
     //Delete
+    func deleteOldRemindByType(type: String, date: String){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let typeNew = value["tipo"] as? String ?? ""
+                        let dateNew = value["fecha"] as? Date ?? Date()
+
+                        if type == typeNew &&  dateNew < date {
+                            let description = value["descripcion"] as? String ?? ""
+                            let title = value["titulo"] as? String ?? ""
+                            DispatchQueue.main.async {
+                                self.deleteData(collectionName: "notificaciones", id: id){(done)
+                                    in
+                                        if done{
+                                            print("Sucessfully delete info")
+                                        }else{
+                                            print("Error al guardar en firestore ", error)
+                                        }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        
+    }
+
+    func deleteData(collectionName: String, id: String, completion: @escaping(_ done: Bool)->Void){
+        let db = Firestore.firestore()
+        db.collection(collectionName).document(id).delete
+        {error in
+            if let error = error?.localizedDescription{
+                print("Error al borrar en firestore ", error)
+                completion(false)
+            }else{
+                print("Sucessfully delete info")
+                completion(true)
+            }
+        }
+    }
 
 
 

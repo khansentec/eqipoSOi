@@ -33,7 +33,7 @@ struct Medicament : Identifiable, Hashable {
 let id = UUID().uuidString
 
 guard let idUser = Auth.auth().currentUser?.uid else{
-    return
+    return (false, alertTitle, "Usuario no encontrado")
 }
 
 let info : [String: Any] = ["id": id,"idPaciente":idUser,"fechaInicio":self.startDate, "fechaDesactivacion":self.finishDate,  "nombreMedicamento": self.medicamentName, "informacion": self.information, "activo": self.active, "vecesOlvidado": self.forgetTimes]

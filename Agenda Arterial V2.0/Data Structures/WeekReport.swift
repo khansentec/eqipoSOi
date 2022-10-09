@@ -93,71 +93,68 @@ class WeekReport {
             for medicament in self.medicaments {
                 print(medicament.forgetTimes)
                 // FALTA IMPLEMENTAR QUE SE BORREN
-                
-//                loginShow.saveMedicament(startDate: medicament.startDate, finishDate: medicament.startDate, nameM: medicament.medicamentName, info: medicament.information,
-//                                         active: true, forgottenTimes: medicament.forgetTimes){(done)
-//                    in
-//                    if done{
-//                        medicamentsUploaded = true
-//                    }else{
-//                        medicamentsUploaded = false
-//                    }
-//                }
+                login.updateData(collectionName: "medicamentos" , id: medicament.id , info: ["vecesOlvidado" : medicament.forgetTimes] ){(done)
+                in
+                    if done{
+                        return true
+                    }
+                    return false
+                }
+
             }
             return medicamentsUploaded
-        }
+    }
         
     func uploadWR() -> (Bool, String, String){
-            let validationResults = self.validateWR()
+        let validationResults = self.validateWR()
             
-            var reportIsValid = validationResults.0
-            var alertTitle = ""
-            var alertMessage = ""
-            var meditionUploaded = false
+        var reportIsValid = validationResults.0
+        var alertTitle = "¡Oops!"
+        var alertMessage = validationResults.1
+        var meditionUploaded = false
             
-            if reportIsValid {
-                //método para subir a firebase regresa booleano
-//                loginShow.saveWR(date: self.reportDate, followDiet: self.followDiet, saltConsumption: self.saltConsumption,
-//                                 beveragesIntake: self.beveragesIntake, numBeverages: self.numBeverages,
-//                                 physicalActivity: self.physicalActivity, numPhysicalActivity: self.numPhysicalActivity,
-//                                 sleepHours: self.sleepHours, followMedicalPresciption: self.followMedicalPresciption,
-//                                 nextReportDate: self.nextReportDate){(done)
-//                    in
-//                    if done{
-//
-//                        var newRemind = Remind(date: self.nextReportDate, type: "reporteSemanal", title: "Próximo Reporte Semanal", description: "Llena tu reporte semanal")
-//
-//                        var remindsUpdated = newRemind.updateRemind()
-//
-//                        var medicamentsUpdated = self.updateMedicaments()
-//
-//                        if medicamentsUpdated && remindsUpdated {
-//                            alertTitle = "¡Éxito!"
-//                            alertMessage = "Los datos se han guardado correctamente"
-//                            meditionUploaded = true
-//
-//                        }else {
-//                            alertTitle = "¡Oops!"
-//                            alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-//                            meditionUploaded = false
-//                        }
-//
-//                    }else{
-//                        alertTitle = "¡Oops!"
-//                        alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-//                        meditionUploaded = false
-//
-//                    }
-//                }
-                
-            } else {
-                alertTitle = "¡Oops!"
-                alertMessage = validationResults.1
-                reportIsValid = false
-                
+        if reportIsValid {
+            //método para subir a firebase regresa booleano
+            let id = UUID().uuidString
+        
+            guard let idUser = Auth.auth().currentUser?.uid else{
+                return (false, alertTitle, "Usuario no encontrado")
             }
-            return (meditionUploaded, alertTitle, alertMessage)
-        }
+            
+            let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha": self.reportDate, "seguimientoDieta": self.followDiet,  "consumoSal": self.saltConsumption, "consumoRefrescos": self.beveragesIntake, "cantidadRefrescos": self.numBeverages, "actividadFisica": self.physicalActivity, "numActividadFisica": self.numPhysicalActivity, "horasDescanso": self.sleepHours, "seguimientoReceta": self.followMedicalPresciption, "fechaSigReporte": self.nextReportDate]
+            
+            loginShow.saveData(collectionName: "reportesSemanales", id: id, info: info){(done)
+                in
+                if done{
+
+                    var newRemind = Remind(date: self.nextReportDate, type: "reporteSemanal", title: "Próximo Reporte Semanal", description: "Llena tu reporte semanal", color : "Color.blue")
+                    
+                    var remindsUpdated = newRemind.updateRemind()
+
+                    var medicamentsUpdated = self.updateMedicaments()
+
+                    if medicamentsUpdated && remindsUpdated {
+                        alertTitle = "¡Éxito!"
+                        alertMessage = "Los datos se han guardado correctamente"
+                        meditionUploaded = true
+
+                    }else {
+                        alertTitle = "¡Oops!"
+                        alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                        meditionUploaded = false
+                    }
+
+                }else{
+                    alertTitle = "¡Oops!"
+                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                    meditionUploaded = false
+
+                }
+            }
+                
+        } 
+        return (meditionUploaded, alertTitle, alertMessage)
+    }
         
         
 }
