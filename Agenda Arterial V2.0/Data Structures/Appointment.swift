@@ -109,10 +109,7 @@ class Appointment: Identifiable {
                     alertMessage = "Los datos se han guardado correctamente"
                     appUploaded = true
                 }else{
-                    alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    appUploaded = false
-
                 }
             }
                 

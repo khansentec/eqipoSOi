@@ -155,7 +155,7 @@ class Medition : Identifiable {
                     presionSupStr2: String, presionInfStr2: String, pulso2: Int,
                     presionSupStr3: String, presionInfStr3: String, pulso3: Int) {
         
-        var meditionUploaded = false
+        
         // Tuple containing validation status, alert message, and new medition object
         let validationResults = self.validateMedition(presionSupStr1: presionSupStr1, presionInfStr1: presionInfStr1, pulso1: pulso1,
                                                     presionSupStr2: presionSupStr2, presionInfStr2: presionInfStr2, pulso2: pulso2,
@@ -163,6 +163,7 @@ class Medition : Identifiable {
         let meditionIsValid = validationResults.0
         var alertTitle = "¡Oops!"
         var alertMessage = validationResults.1
+        var meditionUploaded = false
 
         if meditionIsValid {
             self.prepareToUpload(date: Date)
@@ -179,14 +180,24 @@ class Medition : Identifiable {
             loginShow.saveData(collectionName: "mediciones", id: id, info: info){(done)
             in
                 if done{
-                    alertTitle = "¡Éxito!"
-                    alertMessage = "Los datos se han guardado correctamente"
-                    meditionUploaded = true
+                    var deletRemind = false
+                    do {
+                        try login.deleteOldRemindByType(type: "medicion", date: self.meditionDate)
+                        deletRemind = true
+                    } catch {
+                        print("Unexpected error: \(error).")
+                        deletRemind = false
+                    }
+                    if deletRemind {
+                        alertTitle = "¡Éxito!"
+                        alertMessage = "Los datos se han guardado correctamente"
+                        meditionUploaded = true
+                    }else{
+                        alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                    }
+                    
                 }else{
-                    alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    meditionUploaded = false
-
                 }
             }
 

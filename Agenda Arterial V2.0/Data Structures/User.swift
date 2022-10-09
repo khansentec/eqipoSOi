@@ -96,10 +96,7 @@ class User : Identifiable {
                     userUploaded = true
                     
                 }else{
-                    alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    userUploaded = false
-                    
                 }
             }
         }

@@ -116,10 +116,7 @@ class Pacient {
                     infoUploaded = true
                     
                 }else{
-                    alertTitle = "¡Oops!"
-                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    infoUploaded = false
-                    
+                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"                   
                 }
             }
         }

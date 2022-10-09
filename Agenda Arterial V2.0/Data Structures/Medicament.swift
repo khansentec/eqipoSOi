@@ -57,10 +57,7 @@ struct Medicament : Identifiable, Hashable {
                     alertMessage = "Los datos se han guardado correctamente"
                     medUploaded = true
                 }else{
-                    alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    medUploaded = false
-
                 }
             }
                 

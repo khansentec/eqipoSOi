@@ -50,7 +50,7 @@ class Remind: Identifiable {
             try login.deleteOldRemindByType(self.type, date: self.date = date)
             print("Success!")
         } catch {
-                print("Unexpected error: \(error).")
+            print("Unexpected error: \(error).")
         }
         let done = self.uploadRemind()
         if done{

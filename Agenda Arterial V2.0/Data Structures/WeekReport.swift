@@ -139,16 +139,11 @@ class WeekReport {
                         weekRUploaded = true
 
                     }else {
-                        alertTitle = "¡Oops!"
                         alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                        weekRUploaded = false
                     }
 
                 }else{
-                    alertTitle = "¡Oops!"
                     alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                    weekRUploaded = false
-
                 }
             }
                 

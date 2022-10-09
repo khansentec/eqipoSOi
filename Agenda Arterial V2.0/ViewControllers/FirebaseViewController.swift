@@ -36,6 +36,7 @@ class FirebaseViewController: ObservableObject{
         remindUpdate = item
     }
 
+
     func login( email: String, pass: String, completion: @escaping( _ done: Bool) -> Void)  {
         Auth.auth().signIn(withEmail: email, password: pass){
             (user, error) in
@@ -525,7 +526,7 @@ class FirebaseViewController: ObservableObject{
                         let typeNew = value["tipo"] as? String ?? ""
                         let dateNew = value["fecha"] as? Date ?? Date()
 
-                        if type == typeNew &&  dateNew < date {
+                        if type == typeNew &&  (dateNew < date || isSameDay(date1: date, date2: dateNew))  {
                             let description = value["descripcion"] as? String ?? ""
                             let title = value["titulo"] as? String ?? ""
                             DispatchQueue.main.async {
@@ -557,6 +558,23 @@ class FirebaseViewController: ObservableObject{
                 print("Sucessfully delete info")
                 completion(true)
             }
+        }
+    }
+
+    func isSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+
+        let day1 = calendar.component(.day, from: date1)
+        let month1 = calendar.component(.month, from: date1)
+        let year1 = calendar.component(.year, from: date1)
+        let day2 = calendar.component(.day, from: date2)
+        let month2 = calendar.component(.month, from: date2)
+        let year2 = calendar.component(.year, from: date2)
+
+        if day1 == day2 && month1 == month2 && year1 == year2 {
+            return true
+        } else {
+            return false
         }
     }
 

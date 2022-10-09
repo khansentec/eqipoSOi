@@ -43,7 +43,7 @@ class HealthReport: Identifiable {
         let validationResults = self.validateHR()
 
         var reportIsValid = validationResults.0
-        var alertTitle = ""
+        var alertTitle = "¡Oops!"
         var alertMessage = validationResults.1
         var healthRUploaded = false
 
@@ -71,17 +71,12 @@ class HealthReport: Identifiable {
                             healthRUploaded = true
 
                         }else {
-                            alertTitle = "¡Oops!"
                             alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                            healthRUploaded = false
                         }
                                     
                     }else{
-                        alertTitle = "¡Oops!"
                         alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-                        healthRUploaded = false
-
-                }
+                    }
             }
 
         }
