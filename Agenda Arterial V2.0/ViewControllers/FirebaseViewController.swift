@@ -20,6 +20,7 @@ class FirebaseViewController: ObservableObject{
     @Published var reminds = [Remind]()
     @Published var remindUpdate : Remind!
     @Published var meditions = [Medition]()
+    @Published var medicsInfo = [Medic]()
 
     //config notificaciones
     var meditionsRem = true
@@ -298,7 +299,7 @@ class FirebaseViewController: ObservableObject{
         
     }
 
-    func getMedic(idMedic : String) -> Medic {
+    func getMedicById(idMedic : String) -> Medic {
         let db = Firestore.firestore()
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
@@ -486,7 +487,7 @@ class FirebaseViewController: ObservableObject{
                         if (date >= currentDate && appointments){
                             let comments = value["comentarios"] as? String ?? ""
                             let idMedic = value["idMedico"] as? String ?? ""
-                            let medic = self.getMedic(idMedic)
+                            let medic = self.getMedicById(idMedic)
                             let type = "consulta"
                             let title = "Consulta con " + medic.name + " " + medic.patName
                             
@@ -504,6 +505,13 @@ class FirebaseViewController: ObservableObject{
                 }
             }
         
+    }
+
+    func getMedicsInfo() {
+        for idMedic in data.associatedMedic {
+            let newMedic = getMedicById(idMedic : idMedic) 
+            medicsInfo.append(newMedic)
+        }
     }
 
     
