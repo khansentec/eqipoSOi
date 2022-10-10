@@ -1,14 +1,13 @@
 //
 //  LinkYourMedicView.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 21/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct LinkYourMedicView: View {
-    
     @State var listMedics = [Medic]()
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
@@ -20,6 +19,7 @@ struct LinkYourMedicView: View {
     var body: some View {
         ZStack{
             VStack{
+<<<<<<< HEAD
                 if showNavbar{
                     NavBarViews()
                 }
@@ -27,6 +27,11 @@ struct LinkYourMedicView: View {
                     
                     VStack{
                         List() {
+=======
+                VStack{
+                    NavigationView{
+                        List(){
+>>>>>>> ofront
                             ForEach(listMedics, id : \.self){
                                 medic in
                                 MedicView(medic: medic)
@@ -50,6 +55,7 @@ struct LinkYourMedicView: View {
                             .foregroundColor(Color("ButtonColor"))
                             .frame(minWidth: 150, minHeight: 40))
                         
+<<<<<<< HEAD
                         .sheet(isPresented: $linkMedic){
                             AddMedicView()
                         }
@@ -57,8 +63,22 @@ struct LinkYourMedicView: View {
                     .navigationBarTitle("Médicos vinculados", displayMode: .inline)
                     .padding(.bottom, 100)
                 }
+=======
+                    }.navigationViewStyle(StackNavigationViewStyle())
+                    Button(action:{
+                        linkMedic.toggle()
+                    }){
+                        Text("Vincular").font(.system(size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
+                    }.sheet(isPresented: $linkMedic){
+                        AddMedicView()
+                    }.background(RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(Color("ButtonColor"))
+                        .frame(minWidth: 150, minHeight: 40))
+                    
+                    
+                }.padding(.bottom, widthMenu == 375 ? 20 : 30)
+>>>>>>> ofront
             }
         }
     }
 }
-

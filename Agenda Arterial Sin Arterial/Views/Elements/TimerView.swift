@@ -1,40 +1,40 @@
 //
 //  TimerView.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 19/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
 
 struct TimerView: View {
-    @State var tiempoRestante = 0
+    @State var missingTime = 0
     @Binding var timerTime : Int
     @State var timerIsPaused = true
     @State var timer: Timer? = nil
     
     @Environment(\.presentationMode) var presentationMode
     
-    func convertirSegundosATiempo(tiempoRestanteSegundos : Int) -> String{
-        let minutos = tiempoRestanteSegundos / 60
-        let segundos = tiempoRestanteSegundos % 60
-        return String(format:"%02i:%02i",minutos,segundos)
+    func secToTime(missingTimeInSeconds : Int) -> String{
+        let minutes = missingTimeInSeconds / 60
+        let seconds = missingTimeInSeconds % 60
+        return String(format:"%02i:%02i",minutes,seconds)
     }
     
     
-    func empiezaTemporizador(){
+    func startTimer(){
         timerIsPaused = false
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-            tiempoRestante -= 1
-            if tiempoRestante < 0{
+            missingTime -= 1
+            if missingTime < 0{
                 timerIsPaused = true
                 timer?.invalidate()
-                tiempoRestante = timerTime
+                missingTime = timerTime
             }
         }
     }
     
-    func pausaTemporizador(){
+    func pauseTimer(){
         timerIsPaused = true
         timer?.invalidate()
         timer = nil
@@ -45,12 +45,12 @@ struct TimerView: View {
             Circle().fill(.cyan).frame(width: 250, height: 250, alignment: .center)
             
             VStack {
-                Text(convertirSegundosATiempo(tiempoRestanteSegundos: tiempoRestante)).font(.system(size: 50))
+                Text(secToTime(missingTimeInSeconds: missingTime)).font(.system(size: 50))
                 
                 if timerIsPaused {
                     HStack(spacing : 50){
                         Button(action:{
-                            empiezaTemporizador()
+                            startTimer()
                             print("START")
                         }){
                             Image(systemName: "play.fill").resizable().frame(width: 35, height: 40, alignment: .center)
@@ -59,7 +59,7 @@ struct TimerView: View {
                 } else {
                     Button(action:{
                         print("STOP")
-                        pausaTemporizador()
+                        pauseTimer()
                     }){
                         Image(systemName: "stop.fill").resizable().frame(width: 40, height: 40, alignment: .center)
                     }
@@ -68,7 +68,7 @@ struct TimerView: View {
             }.foregroundColor(.white)
             
         }.zIndex(2).onAppear{
-            tiempoRestante = timerTime
+            missingTime = timerTime
         }
         Button(action:{
             presentationMode.wrappedValue.dismiss()

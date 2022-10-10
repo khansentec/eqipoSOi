@@ -1,8 +1,8 @@
 //
 //  NavbarLogin.swift
-//  Agenda Arterial V1
+//  Agenda Arterial V2.0
 //
-//  Created by Gabriel Crisostomo on 21/09/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
 
 import SwiftUI
@@ -20,9 +20,23 @@ struct NavbarLogin: View {
         HStack{
             
             if device == .pad{
+<<<<<<< HEAD:Agenda Arterial Sin Arterial/Views/Elements/NavBarElements/NavbarLogin.swift
                 
             }
             else{
+=======
+                Button(action: {
+                    withAnimation{
+                        loginShow.show = whereTo
+                    }
+                }){
+                    Image(systemName: "arrow.left")
+                        .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.white)
+                        .foregroundColor(.white)
+                    Text(title).foregroundColor(.white).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+                }
+            }else{
+>>>>>>> ofront:Agenda Arterial Sin Arterial/Views/Elements/NavbarLogin.swift
                 
                 Button(action: {
                     loginShow.show = whereTo
@@ -38,3 +52,4 @@ struct NavbarLogin: View {
         
     }
 }
+
