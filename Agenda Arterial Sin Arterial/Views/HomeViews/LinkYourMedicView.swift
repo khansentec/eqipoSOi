@@ -37,6 +37,11 @@ struct LinkYourMedicView: View {
                         
                     }.navigationViewStyle(StackNavigationViewStyle())
                     Button(action:{
+                        
+                    }){
+                        Image(systemName: "arrow.clockwise").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.black)
+                    }
+                    Button(action:{
                         linkMedic.toggle()
                     }){
                         Text("Vincular").font(.system(size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)

@@ -39,12 +39,27 @@ struct MedicamentsView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
                         ForEach(medicamentosList,id: \.self){ medicament in
-                            MedicamentView(medicament: medicament).onTapGesture {
-                                data.sendMed(item: medicament)
-                                editing.toggle()
+                            HStack{
+                                MedicamentView(medicament: medicament).onTapGesture {
+                                    editing.toggle()
+                                }
+                                Button(action: {
+                                   
+                                }, label: {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                        .padding(.trailing, 5)
+                                        .frame(width : 5)
+                                    Text("Eliminar")
+                                        .foregroundColor(.red)
+                                        .padding(.top, 3.5)
+                                    
+                                })
+
+                                
                             }
-                        }.onDelete(perform: deleteItems).sheet(isPresented: $editing, content: {
-                            MedicamentDetailsView(startDate: data.medUpdate.startDate, medicament: data.medUpdate, info: data.medUpdate.information, showNabar: $showNavbar)
+                        }.sheet(isPresented: $editing, content: {
+                            MedicamentDetailsView(startDate: Date.now, info: "data.medUpdate.informatio", showNabar: $showNavbar)
                         }).padding(.all)
                     }.background(Color.clear)
                         .padding(.bottom,100)

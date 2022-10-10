@@ -22,18 +22,7 @@ struct MedicamentView: View {
                         .lineLimit(1)
                         
                 }
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .padding(.trailing, 5)
-                        .frame(width : 5)
-                    Text("Eliminar")
-                        .foregroundColor(.red)
-                        .padding(.top, 3.5)
-                    
-                })
+               
             }
             .padding(.vertical,10).border(.black)
         }

@@ -10,7 +10,7 @@ import SwiftUI
 struct MedicamentDetailsView: View {
     @State var editing = false
     @State var startDate : Date
-    @State var medicament : Medicament
+    @State var medicament : Medicament?
     @State var info : String
     
     @Binding var showNabar : Bool
@@ -41,7 +41,7 @@ struct MedicamentDetailsView: View {
             }.padding(.trailing,60).padding(.top,0)
             
             VStack(alignment : .leading, spacing : 20){
-                Text(medicament.medicamentName)
+                Text("medicament.medicamentName")
                     .font(.system(.title))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Divider().frame(width : 250)
