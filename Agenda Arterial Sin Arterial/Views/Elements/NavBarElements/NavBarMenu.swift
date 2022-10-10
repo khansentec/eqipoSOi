@@ -21,16 +21,14 @@ struct NavBarMenu: View {
             VStack (alignment: .leading){
                 HStack {
                     Button(action: {
-                        withAnimation{
-                            menu.toggle()
-                        }
+                        menu.toggle()
                     }){
                         HStack (alignment: .top){
                             Image(systemName: "arrow.left")
                                 .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
                                 .foregroundColor(.white)
                                 .padding(3)
-                            Text("Menu Principal")
+                            Text(index)
                                 .foregroundColor(Color("ButtonColor"))
                                 .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
                         }
@@ -41,7 +39,7 @@ struct NavBarMenu: View {
                 .padding()
                 .padding(.top, 50)
                 
-                VStack(alignment: .leading, spacing: 10){
+                VStack(alignment: .leading, spacing: 20){
                     ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house", title: "Menu Principal")
                         .padding(.leading,widthMenu == 375 ? 18 : 24)
                     ButtonNavbar(index: $index, menu: $menu,whereto: "GDV", img: "person.crop.circle", title: "Datos Generales")
@@ -50,9 +48,9 @@ struct NavBarMenu: View {
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
                     ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "gearshape.fill", title: "Configuración")
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
-                                        
+                    
                     Spacer()
-                   
+                    
                     Button(action: {
                         loginShow.show = "Login"
                     }){

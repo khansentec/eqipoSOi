@@ -170,52 +170,12 @@ struct GeneralDataView: View {
                 
             }
             .onTapGesture {
-                withAnimation{
-                    menu = false
-                }
+                menu = false
                 hideKeyboard()
             }
-
             
             if menu{
-                HStack{
-                    VStack{
-                        HStack{
-                            Button(action: {
-                                withAnimation{
-                                    menu.toggle()
-                                }
-                            }){
-                                Image(systemName: "arrow.left")
-                                    .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
-                                    .foregroundColor(.white)
-                                Text("Datos Generales").foregroundColor(Color("ButtonColor")).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
-                            }
-                            Spacer()
-                        }.padding()
-                            .padding(.top, 50)
-                        VStack(alignment: .leading){
-                            ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "gearshape.fill", title: "Configuración").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
-                            ButtonNavbar(index: $index, menu: $menu,whereto: "", img: "person.crop.circle", title: "Datos Generales").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
-                            ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes").padding(.bottom,10).padding(.leading,widthMenu == 375 ? 15 : 21)
-                            ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal").padding(.leading,widthMenu == 375 ? 25 : 32)
-                            Spacer()
-                            Button(action: {
-                                loginShow.show = "Login"
-                            }){
-                                Text("Sign Out")
-                                    .font(.title)
-                                    .foregroundColor(Color("ButtonColor"))
-                            }
-                            .padding(.all)
-                            .padding(.leading, 30)
-                            .padding(.bottom, 20)
-                        }
-                        Spacer()
-                    }
-                    .frame(width: widthMenu-200).background(Color("BlueBBVA"))
-                }
-                
+                NavBarMenu(index: "Datos Generales", menu: false)
             }
         }
         .onTapGesture {
