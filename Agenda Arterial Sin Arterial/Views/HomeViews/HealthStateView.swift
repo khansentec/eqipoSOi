@@ -18,7 +18,8 @@ struct HealthStateView: View {
         ZStack{
             VStack{
                 Text("Estado de Salud").font(.title)
-                VStack (alignment: .leading) {
+                
+                VStack {
                     VStack (alignment: .leading){
                         HStack {
                             Text("Sentimiento del día: ")
@@ -63,7 +64,7 @@ struct HealthStateView: View {
                         Text("Otros comentarios: ")
                         HStack{
                             TextEditor(text: $comments)
-                                .frame(maxHeight: 240, alignment: .center)
+                                .frame(maxHeight: 150, alignment: .center)
                             
                         }
                         .overlay(RoundedRectangle(cornerRadius: 10)
@@ -75,10 +76,10 @@ struct HealthStateView: View {
                     Button("Enviar") {
                         
                     }
-                        .foregroundColor(.white)
-                        .background(RoundedRectangle(cornerRadius: 5)
-                        .foregroundColor(Color("ButtonColor"))
-                        .frame(minWidth: 100,minHeight: 40))
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(Color("ButtonColor"))
+                    .frame(minWidth: 100,minHeight: 40))
                     
                     Spacer()
                 }

@@ -195,10 +195,11 @@ struct WeekReportView: View {
                             }
 
                         }
-                        .foregroundColor(Color("ButtonColor"))
+                        .foregroundColor(.white)
                         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color("ButtonColor"), lineWidth: 1)
+                        .foregroundColor(Color("ButtonColor"))
                         .frame(minWidth: 100,minHeight: 40))
+                        
                         .alert(alertTitle, isPresented: $weekReportSubmitted){
                             
                             Button("OK"){
