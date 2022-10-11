@@ -287,11 +287,11 @@ struct CapturesView: View {
                                 }else {
                                     Text("Debe ingresar datos en Captura 1")
                                 }
-                            }.foregroundColor(.white)
-                                .background(RoundedRectangle(cornerRadius: 5)
-                                    .foregroundColor(Color("ButtonColor"))
-                                    .frame(minWidth: 100,minHeight: 40))
-                            
+                            }
+                            .foregroundColor(.white)
+                            .background(RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(Color("ButtonColor"))
+                            .frame(minWidth: 100,minHeight: 40))
                         }
                         
                     }.padding(.all).padding(.bottom, 50)

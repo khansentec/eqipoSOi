@@ -57,7 +57,6 @@ struct Login: View {
                 }
                 Button(action: {
                     progress = true
-                    
                     loginShow.show = "Home"
                     
                 }){

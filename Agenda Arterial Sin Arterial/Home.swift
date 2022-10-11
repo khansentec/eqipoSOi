@@ -35,7 +35,8 @@ struct Home: View {
     
     var body: some View {
         ZStack(alignment: .leading){
-            VStack{
+            VStack {
+                
                 NavBarHome(menu: $menu, index: $index)
                 
                 ZStack{

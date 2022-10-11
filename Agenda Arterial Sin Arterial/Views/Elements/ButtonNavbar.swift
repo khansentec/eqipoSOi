@@ -35,8 +35,6 @@ struct ButtonNavbar: View {
                 loginShow.showApp = "Home"
                 loginShow.show = whereto
                 
-                printTitle(title: title)
-
             }
         }){
             Image(systemName: img)

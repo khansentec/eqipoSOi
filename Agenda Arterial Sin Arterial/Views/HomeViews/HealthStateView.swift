@@ -72,6 +72,13 @@ struct HealthStateView: View {
                     }
                     .padding(.all)
                     
+                    Button("Enviar") {
+                        
+                    }
+                        .foregroundColor(.white)
+                        .background(RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(Color("ButtonColor"))
+                        .frame(minWidth: 100,minHeight: 40))
                     
                     Spacer()
                 }

@@ -19,14 +19,21 @@ struct NavBarHome: View {
     
     var body: some View {
         
-        HStack{
+        HStack {
             
             if device == .pad{
                 Spacer()
-                Text("Agenda Arterial")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
+                
+                Button(action: {
+                    loginShow.showApp = "Home"
+                    loginShow.show = "Home"
+                }) {
+                    Text("Agenda Arterial")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                
                 ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house" , title: "Menu Principal")
                 ButtonNavbar(index: $index, menu: $menu,whereto: "SettingsView", img: "gearshape.fill", title: "Configuración").frame(width: 155)
                 ButtonNavbar(index: $index, menu: $menu,whereto: "GeneralDataView", img: "person.crop.circle", title: "Datos Generales")
@@ -39,8 +46,7 @@ struct NavBarHome: View {
                         .foregroundColor(.white)
                 }.padding(.all)
                 Spacer()
-            }else{
-                
+            } else {
                 Button(action: {
                     withAnimation{
                         menu.toggle()
@@ -49,13 +55,19 @@ struct NavBarHome: View {
                     Image(systemName: "line.horizontal.3").font(.system(size: 26))
                         .foregroundColor(.white)
                 }
-            
-            Spacer().frame(minWidth: 10, maxWidth: 20)
-            Text("Agenda Arterial")
-                .font(.title)
-                .bold()
-                .foregroundColor(.white)
-                .font(.system(size: device == .phone ? 25 : 35))
+                
+                Spacer().frame(minWidth: 10, maxWidth: 20)
+                
+                Button(action: {
+                    loginShow.showApp = "Home"
+                    loginShow.show = "Home"
+                }) {
+                    Text("Agenda Arterial")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.white)
+                        .font(.system(size: device == .phone ? 25 : 35))
+                }
                 Spacer()
             }
             
