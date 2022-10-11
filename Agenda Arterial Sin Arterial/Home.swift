@@ -69,7 +69,7 @@ struct Home: View {
                 }
             }
             if menu{
-                 NavBarMenu(index: index, menu: menu)
+                 NavBarMenu(index: $index, menu: $menu)
             }
             
         }

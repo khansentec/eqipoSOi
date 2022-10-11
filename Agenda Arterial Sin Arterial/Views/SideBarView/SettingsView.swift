@@ -69,8 +69,8 @@ struct SettingsView: View {
                 }
                 hideKeyboard()
             }
-            if menu{
-                NavBarMenu(index: index, menu: menu)
+            if menu {
+                NavBarMenu(index: $index, menu: $menu)
             }
         }
     }

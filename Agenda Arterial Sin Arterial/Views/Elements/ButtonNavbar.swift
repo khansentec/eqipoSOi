@@ -27,6 +27,7 @@ struct ButtonNavbar: View {
         Button(action:{
             withAnimation{
                 index = title
+                
                 if device == .phone{
                     menu.toggle()
                 }
