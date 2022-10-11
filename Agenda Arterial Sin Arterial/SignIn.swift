@@ -21,11 +21,13 @@ struct SignIn: View {
     @State private var selectedSex: sex = .nonseleceted
     @State private var date = Date()
     @State private var number = 0
-    @StateObject var login = FirebaseViewController()
-    @EnvironmentObject var loginShow : FirebaseViewController
+    
     @State private var showError = false
     @State private var errorMessage = ""
     @State private var progress = false
+    
+    @StateObject var login = FirebaseViewController()
+    @EnvironmentObject var loginShow : FirebaseViewController
     
     var body: some View {
         

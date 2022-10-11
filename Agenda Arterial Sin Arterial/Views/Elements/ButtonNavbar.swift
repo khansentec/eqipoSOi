@@ -39,7 +39,8 @@ struct ButtonNavbar: View {
 
             }
         }){
-            Image(systemName: img).foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color.blue.opacity(0.6) : device == .pad ? Color.white : Color.blue.opacity(0.6))
+            Image(systemName: img)
+                .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color.blue.opacity(0.6) : device == .pad ? Color.white : Color.blue.opacity(0.6))
             Text(title)
                 .multilineTextAlignment(.leading)
                 .font(.system(size: device == .pad ? 16 : widthMenu == 375 ? 18 : 20))

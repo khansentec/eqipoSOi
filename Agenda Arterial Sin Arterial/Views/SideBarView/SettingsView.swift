@@ -54,10 +54,12 @@ struct SettingsView: View {
                 
                 VStack(alignment: .trailing){
                     Button(action: { presentCredits.toggle() }) {
-                        Text("Créditos")
-                            .foregroundColor(Color("ButtonColor"))
-                            .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
-                            .underline()
+                        HStack {
+                            Text("Créditos")
+                                .foregroundColor(Color("ButtonColor"))
+                                .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
+                                .underline()
+                        }
                     }
                 }
                 .popover(isPresented: $presentCredits, content: { CreditsView() })
