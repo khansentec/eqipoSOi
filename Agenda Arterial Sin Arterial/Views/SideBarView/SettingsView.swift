@@ -20,6 +20,7 @@ struct SettingsView: View {
     @State var notReporteSemanal = true
     @State var notReporteSalud = true
     
+    @State private var presentCredits = false
     
     var body: some View {
         ZStack(alignment: .leading){
@@ -51,6 +52,16 @@ struct SettingsView: View {
                 }
                 Spacer()
                 
+                VStack(alignment: .trailing){
+                    Button(action: { presentCredits.toggle() }) {
+                        Text("Créditos")
+                            .foregroundColor(Color("ButtonColor"))
+                            .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
+                            .underline()
+                    }
+                }
+                .popover(isPresented: $presentCredits, content: { CreditsView() })
+                .padding(.bottom, 100)
             }
             .onTapGesture {
                 withAnimation{

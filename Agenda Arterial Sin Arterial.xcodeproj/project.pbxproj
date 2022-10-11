@@ -44,6 +44,7 @@
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
 		C20400A028F6070F00E29E08 /* NavBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204009F28F6070E00E29E08 /* NavBarMenu.swift */; };
+		C20400A228F6113D00E29E08 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20400A128F6113D00E29E08 /* CreditsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C204009F28F6070E00E29E08 /* NavBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarMenu.swift; sourceTree = "<group>"; };
+		C20400A128F6113D00E29E08 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				C00DF2D928F0862C008C7D45 /* SettingsView.swift */,
 				C00DF2DA28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift */,
+				C20400A128F6113D00E29E08 /* CreditsView.swift */,
 				C00DF2DB28F0862C008C7D45 /* GeneralDataView.swift */,
 			);
 			path = SideBarView;
@@ -317,6 +320,7 @@
 				C00DF2EE28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift in Sources */,
 				C00DF2F128F0862C008C7D45 /* ReminderView.swift in Sources */,
 				C00DF31728F08776008C7D45 /* SignIn.swift in Sources */,
+				C20400A228F6113D00E29E08 /* CreditsView.swift in Sources */,
 				C00DF2EF28F0862C008C7D45 /* GeneralDataView.swift in Sources */,
 				C00DF30528F086D8008C7D45 /* ButtonNavbar.swift in Sources */,
 			);
