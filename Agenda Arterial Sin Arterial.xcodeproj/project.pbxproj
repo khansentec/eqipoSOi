@@ -43,6 +43,7 @@
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
+		C20400A028F6070F00E29E08 /* NavBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204009F28F6070E00E29E08 /* NavBarMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		C065D69D28E0D2A900AC046F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C204009F28F6070E00E29E08 /* NavBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				C00DF2FE28F086D8008C7D45 /* MedicamentDetailsView.swift */,
 				C00DF2F828F086D8008C7D45 /* MedicamentView.swift */,
 				C00DF2FA28F086D8008C7D45 /* MedicView.swift */,
+				C204009F28F6070E00E29E08 /* NavBarMenu.swift */,
 				C00DF2F928F086D8008C7D45 /* NavBarHome.swift */,
 				C00DF2FF28F086D8008C7D45 /* NavbarLogin.swift */,
 				C00DF2F628F086CD008C7D45 /* TimerView.swift */,
@@ -307,6 +310,7 @@
 				C00DF30D28F08731008C7D45 /* CapturesView.swift in Sources */,
 				C00DF2ED28F0862C008C7D45 /* SettingsView.swift in Sources */,
 				C00DF31528F08776008C7D45 /* Home.swift in Sources */,
+				C20400A028F6070F00E29E08 /* NavBarMenu.swift in Sources */,
 				C00DF2F028F0862C008C7D45 /* ReminderDetailsView.swift in Sources */,
 				C00DF2E728F0862C008C7D45 /* Medition.swift in Sources */,
 				C065D69C28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift in Sources */,
