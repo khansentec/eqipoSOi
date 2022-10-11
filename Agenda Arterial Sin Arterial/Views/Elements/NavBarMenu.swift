@@ -41,13 +41,13 @@ struct NavBarMenu: View {
                 .padding(.top, 50)
                 
                 VStack(alignment: .leading, spacing: 20){
-                    ButtonNavbar(index: $index, menu: $menu,whereto: "Home", img: "house", title: "Menu Principal")
-                        .padding(.leading,widthMenu == 375 ? 18 : 24)
-                    ButtonNavbar(index: $index, menu: $menu,whereto: "GeneralDataView", img: "person.crop.circle", title: "Datos Generales")
+                    ButtonNavbar(index: $index, menu: $menu, whereto: "Home", img: "house", title: "Menu Principal")
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
-                    ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes")
+                    ButtonNavbar(index: $index, menu: $menu, whereto: "GeneralDataView", img: "person.crop.circle", title: "Datos Generales")
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
-                    ButtonNavbar(index: $index, menu: $menu,whereto: "SettingsView", img: "gearshape.fill", title: "Configuración")
+                    ButtonNavbar(index: $index, menu: $menu, whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes")
+                        .padding(.leading,widthMenu == 375 ? 15 : 21)
+                    ButtonNavbar(index: $index, menu: $menu, whereto: "SettingsView", img: "gearshape.fill", title: "Configuración")
                         .padding(.leading,widthMenu == 375 ? 15 : 21)
                     
                     Spacer()
@@ -60,6 +60,7 @@ struct NavBarMenu: View {
                     .padding(30)
                 }
                 .multilineTextAlignment(.leading)
+                .padding(.trailing, 20)
                 
                 Spacer()
                 
