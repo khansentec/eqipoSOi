@@ -56,7 +56,7 @@ struct HealthStateView: View {
                                 .disabled(!syptoms)
                         }
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)).frame(alignment: .center)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)).frame(alignment: .center)
                     }
                     .scenePadding()
                     
@@ -68,7 +68,7 @@ struct HealthStateView: View {
                             
                         }
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)).frame(alignment: .center)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 1)).frame(alignment: .center)
                         
                     }
                     .padding(.all)

@@ -55,7 +55,7 @@ struct MedicamentDetailsView: View {
                         .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading)
                     
                 }.overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(editing ? Color.gray : Color.clear, lineWidth: 1))
+                    .stroke(editing ? Color.gray.opacity(0.2) : Color.clear, lineWidth: 1))
                     .disabled(!editing)
                 
             }.padding(.leading, 60)

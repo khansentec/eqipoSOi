@@ -170,7 +170,7 @@ struct WeekReportView: View {
                     VStack{
                         Button("Enviar") {
                             
-                            var newWR = WeekReport(followDiet : followDiet, saltConsumption : saltConsumption,
+                            let newWR = WeekReport(followDiet : followDiet, saltConsumption : saltConsumption,
                                                     beveragesIntake : beveragesIntake, numBeverages : numBeverages,
                                                     physicalActivity : physicalActivity, numPhysicalActivity : numPhysicalActivity,
                                                     sleepHours : sleepHours, followMedicalPresciption : followMedicalPresciption,
