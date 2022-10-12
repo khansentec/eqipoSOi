@@ -39,12 +39,12 @@ struct ButtonNavbar: View {
         }) {
             HStack (alignment: .top) {
                 Image(systemName: img)
-                    .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color.blue.opacity(0.6) : device == .pad ? Color.white : Color.blue.opacity(0.6))
+                    .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6) : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6))
                 Text(title)
                     .multilineTextAlignment(.leading)
                     .font(.system(size: device == .pad ? 16 : widthMenu == 375 ? 18 : 20))
                     .fontWeight(loginShow.showApp == "Home" ? index == title ? .bold : .none : .none)
-                    .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color.blue.opacity(0.6) : device == .pad ? Color.white : Color.blue.opacity(0.6))
+                    .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6) : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6))
             }
         }
     }

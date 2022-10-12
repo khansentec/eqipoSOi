@@ -30,11 +30,11 @@ struct MedicamentDetailsView: View {
                     }
                 }, label: {
                     Image(systemName: editing ? "square.and.arrow.down": "square.and.pencil")
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("ButtonColor"))
                         .padding(.trailing, 5)
                         .frame(width : 5)
                     Text(editing ? "Guadar" : "Editar")
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("ButtonColor"))
                         .padding(.top, 3.5)
                     
                 })

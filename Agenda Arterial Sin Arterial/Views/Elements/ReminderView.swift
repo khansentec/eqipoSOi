@@ -1,46 +1,66 @@
 //
-//  ReminderView.swift
+//  MedicamentView.swift
 //  Agenda Arterial V2.0
 //
-//  Created by Katie Hansen on 10/2/22.
+//  Created by Gabriel Crisostomo on 30/09/22.
 //
+
 import SwiftUI
 
 struct ReminderView: View {
     
-    @State var reminder : Remind
+    @State private var screenWidth = UIScreen.main.bounds.width
+    
+    var reminder : Remind
     
     var body: some View {
-        HStack{
-            VStack(alignment:.leading, spacing : 5){
-                Text(reminder.date)
-                    .fontWeight(.bold)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
-                
-                ForEach(reminder.events, id: \.self) {
-                    evento in
-                    HStack {
-                        Text(evento)
-                            .padding(.leading, 20)
-                            .lineLimit(1)
+        VStack (alignment: .leading){
+            HStack (spacing: 5) {
+                VStack(alignment:.leading, spacing : 5){
+                    Text(reminder.date)
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
+                    
+                    ForEach(reminder.events, id: \.self) {
+                        evento in
+                        HStack {
+                            Text(evento)
+                                .padding(.leading, 20)
+                                .lineLimit(1)
+                        }
                     }
                 }
+                
+                Spacer()
+                
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .padding(.trailing, 5)
+                        .frame(width : 5)
+                    Text("Eliminar")
+                        .foregroundColor(.red)
+                        .padding(.top, 3.5)
+                })
             }
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-                    .padding(.trailing, 5)
-                    .frame(width : 5)
-                Text("Eliminar")
-                    .foregroundColor(.red)
-                    .padding(.top, 3.5)
-                
-            })
+            .frame(minWidth: screenWidth-100, minHeight: 70)
+            .padding(10)
+            
+            Spacer()
         }
-        
-        .padding(.bottom, 100).border(.black)
+        .aspectRatio(contentMode: .fit)
+        .fixedSize(horizontal: true, vertical: false)
+        .frame(minWidth: screenWidth-50, minHeight: 70)
+        .overlay(RoundedRectangle(cornerRadius: 20).fill(Color.gray.opacity(0.2)).shadow(radius: 3))
     }
 }
+
+
+
+
+
+
+

@@ -44,7 +44,7 @@ struct NavbarLogin: View {
                 }
             }
             Spacer()
-        }.padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color.blue)
+        }.padding(.top, widthMenu == 375 ? 20 : 40).padding().background(Color("ButtonColor"))
         
     }
 }

@@ -190,9 +190,9 @@
  }
  }){
  Image(systemName: "arrow.left")
- .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(.blue)
+ .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold)).foregroundColor(Color("ButtonColor"))
  .foregroundColor(.white)
- Text("Datos Generales").foregroundColor(.blue).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
+ Text("Datos Generales").foregroundColor(Color("ButtonColor")).font(.system(size:  widthMenu == 375 ? 12 : 13, weight: .bold))
  }
  Spacer()
  }.padding()
@@ -207,7 +207,7 @@
  
  loginShow.show = "Login"
  }){
- Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
+ Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(Color("ButtonColor"))
  }.padding(.all).padding(.leading, 30).padding(.bottom, 20)
  }
  Spacer()

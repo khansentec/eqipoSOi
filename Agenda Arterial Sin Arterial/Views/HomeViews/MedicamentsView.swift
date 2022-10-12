@@ -34,41 +34,36 @@ struct MedicamentsView: View {
     var body: some View {
         
         ZStack(alignment: .bottomTrailing){
+            
             VStack{
+                
                 Text("Medicamentos").font(.title)
+                
                 ScrollView(.vertical, showsIndicators: false){
+                    
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
+                        
                         ForEach(medicamentosList,id: \.self){ medicament in
-                            HStack{
-                                MedicamentView(medicament: medicament).onTapGesture {
-                                    editing.toggle()
-                                }
-                                Button(action: {
-                                   
-                                }, label: {
-                                    Image(systemName: "trash")
-                                        .foregroundColor(.red)
-                                        .padding(.trailing, 5)
-                                        .frame(width : 5)
-                                    Text("Eliminar")
-                                        .foregroundColor(.red)
-                                        .padding(.top, 3.5)
-                                    
-                                })
-
-                                
-                            }
-                        }.sheet(isPresented: $editing, content: {
-                            MedicamentDetailsView(startDate: Date.now, info: "data.medUpdate.informatio", showNabar: $showNavbar)
-                        }).padding(.all)
-                    }.background(Color.clear)
-                        .padding(.bottom,100)
-                        .overlay(Group{
-                            if medicamentosList.isEmpty{
-                                Text("No hay medicamentos")
+                            
+                            HStack {
+                                MedicamentView(medicament: medicament)
+                                    .onTapGesture { editing.toggle() }
                             }
                             
+                        }
+                        .sheet(isPresented: $editing, content: {
+                            MedicamentDetailsView(startDate: Date.now, info: "data.medUpdate.informatio", showNabar: $showNavbar)
                         })
+                        .padding(.all)
+                    }
+                    .background(Color.clear)
+                    .padding(.bottom,100)
+                    .overlay(Group{
+                        if medicamentosList.isEmpty{
+                            Text("No hay medicamentos")
+                        }
+                        
+                    })
                 }
             }
             Button(action: {
@@ -78,22 +73,21 @@ struct MedicamentsView: View {
                 self.dosis = ""
                 self.addMedicament.toggle()
                 
-                
             }){
                 Image(systemName: "plus").font(.system(size: 40, weight: .heavy))
                     .foregroundColor(.white).padding(.bottom,40).padding(.trailing,40).frame(width: 100, height: 100)
-            }.background{
-                Circle().fill(Color.blue).padding(.bottom,40).padding(.trailing,40)
-            }.opacity(showNavbar ? 1 : 0).sheet(isPresented: $addMedicament){
+            }
+            .background{
+                Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
+            }
+            .opacity(showNavbar ? 1 : 0).sheet(isPresented: $addMedicament){
                 
                 AddMedicamentView(medsList: $medicamentosList, addMedicament: $addMedicament)
+                
             }
             
-        }.onAppear{
-            showNavbar = true
         }
-        
+        .onAppear{ showNavbar = true }
     }
-    
 }
 

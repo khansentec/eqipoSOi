@@ -59,7 +59,7 @@ struct CapturesView: View {
                                         Text("Sí").tag(true)
                                         Text("No").tag(false)
                                     }.frame(width : 80, height: 10)
-                                        .accentColor(.blue)
+                                        .accentColor(Color("ButtonColor"))
                                         .padding(.top,-5)
                                 }
                                 
@@ -91,7 +91,7 @@ struct CapturesView: View {
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color("ButtonColor"))
                                     }.sheet(isPresented: $timerShow, content: {
                                         TimerView(timerTime: $timerTime)
                                     })
@@ -133,7 +133,7 @@ struct CapturesView: View {
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color("ButtonColor"))
                                     }.sheet(isPresented: $timerShow, content: {
                                         TimerView(timerTime: $timerTime)
                                     })
@@ -174,7 +174,7 @@ struct CapturesView: View {
                                     }) {
                                         Image(systemName: "clock")
                                             .imageScale(.large)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color("ButtonColor"))
                                     }.sheet(isPresented: $timerShow, content: {
                                         TimerView(timerTime: $timerTime)
                                     })
@@ -198,7 +198,7 @@ struct CapturesView: View {
                                 .padding(.bottom,20)
                             
                             DatePicker("", selection: $dateCapture)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("ButtonColor"))
                                 .padding(.bottom,20)
                                 .padding(.trailing,70)
                                 .padding(.leading,0)

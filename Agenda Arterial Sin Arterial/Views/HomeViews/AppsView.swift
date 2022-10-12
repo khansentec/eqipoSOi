@@ -58,7 +58,7 @@ struct AppsView: View {
                         }
                     }){
                         VStack{
-                            Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(.blue)
+                            Image(systemName: "pills.fill").resizable().frame(width: 60, height: 50).padding(.trailing,10).foregroundColor(Color("ButtonColor"))
                             Text("Tus Medicamentos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                         }
                     }.fixedSize(horizontal: false, vertical: true)

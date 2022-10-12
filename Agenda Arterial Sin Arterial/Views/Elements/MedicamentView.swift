@@ -8,22 +8,48 @@
 import SwiftUI
 
 struct MedicamentView: View {
+    
+    @State private var screenWidth = UIScreen.main.bounds.width
+    
     var medicament : Medicament
-        
-        var body: some View{
-            HStack{
-                VStack(alignment:.leading, spacing : 5){
+    
+    var body: some View {
+        VStack (alignment: .leading){
+            HStack {
+                VStack(alignment:.leading, spacing: 5) {
                     Text(medicament.medicamentName)
                         .fontWeight(.bold)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.9).foregroundColor(.blue)
+                        .minimumScaleFactor(0.9)
+                        .foregroundColor(Color("ButtonColor"))
                     Text(medicament.information)
-                        .padding(.leading,20)
                         .lineLimit(1)
-                        
                 }
-               
+                
+                Spacer(minLength: 10)
+                
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .padding(.trailing, 5)
+                        .frame(width : 5)
+                    Text("Eliminar")
+                        .foregroundColor(.red)
+                        .padding(.top, 3.5)
+                })
+                
             }
-            .padding(.vertical,10).border(.black)
+            .frame(minWidth: screenWidth-100, minHeight: 70)
+            .padding(10)
+            
+            Spacer()
         }
+        .aspectRatio(contentMode: .fit)
+        .fixedSize(horizontal: true, vertical: false)
+        .frame(minWidth: screenWidth-50, minHeight: 70)
+        .overlay(RoundedRectangle(cornerRadius: 20).fill(Color.gray.opacity(0.2)).shadow(radius: 3))
+        
+    }
 }
