@@ -81,7 +81,7 @@ struct SignIn: View {
                             DatePicker("",selection: $date,displayedComponents: [.date])
                         }
                         HStack{
-                            Text("Numero de Celular").fontWeight(.bold)
+                            Text("Teléfono").fontWeight(.bold)
                             TextField("Numero",value: $number,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                             
                         }.padding(.bottom, 20)
