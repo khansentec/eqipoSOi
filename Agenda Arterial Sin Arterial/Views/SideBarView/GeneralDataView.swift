@@ -423,6 +423,9 @@ struct GeneralDataView: View {
                 }
                 .padding(30)
             }
+            if menu{
+                NavBarMenu(index: $index, menu: $menu)
+            }
         }
         .onTapGesture {
             withAnimation{
@@ -430,10 +433,9 @@ struct GeneralDataView: View {
             }
             hideKeyboard()
         }
-        if menu{
-            NavBarMenu(index: $index, menu: $menu)
-        }
+        
     }
+    
     
 }
 

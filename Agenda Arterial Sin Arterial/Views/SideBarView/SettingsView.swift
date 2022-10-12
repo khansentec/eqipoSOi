@@ -65,15 +65,17 @@ struct SettingsView: View {
                 .popover(isPresented: $presentCredits, content: { CreditsView() })
                 .padding(.bottom, 100)
             }
-            .onTapGesture {
-                withAnimation{
-                    menu = false
-                }
-                hideKeyboard()
-            }
+            
             if menu {
                 NavBarMenu(index: $index, menu: $menu)
             }
+            
+        }
+        .onTapGesture {
+            withAnimation{
+                menu = false
+            }
+            hideKeyboard()
         }
     }
 }

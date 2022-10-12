@@ -22,9 +22,9 @@ struct FrecuentlyAskedQuestions: View {
                         menu = false
                     }
                 }
-                Text("Preguntas Frecuentes").bold().font(.title)
-                VStack (alignment: .leading) {
-                    
+                VStack (alignment: .center) {
+                    Text("Preguntas Frecuentes").bold().font(.title)
+
                     ForEach(questionList, id: \.self) {
                         pregunta in
                         VStack (alignment: .leading, spacing: 10){
@@ -38,15 +38,18 @@ struct FrecuentlyAskedQuestions: View {
                     
                     Spacer()
                 }
-            }.onTapGesture {
-                withAnimation{
-                    menu = false
-                }
-                
+                .padding(30)
             }
+            
             if menu {
                 NavBarMenu(index: $index, menu: $menu)
             }
+        }
+        .onTapGesture {
+            withAnimation{
+                menu = false
+            }
+            hideKeyboard()
         }
     }
 }
