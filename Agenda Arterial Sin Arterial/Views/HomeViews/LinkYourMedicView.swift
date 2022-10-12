@@ -18,19 +18,19 @@ struct LinkYourMedicView: View {
             VStack {
                 VStack {
                     
-                    Text("Médicos Vinculados").font(.title)
+                    HStack (alignment: .center) {
+                        Text("Médicos Vinculados").font(.title)
+                        Button(action:{
+                            
+                        }){
+                            Image(systemName: "arrow.clockwise").aspectRatio(contentMode: .fill).foregroundColor(.black)
+                        }
+                    }
+                    .padding(.trailing, 50)
                     
                     NavigationView {
                         VStack {
-                            HStack {
-                                Spacer()
-                                Button(action:{
-                                    
-                                }){
-                                    Image(systemName: "arrow.clockwise").aspectRatio(contentMode: .fill).foregroundColor(.black)
-                                }
-                            }
-                            .padding(.trailing, 50)
+                            
                             
                             List(){
                                 ForEach(listMedics, id : \.self){

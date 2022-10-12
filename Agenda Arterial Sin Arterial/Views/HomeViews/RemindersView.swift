@@ -15,8 +15,9 @@ struct RemindersView: View {
     var body: some View {
         ZStack (alignment: .bottomTrailing) {
             VStack {
-                Text("Recordatorios").font(.title)
                 ScrollView(.vertical, showsIndicators: false){
+                    Text("Recordatorios").font(.title)
+
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
                         ForEach(remindersList, id : \.id){ reminder in
                             ReminderView(reminder: reminder).onTapGesture {
@@ -38,7 +39,23 @@ struct RemindersView: View {
                     })
                 
             }
-            
+            Button(action: {
+                
+                
+            }){
+                Image(systemName: "plus").font(.system(size: 40, weight: .heavy))
+                    .foregroundColor(.white).padding(.bottom,40).padding(.trailing,40).frame(width: 100, height: 100)
+            }
+            .background{
+                Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
+            }
+            /*
+            sheet(isPresented: $addMedicament){
+                
+                AddMedicamentView(medsList: $medicamentosList, addMedicament: $addMedicament)
+                
+            }
+            */
         }
     }
 }
