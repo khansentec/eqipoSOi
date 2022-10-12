@@ -57,13 +57,13 @@ struct MedicamentsView: View {
                         .padding(.all)
                     }
                     .background(Color.clear)
-                    .padding(.bottom,100)
-                    .overlay(Group{
-                        if medicamentosList.isEmpty{
-                            Text("No hay medicamentos")
-                        }
-                        
-                    })
+                        .padding(.bottom,100)
+                        .overlay(Group{
+                            if medicamentosList.isEmpty{
+                                Text("No hay medicamentos")
+                            }
+                            
+                        })
                 }
             }
             Button(action: {
@@ -89,5 +89,6 @@ struct MedicamentsView: View {
         }
         .onAppear{ showNavbar = true }
     }
+    
 }
 

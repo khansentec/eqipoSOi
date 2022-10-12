@@ -34,17 +34,6 @@ struct ReminderView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .padding(.trailing, 5)
-                        .frame(width : 5)
-                    Text("Eliminar")
-                        .foregroundColor(.red)
-                        .padding(.top, 3.5)
-                })
             }
             .frame(minWidth: screenWidth-100, minHeight: 70)
             .padding(10)

@@ -14,45 +14,56 @@ struct LinkYourMedicView: View {
     @State var linkMedic = false
     @State private var widthMenu = UIScreen.main.bounds.width
     var body: some View {
-        ZStack{
-            VStack{
-                VStack{
-                    NavigationView{
-                        List(){
-                            ForEach(listMedics, id : \.self){
-                                medic in
-                                MedicView(medic: medic)
-                                
-                            }.onDelete(perform: { idxSet in
-                                listMedics.remove(atOffsets: idxSet)
-                            })
-                            
-                            
-                        }.padding(.all).background(Color.clear).padding(.bottom,10).overlay(Group{
-                            if listMedics.isEmpty{
-                                Text("No hay Medicos Vinculados")
+        ZStack {
+            VStack {
+                VStack {
+                    
+                    Text("Médicos Vinculados").font(.title)
+                    
+                    NavigationView {
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Button(action:{
+                                    
+                                }){
+                                    Image(systemName: "arrow.clockwise").aspectRatio(contentMode: .fill).foregroundColor(.black)
+                                }
                             }
-                        })
-                        
-                        
-                    }.navigationViewStyle(StackNavigationViewStyle())
-                    Button(action:{
-                        
-                    }){
-                        Image(systemName: "arrow.clockwise").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.black)
+                            .padding(.trailing, 50)
+                            
+                            List(){
+                                ForEach(listMedics, id : \.self){
+                                    medic in
+                                    MedicView(medic: medic)
+                                    
+                                }.onDelete(perform: { idxSet in
+                                    listMedics.remove(atOffsets: idxSet)
+                                })
+                            }
+                            .padding(.all)
+                            .background(Color.clear)
+                            .overlay(Group{
+                                if listMedics.isEmpty{
+                                    Text("No hay médicos vinculados.")
+                                }
+                            })
+                        }
                     }
-                    Button(action:{
+                    .navigationViewStyle(StackNavigationViewStyle())
+                    
+                    Button("Vincular") {
                         linkMedic.toggle()
-                    }){
-                        Text("Vincular").font(.system(size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
-                    }.sheet(isPresented: $linkMedic){
+                    }
+                    .sheet(isPresented: $linkMedic){
                         AddMedicView()
-                    }.background(RoundedRectangle(cornerRadius: 5)
-                        .foregroundColor(Color("ButtonColor"))
-                        .frame(minWidth: 150, minHeight: 40))
-                    
-                    
-                }.padding(.bottom, widthMenu == 375 ? 20 : 30)
+                    }
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(Color("ButtonColor"))
+                    .frame(minWidth: 100,minHeight: 40))
+                }
+                .padding(.bottom, widthMenu == 375 ? 20 : 30)
             }
         }
     }

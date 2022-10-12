@@ -28,18 +28,6 @@ struct MedicamentView: View {
                 
                 Spacer(minLength: 10)
                 
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .padding(.trailing, 5)
-                        .frame(width : 5)
-                    Text("Eliminar")
-                        .foregroundColor(.red)
-                        .padding(.top, 3.5)
-                })
-                
             }
             .frame(minWidth: screenWidth-100, minHeight: 70)
             .padding(10)
@@ -50,6 +38,5 @@ struct MedicamentView: View {
         .fixedSize(horizontal: true, vertical: false)
         .frame(minWidth: screenWidth-50, minHeight: 70)
         .overlay(RoundedRectangle(cornerRadius: 20).fill(Color.gray.opacity(0.2)).shadow(radius: 3))
-        
     }
 }
