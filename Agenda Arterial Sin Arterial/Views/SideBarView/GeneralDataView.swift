@@ -378,8 +378,8 @@ struct GeneralDataView: View {
                     }
                     
                     HStack {
-                        Text("Circuferencia Abdominal")
-                        TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("Circunferencia Abdominal")
+                        TextField("Circunferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     HStack {
                         Text("Tipo de Sangre")

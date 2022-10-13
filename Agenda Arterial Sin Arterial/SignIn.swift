@@ -81,7 +81,7 @@ struct SignIn: View {
                             DatePicker("",selection: $date,displayedComponents: [.date])
                         }
                         HStack{
-                            Text("Numero de Celular").fontWeight(.bold)
+                            Text("Teléfono").fontWeight(.bold)
                             TextField("Numero",value: $number,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                             
                         }.padding(.bottom, 20)
@@ -101,11 +101,16 @@ struct SignIn: View {
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                     }.background(
                         Capsule().fill(Color("ButtonColor"))
-                    ).alert(errorMessage, isPresented: $showError) {
-                        Button("OK", role: .cancel) {
+                    ).alert("FALTA TITULO ALERTA", isPresented:$showErrorr){
+                    
+                        Button("OK", role: .cancel){
                             progress = false
                         }
+                    } message: {
+                        Text(errorMessage)
                     }
+                    
+                    
                     if progress{
                         Text("Please Wait One Moment...").foregroundColor(.black)
                         ProgressView()
