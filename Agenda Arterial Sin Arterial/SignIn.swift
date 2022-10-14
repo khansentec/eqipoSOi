@@ -101,7 +101,8 @@ struct SignIn: View {
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                     }.background(
                         Capsule().fill(Color("ButtonColor"))
-                    ).alert("FALTA TITULO ALERTA", isPresented:$showErrorr){
+                    )
+                    .alert("FALTA TITULO ALERTA", isPresented:$showError){
                     
                         Button("OK", role: .cancel){
                             progress = false
