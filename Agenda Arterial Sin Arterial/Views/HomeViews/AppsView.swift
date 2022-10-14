@@ -27,10 +27,10 @@ struct AppsView: View {
         Remind(date: "29/2/19", events: ["Proxima medicion","Proxima toma de presion"])
     ]
     
-    let ejemploMedicos = [
-        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
-        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
-    ]
+    let ejemploMedicos = [Medic
+//        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
+//        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
+    ]()
     var body: some View {
         if device == .pad{
             ScrollView{

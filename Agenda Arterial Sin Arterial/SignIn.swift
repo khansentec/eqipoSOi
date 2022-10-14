@@ -14,20 +14,26 @@ struct SignIn: View {
     @State var email: String = ""
     @State var pass: String = ""
     @State var confPassword: String = ""
+    @State var number = ""
+    
     enum sex: String, CaseIterable, Identifiable {
-        case nonseleceted, male, female, rathernot
+        case nonseleceted, Masculino, Femenino, rathernot
         var id: Self { self }
     }
-    @State private var selectedSex: sex = .nonseleceted
-    @State private var date = Date()
-    @State private var number = 0
     
-    @State private var showError = false
-    @State private var errorMessage = ""
-    @State private var progress = false
+    @State private var selectedSex: sex = .nonseleceted
+    
+    @State private var date = Date()
     
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
+    
+    @State var userSubmitted = false
+    @State var complete = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
+    
+    @State private var progress = false
     
     var body: some View {
         
@@ -69,8 +75,8 @@ struct SignIn: View {
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
                                 Text("Selecione una opcion").tag(sex.nonseleceted)
-                                Text("Hombre").tag(sex.male)
-                                Text("Mujer").tag(sex.female)
+                                Text("Hombre").tag("Masculino")
+                                Text("Mujer").tag("Femenino")
                                 Text("Prefiero no decir").tag(sex.rathernot)
                             }.frame(width : 200, height: 20)
                                 .accentColor(Color("ButtonColor"))
@@ -89,26 +95,59 @@ struct SignIn: View {
                     }
                     Button(action: {
                         progress = true
-                        if pass == confPassword{
-                            
-                            loginShow.show = "Home"
-                            
-                        }else{
-                            showError = true
-                            errorMessage = "Contraseñas no coinciden"
+                        let newUser = User(email: email, pass: pass, confPass: confPassword, name: name, ptName: patName, mtName: matName, bDate: date, phone: number, sex: selectedSex.rawValue)
+                        
+                        let processResults = newUser.uploadUser()
+                        
+                        alertTitle = processResults.1
+                        alertMessage =  processResults.2
+                        
+                        userSubmitted = !processResults.0
+                        
+                        if processResults.0{
+                            login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
+                                (done, errorM) in
+                                if done{
+                                    alertTitle = "¡Éxito!"
+                                    alertMessage = "La cuenta se ha creado correctamente"
+                                    userSubmitted = true
+                                    complete = true
+                                }else{
+                                    progress = false
+                                    print(errorM)
+                                    let t = type(of: errorM)
+                                    print(t)
+                                    alertMessage = errorM
+                                    userSubmitted = true
+                                }
+                            }
+                        }
+                        
+                        if processResults.0 {
+                            name = ""
+                            patName = ""
+                            matName = ""
+                            email = ""
+                            pass = ""
+                            confPassword = ""
+                            number = ""
+                            selectedSex = .nonseleceted
                         }
                     }){
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                     }.background(
                         Capsule().fill(Color("ButtonColor"))
                     )
-                    .alert("FALTA TITULO ALERTA", isPresented:$showError){
-                    
-                        Button("OK", role: .cancel){
+                    .alert(alertTitle, isPresented: $userSubmitted) {
+                        Button("OK", role: .cancel) {
                             progress = false
+                            if complete{
+                                loginShow.show = "Home"
+                            }
+                            
                         }
                     } message: {
-                        Text(errorMessage)
+                        Text(alertMessage)
                     }
                     
                     

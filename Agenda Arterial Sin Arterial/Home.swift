@@ -29,9 +29,10 @@ struct Home: View {
     ]
     
     let ejemploMedicos = [
-        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
-        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
-    ]
+        Medic
+//        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
+//        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
+    ]()
     
     var body: some View {
         ZStack(alignment: .leading){

@@ -32,14 +32,16 @@ struct ContentView: View {
             case "FrecuentlyAskedQuestionsView":
                 FrecuentlyAskedQuestions(questionList: ejemplosPreguntas).edgesIgnoringSafeArea(.all)
             case "GeneralDataView":
-                GeneralDataView(data: $login.data).edgesIgnoringSafeArea(.all)
+                Home()
+                // GeneralDataView(data: $login.data).edgesIgnoringSafeArea(.all)
             case "SettingsView":
                 SettingsView().edgesIgnoringSafeArea(.all)
             default:
                 Login().edgesIgnoringSafeArea(.all)
             }
             
-        }.onAppear(){
+        }
+        .onAppear(){
             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                 loginShow.show = "Home"            }
         }
