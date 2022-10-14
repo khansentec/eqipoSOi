@@ -57,11 +57,9 @@ struct AddAppointment: View {
             
             HStack{
                 Button("Enviar") {
-                    print(selectedMedic)
                     let id = UUID().uuidString
                     let appoinment = Appointment(id: id, date: date, idMedic: selectedMedic, comments: comments)
                     let upload = appoinment.uploadAppointment()
-                    print(upload)
                     if upload.0{
                         self.addAppointment.toggle()
                     }else{
@@ -69,9 +67,6 @@ struct AddAppointment: View {
                         alertTitle = upload.1
                         alertMessage = upload.2
                     }
-                    
-                    
-                    
                     
                     
                 }.alert(alertTitle, isPresented: $error){

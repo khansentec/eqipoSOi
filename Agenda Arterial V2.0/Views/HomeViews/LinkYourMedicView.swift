@@ -51,8 +51,6 @@ struct LinkYourMedicView: View {
                         linkCode = login.generateLinkCode(){
                             (done) in
                             if done{
-                                
-                                print(linkCode)
                                 linkMedic = true
                             }else{
                                 print("Error firebase")

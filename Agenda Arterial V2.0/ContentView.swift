@@ -27,55 +27,24 @@ struct ContentView: View {
             case "Home":
                 Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).onAppear{
                     if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
                         login.getMedicaments()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
                     }
                 }
                 
             case "Login":
                 Login().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             case "SignIn":
-                SignIn().edgesIgnoringSafeArea(.all).onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
-                    }
-                }
+                SignIn().edgesIgnoringSafeArea(.all)
             case "FrecuentlyAskedQuestionsView":
-                FrecuentlyAskedQuestions(questionList: ejemplosPreguntas).edgesIgnoringSafeArea(.all).onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
-                    }
-                }
+                FrecuentlyAskedQuestions(questionList: ejemplosPreguntas).edgesIgnoringSafeArea(.all)
+                
             case "GeneralDataView":
-                GeneralDataView(data: $login.data).edgesIgnoringSafeArea(.all).onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
-                    }
-                }
+                GeneralDataView().edgesIgnoringSafeArea(.all)
+                
             case "SettingsView":
-                SettingsView().edgesIgnoringSafeArea(.all).onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
-                    }
-                }
+                SettingsView().edgesIgnoringSafeArea(.all)
             default:
-                Login().edgesIgnoringSafeArea(.all).onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                        loginShow.getPacient()
-                        print("Login: \(loginShow.data.name)")
-                    }
-                }
+                Login().edgesIgnoringSafeArea(.all)
             }
             
             

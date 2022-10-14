@@ -30,18 +30,14 @@ class Medition{
         var avgPulse = 0
         
         for capture in captures {
-            print("Capture: \(capture.presion)")
             avgSup += Int(capture.presion.0)!
-            print("Avgsup: \(avgSup)")
             
             avgInf += Int(capture.presion.1)!
-            print("Infsup: \(avgInf)")
             
             if capture.pulse != 0 {
                 avgPulse += capture.pulse
                 numPulse += 1
             }
-            print("AvgPuls: \(avgPulse)")
         }
         
         self.avgSup = avgSup / captures.count
@@ -66,34 +62,7 @@ class Medition{
         }
     }
     
-    func updatePatientStatus()-> (Bool, String, String){
-        var statusPatient = "Sin determinar"
-        if self.state == "mal"{
-            statusPatient = "alerta"
-        }else if self.state == "regular"{
-            statusPatient = "preocupacion"
-        }else if self.state == "bien"{
-            statusPatient = "correcto"
-        }
-        
-        var alertTitle = "¡Oops!"
-        var alertMessage = "Los datos se han guardado correctamente"
-        var statusUpdated = true
-        
-        
-        self.save.saveStatus(statusPatient: statusPatient){(done)
-            in
-            if done{
-                alertTitle = "¡Éxito!"
-                alertMessage = "Los datos se han guardado correctamente"
-            }else{
-                alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-            }
-        }
-        
-        return (statusUpdated, alertTitle, alertMessage)
-    }
-    
+   
     func validateMedition () -> (Bool, String, String){
         var capturesToUpload = [Capture]()
         for capture in captures {
@@ -137,9 +106,6 @@ class Medition{
                 }
             }
             
-            if self.save.isSameDay(date1: date, date2: Date()){
-                self.updatePatientStatus()
-            }
             
             return (meditionUploaded, alertTitle, alertMessage)
         }

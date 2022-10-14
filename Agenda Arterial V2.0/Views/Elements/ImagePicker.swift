@@ -36,7 +36,6 @@ struct ImagePicker: UIViewControllerRepresentable{
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            print("It cancels")
             self.conection.show.toggle()
         }
         

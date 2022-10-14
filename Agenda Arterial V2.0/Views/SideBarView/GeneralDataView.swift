@@ -13,28 +13,20 @@ struct GeneralDataView: View {
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var heightMenu = UIScreen.main.bounds.height
-    @EnvironmentObject var loginShow : FirebaseViewController
-    
+    @State private var editingPhoto = false
     @State private var imageData : Data = .init(capacity: 0)
     @State private var showMenu = false
     @State private var imagePicker = false
     @State private var source : UIImagePickerController.SourceType = .camera
+    @State private var photourl = ""
     
-    enum bloodT: String, CaseIterable, Identifiable {
-        case nonseleceted, oP, oN, aP, aN, bP, bN, abP, abN
-        var id: Self { self }
-    }
-    @State private var bloodType: bloodT = .nonseleceted
+    @State private var bloodType = "non selected"
     
-    enum sex: String, CaseIterable, Identifiable {
-        case nonseleceted, male, female, rathernot
-        var id: Self { self }
-    }
-    @State private var selectedSex: sex = .nonseleceted
-    
+    @State private var selectedSex = "non selected"
+    @EnvironmentObject var loginShow : FirebaseViewController
     @StateObject var save = FirebaseViewController()
     
-    @Binding var data : Pacient!
+    @State private var dataL : Pacient?
     
     @State private var progress = false
     
@@ -57,13 +49,15 @@ struct GeneralDataView: View {
             Button(action: {
                 
                 progress = true
-                save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex.rawValue, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType.rawValue, photo: imageData, urlPhoto: data.photo){
+                save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto){
                     (done)in
-                    if done {
+                    if done{
                         progress = false
+                        print("Succesfully upload info")
+                    }else{
+                        print("ERROR Uploading info")
                     }
                 }
-                
                 
             }){
                 Text("Guardar").foregroundColor(.white).font(.system(size: 25, weight: .bold))
@@ -82,7 +76,6 @@ struct GeneralDataView: View {
                 .alert(alertTitle, isPresented: $infoSubmitted) {
                     Button("OK", role: .cancel) {
                         progress = false
-                        Text(alertMessage)
                     }
                 }
             
@@ -95,11 +88,14 @@ struct GeneralDataView: View {
                 Text("Datos Generales").bold().font(.title)
                 ScrollView{
                     if imageData.count != 0{
-                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
+                        
+                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle()).onAppear{
+                            editingPhoto = true
+                        }
                     }else{
                         
-                        if loginShow.data.photo != ""{
-                            ImageFirebase(imageUrl: loginShow.data.photo)
+                        if photourl != ""{
+                            ImageFirebase(imageUrl: photourl)
                         }else{
                             Image(systemName: "person.circle").resizable().aspectRatio(contentMode: .fit).frame(width: 125, height: 125).clipShape(Circle())
                         }
@@ -138,24 +134,20 @@ struct GeneralDataView: View {
                             HStack{
                                 Text("Nombre")
                                 TextField("Nombre", text: $name).textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .disableAutocorrection(true).onAppear{
-                                        name = data.name
-                                    }
+                                    .disableAutocorrection(true)
                             }
                             HStack{
                                 Text("Apellido Paterno")
                                 TextField("Apellido Paterno", text: $lastNameP).textFieldStyle(RoundedBorderTextFieldStyle())
                                     .disableAutocorrection(true).onAppear{
-                                        lastNameP = data.patName
+                                        //                                        lastNameP = save.data.patName
                                     }
                                 
                             }
                             HStack{
                                 Text("Apellido Materno")
                                 TextField("Apellido Materno", text: $lastNameM).textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .disableAutocorrection(true).onAppear{
-                                        lastNameM = data.matName
-                                    }
+                                    .disableAutocorrection(true)
                                 
                             }
                             
@@ -163,107 +155,60 @@ struct GeneralDataView: View {
                         HStack{
                             Text("Teléfono")
                             TextField("Teléfono", text: $phoneNumber).textFieldStyle(RoundedBorderTextFieldStyle())
-                                .disableAutocorrection(true).onAppear{
-                                    phoneNumber = data.phoneNumber
-                                }
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
-                                Text("Selecione una opcion").tag(sex.nonseleceted)
-                                Text("Masculino").tag(sex.male)
-                                Text("Femenino").tag(sex.female)
-                                Text("Prefiero no decir").tag(sex.rathernot)
+                                Text("Selecione una opcion").tag("non selected")
+                                Text("Masculino").tag("Masculino")
+                                Text("Femenino").tag("Femenino")
+                                Text("Prefiero no decir").tag("rathernot")
                             }.frame(width : 200, height: 20)
                                 .accentColor(Color("ButtonColor"))
-                                .onAppear{
-                                    switch data.sex {
-                                    case "Selecione una opcion" :
-                                        selectedSex = sex.nonseleceted
-                                    case "Masculino" :
-                                        selectedSex = sex.male
-                                    case "Femenino" :
-                                        selectedSex = sex.female
-                                    case "Prefiero no decir":
-                                        selectedSex = sex.rathernot
-                                    default:
-                                        selectedSex = sex.nonseleceted
-                                    }
-                                }
                             
                         }
                         HStack{
                             Text("Fecha de Nacimiento").fontWeight(.bold)
                             DatePicker("",selection: $date,displayedComponents: [.date])
-                                .onAppear{
-                                    date = data.birthDate
-                                }
+                               
                         }
                         HStack{
                             Text("Altura")
-                            TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).onAppear{
-                                height = data.height
-                            }
+                            TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                         
                         HStack{
                             Text("Peso")
-                            TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).onAppear{
-                                weight = data.weight
-                            }
+                            TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                         
                         HStack{
                             Text("Circuferencia Abdominal")
                             TextField("Circuferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
-                                .onAppear{
-                                    cirAbdominal = data.cirAbdominal
-                                }
                         }
                         
                         HStack{
                             Text("Tipo de Sangre")
                             Picker("Selecione una opcion", selection: $bloodType) {
-                                Text("Selecione una opcion").tag(GeneralDataView.bloodT.nonseleceted)
-                                Text("O+").tag(bloodT.oP)
-                                Text("O-").tag(bloodT.oN)
-                                Text("AB+").tag(bloodT.abP)
-                                Text("AB-").tag(bloodT.abN)
-                                Text("A+").tag(bloodT.aP)
-                                Text("A-").tag(bloodT.aN)
-                                Text("B+").tag(bloodT.bP)
-                                Text("B-").tag(bloodT.bN)
+                                Text("Selecione una opcion").tag("non selected")
+                                Text("O+").tag("O+")
+                                Text("O-").tag("O-")
+                                Text("AB+").tag("AB+")
+                                Text("AB-").tag("AB-")
+                                Text("A+").tag("A+")
+                                Text("A-").tag("A-")
+                                Text("B+").tag("B+")
+                                Text("B-").tag("B-")
                             }.frame(width : 200, height: 20)
-                                .accentColor(Color("ButtonColor")).onAppear{
-                                    switch data.bloodType {
-                                    case "O+" :
-                                        bloodType = bloodT.oP
-                                    case "O-" :
-                                        bloodType = bloodT.oN
-                                    case "AB+" :
-                                        bloodType = bloodT.abP
-                                    case "AB-" :
-                                        bloodType = bloodT.abN
-                                    case "A+" :
-                                        bloodType = bloodT.aP
-                                    case "A-" :
-                                        bloodType = bloodT.aN
-                                    case "B+" :
-                                        bloodType = bloodT.bP
-                                    case "B-" :
-                                        bloodType = bloodT.bN
-                                    default:
-                                        bloodType = bloodT.nonseleceted
-                                    }
-                                    
-                                }
+                                .accentColor(Color("ButtonColor"))
                         }
                         
                         Text("Padecimientos")
                         HStack{
                             TextEditor(text: $disease).frame(width: widthMenu == 375 ? 270 : 270, height: 300, alignment: .leading).onAppear{
-                                disease = data.medDisease
+                                //                                disease = save.data.medDisease
                             }
                             
                         }.overlay(RoundedRectangle(cornerRadius: 10)
@@ -280,15 +225,9 @@ struct GeneralDataView: View {
                         
                     }
                     .padding(.init(top: 0, leading: 20, bottom: 350, trailing: 20))
-                }.onAppear{
-                    loginShow.getPacient()
-                    print("Login desde general: \(loginShow.data.name)")
-                    data = loginShow.data
                 }
                 Spacer()
                 
-            }.onAppear{
-                print(loginShow.data.name)
             }.onTapGesture {
                 withAnimation{
                     menu = false
@@ -336,6 +275,25 @@ struct GeneralDataView: View {
             
         }.onTapGesture {
             hideKeyboard()
+        }.onAppear{
+            save.getPacient(){
+                (done)in
+                if done{
+                    name = save.data.name
+                    photourl = save.data.photo
+                    lastNameP = save.data.patName
+                    lastNameM = save.data.matName
+                    phoneNumber = save.data.phoneNumber
+                    selectedSex = save.data.sex
+                    date = save.data.birthDate
+                    height = save.data.height
+                    cirAbdominal = save.data.cirAbdominal
+                    weight = save.data.weight
+                    bloodType = save.data.bloodType
+                    disease = save.data.medDisease
+                }
+            }
+            
         }
     }
 }

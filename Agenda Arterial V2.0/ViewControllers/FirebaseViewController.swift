@@ -9,6 +9,8 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
+
+
 class FirebaseViewController: ObservableObject{
     
     @Published var show = "Login"
@@ -72,11 +74,6 @@ class FirebaseViewController: ObservableObject{
                 self.autfail = true
                 if var error = error?.localizedDescription{
                     
-                    if error == "The password must be 6 characters long or more." {
-                        error = "La contraseña tiene que tener 6 caracteres o más"
-                    }else if error == "An email address must be provided." {
-                        error = "Se tiene que ingresar un correo válido"
-                    }
                     print("Error in firebase: ",error)
                     completion(false)
                 }else{
@@ -102,13 +99,14 @@ class FirebaseViewController: ObservableObject{
                 let id = UUID().uuidString
                 
                 db.collection("pacientes").document(id).setData(info){error in
-                    if let error = error?.localizedDescription{
-                        print("Error al guardar en firestore ", error)
-                        completion(false,error)
+                    
+                    if let errorM = error?.localizedDescription{
+                        
+                        print("Error al guardar en firestore \(type(of: errorM)) as ", errorM)
+                        completion(false,errorM)
                     }else{
                         
                         print("Sucessfully save info")
-                        print("Login data firebasecon: \(self.data.name)")
                         completion(true, "ok")
                     }
                 }
@@ -154,13 +152,14 @@ class FirebaseViewController: ObservableObject{
         //End Saving Text
     }
     
-    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, completion: @escaping(_ done: Bool)->Void){
+    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, editingPhoto: Bool, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
-        guard let email = Auth.auth().currentUser?.email else{
+        guard let idUser = Auth.auth().currentUser?.uid else{
             return
         }
         var docId = ""
-        db.collection("pacientes").whereField("email", isEqualTo: email)
+        print("foto before:")
+        db.collection("pacientes").whereField("idUsuario", isEqualTo: idUser)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -169,10 +168,9 @@ class FirebaseViewController: ObservableObject{
                         docId = document.documentID
                         let value = document.data()
                         let fotoF = value["foto"] as? String ?? "no profile pic"
-                        
-                        print(fotoF)
+                        print("fotoF: \(fotoF)")
                         if fotoF == ""{
-                            
+                            print("first")
                             let storage = Storage.storage().reference()
                             let profilepic = UUID()
                             let directory = storage.child("profilepics/\(profilepic)")
@@ -181,8 +179,6 @@ class FirebaseViewController: ObservableObject{
                             
                             directory.putData(photo, metadata: metaData){data, error in
                                 if error == nil{
-                                    print("saved image")
-                                    //Save Text
                                     var dir = "a"
                                     let db = Firestore.firestore()
                                     directory.downloadURL{
@@ -193,6 +189,7 @@ class FirebaseViewController: ObservableObject{
                                         } else {
                                             // Get the download URL for each item storage location
                                             dir = String(describing: url!)
+                                            print("url : \(dir)")
                                             let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                             
                                             db.collection("pacientes").document(docId).updateData(info){error in
@@ -218,78 +215,153 @@ class FirebaseViewController: ObservableObject{
                                 }
                             }
                         }else{
-                            
+                            print("foto from class: \(self.data.photo)")
                             let value = document.data()
                             let image = value["foto"] as? String ?? "no profile pic"
-                            if urlPhoto == image{
-                                let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
-                                
-                                db.collection("pacientes").document(docId).updateData(info){error in
-                                    if let error = error?.localizedDescription{
-                                        print("Error al guardar en firestore ", error)
-                                        completion(false)
-                                    }else{
-                                        print("Sucessfully save info")
-                                        self.getPacient()
-                                        completion(true)
-                                    }
-                                }
-                            }else{
-                                let deleteImage = Storage.storage().reference(forURL: image)
-                                deleteImage.delete(completion: nil)
-                                
-                                let storage = Storage.storage().reference()
-                                let profilepic = UUID()
-                                let directory = storage.child("profilepics/\(profilepic)")
-                                
-                                let metaData = StorageMetadata()
-                                metaData.contentType = "image/png"
-                                directory.putData(photo, metadata: metaData){data, error in
-                                    if error == nil{
-                                        print("saved image")
-                                        //Save Text
-                                        var dir = "a"
-                                        let db = Firestore.firestore()
-                                        directory.downloadURL{
-                                            url, error in
-                                            if let error = error {
-                                                // Handle any errors
-                                                print(error)
-                                            } else {
-                                                // Get the download URL for each item storage location
-                                                dir = String(describing: url)
-                                                let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
-                                                
-                                                db.collection("pacientes").document(docId).updateData(info){error in
-                                                    if let error = error?.localizedDescription{
-                                                        print("Error al guardar en firestore ", error)
-                                                        completion(false)
-                                                    }else{
-                                                        print("Sucessfully save info")
-                                                        self.getPacient()
-                                                        completion(true)
+                            let storageImage = Storage.storage().reference(forURL: self.data.photo)
+                            storageImage.getData(maxSize: 1*1024*1024){
+                                (data, error) in
+                                if let error = error?.localizedDescription {
+                                   
+                                        print("foto here in third")
+                                        let deleteImage = Storage.storage().reference(forURL: image)
+                                        deleteImage.delete(completion: nil)
+                                        
+                                        let storage = Storage.storage().reference()
+                                        let profilepic = UUID()
+                                        let directory = storage.child("profilepics/\(profilepic)")
+                                        let metaData = StorageMetadata()
+                                        metaData.contentType = "image/png"
+                                        directory.putData(photo, metadata: metaData){data, error in
+                                            if error == nil{
+                                                print("saved image")
+                                                //Save Text
+                                                var dir = "a"
+                                                let db = Firestore.firestore()
+                                                directory.downloadURL{
+                                                    url, error in
+                                                    if let error = error {
+                                                        // Handle any errors
+                                                        print(error)
+                                                    } else {
+                                                        // Get the download URL for each item storage location
+                                                        dir = String(describing: url!)
+                                                        print("url : \(dir)")
+                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                        
+                                                        db.collection("pacientes").document(docId).updateData(info){error in
+                                                            if let error = error?.localizedDescription{
+                                                                print("Error al guardar en firestore ", error)
+                                                                completion(false)
+                                                            }else{
+                                                                print("Sucessfully save info")
+                                                                self.getPacient(){
+                                                                    (done)in
+                                                                    if done{
+                                                                        print("info succesfully update")
+                                                                        completion(true)
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                        }
                                                     }
+                                                }
+                                                
+                                                
+                                                //End Saving Text
+                                            }else{
+                                                if let error = error?.localizedDescription{
+                                                    print("Failes to upload image in storge", error)
+                                                }else{
+                                                    print("app error")
                                                 }
                                             }
                                         }
+                                    
+                                }else{
+                                    if !editingPhoto{
+                                        print("second")
+                                        let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                         
-                                        
-                                        //End Saving Text
-                                    }else{
-                                        if let error = error?.localizedDescription{
-                                            print("Failes to upload image in storge", error)
-                                        }else{
-                                            print("app error")
+                                        db.collection("pacientes").document(docId).updateData(info){error in
+                                            if let error = error?.localizedDescription{
+                                                print("Error al guardar en firestore ", error)
+                                                completion(false)
+                                            }else{
+                                                print("Sucessfully save info")
+                                                self.getPacient(){
+                                                    (done)in
+                                                    if done{
+                                                        print("update info succesfully")
+                                                        completion(true)
+                                                    }
+                                                }
+                                                
+                                            }
                                         }
-                                    }
+                                    }else{
+                                        
+                                        print("foto here in third")
+                                        let deleteImage = Storage.storage().reference(forURL: image)
+                                        deleteImage.delete(completion: nil)
+                                        
+                                        let storage = Storage.storage().reference()
+                                        let profilepic = UUID()
+                                        let directory = storage.child("profilepics/\(profilepic)")
+                                        let metaData = StorageMetadata()
+                                        metaData.contentType = "image/png"
+                                        directory.putData(photo, metadata: metaData){data, error in
+                                            if error == nil{
+                                                print("saved image")
+                                                //Save Text
+                                                var dir = "a"
+                                                let db = Firestore.firestore()
+                                                directory.downloadURL{
+                                                    url, error in
+                                                    if let error = error {
+                                                        // Handle any errors
+                                                        print(error)
+                                                    } else {
+                                                        // Get the download URL for each item storage location
+                                                        dir = String(describing: url!)
+                                                        print("url : \(dir)")
+                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                        
+                                                        db.collection("pacientes").document(docId).updateData(info){error in
+                                                            if let error = error?.localizedDescription{
+                                                                print("Error al guardar en firestore ", error)
+                                                                completion(false)
+                                                            }else{
+                                                                print("Sucessfully save info")
+                                                                self.getPacient(){
+                                                                    (done)in
+                                                                    if done{
+                                                                        print("info succesfully update")
+                                                                        completion(true)
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                
+                                                //End Saving Text
+                                            }else{
+                                                if let error = error?.localizedDescription{
+                                                    print("Failes to upload image in storge", error)
+                                                }else{
+                                                    print("app error")
+                                                }
+                                            }
+                                        }
+                                    
+                                }
                                 }
                             }
-                            
-                            
-                            
-                            
-                            
-                            
+                           
                         }
                     }
                 }
@@ -299,38 +371,7 @@ class FirebaseViewController: ObservableObject{
         
     }
     
-    func saveStatus(statusPatient: String, completion: @escaping(_ done: Bool)->Void){
-        let db = Firestore.firestore()
-        guard let email = Auth.auth().currentUser?.email else{
-            return
-        }
-        var docId = ""
-        db.collection("pacientes").whereField("email", isEqualTo: email)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        docId = document.documentID
-                        
-                        let info : [String : Any] = ["estadoPaciente": statusPatient]
-                        
-                        db.collection("pacientes").document(docId).updateData(info){error in
-                            if let error = error?.localizedDescription{
-                                print("Error al guardar en firestore ", error)
-                                completion(false)
-                            }else{
-                                print("Sucessfully save info")
-                                completion(true)
-                            }
-                        }
-                    }
-                }
-                
-            }
-    }
-    
-    func getPacient(){
+    func getPacient(completion: @escaping(_ done: Bool)->Void){
         let idUser = Auth.auth().currentUser?.uid
         let db = Firestore.firestore()
         db.collection("pacientes").whereField("idUsuario", isEqualTo: idUser!)
@@ -351,7 +392,7 @@ class FirebaseViewController: ObservableObject{
                         let foto = value["foto"] as? String ?? "no profile pic"
                         let sex = value["sexo"] as? String ?? "no sex"
                         let pacientStatus = value["estadoPaciente"] as? String ?? "no state"
-                        let birthDate = value["fechaNacimiento"] as? Date ?? Date()
+                        let birthDate = (value["fechaNacimiento"] as? Timestamp)?.dateValue()  ?? Date()
                         let height = value["altura"] as? Float ?? 0
                         let weight  = value["peso"] as? Float ?? 0
                         let cirAbdominal = value["circunferenciaAbdominal"] as? Float ?? 0
@@ -359,12 +400,10 @@ class FirebaseViewController: ObservableObject{
                         let bloodType = value["tipoSangre"] as? String ?? "no blood type"
                         let vinculationCode = value["codigoVinculacion"] as? String ?? "no code"
                         let associatedMedic = value["listaMedicosVinculados"] as? [String] ?? []
-                        
                         DispatchQueue.main.async {
                             let register = Pacient(id: id, name: name, patName: patName, matName: matName, photo: foto, sex: sex, pacientStatus: pacientStatus, birthDate: birthDate, phone: phone, height: height, weight: weight, cirAbdominal: cirAbdominal, medDisease: diseases, bloodType: bloodType, vinculationCode: vinculationCode, associatedMedic: associatedMedic)
-                            print(vinculationCode)
                             self.data = register
-                            
+                            completion(true)
                         }
                         
                     }
@@ -382,7 +421,6 @@ class FirebaseViewController: ObservableObject{
             linkCodeS.append(String(randomInt))
             linkCode.append(randomInt)
         }
-        print(linkCodeS)
         let db = Firestore.firestore()
         guard let email = Auth.auth().currentUser?.email else{
             return [0,0,0,0]
@@ -393,7 +431,6 @@ class FirebaseViewController: ObservableObject{
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        print(document.documentID)
                         let linkCodeF: [String: Any] = ["codigoVinculacion":linkCodeS]
                         db.collection("pacientes").document(document.documentID).updateData(linkCodeF){error in
                             if let error = error?.localizedDescription{
@@ -410,8 +447,6 @@ class FirebaseViewController: ObservableObject{
         
         return linkCode
     }
-    
-    
     
     func getMedics(){
         
@@ -510,7 +545,6 @@ class FirebaseViewController: ObservableObject{
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
         }
-        print(idUser)
         db.collection("medicamentos").whereField("id", isEqualTo: id)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -559,36 +593,36 @@ class FirebaseViewController: ObservableObject{
     }
     
     func checkPastDates(id: String,finishDate: Date, startDate: Date, information: String){
-            
-            if finishDate < startDate {
-                self.editMedicament(id: id, finishDate: startDate, startDate: startDate, information: information){
-                    (done) in
-                        if done{
-                            print("UPDATED")
-                        }else{
-                            print("not updated")
-                        }
+        
+        if finishDate < startDate {
+            self.editMedicament(id: id, finishDate: startDate, startDate: startDate, information: information){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
                 }
-            }else if finishDate > startDate{
-                self.disableMedicament(idMedicament: id, endDate: finishDate){
-                    (done) in
-                        if done{
-                            print("UPDATED")
-                        }else{
-                            print("not updated")
-                        }
-                }
-            }else{
-                self.editMedicament(id: id, finishDate: finishDate, startDate: startDate, information: information){
-                    (done) in
-                        if done{
-                            print("UPDATED")
-                        }else{
-                            print("not updated")
-                        }
-                }
-                
             }
+        }else if finishDate > startDate{
+            self.disableMedicament(idMedicament: id, endDate: finishDate){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
+                }
+            }
+        }else{
+            self.editMedicament(id: id, finishDate: finishDate, startDate: startDate, information: information){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
+                }
+            }
+            
+        }
     }
     
     func updateRemiders(date: Date, type: String, title:String, description : String){
@@ -662,7 +696,6 @@ class FirebaseViewController: ObservableObject{
                         
                         if type == typeNew &&  (dateNew < date || self.isSameDay(date1: date, date2: dateNew))  {
                             DispatchQueue.main.async {
-                                print("entre")
                                 self.deleteData(collectionName: "notificaciones", id: document.documentID){(done)
                                     in
                                     if done{
@@ -715,7 +748,6 @@ class FirebaseViewController: ObservableObject{
                             
                             DispatchQueue.main.async {
                                 let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color)
-                                print(register.title)
                                 self.reminds.append(register)
                                 
                             }
@@ -727,16 +759,6 @@ class FirebaseViewController: ObservableObject{
         
     }
     
-    func sortReminds(){
-        let sortReminds = reminds.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
-        for remind in sortReminds {
-            print("sorted: \(remind.date)")
-        }
-        reminds = sortReminds
-        for remind in reminds {
-            print("reminds: \(remind.date)")
-        }
-    }
     
 }
 

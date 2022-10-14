@@ -51,14 +51,12 @@ struct TimerView: View {
                     HStack(spacing : 50){
                         Button(action:{
                             startTimer()
-                            print("START")
                         }){
                             Image(systemName: "play.fill").resizable().frame(width: 35, height: 40, alignment: .center)
                         }
                     }
                 } else {
                     Button(action:{
-                        print("STOP")
                         pauseTimer()
                     }){
                         Image(systemName: "stop.fill").resizable().frame(width: 40, height: 40, alignment: .center)

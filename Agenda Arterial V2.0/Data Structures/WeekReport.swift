@@ -93,7 +93,6 @@ class WeekReport {
     func updateMedicaments() -> Bool {
         var medicamentsUploaded = false
         for medicament in self.medicaments {
-            print(medicament.forgetTimes)
             login.updateData(collectionName: "medicamentos" , id: medicament.id , info: ["vecesOlvidado" : medicament.forgetTimes] ){(done)
                 in
                 if done{
@@ -134,7 +133,6 @@ class WeekReport {
             
             let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha": self.reportDate, "seguimientoDieta": Double(followDietR),  "consumoSal": saltConsumptionR, "consumoRefrescos": self.beveragesIntake, "cantidadRefrescos": self.numBeverages, "actividadFisica": physicalActivityR, "numActividadFisica": self.numPhysicalActivity, "horasDescanso": self.sleepHours, "seguimientoReceta": self.followMedicalPresciption, "fechaSigReporte": self.nextReportDate]
             
-            print(info)
             login.deleteOldRemindByType(type: "reporteSemanal", date: Date.now)
             login.saveData(collectionName: "reportesSemanales", id: id, info: info){(done)
                 in

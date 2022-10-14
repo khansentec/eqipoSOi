@@ -67,7 +67,6 @@ struct MedicamentsView: View {
                 self.frecuency = ""
                 self.dosis = ""
                 self.addMedicament.toggle()
-                print("Desde view: \(data.meds)")
                 
             }){
                 Image(systemName: "plus").font(.system(size: 40, weight: .heavy))

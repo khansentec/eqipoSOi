@@ -12,12 +12,12 @@
 		C059113A28EE936A00FE7115 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059113928EE936900FE7115 /* AppsView.swift */; };
 		C05FBB4828F4A67D00758845 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FBB4728F4A67D00758845 /* User.swift */; };
 		C08A5ED828EFB5D70082B479 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A5ED728EFB5D70082B479 /* WeekReport.swift */; };
+		C0AD56E128F8EC08006F683C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0AD56E028F8EC08006F683C /* GoogleService-Info.plist */; };
 		C0C1CAEC28F7BA29009D85C5 /* AddAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1CAEB28F7BA29009D85C5 /* AddAppointment.swift */; };
 		C0C1F88928E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */; };
 		C0C1F88B28E6B1C700C53297 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F88A28E6B1C700C53297 /* ContentView.swift */; };
 		C0C1F88D28E6B1C800C53297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F88C28E6B1C800C53297 /* Assets.xcassets */; };
 		C0C1F89028E6B1C800C53297 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F88F28E6B1C800C53297 /* Preview Assets.xcassets */; };
-		C0C1F89728E6B2CB00C53297 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */; };
 		C0C1F89A28E6B33200C53297 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89928E6B33200C53297 /* FirebaseAuth */; };
 		C0C1F89C28E6B33200C53297 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89B28E6B33200C53297 /* FirebaseAuthCombine-Community */; };
 		C0C1F89E28E6B33200C53297 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C0C1F89D28E6B33200C53297 /* FirebaseFirestore */; };
@@ -70,13 +70,13 @@
 		C059113928EE936900FE7115 /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
 		C05FBB4728F4A67D00758845 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C08A5ED728EFB5D70082B479 /* WeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
+		C0AD56E028F8EC08006F683C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0C1CAEB28F7BA29009D85C5 /* AddAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointment.swift; sourceTree = "<group>"; };
 		C0C1F88528E6B1C700C53297 /* Agenda Arterial V2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agenda Arterial V2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda_Arterial_V2_0App.swift; sourceTree = "<group>"; };
 		C0C1F88A28E6B1C700C53297 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0C1F88C28E6B1C800C53297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0C1F88F28E6B1C800C53297 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0C1F8A828E6B60400C53297 /* FirebaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewController.swift; sourceTree = "<group>"; };
 		C0C1F8AB28E6B77200C53297 /* Pacient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pacient.swift; sourceTree = "<group>"; };
 		C0C1F8AE28E6B99C00C53297 /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
@@ -152,11 +152,11 @@
 		C0C1F88728E6B1C700C53297 /* Agenda Arterial V2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				C0AD56E028F8EC08006F683C /* GoogleService-Info.plist */,
 				C0287A6B28F3BEB100C45855 /* Agenda-Arterial-V2-0-Info.plist */,
 				C0C1F8FD28E6BD5400C53297 /* Views */,
 				C0C1F8AA28E6B6EF00C53297 /* Data Structures */,
 				C0C1F8A728E6B5E900C53297 /* ViewControllers */,
-				C0C1F89628E6B2CB00C53297 /* GoogleService-Info.plist */,
 				C0C1F88828E6B1C700C53297 /* Agenda_Arterial_V2_0App.swift */,
 				C0C1F88A28E6B1C700C53297 /* ContentView.swift */,
 				C0C1F88C28E6B1C800C53297 /* Assets.xcassets */,
@@ -340,7 +340,7 @@
 			files = (
 				C0C1F89028E6B1C800C53297 /* Preview Assets.xcassets in Resources */,
 				C0C1F88D28E6B1C800C53297 /* Assets.xcassets in Resources */,
-				C0C1F89728E6B2CB00C53297 /* GoogleService-Info.plist in Resources */,
+				C0AD56E128F8EC08006F683C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

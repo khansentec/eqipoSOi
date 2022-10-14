@@ -9,9 +9,9 @@ struct SignIn: View {
     @State var pass: String = ""
     @State var confPassword: String = ""
     @State var number = ""
-    
+   
     enum sex: String, CaseIterable, Identifiable {
-        case nonseleceted, male, female, rathernot
+        case nonseleceted, Masculino, Femenino, rathernot
         var id: Self { self }
     }
     
@@ -23,6 +23,7 @@ struct SignIn: View {
     @EnvironmentObject var loginShow : FirebaseViewController
 
     @State var userSubmitted = false
+    @State var complete = false
     @State var alertMessage = ""
     @State var alertTitle = ""
 
@@ -74,8 +75,8 @@ struct SignIn: View {
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
                                 Text("Selecione una opcion").tag(sex.nonseleceted)
-                                Text("Masculino").tag(sex.male)
-                                Text("Femenino").tag(sex.female)
+                                Text("Masculino").tag(sex.Masculino )
+                                Text("Femenino").tag(sex.Femenino)
                                 Text("Prefiero no decir").tag(sex.rathernot)
                             }.frame(width : 200, height: 20)
                                 .accentColor(Color("ButtonColor"))
@@ -107,16 +108,17 @@ struct SignIn: View {
                         if processResults.0{
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
                                                 (done, errorM) in
-                                print("done: \(done)")
                                 if done{
                                     alertTitle = "¡Éxito!"
                                     alertMessage = "La cuenta se ha creado correctamente"
-                                    login.getPacient()
-                                    
-                                    loginShow.show = "Home"
+                                    userSubmitted = true
+                                    complete = true
                                 }else{
                                     progress = false
-                                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                                    print(errorM)
+                                    let t = type(of: errorM)
+                                    print(t)
+                                    alertMessage = errorM
                                     userSubmitted = true
                                 }
                             }
@@ -136,16 +138,16 @@ struct SignIn: View {
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
                     }.background(
                         Capsule().fill(Color("ButtonColor"))
-                    ).alert(alertMessage, isPresented: $userSubmitted) {
+                    ).alert(alertTitle, isPresented: $userSubmitted) {
                         Button("OK", role: .cancel) {
                             progress = false
-                            print("us1:\(userSubmitted)")
-                            print("us2:\(!userSubmitted)")
-                            if !userSubmitted{
+                            if complete{
                                 loginShow.show = "Home"
                             }
                             
                         }
+                    } message: {
+                        Text(alertMessage)
                     }
                     if progress{
                         Text("Please Wait One Moment...").foregroundColor(.black)

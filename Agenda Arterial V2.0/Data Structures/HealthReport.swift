@@ -66,10 +66,11 @@ class HealthReport: Identifiable {
                     
                     
                     let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha":nextReportDate, "tipo":"reporteSalud","titulo":"Próximo Reporte Salud", "descripcion":"Próximo Reporte Salud"]
+                    
                     self.save.saveData(collectionName: "notificaciones", id: id, info: info){
                         (done)in
                         if done{
-                            print("Succesfully upload reminder of type week report")
+                            print("Succesfully upload reminder of type health report")
                         }else{
                             print("ERROR saving info")
                         }

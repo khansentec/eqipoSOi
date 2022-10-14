@@ -27,12 +27,7 @@ struct ButtonNavbar: View {
                 index = title
                 if device == .phone{
                     menu.toggle()
-                }/*
-                if whereto == "GeneralDataView"{
-                    login.getPacient()
-                    print("Login data: \(login.data)")
-                }*/
-               
+                }
                 loginShow.showApp = "Home"
                 loginShow.show = whereto
                 

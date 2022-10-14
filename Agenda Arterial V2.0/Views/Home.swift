@@ -101,6 +101,12 @@ struct Home: View {
                             Button(action: {
                                 try! Auth.auth().signOut()
                                 UserDefaults.standard.removeObject(forKey: "sesion")
+                                loginShow.data = nil
+                                loginShow.reminds = []
+                                loginShow.medics = []
+                                loginShow.meds = []
+                                loginShow.medUpdate = nil
+                                loginShow.remindUpdate = nil
                                 loginShow.show = "Login"
                             }){
                                 Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(.blue)
@@ -108,10 +114,6 @@ struct Home: View {
                         }
                         Spacer()
                     }.frame(width: widthMenu-200).background(Color("BlueBBVA"))
-                }.onAppear{
-                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                        login.getPacient()
-                    }
                 }
                 
             }

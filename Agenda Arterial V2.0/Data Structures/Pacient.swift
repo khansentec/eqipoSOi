@@ -25,12 +25,12 @@ class Pacient {
     var vinculationCode : String
     var associatedMedic : [String]
     
-    init(id :  String, name : String?, patName : String?, matName : String?, photo : String?, sex : String?, pacientStatus : String?, birthDate : Date, phone : String?,  height : Float?, weight : Float?, cirAbdominal : Float?, medDisease : String?, bloodType : String?, vinculationCode : String?, associatedMedic : [String]?){
+    init(id :  String, name : String?, patName : String?, matName : String?, photo : String, sex : String?, pacientStatus : String?, birthDate : Date, phone : String?,  height : Float?, weight : Float?, cirAbdominal : Float?, medDisease : String?, bloodType : String?, vinculationCode : String?, associatedMedic : [String]?){
         self.id = id
         self.name = name ?? ""
         self.patName = patName ?? ""
         self.matName = matName ?? ""
-        self.photo = photo ?? ""
+        self.photo = photo 
         self.sex = sex ?? ""
         self.pacientStatus = pacientStatus ?? ""
         self.birthDate = birthDate

@@ -21,11 +21,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Agenda_Arterial_V2_0App: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some Scene {
         let login = FirebaseViewController()
         WindowGroup {
             ContentView().environmentObject(login)
         }
+//        .onChange(of: scenePhase) { newScenePhase in
+//            if newScenePhase == .background {
+//                if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+//                    login.getPacient()
+//                    
+//                }
+//            }
+//        }
     }
 }

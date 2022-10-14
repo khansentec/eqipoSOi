@@ -30,15 +30,6 @@ struct MedicamentDetailsView: View {
                     if editing {
                         editing = false
                         login.checkPastDates(id: medicament.id,finishDate: endDate, startDate: startDate, information: info)
-//                        print("Desde Details: \(login.meds)")
-//                        login.editMedicament(id: medicament.id,finishDate: endDate, startDate: startDate, information: info ){
-//                            (done) in
-//                                if done{
-//                                    print("sussefully update")
-//
-//
-//                                }
-//                        }
                     }else{
                         editing = true
                     }

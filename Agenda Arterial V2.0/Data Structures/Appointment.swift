@@ -34,7 +34,6 @@ class Appointment: Identifiable {
 
     func uploadAppointment() -> (Bool, String, String){
         let validationResults = self.validateAppointment()
-        print(validationResults)
         var appIsValid = validationResults.0
         var alertTitle = "¡Oops!"
         var alertMessage = validationResults.1
@@ -57,20 +56,28 @@ class Appointment: Identifiable {
                     for n in 1...5 {
                         let id = UUID().uuidString
                         let nextMeditionDate = Calendar.current.date(byAdding: DateComponents(day: -n), to:self.date)!
-                        
-                        let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha":nextMeditionDate, "tipo":"medicion","titulo":"Próxima Medición", "descripcion":"Ve a Tu Presion y captura tu presion"]
-                        self.login.saveData(collectionName: "notificaciones", id: id, info: info){
-                            (done)in
-                            if done{
-                                print("Succesfully upload reminder of type medition")
-                            }else{
-                                print("ERROR saving info")
+                        if nextMeditionDate > Date(){
+                            let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha":nextMeditionDate, "tipo":"medicion","titulo":"Próxima Medición", "descripcion":"Ve a Tu Presion y captura tu presion"]
+                            self.login.saveData(collectionName: "notificaciones", id: id, info: info){
+                                (done)in
+                                if done{
+                                    print("Succesfully upload reminder of type medition")
+                                }else{
+                                    print("ERROR saving info")
+                                }
                             }
                         }
+                        
+                    }
+                    
+                    var nextRepDate = Calendar.current.date(byAdding: DateComponents(day: -7), to:self.date)!
+                    if nextRepDate < Date(){
+                        
+                        nextRepDate = Date()
                     }
                     let id1 = UUID().uuidString
-                    let nextWRDate = Calendar.current.date(byAdding: DateComponents(day: -5), to:self.date)!
-                    let info1 : [String: Any] = ["id": id1, "idPaciente": idUser, "fecha": nextWRDate, "tipo":"reporteSemanal","titulo":"Próximo Reporte Semanal", "descripcion":"Llena tu reporte semanal"]
+                    
+                    let info1 : [String: Any] = ["id": id1, "idPaciente": idUser, "fecha": nextRepDate, "tipo":"reporteSemanal","titulo":"Próximo Reporte Semanal", "descripcion":"Llena tu reporte semanal"]
                     self.login.saveData(collectionName: "notificaciones", id: id1, info: info1){
                         (done)in
                         if done{
@@ -80,9 +87,9 @@ class Appointment: Identifiable {
                         }
                     }
                     let id2 = UUID().uuidString
-                    let newHRDate = Calendar.current.date(byAdding: DateComponents(day: -5), to:self.date)!
                     
-                    let info2 : [String: Any] = ["id": id2, "idPaciente": idUser, "fecha":newHRDate, "tipo":"reporteSalud","titulo":"Próximo Reporte Salud", "descripcion":"Ve a Tu Presion y captura tu presion"]
+                    
+                    let info2 : [String: Any] = ["id": id2, "idPaciente": idUser, "fecha":nextRepDate, "tipo":"reporteSalud","titulo":"Próximo Reporte Salud", "descripcion":"Ve a Tu Presion y captura tu presion"]
                     self.login.saveData(collectionName: "notificaciones", id: id2, info: info2){
                         (done)in
                         if done{
@@ -91,6 +98,9 @@ class Appointment: Identifiable {
                             print("ERROR saving info")
                         }
                     }
+                    
+                    
+                    
                     let id3 = UUID().uuidString
                     
                     let info3 : [String: Any] = ["id": id3, "idPaciente": idUser, "fecha":self.date, "tipo":"consulta","titulo":"Próxima Consulta", "descripcion":self.comments]
@@ -102,6 +112,7 @@ class Appointment: Identifiable {
                             print("ERROR saving info")
                         }
                     }
+                    
                     if remindsUpdated {
                         alertTitle = "¡Éxito!"
                         alertMessage = "Los datos se han guardado correctamente"

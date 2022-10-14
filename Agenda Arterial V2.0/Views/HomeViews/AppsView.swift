@@ -156,7 +156,7 @@ struct AppsView: View {
                 VStack{
                     
                     Button(action:{
-                        print("Desde view heart: \(login.meds)")
+                        
                         withAnimation{
                             loginShow.showApp = "CapturesView"
                         }
@@ -267,7 +267,6 @@ struct AppsView: View {
                     Button(action:{
                         if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                             login.getMedics()
-                            print(login.medics)
                         }
                         withAnimation{
                             loginShow.showApp = "LikYourMedicView"

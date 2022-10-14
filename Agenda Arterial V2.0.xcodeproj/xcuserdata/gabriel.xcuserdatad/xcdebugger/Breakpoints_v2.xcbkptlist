@@ -14,25 +14,9 @@
             filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02FAF366-0D53-41F5-B0D1-C280FCF01477"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:completion:)"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:editingPhoto:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,8 +30,8 @@
             filePath = "Agenda Arterial V2.0/Data Structures/Medition.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "determineState()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +46,8 @@
             filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "generateLinkCode(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +62,8 @@
             filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "generateLinkCode(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,7 +84,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "47DBBB0E-D641-4056-9872-563D8B223F68 - fbc5b91cd2ea99b7"
+                  uuid = "47DBBB0E-D641-4056-9872-563D8B223F68 - fbc5b91cd2ea9994"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -110,12 +94,12 @@
                   urlString = "file:///Users/gabriel/Swift%20Course/Swift%20Code/Agenda%20Arterial%20V2.0/Agenda%20Arterial%20V2.0/ViewControllers/ImageFirebaseViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "272">
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "720">
                </Location>
                <Location
-                  uuid = "47DBBB0E-D641-4056-9872-563D8B223F68 - bc7915e513117379"
+                  uuid = "47DBBB0E-D641-4056-9872-563D8B223F68 - bc7915e513117ca6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -125,8 +109,8 @@
                   urlString = "file:///Users/gabriel/Swift%20Course/Swift%20Code/Agenda%20Arterial%20V2.0/Agenda%20Arterial%20V2.0/ViewControllers/ImageFirebaseViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
                   offsetFromSymbolStart = "220">
                </Location>
             </Locations>
@@ -142,9 +126,9 @@
             filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "getPacient()"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
+            landmarkName = "getPacient(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,10 +142,10 @@
             filePath = "Agenda Arterial V2.0/Data Structures/Medition.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "updatePatientStatus()"
-            landmarkType = "7">
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "Medition"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,8 +158,8 @@
             filePath = "Agenda Arterial V2.0/Views/Elements/ButtonNavbar.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -183,17 +167,129 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E4D1A204-6BE5-4C3E-9F90-129E649D5E00"
+            uuid = "331DC2BA-2F75-4A5E-9A35-C4964AAEAA0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "getPacient(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56DA37EF-F6EF-498A-8160-8D9AA768249B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/Views/Elements/ImageFirebase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init(imageUrl:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FFFFC889-618A-452D-93AA-70E95C5A626F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/ImageFirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "init(imageUrl:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A29ED79-2F96-4CDC-9D02-D2CC85BC9998"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:editingPhoto:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72FF4C05-2FF6-4A1B-B09F-B0882A6EAD91"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:editingPhoto:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7204AE35-99A2-4466-B624-8D645B5C8BA7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Agenda Arterial V2.0/Views/SideBarView/GeneralDataView.swift"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "saveGD(name:lastNP:lastNM:phone:sex:height:abdominalCir:diseases:weight:bType:photo:urlPhoto:editingPhoto:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BB6391E-2CA4-4EE0-A9E9-7AFF0BCDDA21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "login(email:pass:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37A71274-E57F-46AE-ABAF-30C8A905CF9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Agenda Arterial V2.0/ViewControllers/FirebaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "login(email:pass:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
