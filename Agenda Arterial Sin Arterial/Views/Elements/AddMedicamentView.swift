@@ -61,7 +61,7 @@ struct AddMedicamentView: View {
                     .textFieldStyle(.roundedBorder)
             }.padding(.all,20)
             HStack{
-                Button("Enviar") {
+                Button("Guardar") {
                     let information = "Frecuencia en horas : " + frecuency + "\nDosis : " + dosis + "\nIndicaciones : " + indications
                     
                     if nameMedicament != ""{
@@ -88,6 +88,7 @@ struct AddMedicamentView: View {
                         alertTitle = "¡Oops!"
                         alertMsg = "Hay un problema con la red. Favor de intentar de nuevo."
                     }
+                    medicamentSubmitted = true
                 }
                 .alert(alertTitle, isPresented: $medicamentSubmitted){
                     Button("OK"){

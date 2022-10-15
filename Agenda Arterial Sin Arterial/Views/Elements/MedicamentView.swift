@@ -37,6 +37,6 @@ struct MedicamentView: View {
         .aspectRatio(contentMode: .fit)
         .fixedSize(horizontal: true, vertical: false)
         .frame(minWidth: screenWidth-50, minHeight: 70)
-        .overlay(RoundedRectangle(cornerRadius: 20).fill(Color.gray.opacity(0.2)).shadow(radius: 3))
+        .overlay(RoundedRectangle(cornerRadius: 20).fill(Color("BlueBBVA").opacity(0.2)).shadow(radius: 3))
     }
 }

@@ -102,7 +102,7 @@ struct SignIn: View {
                         alertTitle = processResults.1
                         alertMessage =  processResults.2
                         
-                        userSubmitted = !processResults.0
+                        userSubmitted = true
                         
                         if processResults.0{
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
@@ -135,7 +135,8 @@ struct SignIn: View {
                         }
                     }){
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
-                    }.background(
+                    }
+                    .background(
                         Capsule().fill(Color("ButtonColor"))
                     )
                     .alert(alertTitle, isPresented: $userSubmitted) {

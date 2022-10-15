@@ -42,12 +42,12 @@ struct AddAppointment: View {
             }.overlay(RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.gray, lineWidth: 1))
             HStack{
-                Text("Medico")
-                Picker("Selecione un medico", selection: $selectedMedic) {
+                Text("Médico: ")
+                Picker("Selecione un médico", selection: $selectedMedic) {
                     if medics.isEmpty{
-                        Text("Por favor de vincular un medicos").tag("Sin seleccionar")
+                        Text("Por favor de vincular un médico").tag("Sin seleccionar")
                     }else{
-                        Text("Selecione un Medico").tag("Sin seleccionar")
+                        Text("Selecione un médico").tag("Sin seleccionar")
                         ForEach(medics, id: \.self) { medic in
                             Text(medic.name).tag(medic.id)
                         }
@@ -55,8 +55,8 @@ struct AddAppointment: View {
                 }
             }
             
-            HStack{
-                Button("Enviar") {
+            HStack {
+                Button("Guardar") {
                     let id = UUID().uuidString
                     let appoinment = Appointment(id: id, date: date, idMedic: selectedMedic, comments: comments)
                     let upload = appoinment.uploadAppointment()
@@ -72,7 +72,7 @@ struct AddAppointment: View {
                 }.alert(alertTitle, isPresented: $error){
                     
                     Button("OK"){
-                        if alertMessage == "Datos válidos"{
+                        if alertMessage == "Datos válidos" {
                             self.addAppointment.toggle()
                         }
                         //si se oprime quitar el ok
@@ -85,9 +85,10 @@ struct AddAppointment: View {
                 .foregroundColor(Color("ButtonColor"))
                 .frame(minWidth: 100,minHeight: 40))
                 
-                
             }
-        }.onTapGesture{
+            .padding(.top, 20)
+        }
+        .onTapGesture{
             hideKeyboard()
         }
     }
