@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Login: View {
     @State private var email = ""
+    @State private var tittlealert = "No se pudo iniciar sesión"
+    @State private var messagealert = "La contraseña o el usuario es inválido"
     @State private var pass = ""
     @State private var widthMenu = UIScreen.main.bounds.width
     
@@ -60,9 +62,11 @@ struct Login: View {
                     login.login(email: email, pass: pass){
                         (done) in
                         if done{
+                            showError = true
                             UserDefaults.standard.set(true, forKey: "sesion")
+                            tittlealert = "Exito"
+                            messagealert = "Se pudo iniciar sesión"
                             loginShow.show = "Home"
-                            showError = false
                         }else{
                             showError = true
                         }
@@ -77,10 +81,12 @@ struct Login: View {
                 .background(
                     Capsule().fill(Color("ButtonColor"))
                 )
-                .alert("The password is invalid or the user does not have a password.", isPresented: $showError) {
+                .alert(tittlealert, isPresented: $showError) {
                     Button("OK", role: .cancel) {
                         progress = false
                     }
+                }message: {
+                    Text(messagealert)
                 }
                 if progress{
                     Text("Please Wait One Moment...").foregroundColor(.black)

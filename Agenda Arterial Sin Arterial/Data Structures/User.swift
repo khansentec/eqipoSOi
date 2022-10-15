@@ -85,7 +85,10 @@ class User : Identifiable {
         let validationResults = self.validateUser()
         
         let userIsValid = validationResults.0
-        let alertTitle = "¡Oops!"
+        var alertTitle = "¡Oops!"
+        if userIsValid{
+            alertTitle = "Exito"
+        }
         let alertMessage = validationResults.1
         
         
