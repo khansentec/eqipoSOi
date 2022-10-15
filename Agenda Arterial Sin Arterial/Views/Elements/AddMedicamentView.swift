@@ -21,7 +21,10 @@ struct AddMedicamentView: View {
     
     @Binding var addMedicament : Bool
     @State var edit = false
-    @State var error = false
+    
+    @State var alertTitle = ""
+    @State var alertMsg = ""
+    @State var medicamentSubmitted = false
     
     @StateObject var login = FirebaseViewController()
     
@@ -71,24 +74,27 @@ struct AddMedicamentView: View {
                         login.saveData(collectionName: "medicamentos", id: id, info: info){
                             (done) in
                             if done{
-                                print("Sucessfully save info")
-                            }else{
-                                print("Error")
+                                alertTitle = "¡Éxito!"
+                                alertMsg = "Medicamento guardado con éxito."
+                            } else{
+                                alertTitle = "¡Oops!"
+                                alertMsg = "Debe ingresar el nombre del medicamento."
                             }
                         }
                         
                         self.addMedicament.toggle()
                         
                     }else{
-                        error = true
+                        alertTitle = "¡Oops!"
+                        alertMsg = "Hay un problema con la red. Favor de intentar de nuevo."
                     }
-                }.alert("Error", isPresented: $error){
-                    
+                }
+                .alert(alertTitle, isPresented: $medicamentSubmitted){
                     Button("OK"){
                         //si se oprime quitar el ok
                     }
                 } message: {
-                    Text("Debe ingresar el nombre del medicamento")
+                    Text(alertMsg)
                 }
                 .foregroundColor(.white)
                 .background(RoundedRectangle(cornerRadius: 5)

@@ -29,6 +29,7 @@ struct GeneralDataView: View {
     @State private var dataL : Pacient?
     
     @State private var progress = false
+    @State private var dataSubmitted = false
     
     @State var name = ""
     @State var lastNameP = ""
@@ -95,7 +96,7 @@ struct GeneralDataView: View {
                         ImagePicker(show: $imagePicker, image: $imageData, source: source)
                     }.padding(.bottom, 20)
                     
-                Spacer(minLength: 30)
+                Spacer(minLength: 15)
                     
                 if progress{
                     Text("Please Wait One Moment...").foregroundColor(.black)
@@ -191,11 +192,21 @@ struct GeneralDataView: View {
                         (done)in
                         if done{
                             progress = false
-                            print("Succesfully upload info")
+                            alertTitle = "¡Éxito!"
+                            alertMessage = "Datos subido con éxito."
                         }else{
-                            print("ERROR Uploading info")
+                            alertTitle = "¡Oops!"
+                            alertMessage = "Ocurrió un error con subir los datos."
                         }
+                        dataSubmitted = true
                     }
+                }
+                .alert(alertTitle, isPresented: $dataSubmitted){
+                    Button("OK"){
+                        //si se oprime quitar el ok
+                    }
+                } message: {
+                    Text(alertMessage)
                 }
                 .foregroundColor(.white)
                 .background(RoundedRectangle(cornerRadius: 5)

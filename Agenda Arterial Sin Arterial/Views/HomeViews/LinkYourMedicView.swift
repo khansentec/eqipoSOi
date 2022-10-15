@@ -65,14 +65,15 @@ struct LinkYourMedicView: View {
                             }
                         }
                     }
+                    .sheet(isPresented: $linkMedic) {
+                        AddMedicView(linkCode: $linkCode)
+                    }
+                    
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .background(RoundedRectangle(cornerRadius: 5)
                     .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 110,minHeight: 50))
-                }
-                .sheet(isPresented: $linkMedic) {
-                    AddMedicView(linkCode: $linkCode)
                 }
                 
             }

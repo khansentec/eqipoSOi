@@ -104,8 +104,10 @@ struct WeekReportView: View {
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .fixedSize()
                                     .keyboardType(.numberPad)
-                        }.padding()
-                    }.padding(.bottom,5)
+                        }
+                        .padding()
+                    }
+                    .padding(.bottom,5)
                     
                     Divider().background(Color("ButtonColor"))
                     
