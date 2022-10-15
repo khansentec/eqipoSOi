@@ -57,8 +57,16 @@ struct Login: View {
                 }
                 Button(action: {
                     progress = true
-                    loginShow.show = "Home"
-                    
+                    login.login(email: email, pass: pass){
+                        (done) in
+                        if done{
+                            UserDefaults.standard.set(true, forKey: "sesion")
+                            loginShow.show = "Home"
+                            showError = false
+                        }else{
+                            showError = true
+                        }
+                    }
                 }){
                     Text("Iniciar")
                         .font(.system( size: 25))

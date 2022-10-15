@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Home: View {
     
@@ -18,21 +19,6 @@ struct Home: View {
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
-    let medicamentosList = [
-        Medicament(idPacient: "1234", medicamentName: "Paracetamol", information: "skdf", startDate: Date.now, forgetTimes: 0),
-        Medicament(idPacient: "1234", medicamentName: "Tempra", information: "skdf", startDate: Date.now, forgetTimes: 0),
-        Medicament(idPacient: "1234", medicamentName: "Sulfas", information: "skdf", startDate: Date.now, forgetTimes: 0)
-    ]
-    let ejemploRecordatorios = [
-        Remind(date: "28/2/19", events: ["Proxima Cita"]),
-        Remind(date: "29/2/19", events: ["Proxima medicion","Proxima toma de presion"])
-    ]
-    
-    let ejemploMedicos = [
-        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
-        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
-    ]
-    
     var body: some View {
         ZStack(alignment: .leading){
             VStack {
@@ -42,24 +28,39 @@ struct Home: View {
                 ZStack{
                     switch loginShow.showApp{
                     case "Home":
-                        AppsView()
+                        AppsView().onAppear(){
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedicaments()
+                                
+                            }
+                        }
                     case "CapturesView":
                         CapturesView().edgesIgnoringSafeArea(.all)
                     case "MedicamentsView":
-                        MedicamentsView(medicamentosList: medicamentosList).edgesIgnoringSafeArea(.all)
+                        MedicamentsView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).onAppear(){
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedicaments()
+                            }
+                        }
                     case "WeekReportView":
                         WeekReportView().edgesIgnoringSafeArea(.all)
                     case "HealthStateView":
                         HealthStateView().edgesIgnoringSafeArea(.all)
                     case "LikYourMedicView":
-                        LinkYourMedicView(listMedics: ejemploMedicos).edgesIgnoringSafeArea(.all)
+                        LinkYourMedicView(listMedics: $login.medics).edgesIgnoringSafeArea(.all).onAppear(){
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedics()
+                            }
+                        }
                     case "RemindersView":
-                        RemindersView(remindersList: ejemploRecordatorios).edgesIgnoringSafeArea(.all)
+                        RemindersView(remindersList: [], medics: $login.medics).edgesIgnoringSafeArea(.all).onAppear{
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedics()
+                            }
+                        }
                     default:
                         AppsView()
                     }
-                    
-                    
                 }
                 
             }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
@@ -24,24 +25,37 @@ struct ContentView: View {
             
             switch loginShow.show{
             case "Home":
-                Home().edgesIgnoringSafeArea(.all)
+                Home().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).onAppear{
+                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                        login.getMedicaments()
+                    }
+                }
+                
             case "Login":
-                Login().edgesIgnoringSafeArea(.all)
+                Login().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             case "SignIn":
                 SignIn().edgesIgnoringSafeArea(.all)
             case "FrecuentlyAskedQuestionsView":
                 FrecuentlyAskedQuestions(questionList: ejemplosPreguntas).edgesIgnoringSafeArea(.all)
+                
             case "GeneralDataView":
-                GeneralDataView(data: $login.data).edgesIgnoringSafeArea(.all)
+                GeneralDataView().edgesIgnoringSafeArea(.all)
+                
             case "SettingsView":
                 SettingsView().edgesIgnoringSafeArea(.all)
             default:
                 Login().edgesIgnoringSafeArea(.all)
             }
             
+            
+            
+            
         }.onAppear(){
             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                loginShow.show = "Home"            }
+                loginShow.show = "Home"
+                loginShow.showApp = "Home"
+                
+            }
         }
     }
 }

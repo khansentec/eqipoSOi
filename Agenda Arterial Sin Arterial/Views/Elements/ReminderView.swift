@@ -11,28 +11,37 @@ struct ReminderView: View {
     
     @State private var screenWidth = UIScreen.main.bounds.width
     
-    var reminder : Remind
+    @State var reminder : Remind
+    @State var date = ""
     
     var body: some View {
         VStack (alignment: .leading){
             HStack (spacing: 5) {
                 VStack(alignment:.leading, spacing : 5){
-                    Text(reminder.date)
+                    Text(date)
                         .fontWeight(.bold)
                         .lineLimit(1)
                         .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
                     
-                    ForEach(reminder.events, id: \.self) {
-                        evento in
-                        HStack {
-                            Text(evento)
-                                .padding(.leading, 20)
-                                .lineLimit(1)
-                        }
+                    HStack {
+                        Text(reminder.title)
+                            .padding(.leading, 20)
+                            .lineLimit(1)
                     }
+                }.onAppear{
+                    let formatter1 = DateFormatter()
+                    formatter1.dateStyle = .short
+                    date = formatter1.string(from: reminder.date)
                 }
-                
-                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .padding(.trailing, 5)
+                        .frame(width : 5)
+                    
+                })
                 
             }
             .frame(minWidth: screenWidth-100, minHeight: 70)

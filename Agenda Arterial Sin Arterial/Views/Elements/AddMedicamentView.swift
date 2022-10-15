@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct AddMedicamentView: View {
-    @Binding var medsList : [Medicament]
-    
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
     
@@ -23,6 +22,8 @@ struct AddMedicamentView: View {
     @Binding var addMedicament : Bool
     @State var edit = false
     @State var error = false
+    
+    @StateObject var login = FirebaseViewController()
     
     var body: some View {
         VStack (spacing : 10){
@@ -61,14 +62,26 @@ struct AddMedicamentView: View {
                     let information = "Frecuencia en horas : " + frecuency + "\nDosis : " + dosis + "\nIndicaciones : " + indications
                     
                     if nameMedicament != ""{
-                        self.medsList.append(Medicament(idPacient: idPacient, medicamentName: nameMedicament, information: information, startDate: date, forgetTimes: 0))
+                        
+                        let id = UUID().uuidString
+                        guard let idUser = Auth.auth().currentUser?.uid else{
+                            return
+                        }
+                        let info: [String: Any] = ["nombreMedicamento":nameMedicament,"fechaDesactivacion":date,"fechaInicio":date,"idPaciente":idUser,"informacion":information,"vecesOlvidado":0,"activo":true]
+                        login.saveData(collectionName: "medicamentos", id: id, info: info){
+                            (done) in
+                            if done{
+                                print("Sucessfully save info")
+                            }else{
+                                print("Error")
+                            }
+                        }
                         
                         self.addMedicament.toggle()
                         
                     }else{
                         error = true
                     }
-                    
                 }.alert("Error", isPresented: $error){
                     
                     Button("OK"){

@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct MedicamentDetailsView: View {
-    
     @State var editing = false
-    @State var startDate : Date
-    @State var medicament : Medicament?
-    @State var info : String
+    @State var startDate = Date.now
+    @State var endDate = Date.now
+    @State var medicament : Medicament
+    @State var info = "No hay info"
     
     @Binding var showNabar : Bool
+
+    @StateObject var login = FirebaseViewController()
     
     var device = UIDevice.current.userInterfaceIdiom
     @State private var widthMenu = UIScreen.main.bounds.width
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body : some View {
         VStack(alignment : .trailing){
@@ -25,7 +29,8 @@ struct MedicamentDetailsView: View {
                 Button(action: {
                     if editing {
                         editing = false
-                    } else{
+                        login.checkPastDates(id: medicament.id,finishDate: endDate, startDate: startDate, information: info)
+                    }else{
                         editing = true
                     }
                 }, label: {
@@ -41,7 +46,7 @@ struct MedicamentDetailsView: View {
             }.padding(.trailing,60).padding(.top,0)
             
             VStack(alignment : .leading, spacing : 20){
-                Text("medicament!.medicamentName")
+                Text(medicament.medicamentName)
                     .font(.system(.title))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -50,11 +55,22 @@ struct MedicamentDetailsView: View {
                 HStack{
                     Text("Fecha de inicio: ")
                     DatePicker("", selection: $startDate, displayedComponents : .date)
-                        .padding(.trailing,70).disabled(!editing)
+                        .padding(.trailing,70).disabled(!editing).onAppear{
+                            startDate = medicament.startDate
+                        }
+                }
+                HStack{
+                    Text("Fecha de Fin: ")
+                    DatePicker("", selection: $endDate, displayedComponents : .date)
+                        .padding(.trailing,70).disabled(!editing).onAppear{
+                            endDate = medicament.finishDate
+                        }
                 }
                 HStack{
                     TextEditor(text: $info)
-                        .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading)
+                        .frame(maxWidth: widthMenu == 375 ? 270 : 270, maxHeight: 300, alignment: .leading).onAppear{
+                            info = medicament.information
+                        }
                     
                 }
                 .overlay(RoundedRectangle(cornerRadius: 10)
@@ -65,7 +81,16 @@ struct MedicamentDetailsView: View {
             
             VStack{
                 Button(action: {
-                    
+                    var sendDate = endDate
+                    if medicament.startDate >= sendDate{
+                        sendDate = Date()
+                    }
+                    login.disableMedicament(idMedicament: medicament.id, endDate: sendDate){
+                        (done) in
+                            if done{
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                    }
                 }, label: {
                     Image(systemName: "trash")
                         .foregroundColor(.red)
@@ -87,14 +112,13 @@ struct MedicamentDetailsView: View {
         .padding(.top,0)
         .onAppear{
             showNabar = false
-        }
-        .onDisappear{
+        }.onDisappear{
+            login.getMedicaments()
             withAnimation{
                 showNabar = true
             }
             
         }
-        
     }
 }
 

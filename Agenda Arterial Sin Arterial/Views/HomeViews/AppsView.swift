@@ -17,20 +17,7 @@ struct AppsView: View {
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
-    let medicamentosList = [
-        Medicament(idPacient: "1234", medicamentName: "Paracetamol", information: "skdf", startDate: Date.now, forgetTimes: 0),
-        Medicament(idPacient: "1234", medicamentName: "Tempra", information: "skdf", startDate: Date.now, forgetTimes: 0),
-        Medicament(idPacient: "1234", medicamentName: "Sulfas", information: "skdf", startDate: Date.now, forgetTimes: 0)
-    ]
-    let ejemploRecordatorios = [
-        Remind(date: "28/2/19", events: ["Proxima Cita"]),
-        Remind(date: "29/2/19", events: ["Proxima medicion","Proxima toma de presion"])
-    ]
-    
-    let ejemploMedicos = [
-        Medic(email: "tucorreo@hotmail.com", patName: "Perez", matName: "Corona", name: "Javier", foto: "Hi", id: "123456", proflicense: "123456abc"),
-        Medic(email: "micorreo@gmail.com", patName: "Narvaez", matName: "Soto", name: "Ivan", foto: "There", id: "12345677", proflicense: "abcdefgh123")
-    ]
+   
     var body: some View {
         if device == .pad{
             ScrollView{
@@ -139,6 +126,8 @@ struct AppsView: View {
                 }
                 
                 Button(action:{
+                    if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                        login.getMedics()                    }
                     withAnimation{
                         loginShow.showApp = "LikYourMedicView"
                     }
@@ -234,6 +223,7 @@ struct AppsView: View {
                     
                     
                     Button(action:{
+                        login.getReminds()
                         withAnimation{
                             loginShow.showApp = "RemindersView"
                         }
@@ -269,6 +259,9 @@ struct AppsView: View {
                     
                     
                     Button(action:{
+                        if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                            login.getMedics()
+                        }
                         withAnimation{
                             loginShow.showApp = "LikYourMedicView"
                         }

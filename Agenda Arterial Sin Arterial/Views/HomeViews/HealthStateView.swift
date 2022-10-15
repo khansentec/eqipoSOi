@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct HealthStateView: View {
-    @State var rest = ""
-    @State var feeling = ""
     @State var comments = ""
-    @State var syptoms = false
-    @State private var speed = 5.0
+    @State var symptomsPresent = false
+    @State var symptoms = ""
+    @State var feeling : Float = 5.0
+    @State var healthReportSubmitted = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
+    @State private var widthMenu = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack{
@@ -23,10 +26,10 @@ struct HealthStateView: View {
                     VStack (alignment: .leading){
                         HStack {
                             Text("Sentimiento del día: ")
-                            Text("\(speed, specifier:"%.1f")")
+                            Text("\(feeling, specifier:"%.1f")")
                         }
                         Slider(
-                            value: $speed,
+                            value: $feeling,
                             in: 0...10,
                             minimumValueLabel: Text("Mal"),
                             maximumValueLabel: Text("Bien")
@@ -38,22 +41,21 @@ struct HealthStateView: View {
                         Text("¿Ha tenido síntomas?")
                             .multilineTextAlignment(.leading)
                         
-                        Picker(selection: $syptoms, label: Text("Picker")) {
+                        Picker(selection: $symptomsPresent, label: Text("Picker")) {
                             Text("Sí").tag(true)
                             Text("No").tag(false)
-                        }
-                        .frame(width : 70, height: 10)
+                        }                        .frame(width : 70, height: 10)
                         .accentColor(Color("ButtonColor"))
                         .padding(.top,-5)
                     }
                     .padding()
                     
                     VStack (alignment: .leading) {
-                        Text("Síntomas nuevas: ")
+                        Text("Síntomas nuevos: ")
                         HStack {
-                            TextEditor(text: $feeling)
+                            TextEditor(text: $symptoms)
                                 .frame(maxHeight: 100, alignment: .center)
-                                .disabled(!syptoms)
+                                .disabled(!symptomsPresent)
                         }
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.gray.opacity(0.2), lineWidth: 1)).frame(alignment: .center)

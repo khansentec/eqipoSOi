@@ -43,6 +43,21 @@
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
+		C096B6EB28FA4F9B0018AA9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */; };
+		C0EE1E1128FA0B5E0069C41A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1028FA0B5E0069C41A /* FirebaseAuth */; };
+		C0EE1E1328FA0B5E0069C41A /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1228FA0B5E0069C41A /* FirebaseAuthCombine-Community */; };
+		C0EE1E1528FA0B5E0069C41A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1428FA0B5E0069C41A /* FirebaseFirestore */; };
+		C0EE1E1728FA0B5E0069C41A /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1628FA0B5E0069C41A /* FirebaseFirestoreCombine-Community */; };
+		C0EE1E1928FA0B5E0069C41A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1828FA0B5E0069C41A /* FirebaseFirestoreSwift */; };
+		C0EE1E1B28FA0B5E0069C41A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1A28FA0B5E0069C41A /* FirebaseStorage */; };
+		C0EE1E1D28FA0B5E0069C41A /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1C28FA0B5E0069C41A /* FirebaseStorageCombine-Community */; };
+		C0EE1E2128FA33720069C41A /* HealthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E1E28FA33720069C41A /* HealthReport.swift */; };
+		C0EE1E2228FA33720069C41A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E1F28FA33720069C41A /* User.swift */; };
+		C0EE1E2328FA33720069C41A /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E2028FA33720069C41A /* Appointment.swift */; };
+		C0EE1E2528FA337F0069C41A /* ImageFirebaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E2428FA337F0069C41A /* ImageFirebaseViewController.swift */; };
+		C0EE1E2928FA33E40069C41A /* ImageFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E2628FA33E40069C41A /* ImageFirebase.swift */; };
+		C0EE1E2A28FA33E40069C41A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E2728FA33E40069C41A /* ImagePicker.swift */; };
+		C0EE1E2B28FA33E40069C41A /* AddAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE1E2828FA33E40069C41A /* AddAppointment.swift */; };
 		C20400A028F6070F00E29E08 /* NavBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204009F28F6070E00E29E08 /* NavBarMenu.swift */; };
 		C20400A228F6113D00E29E08 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20400A128F6113D00E29E08 /* CreditsView.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +100,15 @@
 		C065D69D28E0D2A900AC046F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Agenda-Arterial-Sin-Arterial-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0EE1E1E28FA33720069C41A /* HealthReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
+		C0EE1E1F28FA33720069C41A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C0EE1E2028FA33720069C41A /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		C0EE1E2428FA337F0069C41A /* ImageFirebaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFirebaseViewController.swift; sourceTree = "<group>"; };
+		C0EE1E2628FA33E40069C41A /* ImageFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFirebase.swift; sourceTree = "<group>"; };
+		C0EE1E2728FA33E40069C41A /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C0EE1E2828FA33E40069C41A /* AddAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAppointment.swift; sourceTree = "<group>"; };
 		C204009F28F6070E00E29E08 /* NavBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarMenu.swift; sourceTree = "<group>"; };
 		C20400A128F6113D00E29E08 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +118,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0EE1E1928FA0B5E0069C41A /* FirebaseFirestoreSwift in Frameworks */,
+				C0EE1E1D28FA0B5E0069C41A /* FirebaseStorageCombine-Community in Frameworks */,
+				C0EE1E1128FA0B5E0069C41A /* FirebaseAuth in Frameworks */,
+				C0EE1E1728FA0B5E0069C41A /* FirebaseFirestoreCombine-Community in Frameworks */,
+				C0EE1E1328FA0B5E0069C41A /* FirebaseAuthCombine-Community in Frameworks */,
+				C0EE1E1528FA0B5E0069C41A /* FirebaseFirestore in Frameworks */,
+				C0EE1E1B28FA0B5E0069C41A /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +134,9 @@
 		C00DF2CC28F0862C008C7D45 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				C0EE1E2028FA33720069C41A /* Appointment.swift */,
+				C0EE1E1E28FA33720069C41A /* HealthReport.swift */,
+				C0EE1E1F28FA33720069C41A /* User.swift */,
 				C00DF2CD28F0862C008C7D45 /* Capture.swift */,
 				C00DF2CE28F0862C008C7D45 /* Medic.swift */,
 				C00DF2CF28F0862C008C7D45 /* WeekReport.swift */,
@@ -117,6 +151,7 @@
 		C00DF2D428F0862C008C7D45 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0EE1E2428FA337F0069C41A /* ImageFirebaseViewController.swift */,
 				C00DF2D628F0862C008C7D45 /* FirebaseViewController.swift */,
 			);
 			path = ViewControllers;
@@ -149,6 +184,9 @@
 		C00DF2DC28F0862C008C7D45 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				C0EE1E2828FA33E40069C41A /* AddAppointment.swift */,
+				C0EE1E2628FA33E40069C41A /* ImageFirebase.swift */,
+				C0EE1E2728FA33E40069C41A /* ImagePicker.swift */,
 				C00DF2FC28F086D8008C7D45 /* AddMedicamentView.swift */,
 				C00DF2FB28F086D8008C7D45 /* AddMedicView.swift */,
 				C00DF2FD28F086D8008C7D45 /* ButtonNavbar.swift */,
@@ -198,6 +236,8 @@
 		C065D69A28E0D2A900AC046F /* Agenda Arterial Sin Arterial */ = {
 			isa = PBXGroup;
 			children = (
+				C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */,
+				C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */,
 				C00DF2CC28F0862C008C7D45 /* Data Structures */,
 				C00DF2D428F0862C008C7D45 /* ViewControllers */,
 				C00DF2D728F0862C008C7D45 /* Views */,
@@ -233,6 +273,15 @@
 			dependencies = (
 			);
 			name = "Agenda Arterial Sin Arterial";
+			packageProductDependencies = (
+				C0EE1E1028FA0B5E0069C41A /* FirebaseAuth */,
+				C0EE1E1228FA0B5E0069C41A /* FirebaseAuthCombine-Community */,
+				C0EE1E1428FA0B5E0069C41A /* FirebaseFirestore */,
+				C0EE1E1628FA0B5E0069C41A /* FirebaseFirestoreCombine-Community */,
+				C0EE1E1828FA0B5E0069C41A /* FirebaseFirestoreSwift */,
+				C0EE1E1A28FA0B5E0069C41A /* FirebaseStorage */,
+				C0EE1E1C28FA0B5E0069C41A /* FirebaseStorageCombine-Community */,
+			);
 			productName = "Agenda Arterial Sin Arterial";
 			productReference = C065D69828E0D2A900AC046F /* Agenda Arterial Sin Arterial.app */;
 			productType = "com.apple.product-type.application";
@@ -261,6 +310,9 @@
 				Base,
 			);
 			mainGroup = C065D68F28E0D2A900AC046F;
+			packageReferences = (
+				C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C065D69928E0D2A900AC046F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +329,7 @@
 			files = (
 				C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */,
 				C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */,
+				C096B6EB28FA4F9B0018AA9A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,16 +340,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0EE1E2328FA33720069C41A /* Appointment.swift in Sources */,
 				C00DF30728F086D8008C7D45 /* NavbarLogin.swift in Sources */,
 				C00DF31628F08776008C7D45 /* Login.swift in Sources */,
+				C0EE1E2A28FA33E40069C41A /* ImagePicker.swift in Sources */,
 				C00DF2F728F086CD008C7D45 /* TimerView.swift in Sources */,
 				C00DF2EC28F0862C008C7D45 /* FirebaseViewController.swift in Sources */,
+				C0EE1E2528FA337F0069C41A /* ImageFirebaseViewController.swift in Sources */,
+				C0EE1E2128FA33720069C41A /* HealthReport.swift in Sources */,
 				C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */,
 				C00DF30F28F08731008C7D45 /* HealthStateView.swift in Sources */,
 				C00DF30128F086D8008C7D45 /* NavBarHome.swift in Sources */,
 				C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */,
 				C00DF30328F086D8008C7D45 /* AddMedicView.swift in Sources */,
 				C00DF30028F086D8008C7D45 /* MedicamentView.swift in Sources */,
+				C0EE1E2B28FA33E40069C41A /* AddAppointment.swift in Sources */,
 				C00DF31028F08731008C7D45 /* WeekReportView.swift in Sources */,
 				C00DF2E428F0862C008C7D45 /* Capture.swift in Sources */,
 				C00DF2E828F0862C008C7D45 /* Remind.swift in Sources */,
@@ -304,6 +362,7 @@
 				C00DF2E928F0862C008C7D45 /* Pacient.swift in Sources */,
 				C00DF30E28F08731008C7D45 /* MedicamentsView.swift in Sources */,
 				C00DF30428F086D8008C7D45 /* AddMedicamentView.swift in Sources */,
+				C0EE1E2228FA33720069C41A /* User.swift in Sources */,
 				C00DF2F428F0862C008C7D45 /* RemindersView.swift in Sources */,
 				C00DF2F528F0862C008C7D45 /* AppsView.swift in Sources */,
 				C00DF30628F086D8008C7D45 /* MedicamentDetailsView.swift in Sources */,
@@ -316,6 +375,7 @@
 				C20400A028F6070F00E29E08 /* NavBarMenu.swift in Sources */,
 				C00DF2F028F0862C008C7D45 /* ReminderDetailsView.swift in Sources */,
 				C00DF2E728F0862C008C7D45 /* Medition.swift in Sources */,
+				C0EE1E2928FA33E40069C41A /* ImageFirebase.swift in Sources */,
 				C065D69C28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift in Sources */,
 				C00DF2EE28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift in Sources */,
 				C00DF2F128F0862C008C7D45 /* ReminderView.swift in Sources */,
@@ -454,17 +514,19 @@
 				DEVELOPMENT_TEAM = 8D757858GR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Agenda-Arterial-Sin-Arterial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Para subir Foto de Perfil";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Tec-De-Monterrey.Agenda-Arterial-Sin-Arterial";
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -483,17 +545,19 @@
 				DEVELOPMENT_TEAM = 8D757858GR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Agenda-Arterial-Sin-Arterial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Para subir Foto de Perfil";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Tec-De-Monterrey.Agenda-Arterial-Sin-Arterial";
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -523,6 +587,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C0EE1E1028FA0B5E0069C41A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C0EE1E1228FA0B5E0069C41A /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		C0EE1E1428FA0B5E0069C41A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		C0EE1E1628FA0B5E0069C41A /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		C0EE1E1828FA0B5E0069C41A /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		C0EE1E1A28FA0B5E0069C41A /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		C0EE1E1C28FA0B5E0069C41A /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0EE1E0F28FA0B5E0069C41A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C065D69028E0D2A900AC046F /* Project object */;
 }

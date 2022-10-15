@@ -19,19 +19,13 @@ struct ButtonNavbar: View {
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
-    func printTitle(title : String) {
-        print(title)
-    }
-    
     var body: some View {
         Button(action:{
             withAnimation{
                 index = title
-                
                 if device == .phone{
                     menu.toggle()
                 }
-                
                 loginShow.showApp = "Home"
                 loginShow.show = whereto
                 
