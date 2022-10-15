@@ -88,7 +88,7 @@ struct SignIn: View {
                         }
                         HStack{
                             Text("Teléfono").fontWeight(.bold)
-                            TextField("Numero",value: $number,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                            TextField("Numero",text: $number).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                             
                         }.padding(.bottom, 20)
                         //                    Spacer().frame(minHeight: 50, maxHeight: 100)
