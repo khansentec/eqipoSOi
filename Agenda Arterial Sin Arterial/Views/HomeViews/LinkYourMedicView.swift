@@ -21,6 +21,7 @@ struct LinkYourMedicView: View {
                     
                     HStack (alignment: .center) {
                         Text("Médicos Vinculados").font(.title)
+                        Spacer()
                         Button(action:{
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedics()
@@ -30,7 +31,7 @@ struct LinkYourMedicView: View {
                             Image(systemName: "arrow.clockwise").aspectRatio(contentMode: .fill).foregroundColor(.black)
                         }
                     }
-                    .padding(.trailing, 50)
+                    .padding(30)
                     
                     NavigationView{
                         List(){
@@ -42,35 +43,40 @@ struct LinkYourMedicView: View {
                                 listMedics.remove(atOffsets: idxSet)
                             })
                             
-                            
-                        }.padding(.all).background(Color.clear).padding(.bottom,10).overlay(Group{
+                        }
+                        .padding(.all)
+                        .background(Color.clear)
+                        .padding(.bottom,10)
+                        .overlay(Group{
                             if listMedics.isEmpty{
-                                Text("No hay Medicos Vinculados")
+                                Text("No hay médicos vinculados")
                             }
                         })
-                        
                         
                     }.navigationViewStyle(StackNavigationViewStyle())
                     
                     Button("Vincular") {
                         linkCode = login.generateLinkCode(){
                             (done) in
-                            if done{
+                            if done {
                                 linkMedic = true
-                            }else{
+                            } else {
                                 print("Error firebase")
                             }
                         }
                     }
-                }.sheet(isPresented: $linkMedic){
+                    .font(.system(size: 20))
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(Color("ButtonColor"))
+                    .frame(minWidth: 110,minHeight: 50))
+                }
+                .sheet(isPresented: $linkMedic) {
                     AddMedicView(linkCode: $linkCode)
                 }
-                .foregroundColor(.white)
-                .background(RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(Color("ButtonColor"))
-                    .frame(minWidth: 100,minHeight: 40))
+                
             }
-            .padding(.bottom, widthMenu == 375 ? 20 : 30)
+            .padding(.bottom, widthMenu == 375 ? 40 : 60)
         }
     }
 }

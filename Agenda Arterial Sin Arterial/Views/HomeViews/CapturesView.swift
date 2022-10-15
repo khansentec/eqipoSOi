@@ -242,9 +242,10 @@ struct CapturesView: View {
                                     
                                     
                                 }
-                                
                                 meditionSubmitted = true
-                            }.alert("Error", isPresented: $meditionSubmitted){
+                                
+                            }
+                            .alert(alertTitle, isPresented: $meditionSubmitted){
                                 
                                 Button("OK"){
                                     //si se oprime quitar el ok

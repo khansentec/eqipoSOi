@@ -90,11 +90,10 @@ struct AddMedicamentView: View {
                 } message: {
                     Text("Debe ingresar el nombre del medicamento")
                 }
-                .foregroundColor(.red)
+                .foregroundColor(.white)
                 .background(RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.red, lineWidth: 1)
+                    .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 100,minHeight: 40))
-                
                 
             }
         }.onTapGesture{
