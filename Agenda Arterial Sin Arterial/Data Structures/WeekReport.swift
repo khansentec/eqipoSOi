@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Firebase
 
 class WeekReport {
+    var login = FirebaseViewController()
     var followDiet : Float
     var saltConsumption : Float
     var beveragesIntake : Bool
@@ -62,103 +64,117 @@ class WeekReport {
             if self.numBeverages <= 0 || self.numBeverages > 99 {
                 return (false, "La cantidad de refrescos debe ser entre 0 y 99")
             }
-                
+            
         }else {
             if self.numBeverages != 0 {
                 return(false, "Favor de indicar que consumió refrescos")
             }
         }
-            
-            if self.numPhysicalActivity < 0 || self.numPhysicalActivity > 99{
-                return (false, "La cantidad de actividad física debe ser entre 0 y 99")
-            }
-            
-            if self.sleepHours < 0 || self.sleepHours > 24 {
-                return (false, "Las horas de descanso deben ser entre 0 y 24")
-            }
-            
-            let validationMedicaments = validateMedicaments()
-            
-            if !validationMedicaments.0{
-                return (validationMedicaments)
-            }
-            
-            return (true, "Datos válidos")
-            
-            
+        
+        if self.numPhysicalActivity < 0 || self.numPhysicalActivity > 99{
+            return (false, "La cantidad de actividad física debe ser entre 0 y 99")
         }
         
+        if self.sleepHours < 0 || self.sleepHours > 24 {
+            return (false, "Las horas de descanso deben ser entre 0 y 24")
+        }
+        
+        let validationMedicaments = validateMedicaments()
+        
+        if !validationMedicaments.0{
+            return (validationMedicaments)
+        }
+        
+        return (true, "Datos válidos")
+        
+        
+    }
+    
     func updateMedicaments() -> Bool {
-            var medicamentsUploaded = false
-            for medicament in self.medicaments {
-                print(medicament.forgetTimes)
-                // FALTA IMPLEMENTAR QUE SE BORREN
+        var medicamentsUploaded = false
+        for medicament in self.medicaments {
+            login.updateData(collectionName: "medicamentos" , id: medicament.id , info: ["vecesOlvidado" : medicament.forgetTimes] ){(done)
+                in
+                if done{
+                    medicamentsUploaded = true
+                }else{
+                    medicamentsUploaded = false
+                }
                 
-//                loginShow.saveMedicament(startDate: medicament.startDate, finishDate: medicament.startDate, nameM: medicament.medicamentName, info: medicament.information,
-//                                         active: true, forgottenTimes: medicament.forgetTimes){(done)
-//                    in
-//                    if done{
-//                        medicamentsUploaded = true
-//                    }else{
-//                        medicamentsUploaded = false
-//                    }
-//                }
             }
-            return medicamentsUploaded
+            
         }
-        
+        return medicamentsUploaded
+    }
+    
+    
+    
     func uploadWR() -> (Bool, String, String){
-            let validationResults = self.validateWR()
+        let validationResults = self.validateWR()
+        
+        let reportIsValid = validationResults.0
+        var alertTitle = ""
+        var alertMessage = validationResults.1
+        var weekRUploaded = false
+        
+        if reportIsValid {
+            //método para subir a firebase regresa booleano
+            let id = UUID().uuidString
             
-            var reportIsValid = validationResults.0
-            var alertTitle = ""
-            var alertMessage = ""
-            var meditionUploaded = false
-            
-            if reportIsValid {
-                //método para subir a firebase regresa booleano
-//                loginShow.saveWR(date: self.reportDate, followDiet: self.followDiet, saltConsumption: self.saltConsumption,
-//                                 beveragesIntake: self.beveragesIntake, numBeverages: self.numBeverages,
-//                                 physicalActivity: self.physicalActivity, numPhysicalActivity: self.numPhysicalActivity,
-//                                 sleepHours: self.sleepHours, followMedicalPresciption: self.followMedicalPresciption,
-//                                 nextReportDate: self.nextReportDate){(done)
-//                    in
-//                    if done{
-//
-//                        var newRemind = Remind(date: self.nextReportDate, type: "reporteSemanal", title: "Próximo Reporte Semanal", description: "Llena tu reporte semanal")
-//
-//                        var remindsUpdated = newRemind.updateRemind()
-//
-//                        var medicamentsUpdated = self.updateMedicaments()
-//
-//                        if medicamentsUpdated && remindsUpdated {
-//                            alertTitle = "¡Éxito!"
-//                            alertMessage = "Los datos se han guardado correctamente"
-//                            meditionUploaded = true
-//
-//                        }else {
-//                            alertTitle = "¡Oops!"
-//                            alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-//                            meditionUploaded = false
-//                        }
-//
-//                    }else{
-//                        alertTitle = "¡Oops!"
-//                        alertMessage = "Los datos no se han podido guardar. Intente más tarde"
-//                        meditionUploaded = false
-//
-//                    }
-//                }
-                
-            } else {
-                alertTitle = "¡Oops!"
-                alertMessage = validationResults.1
-                reportIsValid = false
-                
+            guard let idUser = Auth.auth().currentUser?.uid else{
+                return (false, alertTitle, "Usuario no encontrado")
             }
-            return (meditionUploaded, alertTitle, alertMessage)
+            
+            let followDietR = round(self.followDiet * 100) / 100.0
+            let saltConsumptionR = round(self.saltConsumption * 100) / 100.0
+            
+            let physicalActivityR = round(self.physicalActivity * 100) / 100.0
+            
+            
+            let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha": self.reportDate, "seguimientoDieta": Double(followDietR),  "consumoSal": saltConsumptionR, "consumoRefrescos": self.beveragesIntake, "cantidadRefrescos": self.numBeverages, "actividadFisica": physicalActivityR, "numActividadFisica": self.numPhysicalActivity, "horasDescanso": self.sleepHours, "seguimientoReceta": self.followMedicalPresciption, "fechaSigReporte": self.nextReportDate]
+            
+            login.deleteOldRemindByType(type: "reporteSemanal", date: Date.now)
+            login.saveData(collectionName: "reportesSemanales", id: id, info: info){(done)
+                in
+                if done{
+                    let id = UUID().uuidString
+                    
+                    let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha":self.nextReportDate, "tipo":"reporteSemanal","titulo":"Próximo Reporte Semanal", "descripcion":"Próximo Reporte Semanal"]
+                    
+                    //                    var remindsUpdated = newRemind.updateRemind()
+                   
+                    
+                    self.login.saveData(collectionName: "notificaciones", id: id, info: info){
+                        (done)in
+                        if done{
+                            print("Succesfully upload reminder of type week report")
+                        }else{
+                            print("ERROR saving info")
+                        }
+                    }
+                    
+                    
+                    
+                    var medicamentsUpdated = self.updateMedicaments()
+                    //                    && remindsUpdated
+                    if medicamentsUpdated  {
+                        alertTitle = "¡Éxito!"
+                        alertMessage = "Los datos se han guardado correctamente"
+                        weekRUploaded = true
+                        
+                    }else {
+                        alertTitle = "¡Oops!"
+                        alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                    }
+                }else{
+                    alertTitle = "¡Oops!"
+                    alertMessage = "Los datos no se han podido guardar. Intente más tarde"
+                }
+            }
+            
         }
-        
-        
+        return (weekRUploaded, alertTitle, alertMessage)
+    }
+    
+    
 }
-

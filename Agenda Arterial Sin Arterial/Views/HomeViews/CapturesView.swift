@@ -10,21 +10,40 @@ import SwiftUI
 struct CapturesView: View {
     @State var presionSupStr1 = ""
     @State var presionInfStr1 = ""
-    @State var pulse1 = 0
+    @State var pulse1 : Int = 0
     @State var presionSupStr2 = ""
     @State var presionInfStr2 = ""
-    @State var pulse2 = 0
+    @State var pulse2 : Int = 0
     @State var presionSupStr3 = ""
     @State var presionInfStr3 = ""
-    @State var pulse3 = 0
-    
-    @State var invalidCaptureError = false
+    @State var pulse3 : Int = 0
     
     @State var dateCapture = Date.now
     
     @State var status = true
+    
     @State var timerShow = false
     @State var timerTime = 0
+    
+    //-----------------------------------------------------
+    @State var meditionSubmitted = false
+    @State var alertMessage = ""
+    @State var alertTitle = ""
+    
+    @State private var widthMenu = UIScreen.main.bounds.width
+    @State private var heighthMenu = UIScreen.main.bounds.height
+    @State var showNavbar = true
+    
+    @State private var captures = [Capture]()
+    
+    //-------------------------------------------------------------
+    
+    
+    var device = UIDevice.current.userInterfaceIdiom
+    @Environment(\.horizontalSizeClass) var width
+    
+    //--------------------------------------------------
+    
     
     @State var validation1 = false
     @State var validation2 = false
@@ -33,15 +52,10 @@ struct CapturesView: View {
     @State var message2 = ""
     @State var message3 = ""
     
-    @State private var widthMenu = UIScreen.main.bounds.width
-    @State private var heighthMenu = UIScreen.main.bounds.height
     
-    var med = Medition(fecha: Date.now)
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
-    var device = UIDevice.current.userInterfaceIdiom
-    @Environment(\.horizontalSizeClass) var width
     
     var body: some View {
         
@@ -203,90 +217,40 @@ struct CapturesView: View {
                                 .padding(.trailing,70)
                                 .padding(.leading,0)
                             
-                            Button("Enviar") {
-                                med.changeDate(newDate: dateCapture)
-                                let validacionCaptura1 = med.validateCapture(presionSupStr: presionSupStr1, presionInfStr: presionInfStr1, pulse: pulse1)
+                            Button("Enviar"){
+                                let capture1 = Capture(presionSup: presionSupStr1, presionInf: presionInfStr1, pulse: pulse1)
+                                let capture2 = Capture(presionSup: presionSupStr2, presionInf: presionInfStr2, pulse: pulse2)
+                                let capture3 = Capture(presionSup: presionSupStr3, presionInf: presionInfStr3, pulse: pulse3)
                                 
-                                validation1 = validacionCaptura1.0
-                                message1 = validacionCaptura1.1
+                                let medition = Medition(date: dateCapture, captures: [capture1,capture2,capture3])
                                 
-                                print(validacionCaptura1)
+                                let validation = medition.validateMedition()
                                 
-                                let validacionCaptura2 = med.validateCapture(presionSupStr: presionSupStr2, presionInfStr: presionInfStr2, pulse: pulse2)
+                                alertTitle = validation.1
+                                alertMessage =  validation.2
                                 
-                                validation2 = validacionCaptura2.0
-                                message2 = validacionCaptura2.1
-                                
-                                print(validacionCaptura2)
-                                
-                                let validacionCaptura3 = med.validateCapture(presionSupStr: presionSupStr3, presionInfStr: presionInfStr3, pulse: pulse3)
-                                
-                                validation3 = validacionCaptura3.0
-                                message3 = validacionCaptura3.1
-                                
-                                print(validacionCaptura3)
-                                
-                                if (!validation1  || !validation2 || !validation3) || message1 == "Sin datos" {
-                                    invalidCaptureError = true
-                                }else{
-                                    
-                                    if validation1{
-                                        let presionSup1 = Int(presionSupStr1)!
-                                        let presionInf1 = Int(presionInfStr1)!
-                                        
-                                        
-                                        let cap1 = Capture(presionSup: presionSup1, presionInf: presionInf1, pulse: pulse1)
-                                        med.addCapture(newCapture: cap1)
-                                        
-                                    }
-                                    if validation2 && message2 != "Sin datos"{
-                                        let presionSup2 = Int(presionSupStr2)!
-                                        let presionInf2 = Int(presionInfStr2)!
-                                        
-                                        let cap2 = Capture(presionSup: presionSup2, presionInf: presionInf2, pulse: pulse2)
-                                        med.addCapture(newCapture: cap2)
-                                        
-                                    }
-                                    if validation3 && message3 != "Sin datos" {
-                                        let presionSup3 = Int(presionSupStr3)!
-                                        let presionInf3 = Int(presionInfStr3)!
-                                        
-                                        let cap3 = Capture(presionSup: presionSup3, presionInf: presionInf3, pulse: pulse3)
-                                        med.addCapture(newCapture: cap3)
-                                    }
-                                    
-                                    med.calculateAvg()
-                                    print(med.avgSup)
-                                    print(med.avgInf)
-                                    print(med.avgPulse)
-                                    
-//                                    loginShow.saveBP(state: "verde", dateC: med.meditionDate, pressureS: med.avgSup, pressureD: med.avgInf, pulse: med.avgPulse){(done)
-//                                        in
-//                                        if done{
-//                                            pulse1 = 0
-//                                            pulse2 = 0
-//                                            pulse3 = 0
-//                                        }
-//                                    }
-                                    
+                                if validation.0 {
+                                    pulse1 = 0
+                                    pulse2 = 0
+                                    pulse3 = 0
+                                    presionSupStr1 = ""
+                                    presionSupStr2 = ""
+                                    presionSupStr3 = ""
+                                    presionInfStr1 = ""
+                                    presionInfStr2 = ""
+                                    presionInfStr3 = ""
                                     
                                     
                                 }
-                            }.alert("Error", isPresented: $invalidCaptureError){
+                                
+                                meditionSubmitted = true
+                            }.alert("Error", isPresented: $meditionSubmitted){
                                 
                                 Button("OK"){
                                     //si se oprime quitar el ok
                                 }
                             } message: {
-                                if !validation1 && message1 != "Sin datos"{
-                                    Text(message1)
-                                }else if !validation2 && message2 != "Sin datos" {
-                                    Text(message2)
-                                } else if !validation3 && message3 != "Sin datos" {
-                                    Text(message3)
-                                }else {
-                                    Text("Debe ingresar datos en Captura 1")
-                                }
+                                Text(alertMessage)
                             }
                             .foregroundColor(.white)
                             .background(RoundedRectangle(cornerRadius: 5)

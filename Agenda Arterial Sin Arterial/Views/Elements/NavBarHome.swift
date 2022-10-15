@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct NavBarHome: View {
     var device = UIDevice.current.userInterfaceIdiom
@@ -39,6 +40,8 @@ struct NavBarHome: View {
                 ButtonNavbar(index: $index, menu: $menu,whereto: "GeneralDataView", img: "person.crop.circle", title: "Datos Generales")
                 ButtonNavbar(index: $index, menu: $menu,whereto: "FrecuentlyAskedQuestionsView", img: "checkmark" , title: "Preguntas Frecuentes")
                 Button(action: {
+                    try! Auth.auth().signOut()
+                    UserDefaults.standard.removeObject(forKey: "sesion")
                     loginShow.show = "Login"
                 }){
                     Text("Sign Out").font(.system(size: 24))

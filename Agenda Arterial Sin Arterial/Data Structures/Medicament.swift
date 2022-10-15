@@ -8,17 +8,13 @@
 import Foundation
 
 struct Medicament : Hashable, Identifiable {
-    var id = UUID()
+    var id : String
     var idPacient : String
     var medicamentName : String
     var information : String
     var startDate : Date
+    var finishDate : Date
     var forgetTimes : Int
-    }
-    
-extension Medicament {
-    static let medicamentosList = [
-        Medicament(idPacient: "1234", medicamentName: "Paracetamol", information: "sjhf", startDate: Date.now, forgetTimes: 12)
-        
-    ]
 }
+
+

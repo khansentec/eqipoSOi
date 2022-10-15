@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct NavBarMenu: View {
     
@@ -53,6 +54,14 @@ struct NavBarMenu: View {
                     Spacer()
                     
                     Button(action: {
+                        try! Auth.auth().signOut()
+                        UserDefaults.standard.removeObject(forKey: "sesion")
+                        loginShow.data = nil
+                        loginShow.reminds = []
+                        loginShow.medics = []
+                        loginShow.meds = []
+                        loginShow.medUpdate = nil
+                        loginShow.remindUpdate = nil
                         loginShow.show = "Login"
                     }){
                         Text("Sign Out").font(.title).fontWeight(.bold).foregroundColor(Color("ButtonColor"))

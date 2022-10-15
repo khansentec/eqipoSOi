@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddMedicView: View {
     var device = UIDevice.current.userInterfaceIdiom
+    @Binding var linkCode : [Int]
     @Environment(\.horizontalSizeClass) var width
     @State private var widthMenu = UIScreen.main.bounds.width
     
@@ -20,29 +21,15 @@ struct AddMedicView: View {
             Spacer().frame(maxHeight: 10)
             Text("Por código del paciente:")
             HStack{
-                Text("1").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color("ButtonColor"), lineWidth: 2)
-                )
-                .fixedSize()
-                Text("2").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color("ButtonColor"), lineWidth: 2)
-                )
-                .fixedSize()
-                Text("3").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color("ButtonColor"), lineWidth: 2)
-                )
-                .fixedSize()
-                Text("4").font(.custom("Helvetica", size: 50)).frame(width: 60, height: 60).overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color("ButtonColor"), lineWidth: 2)
-                )
-                .fixedSize()
+                ForEach(linkCode,id: \.self){
+                    number in
+                    Text(String(number)).font(.custom("Helvetica", size: 50)).foregroundColor(.black).frame(width: 60, height: 60).overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.blue, lineWidth: 2)
+                    )
+                    .fixedSize()
+                }
             }
-            
-            
             Spacer().frame(minHeight: widthMenu == 375 ? 200 : 300, maxHeight: widthMenu == 375 ? 400 : 500)
         }
     }

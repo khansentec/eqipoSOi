@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LinkYourMedicView: View {
-    @State var listMedics = [Medic]()
+    @Binding var listMedics : [Medic]
+    @State var linkCode = [Int]()
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     @State var linkMedic = false
@@ -21,50 +22,56 @@ struct LinkYourMedicView: View {
                     HStack (alignment: .center) {
                         Text("Médicos Vinculados").font(.title)
                         Button(action:{
-                            
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedics()
+                                listMedics = login.medics
+                            }
                         }){
                             Image(systemName: "arrow.clockwise").aspectRatio(contentMode: .fill).foregroundColor(.black)
                         }
                     }
                     .padding(.trailing, 50)
                     
-                    NavigationView {
-                        VStack {
-                            
-                            
-                            List(){
-                                ForEach(listMedics, id : \.self){
-                                    medic in
-                                    MedicView(medic: medic)
-                                    
-                                }.onDelete(perform: { idxSet in
-                                    listMedics.remove(atOffsets: idxSet)
-                                })
-                            }
-                            .padding(.all)
-                            .background(Color.clear)
-                            .overlay(Group{
-                                if listMedics.isEmpty{
-                                    Text("No hay médicos vinculados.")
-                                }
+                    NavigationView{
+                        List(){
+                            ForEach(listMedics, id : \.self){
+                                medic in
+                                MedicView(medic: medic)
+                                
+                            }.onDelete(perform: { idxSet in
+                                listMedics.remove(atOffsets: idxSet)
                             })
-                        }
-                    }
-                    .navigationViewStyle(StackNavigationViewStyle())
+                            
+                            
+                        }.padding(.all).background(Color.clear).padding(.bottom,10).overlay(Group{
+                            if listMedics.isEmpty{
+                                Text("No hay Medicos Vinculados")
+                            }
+                        })
+                        
+                        
+                    }.navigationViewStyle(StackNavigationViewStyle())
                     
                     Button("Vincular") {
-                        linkMedic.toggle()
+                        linkCode = login.generateLinkCode(){
+                            (done) in
+                            if done{
+                                linkMedic = true
+                            }else{
+                                print("Error firebase")
+                            }
+                        }
                     }
-                    .sheet(isPresented: $linkMedic){
-                        AddMedicView()
-                    }
-                    .foregroundColor(.white)
-                    .background(RoundedRectangle(cornerRadius: 5)
+                }.sheet(isPresented: $linkMedic){
+                    AddMedicView(linkCode: $linkCode)
+                }
+                .foregroundColor(.white)
+                .background(RoundedRectangle(cornerRadius: 5)
                     .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 100,minHeight: 40))
-                }
-                .padding(.bottom, widthMenu == 375 ? 20 : 30)
             }
+            .padding(.bottom, widthMenu == 375 ? 20 : 30)
         }
     }
 }
+

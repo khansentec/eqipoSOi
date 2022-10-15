@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MedicamentsView: View {
-    @State var medicamentosList = [Medicament]()
-    
     @State var medicamentName = ""
     @State var startDate = Date.now
     @State var frecuency = ""
@@ -26,11 +24,6 @@ struct MedicamentsView: View {
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
     
-    
-    func deleteItems(at offsets: IndexSet) {
-        medicamentosList.remove(atOffsets: offsets)
-    }
-    
     var body: some View {
         
         ZStack(alignment: .bottomTrailing){
@@ -42,28 +35,30 @@ struct MedicamentsView: View {
                 ScrollView(.vertical, showsIndicators: false){
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
-                        
-                        ForEach(medicamentosList,id: \.self){ medicament in
-                            
-                            HStack {
-                                MedicamentView(medicament: medicament)
-                                    .onTapGesture { editing.toggle() }
+                        ForEach(data.meds,id: \.self){ medicament in
+                            HStack{
+                                MedicamentView(medicament: medicament).onTapGesture {
+                                    data.sendMed(item: medicament)
+                                    editing.toggle()
+                                }
                             }
+                        }.sheet(isPresented: $editing){
+                            data.getMedicaments()
                             
-                        }
-                        .sheet(isPresented: $editing, content: {
-                            MedicamentDetailsView(startDate: Date.now, info: "data.medUpdate.informatio", showNabar: $showNavbar)
-                        })
-                        .padding(.all)
+                        } content: {
+                            MedicamentDetailsView(medicament: data.medUpdate, showNabar: $showNavbar)
+                        }.padding(.all)
                     }
                     .background(Color.clear)
                         .padding(.bottom,100)
                         .overlay(Group{
-                            if medicamentosList.isEmpty{
+                            if data.meds.isEmpty{
                                 Text("No hay medicamentos")
                             }
                             
                         })
+                }.onAppear{
+                    data.getMedicaments()
                 }
             }
             Button(action: {
@@ -81,9 +76,9 @@ struct MedicamentsView: View {
                 Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
             }
             .opacity(showNavbar ? 1 : 0).sheet(isPresented: $addMedicament){
-                
-                AddMedicamentView(medsList: $medicamentosList, addMedicament: $addMedicament)
-                
+                data.getMedicaments()
+            }content:{
+                AddMedicamentView(addMedicament: $addMedicament)
             }
             
         }

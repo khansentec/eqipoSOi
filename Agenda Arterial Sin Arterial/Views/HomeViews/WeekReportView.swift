@@ -21,15 +21,9 @@ struct WeekReportView: View {
     @State var weekReportSubmitted = false
     @State var alertMessage = ""
     @State var alertTitle = ""
-
-    @State var medicaments = [Medicament]()
+    @State var forgetTimes = 0
     
-    
-    class MedicamentosViewModel : ObservableObject {
-        @Published var medicamentos : [Medicament] = Medicament.medicamentosList
-    }
-    
-    @StateObject fileprivate var viewModel = MedicamentosViewModel()
+    @StateObject var save = FirebaseViewController()
     
     var body: some View {
         VStack{
@@ -133,7 +127,7 @@ struct WeekReportView: View {
                                     .multilineTextAlignment(.center)
                             }.padding()
                             
-                            List($medicaments){ $medicament in
+                            List($save.meds){ $medicament in
                                 VStack{
                                     VStack{
                                         Text(medicament.medicamentName)
@@ -144,8 +138,9 @@ struct WeekReportView: View {
                                                 .frame(minWidth: 15, maxWidth: 50)
                                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                                 .fixedSize()
-                                                .keyboardType(.numberPad)
-      
+                                                .keyboardType(.numberPad).onAppear{
+                                                    medicament.forgetTimes = 0
+                                                }
                                         }
                                     }.padding(.all, 10)
                                     
@@ -154,12 +149,9 @@ struct WeekReportView: View {
                                         .stroke(Color("ButtonColor"), lineWidth: 1))
                                     .listRowSeparator(.hidden)
                                     .padding(.top, 10)
-    //                                .padding(.leading,-20)
-                                
-                                
                             }.frame(width:widthMenu == 375 ? 290 : 310, height : 300)
                                 .onAppear{
-                                    UITableView.appearance().backgroundColor = .clear
+                                    save.getMedicaments()
                                 }.padding()
                         }
                     }.padding(.bottom,5)
@@ -174,7 +166,7 @@ struct WeekReportView: View {
                                                     beveragesIntake : beveragesIntake, numBeverages : numBeverages,
                                                     physicalActivity : physicalActivity, numPhysicalActivity : numPhysicalActivity,
                                                     sleepHours : sleepHours, followMedicalPresciption : followMedicalPresciption,
-                                                    reportDate : reportDate,  medicaments: medicaments)
+                                                   reportDate : reportDate,  medicaments: save.meds)
 
                             let processResults = newWR.uploadWR()
                             

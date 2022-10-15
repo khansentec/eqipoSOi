@@ -7,13 +7,11 @@
 
 import Foundation
 
-class Remind : Identifiable {
-    var id = UUID()
-    var date : String
-    var events : [String]
-    
-    init(date : String, events: [String]) {
-        self.date = date
-        self.events = events
-    }
+struct Remind :  Hashable, Identifiable {
+    var id : String
+    var date : Date
+    var type : String
+    var title : String
+    var description : String
+    var color : String
 }

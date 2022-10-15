@@ -15,24 +15,24 @@ struct SignIn: View {
     @State var pass: String = ""
     @State var confPassword: String = ""
     @State var number = ""
-    
+   
     enum sex: String, CaseIterable, Identifiable {
         case nonseleceted, Masculino, Femenino, rathernot
         var id: Self { self }
     }
     
-    @State private var selectedSex: sex = .nonseleceted
+    @State private var selectedSex = "non selected"
     
     @State private var date = Date()
     
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
-    
+
     @State var userSubmitted = false
     @State var complete = false
     @State var alertMessage = ""
     @State var alertTitle = ""
-    
+
     @State private var progress = false
     
     var body: some View {
@@ -74,10 +74,10 @@ struct SignIn: View {
                         HStack{
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
-                                Text("Selecione una opcion").tag(sex.nonseleceted)
-                                Text("Hombre").tag("Masculino")
-                                Text("Mujer").tag("Femenino")
-                                Text("Prefiero no decir").tag(sex.rathernot)
+                                Text("Selecione una opcion").tag("non selected")
+                                Text("Masculino").tag("Masculino")
+                                Text("Femenino").tag("Femenino")
+                                Text("Prefiero no decir").tag("rathernot")
                             }.frame(width : 200, height: 20)
                                 .accentColor(Color("ButtonColor"))
                             
@@ -95,7 +95,7 @@ struct SignIn: View {
                     }
                     Button(action: {
                         progress = true
-                        let newUser = User(email: email, pass: pass, confPass: confPassword, name: name, ptName: patName, mtName: matName, bDate: date, phone: number, sex: selectedSex.rawValue)
+                        let newUser = User(email: email, pass: pass, confPass: confPassword, name: name, ptName: patName, mtName: matName, bDate: date, phone: number, sex: selectedSex)
                         
                         let processResults = newUser.uploadUser()
                         
@@ -106,7 +106,7 @@ struct SignIn: View {
                         
                         if processResults.0{
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
-                                (done, errorM) in
+                                                (done, errorM) in
                                 if done{
                                     alertTitle = "¡Éxito!"
                                     alertMessage = "La cuenta se ha creado correctamente"
@@ -131,7 +131,7 @@ struct SignIn: View {
                             pass = ""
                             confPassword = ""
                             number = ""
-                            selectedSex = .nonseleceted
+                            selectedSex = "non selected"
                         }
                     }){
                         Text("Iniciar").font(.system( size: 25, weight: .heavy)).frame(width: 200).foregroundColor(.white).padding(.vertical, 5)
@@ -149,8 +149,6 @@ struct SignIn: View {
                     } message: {
                         Text(alertMessage)
                     }
-                    
-                    
                     if progress{
                         Text("Please Wait One Moment...").foregroundColor(.black)
                         ProgressView()

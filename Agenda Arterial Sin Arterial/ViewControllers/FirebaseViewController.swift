@@ -499,7 +499,266 @@ class FirebaseViewController: ObservableObject{
         
     }
     
-  
+    func getMedicaments(){
+        
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("medicamentos").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    self.meds.removeAll()
+                    for document in QuerySnapshot!.documents{
+                        
+                        let value = document.data()
+                        let active = value["activo"] as? Bool ?? true
+                        
+                        if active {
+                            let id = document.documentID
+                            let medName = value["nombreMedicamento"] as? String ?? "no name"
+                            let info = value["informacion"] as? String ?? "no id"
+                            let startDate = (value["fechaInicio"] as? Timestamp)?.dateValue() ?? Date()
+                            let endDate = (value["fechaDesactivacion"] as? Timestamp)?.dateValue() ?? Date()
+                            let forgetTimes = value["vecesOlvidado"] as? Int ?? 0
+                            DispatchQueue.main.async {
+                                let register = Medicament(id: id, idPacient: idUser, medicamentName: medName, information: info, startDate: startDate, finishDate: endDate, forgetTimes: forgetTimes)
+                                self.meds.append(register)
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                }
+            }
+        
+    }
+    
+    func editMedicament(id: String, finishDate: Date, startDate: Date, information: String,  completion: @escaping(_ done: Bool)->Void){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        db.collection("medicamentos").whereField("id", isEqualTo: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    let info: [String: Any] = ["fechaDesactivacion":finishDate,"fechaInicio":startDate,"idPaciente":idUser,"informacion":information]
+                    
+                    db.collection("medicamentos").document(id).updateData(info){error in
+                        if let error = error?.localizedDescription{
+                            print("Error al guardar en firestore ", error)
+                            completion(false)
+                        }else{
+                            print("Sucessfully save info")
+                            completion(true)
+                        }
+                    }
+                    
+                }
+            }
+    }
+    
+    
+    
+    func disableMedicament(idMedicament: String,endDate: Date, completion: @escaping(_ done: Bool)->Void){
+        let db = Firestore.firestore()
+        db.collection("medicamentos").whereField("id", isEqualTo: idMedicament)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    let info: [String: Any] = ["activo":false,"fechaDesactivacion":endDate]
+                    db.collection("medicamentos").document(idMedicament).updateData(info){error in
+                        if let error = error?.localizedDescription{
+                            print("Error al guardar en firestore ", error)
+                            completion(false)
+                        }else{
+                            print("Sucessfully save info")
+                            completion(true)
+                        }
+                    }
+                    
+                }
+            }
+    }
+    
+    func checkPastDates(id: String,finishDate: Date, startDate: Date, information: String){
+        
+        if finishDate < startDate {
+            self.editMedicament(id: id, finishDate: startDate, startDate: startDate, information: information){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
+                }
+            }
+        }else if finishDate > startDate{
+            self.disableMedicament(idMedicament: id, endDate: finishDate){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
+                }
+            }
+        }else{
+            self.editMedicament(id: id, finishDate: finishDate, startDate: startDate, information: information){
+                (done) in
+                if done{
+                    print("UPDATED")
+                }else{
+                    print("not updated")
+                }
+            }
+            
+        }
+    }
+    
+    func updateRemiders(date: Date, type: String, title:String, description : String){
+        let id = UUID().uuidString
+        
+        let idUser = Auth.auth().currentUser?.uid
+        
+        let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha": date, "tipo": type,  "titulo": title, "descripcion": description]
+        
+        self.saveData(collectionName: "notificaciones", id: id, info: info){(done)
+            in
+            if done{
+                print("save sussecfully")
+            }else{
+                print("error")
+            }
+        }
+    }
+    
+    
+    func updateData(collectionName: String, id: String, info: [String: Any], completion: @escaping(_ done: Bool)->Void){
+        
+        let db = Firestore.firestore()
+        db.collection(collectionName).document(id).updateData(info)
+        {error in
+            if let error = error?.localizedDescription{
+                print("Error al actualizar en firestore ", error)
+                completion(false)
+            }else{
+                print("Sucessfully update info")
+                completion(true)
+            }
+        }
+    }
+    
+    func isSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        
+        let day1 = calendar.component(.day, from: date1)
+        let month1 = calendar.component(.month, from: date1)
+        let year1 = calendar.component(.year, from: date1)
+        let day2 = calendar.component(.day, from: date2)
+        let month2 = calendar.component(.month, from: date2)
+        let year2 = calendar.component(.year, from: date2)
+        
+        if day1 == day2 && month1 == month2 && year1 == year2 {
+            print(true)
+            return true
+        } else {
+            print(false)
+            return false
+        }
+    }
+    
+    func deleteOldRemindByType(type: String, date: Date){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let typeNew = value["tipo"] as? String ?? ""
+                        let dateNew = (value["fechaDesactivacion"] as? Timestamp)?.dateValue() ?? Date()
+                        
+                        if type == typeNew &&  (dateNew < date || self.isSameDay(date1: date, date2: dateNew))  {
+                            DispatchQueue.main.async {
+                                self.deleteData(collectionName: "notificaciones", id: document.documentID){(done)
+                                    in
+                                    if done{
+                                        print("Sucessfully delete info")
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        
+    }
+    
+    func getReminds(){
+        var color = ""
+        
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    self.reminds.removeAll()
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let id = value["id"] as? String ?? "no id"
+                        let type = value["tipo"] as? String ?? "no type"
+                        
+                        if (type == "medicion" && self.meditionsRem) || (type == "reporteSalud" && self.healthReportsRem) || (type == "reporteSemanal" && self.weekReportsRem){
+                            let title = value["titulo"] as? String ?? "title"
+                            let description = value["descripcion"] as? String ?? "no description"
+                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                            
+                            if type == "medicion"{
+                                color = "Color.red"
+                            }else if type == "reporteSalud"{
+                                color = "Color.green"
+                                
+                            }else if type == "reporteSemanal"{
+                                color = "Color.blue"
+                                
+                            }
+                            
+                            DispatchQueue.main.async {
+                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color)
+                                self.reminds.append(register)
+                                
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        
+    }
     
     
 }
+
