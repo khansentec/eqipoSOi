@@ -103,7 +103,6 @@ struct GeneralDataView: View {
                     ProgressView()
                 }
                 
-                
                 VStack (alignment: .leading, spacing: 15) {
                     VStack{
                         HStack {
