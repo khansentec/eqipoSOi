@@ -98,10 +98,7 @@ struct GeneralDataView: View {
                     
                 Spacer(minLength: 15)
                     
-                if progress{
-                    Text("Please Wait One Moment...").foregroundColor(.black)
-                    ProgressView()
-                }
+               
                 
                 
                 VStack (alignment: .leading, spacing: 15) {
@@ -185,25 +182,44 @@ struct GeneralDataView: View {
                 }
                 
                 Spacer(minLength: 20)
-                
+                    if progress{
+                        Text("Please Wait One Moment...").foregroundColor(.black)
+                        ProgressView()
+                    }
                 Button("Enviar"){
                     progress = true
-                    save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto){
-                        (done)in
-                        if done{
-                            progress = false
-                            alertTitle = "¡Éxito!"
-                            alertMessage = "Datos subido con éxito."
-                        }else{
-                            alertTitle = "¡Oops!"
-                            alertMessage = "Ocurrió un error con subir los datos."
+                    let idUser = Auth.auth().currentUser?.uid
+                    let pacientUpdate = Pacient(id: idUser! , name: name, patName: lastNameP, matName: lastNameP, photo: photourl, sex: selectedSex, pacientStatus: "", birthDate: date, phone: phoneNumber, height: height, weight: weight, cirAbdominal: cirAbdominal, medDisease: disease, bloodType: bloodType, vinculationCode: "", associatedMedic: [])
+                    
+                    let valid = pacientUpdate.changeInfoPatient()
+                    print(valid.0)
+                    print(valid.1)
+                    if valid.0{
+                        save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto, birthDate: date){
+                            (done)in
+                            if done{
+                                dataSubmitted = true
+                                progress = false
+                                alertTitle = "¡Éxito!"
+                                alertMessage = "Datos subido con éxito."
+                            }else{
+                                dataSubmitted = true
+                                alertTitle = "¡Oops!"
+                                alertMessage = "Ocurrió un error con subir los datos."
+                            }
+                            dataSubmitted = true
                         }
+                    }else{
                         dataSubmitted = true
+                        alertTitle = "¡Oops!"
+                        alertMessage = valid.1
                     }
+                    
                 }
                 .alert(alertTitle, isPresented: $dataSubmitted){
                     Button("OK"){
                         //si se oprime quitar el ok
+                        progress = false
                     }
                 } message: {
                     Text(alertMessage)

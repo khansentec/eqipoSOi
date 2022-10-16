@@ -17,9 +17,9 @@ struct AddMedicView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Vincular aquí:")
+            Text("Vincular aquí:").foregroundColor(.black)
             Spacer().frame(maxHeight: 10)
-            Text("Por código del paciente:")
+            Text("Por código del paciente:").foregroundColor(.black)
             HStack{
                 ForEach(linkCode,id: \.self){
                     number in

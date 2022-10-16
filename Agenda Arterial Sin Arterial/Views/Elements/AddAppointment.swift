@@ -49,7 +49,7 @@ struct AddAppointment: View {
                     }else{
                         Text("Selecione un médico").tag("Sin seleccionar")
                         ForEach(medics, id: \.self) { medic in
-                            Text(medic.name).tag(medic.id)
+                            Text("\(medic.name) \(medic.patName) \(medic.matName)").tag(medic.id)
                         }
                     }
                 }

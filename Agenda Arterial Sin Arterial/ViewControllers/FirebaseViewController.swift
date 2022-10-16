@@ -152,7 +152,7 @@ class FirebaseViewController: ObservableObject{
         //End Saving Text
     }
     
-    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, editingPhoto: Bool, completion: @escaping(_ done: Bool)->Void){
+    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, editingPhoto: Bool, birthDate: Date, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
@@ -190,7 +190,7 @@ class FirebaseViewController: ObservableObject{
                                             // Get the download URL for each item storage location
                                             dir = String(describing: url!)
                                             print("url : \(dir)")
-                                            let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                            let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                             
                                             db.collection("pacientes").document(docId).updateData(info){error in
                                                 if let error = error?.localizedDescription{
@@ -247,7 +247,7 @@ class FirebaseViewController: ObservableObject{
                                                         // Get the download URL for each item storage location
                                                         dir = String(describing: url!)
                                                         print("url : \(dir)")
-                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                         
                                                         db.collection("pacientes").document(docId).updateData(info){error in
                                                             if let error = error?.localizedDescription{
@@ -282,7 +282,7 @@ class FirebaseViewController: ObservableObject{
                                 }else{
                                     if !editingPhoto{
                                         print("second")
-                                        let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                        let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                         
                                         db.collection("pacientes").document(docId).updateData(info){error in
                                             if let error = error?.localizedDescription{
@@ -326,7 +326,7 @@ class FirebaseViewController: ObservableObject{
                                                         // Get the download URL for each item storage location
                                                         dir = String(describing: url!)
                                                         print("url : \(dir)")
-                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "fechaNacimiento":birthDate,"telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                         
                                                         db.collection("pacientes").document(docId).updateData(info){error in
                                                             if let error = error?.localizedDescription{

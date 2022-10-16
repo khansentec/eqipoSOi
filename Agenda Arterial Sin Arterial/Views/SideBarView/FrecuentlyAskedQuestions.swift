@@ -24,7 +24,7 @@ struct FrecuentlyAskedQuestions: View {
                 }
                 VStack (alignment: .center) {
                     Text("Preguntas Frecuentes").bold().font(.title)
-
+                    
                     ForEach(questionList, id: \.self) {
                         pregunta in
                         VStack (alignment: .leading, spacing: 10){
@@ -35,7 +35,12 @@ struct FrecuentlyAskedQuestions: View {
                         .padding()
                         Divider()
                     }
-                    
+                    VStack (alignment: .leading, spacing: 10){
+                        Text("P: ¿Como tomarme la Presión Arterial?").fontWeight(.bold)
+                        Link("Ve cómo tomar la presión arterial", destination: URL(string: "https://www.facebook.com/CentroMedicoABC/videos/aprende-a-tomar-la-presi%C3%B3n-arterial-correctamente/953165865261484/")!)
+                    }
+                    .padding()
+                    Divider()
                     Spacer()
                 }
                 .padding(30)

@@ -12,6 +12,8 @@ struct AddMedicamentView: View {
     var device = UIDevice.current.userInterfaceIdiom
     @Environment(\.horizontalSizeClass) var width
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var nameMedicament = ""
     @State var date = Date.now
     @State var frecuency = ""
@@ -93,6 +95,7 @@ struct AddMedicamentView: View {
                 .alert(alertTitle, isPresented: $medicamentSubmitted){
                     Button("OK"){
                         //si se oprime quitar el ok
+                        presentationMode.wrappedValue.dismiss()
                     }
                 } message: {
                     Text(alertMsg)

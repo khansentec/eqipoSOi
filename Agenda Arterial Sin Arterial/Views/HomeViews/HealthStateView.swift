@@ -77,6 +77,30 @@ struct HealthStateView: View {
                     
                     Button("Enviar") {
                         
+                        let id = UUID().uuidString
+                        
+                        let feelingR = round(feeling * 100) / 100.0
+                        var newWR = HealthReport(id: id, feeling: feelingR, symptomsPresent: symptomsPresent, symptoms: symptoms, comments: comments)
+                        
+                        let processResults = newWR.uploadHR()
+                        
+                        alertTitle = processResults.1
+                        alertMessage =  processResults.2
+                        
+                        if processResults.0 {
+                            symptoms = ""
+                            comments = ""
+                            symptomsPresent = false
+                            feeling = 5.0
+                        }
+                        
+                        healthReportSubmitted = true
+                    }.alert(alertTitle, isPresented: $healthReportSubmitted){
+                        Button("OK"){
+                            //si se oprime quitar el ok
+                        }
+                    } message: {
+                        Text(alertMessage)
                     }
                     .foregroundColor(.white)
                     .background(RoundedRectangle(cornerRadius: 5)
@@ -86,6 +110,8 @@ struct HealthStateView: View {
                     Spacer()
                 }
             }
+        }.onTapGesture {
+            hideKeyboard()
         }
     }
 }
