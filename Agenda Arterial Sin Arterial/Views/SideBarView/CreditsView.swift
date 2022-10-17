@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreditsView: View {
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
             VStack (alignment: .leading, spacing: 20) {

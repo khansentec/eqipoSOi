@@ -26,6 +26,7 @@ struct ButtonNavbar: View {
                 if device == .phone{
                     menu.toggle()
                 }
+                
                 loginShow.showApp = "Home"
                 loginShow.show = whereto
                 

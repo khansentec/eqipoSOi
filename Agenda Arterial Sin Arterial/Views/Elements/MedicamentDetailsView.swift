@@ -15,11 +15,16 @@ struct MedicamentDetailsView: View {
     @State var info = "No hay info"
     
     @Binding var showNabar : Bool
-
+    
+    @State private var alertTittle = ""
+    @State private var alertMessage = ""
+    
     @StateObject var login = FirebaseViewController()
+    @State private var showAlert = false
     
     var device = UIDevice.current.userInterfaceIdiom
     @State private var widthMenu = UIScreen.main.bounds.width
+    @State private var submitted = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,9 +32,15 @@ struct MedicamentDetailsView: View {
         VStack(alignment : .trailing){
             VStack{
                 Button(action: {
-                    if editing {
+                    if editing  {
                         editing = false
-                        login.checkPastDates(id: medicament.id,finishDate: endDate, startDate: startDate, information: info)
+                        if info != medicament.information || startDate != medicament.startDate || endDate != medicament.finishDate{
+                            let edition = login.checkPastDates(id: medicament.id,finishDate: endDate, startDate: startDate, information: info)
+                            submitted = edition.0
+                            print(submitted)
+                            alertTittle = edition.1
+                            alertMessage = edition.2
+                        }
                     }else{
                         editing = true
                     }
@@ -42,7 +53,19 @@ struct MedicamentDetailsView: View {
                         .foregroundColor(Color("ButtonColor"))
                         .padding(.top, 3.5)
                     
-                })
+                }).alert(alertTittle, isPresented: $showAlert){
+                    Button("OK"){
+                        showAlert = false
+                        //si se oprime quitar el ok
+                        if submitted{
+                            showAlert = false
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                       
+                    }
+                }message: {
+                    Text(alertMessage)
+                }
             }.padding(.trailing,60).padding(.top,0)
             
             VStack(alignment : .leading, spacing : 20){

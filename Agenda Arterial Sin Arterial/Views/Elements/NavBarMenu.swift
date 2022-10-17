@@ -56,6 +56,10 @@ struct NavBarMenu: View {
                     Button(action: {
                         try! Auth.auth().signOut()
                         UserDefaults.standard.removeObject(forKey: "sesion")
+                        UserDefaults.standard.removeObject(forKey: "showHealtReport")
+                        UserDefaults.standard.removeObject(forKey: "showAppoinment")
+                        UserDefaults.standard.removeObject(forKey: "showWeekReport")
+                        UserDefaults.standard.removeObject(forKey: "showMeditions")
                         loginShow.data = nil
                         loginShow.reminds = []
                         loginShow.medics = []

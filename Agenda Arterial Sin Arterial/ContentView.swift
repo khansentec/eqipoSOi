@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 
             case "Login":
-                Login().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                Login().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).environment(\.colorScheme, .light)
             case "SignIn":
                 SignIn().edgesIgnoringSafeArea(.all)
             case "FrecuentlyAskedQuestionsView":

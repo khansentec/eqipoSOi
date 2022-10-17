@@ -13,7 +13,7 @@ struct AppsView: View {
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
     @State var showApp = "Home"
-    
+    @State private var showReminders = true
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
@@ -78,9 +78,9 @@ struct AppsView: View {
                         }
                     }){
                         VStack{
-                            Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
+                            Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(.green)
                             Text("Tu Estado de Salud").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
-                        }
+                        }.environment(\.colorScheme, .light)
                     }.fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -194,7 +194,7 @@ struct AppsView: View {
                     }){
                         HStack {
                             Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 60, height: 60)
-                        }
+                        }.environment(\.colorScheme, .light)
                         .frame(width: 70, height: 60, alignment: .center)
                         Text("Reporte semanal").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
                     }.fixedSize(horizontal: false, vertical: true)
@@ -209,7 +209,7 @@ struct AppsView: View {
                         }
                     }){
                         HStack {
-                            Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
+                            Image(systemName: "stethoscope").resizable().frame(width: 57, height: 50).padding(.trailing,10).foregroundColor(.green)
                         }
                         .frame(width: 70, height: 60, alignment: .center)
                         Text("Estado de salud").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
@@ -221,42 +221,26 @@ struct AppsView: View {
                         .foregroundColor(.white)
                         .minimumScaleFactor(0.8)
                     
-                    
-                    Button(action:{
-                        login.getReminds()
-                        withAnimation{
-                            loginShow.showApp = "RemindersView"
-                        }
-                    }){
-                        HStack {
-                            Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,17).foregroundColor(Color("ReportColor"))
-                        }
-                        .frame(width: 70, height: 60, alignment: .center)
-                        Text("Recordatorios").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
-                    }.fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(width: widthMenu == 375 ? 350 : 370, height: 90, alignment: .leading)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
-                        .foregroundColor(.white)
-                        .minimumScaleFactor(0.8)
-                    
-                    Button(action:{
-                        
-                    }){
-                        HStack {
-                            Image(systemName: "chart.xyaxis.line").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.green)
-                        }
-                        .frame(width: 70, height: 60, alignment: .center)
-                        Text("Estadísticas semanales").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black).multilineTextAlignment(.leading)
-                    }.fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(width: widthMenu == 375 ? 350 : 370, height: 90, alignment: .leading)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
-                        .foregroundColor(.white)
-                        .minimumScaleFactor(0.8)
-                    
+                    if showReminders{
+                        Button(action:{
+                            login.getReminds()
+                            withAnimation{
+                                loginShow.showApp = "RemindersView"
+                            }
+                        }){
+                            HStack {
+                                Image(systemName: "calendar").resizable().frame(width: 50, height: 50).padding(.trailing,17).foregroundColor(Color("ReportColor"))
+                            }
+                            .frame(width: 70, height: 60, alignment: .center)
+                            Text("Recordatorios").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                        }.fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .frame(width: widthMenu == 375 ? 350 : 370, height: 90, alignment: .leading)
+                            .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
+                            .foregroundColor(.white)
+                            .minimumScaleFactor(0.8)
+                    }
                     
                     Button(action:{
                         if (UserDefaults.standard.object(forKey: "sesion")) != nil {

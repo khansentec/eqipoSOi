@@ -12,6 +12,7 @@ struct Login: View {
     @State private var tittlealert = "No se pudo iniciar sesión"
     @State private var messagealert = "La contraseña o el usuario es inválido"
     @State private var pass = ""
+    @State private var showPolitics = false
     @State private var widthMenu = UIScreen.main.bounds.width
     
     @StateObject var login = FirebaseViewController()
@@ -95,10 +96,13 @@ struct Login: View {
                 Spacer()
                 HStack{
                     Button(action:{
-                        
+                        showPolitics.toggle()
                     }){
                         Text("Políticas")
                     }.padding(.leading, 30)
+                        .popover(isPresented: $showPolitics){
+                            Politics()
+                        }
                     Spacer()
                     HStack{
                         Button(action:{

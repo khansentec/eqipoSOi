@@ -108,6 +108,7 @@ struct SignIn: View {
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
                                                 (done, errorM) in
                                 if done{
+                                    UserDefaults.standard.set(true, forKey: "sesion")
                                     alertTitle = "¡Éxito!"
                                     alertMessage = "La cuenta se ha creado correctamente"
                                     userSubmitted = true

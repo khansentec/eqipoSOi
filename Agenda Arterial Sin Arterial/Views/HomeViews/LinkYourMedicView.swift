@@ -78,7 +78,7 @@ struct LinkYourMedicView: View {
                 
             }
             .padding(.bottom, widthMenu == 375 ? 40 : 60)
-        }
+        }.environment(\.colorScheme, .light)
     }
 }
 

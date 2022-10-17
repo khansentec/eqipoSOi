@@ -9,6 +9,8 @@ import SwiftUI
 import Firebase
 
 struct GeneralDataView: View {
+    
+    
     @State private var index = "Datos Generales"
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -58,10 +60,12 @@ struct GeneralDataView: View {
                 
                 ScrollView (showsIndicators: false) {
                     
-                    Text("Datos Generales").bold().font(.title)
+                    Text("Datos generales").bold().font(.title)
                     
                     if imageData.count != 0{
-                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
+                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle()).onAppear{
+                            editingPhoto = true
+                        }
                         
                     } else {
                         if photourl != ""{
@@ -186,6 +190,7 @@ struct GeneralDataView: View {
                         Text("Please Wait One Moment...").foregroundColor(.black)
                         ProgressView()
                     }
+                Spacer(minLength: 20)
                 Button("Enviar"){
                     progress = true
                     let idUser = Auth.auth().currentUser?.uid
@@ -229,10 +234,9 @@ struct GeneralDataView: View {
                     .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 100,minHeight: 40))
                 
-                Spacer()
                     
                 }
-                .padding(30)
+                .padding(30).keyboardManagment()
             }
             if menu{
                 NavBarMenu(index: $index, menu: $menu)
@@ -268,4 +272,6 @@ struct GeneralDataView: View {
     
     
 }
+
+
 

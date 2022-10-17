@@ -23,6 +23,7 @@ struct AddMedicamentView: View {
     
     @Binding var addMedicament : Bool
     @State var edit = false
+    @State private var submited = false
     
     @State var alertTitle = ""
     @State var alertMsg = ""
@@ -34,7 +35,7 @@ struct AddMedicamentView: View {
         VStack (spacing : 10){
             HStack{
                 Text("Nombre: ")
-                TextField("Nombre", text: self.$nameMedicament)
+                TextField("Nombre", text: $nameMedicament)
                     .frame(width : device == .pad ? 150 : 100)
                     .textFieldStyle(.roundedBorder)
             }.padding(.all,20)
@@ -78,24 +79,27 @@ struct AddMedicamentView: View {
                             if done{
                                 alertTitle = "¡Éxito!"
                                 alertMsg = "Medicamento guardado con éxito."
+                                submited = true
+                                medicamentSubmitted = true
                             } else{
                                 alertTitle = "¡Oops!"
-                                alertMsg = "Debe ingresar el nombre del medicamento."
+                                alertMsg = "Hay un problema con la red. Favor de intentar de nuevo."
                             }
                         }
-                        
-                        self.addMedicament.toggle()
-                        
                     }else{
                         alertTitle = "¡Oops!"
-                        alertMsg = "Hay un problema con la red. Favor de intentar de nuevo."
+                        alertMsg = "Debe ingresar el nombre del medicamento."
+                        medicamentSubmitted = true
                     }
-                    medicamentSubmitted = true
+                    
                 }
                 .alert(alertTitle, isPresented: $medicamentSubmitted){
                     Button("OK"){
+                        medicamentSubmitted = false
                         //si se oprime quitar el ok
-                        presentationMode.wrappedValue.dismiss()
+                        if submited{
+                            addMedicament.toggle()
+                        }
                     }
                 } message: {
                     Text(alertMsg)

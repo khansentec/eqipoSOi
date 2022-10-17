@@ -12,6 +12,7 @@ struct RemindersView: View {
     @Binding var medics : [Medic]
     @State var editing = false
     @StateObject var data = FirebaseViewController()
+    
     @State var showNavbar = true
     @State var addAppoinment = false
     
