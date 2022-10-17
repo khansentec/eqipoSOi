@@ -68,14 +68,11 @@ struct LinkYourMedicView: View {
                     .navigationViewStyle(StackNavigationViewStyle())
                 
                 Button("Vincular") {
-                    progress = true
                     linkCode = login.generateLinkCode(){
                         (done) in
                         if done {
-                            progress = false
                             linkMedic = true
                         } else {
-                            progress = false
                             showError = true
                         }
                     }
