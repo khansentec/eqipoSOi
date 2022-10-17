@@ -102,39 +102,28 @@ struct SignIn: View {
                         
                         let processResults = newUser.uploadUser()
                         
-                        
-                        alertTitle = "¡Opps!"
-                        alertMessage = "Error ese correo ya existe"
-                        
                         alertTitle = processResults.1
                         alertMessage =  processResults.2
-                        
-                        userSubmitted = true
-                        
-                        
-                        
+                                                
                         if processResults.0{
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
                                                 (done, errorM) in
-                                if done{
+                                if done {
                                     UserDefaults.standard.set(true, forKey: "sesion")
                                     alertTitle = "¡Éxito!"
                                     alertMessage = "La cuenta se ha creado correctamente"
                                     userSubmitted = true
                                     complete = true
-                                }else{
+                                } else {
                                     progress = false
-                                    alertMessage = errorM
+                                    alertTitle = "¡Oops!"
+                                    alertMessage = "Hubo un error."
                                     userSubmitted = true
                                 }
                             }
+                        } else {
+                            userSubmitted = true
                         }
-                        print(processResults.2)
-                        if !complete && processResults.2 != "Se debe un teléfono válido" && processResults.2 != "Favor de ingresar un formato válido de correo"{
-                            alertTitle = "¡Oops!"
-                            alertMessage = "Error, ese correo ya existe"
-                        }
-                        
                         
                         if processResults.0 {
                             name = ""
