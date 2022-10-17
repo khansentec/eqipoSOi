@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C00AD2D028FD1A2700DEC7B7 /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */; };
-		C00AD2D528FDB51F00DEC7B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */; };
 		C00DF2E428F0862C008C7D45 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CD28F0862C008C7D45 /* Capture.swift */; };
 		C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CE28F0862C008C7D45 /* Medic.swift */; };
 		C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CF28F0862C008C7D45 /* WeekReport.swift */; };
@@ -45,6 +44,7 @@
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
+		C0720F9228FDD3B4005AC493 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0720F9128FDD3B4005AC493 /* GoogleService-Info.plist */; };
 		C0AA140528FCD9F400E12677 /* KeyboardManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */; };
 		C0B65E6128FCBCD700EAFB29 /* Politics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B65E6028FCBCD700EAFB29 /* Politics.swift */; };
 		C0EE1E1128FA0B5E0069C41A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1028FA0B5E0069C41A /* FirebaseAuth */; };
@@ -67,7 +67,6 @@
 
 /* Begin PBXFileReference section */
 		C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
-		C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C00DF2CD28F0862C008C7D45 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
 		C00DF2CE28F0862C008C7D45 /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
 		C00DF2CF28F0862C008C7D45 /* WeekReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		C065D69D28E0D2A900AC046F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0720F9128FDD3B4005AC493 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Agenda-Arterial-Sin-Arterial-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagment.swift; sourceTree = "<group>"; };
 		C0B65E6028FCBCD700EAFB29 /* Politics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Politics.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 		C065D69A28E0D2A900AC046F /* Agenda Arterial Sin Arterial */ = {
 			isa = PBXGroup;
 			children = (
-				C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */,
+				C0720F9128FDD3B4005AC493 /* GoogleService-Info.plist */,
 				C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */,
 				C00DF2CC28F0862C008C7D45 /* Data Structures */,
 				C00DF2D428F0862C008C7D45 /* ViewControllers */,
@@ -338,7 +338,7 @@
 			files = (
 				C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */,
 				C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */,
-				C00AD2D528FDB51F00DEC7B7 /* GoogleService-Info.plist in Resources */,
+				C0720F9228FDD3B4005AC493 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

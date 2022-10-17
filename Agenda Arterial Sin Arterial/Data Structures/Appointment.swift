@@ -22,12 +22,18 @@ class Appointment: Identifiable {
     }
 
     func validateAppointment() -> (Bool, String){
+        if self.date < Date.now{
+            return (false, "La fecha de consulta no puede ser antes que del dia de hoy")
+        }
         if self.idMedic == "Sin seleccionar"{
             return (false, "Favor de seleccionar un médico")
         }
         if self.comments == ""{
             self.comments = "N/A"
         }
+        
+        
+        
         return (true, "Datos válidos")
 
     }
@@ -137,6 +143,8 @@ class Appointment: Identifiable {
                 }
             }
                 
+        }else{
+            alertTitle = "¡Oops!"
         }
         return (appointUploaded, alertTitle, alertMessage)
     }
