@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>999289623788-t8b29kv8v9f7bvnj3gdkglr8337q5h8q.apps.googleusercontent.com</string>
+	<string>15786558525-m2tjqbmf7cfc9srn1csr0euue9q398fa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.999289623788-t8b29kv8v9f7bvnj3gdkglr8337q5h8q</string>
+	<string>com.googleusercontent.apps.15786558525-m2tjqbmf7cfc9srn1csr0euue9q398fa</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAQHmzmYAYcPq3odnKD4BB75fHzliBQYMY</string>
+	<string>AIzaSyAh0zK48ImFiMCfGn5fw2mhgmJT2yRSNSE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>999289623788</string>
+	<string>15786558525</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Soi.com.Agenda-Arterial-V2-0</string>
+	<string>SOIBack</string>
 	<key>PROJECT_ID</key>
-	<string>agenda-arterial</string>
+	<string>test-emprendimiento</string>
 	<key>STORAGE_BUCKET</key>
-	<string>agenda-arterial.appspot.com</string>
+	<string>test-emprendimiento.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:999289623788:ios:3892bf6b5cbdbcd1c801c9</string>
+	<string>1:15786558525:ios:56976c413ee5403ac8d654</string>
+	<key>DATABASE_URL</key>
+	<string>https://test-emprendimiento.firebaseio.com</string>
 </dict>
 </plist>
