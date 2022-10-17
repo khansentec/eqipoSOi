@@ -25,7 +25,7 @@ struct RemindersView: View {
                 
                 ScrollView(.vertical, showsIndicators: false){
                     
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 15){
                         ForEach(data.reminds.sorted(by: { $0.date.compare($1.date) == .orderedAscending }), id : \.self){
                             reminder in
                             ReminderView(reminder: reminder).onTapGesture {
@@ -34,13 +34,12 @@ struct RemindersView: View {
                                     editing.toggle()
                                 }
                             }
-                        }.sheet(isPresented: $editing){
+                        }
+                        .sheet(isPresented: $editing){
                             data.getReminds()
                         } content: {
-                           
-                                ReminderDetailsView(reminder: data.remindUpdate, showNabar: $showNavbar)
-                            
-                        }.padding(.all)
+                            ReminderDetailsView(reminder: data.remindUpdate, showNabar: $showNavbar)
+                        }
                     }
                     .background(Color.clear)
                     .padding(.bottom,100)

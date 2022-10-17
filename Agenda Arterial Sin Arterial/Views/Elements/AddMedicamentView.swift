@@ -65,7 +65,7 @@ struct AddMedicamentView: View {
             }.padding(.all,20)
             HStack{
                 Button("Guardar") {
-                    let information = "Frecuencia en horas : " + frecuency + "\nDosis : " + dosis + "\nIndicaciones : " + indications
+                    let information = "Frecuencia en horas: " + frecuency + "\nDosis : " + dosis + "\nIndicaciones : " + indications
                     
                     if nameMedicament != ""{
                         
