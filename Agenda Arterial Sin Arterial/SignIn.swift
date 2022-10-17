@@ -129,8 +129,8 @@ struct SignIn: View {
                                 }
                             }
                         }
-                        
-                        if !complete{
+                        print(processResults.2)
+                        if !complete && processResults.2 != "Se debe un teléfono válido" && processResults.2 != "Favor de ingresar un formato válido de correo"{
                             alertTitle = "¡Oops!"
                             alertMessage = "Error, ese correo ya existe"
                         }
