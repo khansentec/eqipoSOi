@@ -30,18 +30,6 @@ struct AddAppointment: View {
         VStack (spacing : 10){
             Text("Agregar Consulta").font(.title)
             HStack{
-                Text("Fecha de la consulta: ").padding(.leading, 20)
-                DatePicker("", selection: $date, displayedComponents : .date)
-                    .padding(.trailing,70)
-                
-            }.padding(.all,20)
-            Text("Comentarios")
-            HStack{
-                TextEditor(text: $comments).frame(width: 270, height: 200, alignment: .leading)
-                
-            }.overlay(RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 1))
-            HStack{
                 Text("Médico: ")
                 Picker("Selecione un médico", selection: $selectedMedic) {
                     if medics.isEmpty{
@@ -54,6 +42,19 @@ struct AddAppointment: View {
                     }
                 }
             }
+            VStack{
+                Text("Fecha de la consulta: ").padding(.leading, 20)
+                DatePicker("", selection: $date)
+                    .padding(.trailing,70)
+                
+            }.padding(.all,20)
+            Text("Comentarios")
+            HStack{
+                TextEditor(text: $comments).frame(width: 270, height: 200, alignment: .leading)
+                
+            }.overlay(RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 1))
+            
             
             HStack {
                 Button("Guardar") {

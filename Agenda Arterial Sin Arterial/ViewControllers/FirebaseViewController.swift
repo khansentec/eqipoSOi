@@ -822,63 +822,63 @@ class FirebaseViewController: ObservableObject{
         }
     }
     
+    func getReminds(){
+        var color = ""
+
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+
+        let notificationHealhtreport = UserDefaults.standard.object(forKey: "showHealtReport") as? Bool ?? true
+        let notificationAppoinments = UserDefaults.standard.object(forKey: "showAppoinment") as? Bool ?? true
+        let notificationWeekReport = UserDefaults.standard.object(forKey: "showWeekReport") as? Bool ?? true
+        let notificationMeditions = UserDefaults.standard.object(forKey: "showMeditions") as? Bool ?? true
+
+        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    print("Here67")
+                    self.reminds.removeAll()
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let id = value["id"] as? String ?? "no id"
+                        let type = value["tipo"] as? String ?? "no type"
+                        print(id)
+                        if (id != "no id" || type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments){
+                            let title = value["titulo"] as? String ?? "title"
+                            let description = value["descripcion"] as? String ?? "no description"
+                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                            let consulta = value["idConsulta"] as? String ?? "no hay"
+                            if type == "medicion"{
+                                color = "Color.red"
+                            }else if type == "reporteSalud"{
+                                color = "Color.green"
+
+                            }else if type == "reporteSemanal"{
+                                color = "Color.blue"
+
+                            }
+
+                            DispatchQueue.main.async {
+                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
+                                self.reminds.append(register)
+
+                            }
+                        }
+
+                    }
+                }
+            }
+
+    }
+    
 //    func getReminds(){
-//        var color = ""
-//
-//        let db = Firestore.firestore()
-//        guard let idUser = Auth.auth().currentUser?.uid else{
-//            return
-//        }
-//
-//        let notificationHealhtreport = UserDefaults.standard.object(forKey: "showHealtReport") as? Bool ?? true
-//        let notificationAppoinments = UserDefaults.standard.object(forKey: "showAppoinment") as? Bool ?? true
-//        let notificationWeekReport = UserDefaults.standard.object(forKey: "showWeekReport") as? Bool ?? true
-//        let notificationMeditions = UserDefaults.standard.object(forKey: "showMeditions") as? Bool ?? true
-//
-//        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
-//            .getDocuments() {
-//                (QuerySnapshot, error) in
-//                if let error = error?.localizedDescription{
-//                    print("error to show data ", error)
-//                }else{
-//                    print("Here67")
-//                    self.reminds.removeAll()
-//                    for document in QuerySnapshot!.documents{
-//                        let value = document.data()
-//                        let id = value["id"] as? String ?? "no id"
-//                        let type = value["tipo"] as? String ?? "no type"
-//                        print(id)
-//                        if (id != "no id" || type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments){
-//                            let title = value["titulo"] as? String ?? "title"
-//                            let description = value["descripcion"] as? String ?? "no description"
-//                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
-//                            let consulta = value["idConsulta"] as? String ?? "no hay"
-//                            if type == "medicion"{
-//                                color = "Color.red"
-//                            }else if type == "reporteSalud"{
-//                                color = "Color.green"
-//
-//                            }else if type == "reporteSemanal"{
-//                                color = "Color.blue"
-//
-//                            }
-//
-//                            DispatchQueue.main.async {
-//                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
-//                                self.reminds.append(register)
-//
-//                            }
-//                        }
-//
-//                    }
-//                }
-//            }
+//        reminds.removeAll()
 //
 //    }
-    
-    func getReminds(){
-      
-        
-    }
 }
 

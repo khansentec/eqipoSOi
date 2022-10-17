@@ -131,8 +131,8 @@ struct SignIn: View {
                         }
                         
                         if !complete{
-                            alertTitle = "¡Opps!"
-                            alertMessage = "Error ese correo ya existe"
+                            alertTitle = "¡Oops!"
+                            alertMessage = "Error, ese correo ya existe"
                         }
                         
                         
