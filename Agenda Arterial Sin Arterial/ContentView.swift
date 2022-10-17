@@ -43,6 +43,9 @@ struct ContentView: View {
                 
             case "SettingsView":
                 SettingsView().edgesIgnoringSafeArea(.all)
+                
+            case "RestorePassword":
+                RestorePasswordView().edgesIgnoringSafeArea(.all)
             default:
                 Login().edgesIgnoringSafeArea(.all)
             }

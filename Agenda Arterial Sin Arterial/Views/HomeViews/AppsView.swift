@@ -252,7 +252,7 @@ struct AppsView: View {
                     }){
                         
                         HStack {
-                            Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(.gray)
+                            Image(systemName: "person").resizable().frame(width: 50, height: 50).padding(.trailing,10).foregroundColor(Color("WeekColor"))
                         }
                         .frame(width: 70, height: 60, alignment: .center)
                         Text("Médicos vinculados").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)

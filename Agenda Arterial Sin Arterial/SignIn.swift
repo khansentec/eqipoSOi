@@ -40,36 +40,39 @@ struct SignIn: View {
         ZStack{
             VStack{
                 NavbarLogin(title: "Iniciar Sesion", whereTo: "Login")
-                Text("Registro").padding(.horizontal).padding(.vertical).font(.title).bold()
+                Text("Registro").padding(.horizontal).padding(.vertical).font(.title.weight(.bold))
                 VStack{
                     VStack{
                         HStack{
                             Text("Nombre").fontWeight(.bold)
                             TextField("Nombre",text: $name).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
+                                .disableAutocorrection(true)
                         }
                         HStack{
                             Text("Apellido Paterno").fontWeight(.bold)
                             TextField("Apellido Paterno",text: $patName).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
+                                .disableAutocorrection(true)
                         }
                         HStack{
                             Text("Apellido Materno").fontWeight(.bold)
                             TextField("Apellido Materno",text: $matName).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
-                            
+                                .disableAutocorrection(true)
                         }
                         HStack{
                             Text("Correo Electronico").fontWeight(.bold)
                             TextField("Correo",text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true).autocapitalization(.none)
                         }
                         HStack{
                             Text("Contraseña").fontWeight(.bold)
                             SecureField("",text: $pass).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                             
                         }
                         HStack{
                             Text("Confirmar Contraseña").fontWeight(.bold)
                             SecureField("",text: $confPassword).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                                .disableAutocorrection(true)
                         }
                         HStack{
                             Text("Sexo").fontWeight(.bold)
@@ -99,10 +102,16 @@ struct SignIn: View {
                         
                         let processResults = newUser.uploadUser()
                         
+                        
+                        alertTitle = "¡Opps!"
+                        alertMessage = "Error ese correo ya existe"
+                        
                         alertTitle = processResults.1
                         alertMessage =  processResults.2
                         
                         userSubmitted = true
+                        
+                        
                         
                         if processResults.0{
                             login.createUser(email: newUser.email, pass: newUser.pass, name: newUser.name, ptName: newUser.ptName, mtName: newUser.mtName, bDate: newUser.bDate, phone: newUser.phone, sex: newUser.sex){
@@ -115,14 +124,17 @@ struct SignIn: View {
                                     complete = true
                                 }else{
                                     progress = false
-                                    print(errorM)
-                                    let t = type(of: errorM)
-                                    print(t)
                                     alertMessage = errorM
                                     userSubmitted = true
                                 }
                             }
                         }
+                        
+                        if !complete{
+                            alertTitle = "¡Opps!"
+                            alertMessage = "Error ese correo ya existe"
+                        }
+                        
                         
                         if processResults.0 {
                             name = ""
@@ -152,7 +164,7 @@ struct SignIn: View {
                         Text(alertMessage)
                     }
                     if progress{
-                        Text("Please Wait One Moment...").foregroundColor(.black)
+                        Text("Por Favor espere...").foregroundColor(.black)
                         ProgressView()
                     }
                 }.padding(.all)

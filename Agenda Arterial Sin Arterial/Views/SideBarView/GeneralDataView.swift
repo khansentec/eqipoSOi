@@ -187,7 +187,7 @@ struct GeneralDataView: View {
                 
                 Spacer(minLength: 20)
                     if progress{
-                        Text("Please Wait One Moment...").foregroundColor(.black)
+                        Text("Por Favor espere...").foregroundColor(.black)
                         ProgressView()
                     }
                 Spacer(minLength: 20)

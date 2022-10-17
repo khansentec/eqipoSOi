@@ -44,7 +44,7 @@ class HealthReport: Identifiable {
         let validationResults = self.validateHR()
         
         let reportIsValid = validationResults.0
-        let alertTitle = "¡Exito!"
+        var alertTitle = "¡Exito!"
         var alertMessage = validationResults.1
         var healthRUploaded = false
         
@@ -82,6 +82,8 @@ class HealthReport: Identifiable {
                 }
             }
             
+        }else{
+            alertTitle = "¡Oops!"
         }
         print("desde: \(healthRUploaded)")
         return (healthRUploaded, alertTitle, alertMessage)

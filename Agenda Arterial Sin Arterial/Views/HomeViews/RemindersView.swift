@@ -15,27 +15,33 @@ struct RemindersView: View {
     
     @State var showNavbar = true
     @State var addAppoinment = false
-    
+    var device = UIDevice.current.userInterfaceIdiom
+    @Environment(\.horizontalSizeClass) var width
     var body: some View {
         ZStack (alignment: .bottomTrailing) {
-            VStack {
+            VStack{
+                
+                Text("Recordatorios").font(.title)
                 
                 ScrollView(.vertical, showsIndicators: false){
-                    Text("Recordatorios").font(.title)
-
+                    
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
-                        ForEach(data.reminds.sorted(by: { $0.date.compare($1.date) == .orderedAscending }), id : \.self){ reminder in
+                        ForEach(data.reminds.sorted(by: { $0.date.compare($1.date) == .orderedAscending }), id : \.self){
+                            reminder in
                             ReminderView(reminder: reminder).onTapGesture {
-                                data.sendRemind(item: reminder)
-                                editing.toggle()
+                                if reminder.type == "consulta" || reminder.type == "medicion"{
+                                    data.sendRemind(item: reminder)
+                                    editing.toggle()
+                                }
                             }
-                        }.sheet(isPresented: $editing, content: {
-                            ReminderDetailsView()
-                        }).padding(.all)
+                        }.sheet(isPresented: $editing){
+                            data.getReminds()
+                        } content: {
+                           
+                                ReminderDetailsView(reminder: data.remindUpdate, showNabar: $showNavbar)
+                            
+                        }.padding(.all)
                     }
-                }.onAppear{
-                    data.getReminds()
-                }.padding(.all)
                     .background(Color.clear)
                     .padding(.bottom,100)
                     .overlay(Group{
@@ -44,7 +50,13 @@ struct RemindersView: View {
                         }
                         
                     })
-                
+                }.onAppear{
+                    data.getReminds()
+                    for remind in data.reminds{
+                        print(remind.date)
+                    }
+                    print(data.reminds.count)
+                }
             }
             Button(action: {
                 self.addAppoinment.toggle()
@@ -55,13 +67,12 @@ struct RemindersView: View {
             .background{
                 Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
             }.opacity(showNavbar ? 1 : 0).sheet(isPresented: $addAppoinment){
-                data.getMedicaments()
+                data.getReminds()
             }content:{
                 AddAppointment(medics: $medics, addAppointment: $addAppoinment)
             }
         }.onAppear{
             showNavbar = true
-            data.getReminds()
         }
     }
 }

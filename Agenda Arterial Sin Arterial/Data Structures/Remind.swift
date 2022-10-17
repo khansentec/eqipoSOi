@@ -14,4 +14,5 @@ struct Remind :  Hashable, Identifiable {
     var title : String
     var description : String
     var color : String
+    var idconsulta : String
 }

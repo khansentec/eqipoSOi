@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00AD2D028FD1A2700DEC7B7 /* RestorePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */; };
+		C00AD2D528FDB51F00DEC7B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */; };
 		C00DF2E428F0862C008C7D45 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CD28F0862C008C7D45 /* Capture.swift */; };
 		C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CE28F0862C008C7D45 /* Medic.swift */; };
 		C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF2CF28F0862C008C7D45 /* WeekReport.swift */; };
@@ -43,7 +45,6 @@
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
 		C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */; };
-		C096B6EB28FA4F9B0018AA9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */; };
 		C0AA140528FCD9F400E12677 /* KeyboardManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */; };
 		C0B65E6128FCBCD700EAFB29 /* Politics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B65E6028FCBCD700EAFB29 /* Politics.swift */; };
 		C0EE1E1128FA0B5E0069C41A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C0EE1E1028FA0B5E0069C41A /* FirebaseAuth */; };
@@ -65,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePasswordView.swift; sourceTree = "<group>"; };
+		C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C00DF2CD28F0862C008C7D45 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
 		C00DF2CE28F0862C008C7D45 /* Medic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
 		C00DF2CF28F0862C008C7D45 /* WeekReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
@@ -103,7 +106,6 @@
 		C065D69F28E0D2A900AC046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C065D6A228E0D2A900AC046F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Agenda-Arterial-Sin-Arterial-Info.plist"; sourceTree = SOURCE_ROOT; };
-		C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagment.swift; sourceTree = "<group>"; };
 		C0B65E6028FCBCD700EAFB29 /* Politics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Politics.swift; sourceTree = "<group>"; };
 		C0EE1E1E28FA33720069C41A /* HealthReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				C00DF2DE28F0862C008C7D45 /* ReminderView.swift */,
 				C0B65E6028FCBCD700EAFB29 /* Politics.swift */,
 				C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */,
+				C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -242,7 +245,7 @@
 		C065D69A28E0D2A900AC046F /* Agenda Arterial Sin Arterial */ = {
 			isa = PBXGroup;
 			children = (
-				C096B6EA28FA4F9B0018AA9A /* GoogleService-Info.plist */,
+				C00AD2D428FDB51F00DEC7B7 /* GoogleService-Info.plist */,
 				C096B6E928FA4E920018AA9A /* Agenda-Arterial-Sin-Arterial-Info.plist */,
 				C00DF2CC28F0862C008C7D45 /* Data Structures */,
 				C00DF2D428F0862C008C7D45 /* ViewControllers */,
@@ -335,7 +338,7 @@
 			files = (
 				C065D6A328E0D2A900AC046F /* Preview Assets.xcassets in Resources */,
 				C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */,
-				C096B6EB28FA4F9B0018AA9A /* GoogleService-Info.plist in Resources */,
+				C00AD2D528FDB51F00DEC7B7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +391,7 @@
 				C00DF2EE28F0862C008C7D45 /* FrecuentlyAskedQuestions.swift in Sources */,
 				C00DF2F128F0862C008C7D45 /* ReminderView.swift in Sources */,
 				C00DF31728F08776008C7D45 /* SignIn.swift in Sources */,
+				C00AD2D028FD1A2700DEC7B7 /* RestorePasswordView.swift in Sources */,
 				C20400A228F6113D00E29E08 /* CreditsView.swift in Sources */,
 				C00DF2EF28F0862C008C7D45 /* GeneralDataView.swift in Sources */,
 				C00DF30528F086D8008C7D45 /* ButtonNavbar.swift in Sources */,
@@ -529,7 +533,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,9 +542,12 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -561,7 +569,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,9 +578,12 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Soi.com.Agenda-Arterial-V2-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

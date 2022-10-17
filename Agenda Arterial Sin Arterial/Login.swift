@@ -90,7 +90,7 @@ struct Login: View {
                     Text(messagealert)
                 }
                 if progress{
-                    Text("Please Wait One Moment...").foregroundColor(.black)
+                    Text("Por Favor espere...").foregroundColor(.black)
                     ProgressView()
                 }
                 Spacer()
@@ -105,6 +105,14 @@ struct Login: View {
                         }
                     Spacer()
                     HStack{
+                        Button(action:{
+                            withAnimation{
+                                loginShow.show = "RestorePassword"
+                            }
+                        }){
+                            Text("Olvidé mi contraseña").foregroundColor(.black).frame(width: 100)
+                        }
+                        Divider().frame(width: 1).overlay(.black)
                         Button(action:{
                             withAnimation{
                                 loginShow.show = "SignIn"
