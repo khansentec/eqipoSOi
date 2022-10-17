@@ -9,6 +9,8 @@ import SwiftUI
 import Firebase
 
 struct GeneralDataView: View {
+    
+    
     @State private var index = "Datos Generales"
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
@@ -58,10 +60,12 @@ struct GeneralDataView: View {
                 
                 ScrollView (showsIndicators: false) {
                     
-                    Text("Datos Generales").bold().font(.title)
+                    Text("Datos generales").bold().font(.title)
                     
                     if imageData.count != 0{
-                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle())
+                        Image(uiImage: UIImage(data: imageData)!).resizable().frame(width: 125, height: 125).cornerRadius(15).clipShape(Circle()).onAppear{
+                            editingPhoto = true
+                        }
                         
                     } else {
                         if photourl != ""{
@@ -98,10 +102,7 @@ struct GeneralDataView: View {
                     
                 Spacer(minLength: 15)
                     
-                if progress{
-                    Text("Please Wait One Moment...").foregroundColor(.black)
-                    ProgressView()
-                }
+               
                 
                 VStack (alignment: .leading, spacing: 15) {
                     VStack{
@@ -184,25 +185,45 @@ struct GeneralDataView: View {
                 }
                 
                 Spacer(minLength: 20)
-                
+                    if progress{
+                        Text("Por Favor espere...").foregroundColor(.black)
+                        ProgressView()
+                    }
+                Spacer(minLength: 20)
                 Button("Enviar"){
                     progress = true
-                    save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto){
-                        (done)in
-                        if done{
-                            progress = false
-                            alertTitle = "¡Éxito!"
-                            alertMessage = "Datos subido con éxito."
-                        }else{
-                            alertTitle = "¡Oops!"
-                            alertMessage = "Ocurrió un error con subir los datos."
+                    let idUser = Auth.auth().currentUser?.uid
+                    let pacientUpdate = Pacient(id: idUser! , name: name, patName: lastNameP, matName: lastNameP, photo: photourl, sex: selectedSex, pacientStatus: "", birthDate: date, phone: phoneNumber, height: height, weight: weight, cirAbdominal: cirAbdominal, medDisease: disease, bloodType: bloodType, vinculationCode: "", associatedMedic: [])
+                    
+                    let valid = pacientUpdate.changeInfoPatient()
+                    print(valid.0)
+                    print(valid.1)
+                    if valid.0{
+                        save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto, birthDate: date){
+                            (done)in
+                            if done{
+                                dataSubmitted = true
+                                progress = false
+                                alertTitle = "¡Éxito!"
+                                alertMessage = "Datos subido con éxito."
+                            }else{
+                                dataSubmitted = true
+                                alertTitle = "¡Oops!"
+                                alertMessage = "Ocurrió un error con subir los datos."
+                            }
+                            dataSubmitted = true
                         }
+                    }else{
                         dataSubmitted = true
+                        alertTitle = "¡Oops!"
+                        alertMessage = valid.1
                     }
+                    
                 }
                 .alert(alertTitle, isPresented: $dataSubmitted){
                     Button("OK"){
                         //si se oprime quitar el ok
+                        progress = false
                     }
                 } message: {
                     Text(alertMessage)
@@ -212,10 +233,9 @@ struct GeneralDataView: View {
                     .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 100,minHeight: 40))
                 
-                Spacer()
                     
                 }
-                .padding(30)
+                .padding(30).keyboardManagment()
             }
             if menu{
                 NavBarMenu(index: $index, menu: $menu)
@@ -251,4 +271,6 @@ struct GeneralDataView: View {
     
     
 }
+
+
 

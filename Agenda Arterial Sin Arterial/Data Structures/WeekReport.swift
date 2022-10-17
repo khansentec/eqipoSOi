@@ -118,8 +118,10 @@ class WeekReport {
         var weekRUploaded = false
         
         if reportIsValid {
+            weekRUploaded = true
             //método para subir a firebase regresa booleano
             let id = UUID().uuidString
+            alertTitle = "¡Exito!"
             
             guard let idUser = Auth.auth().currentUser?.uid else{
                 return (false, alertTitle, "Usuario no encontrado")

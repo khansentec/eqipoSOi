@@ -12,7 +12,6 @@ struct SettingsView: View {
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var heightMenu = UIScreen.main.bounds.height
-    @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
     
     @State var notConsultas = true
@@ -36,19 +35,31 @@ struct SettingsView: View {
                     Toggle(isOn: $notConsultas) {
                         Text("Consultas")
                     }.padding()
-                        .frame(width:250)
+                        .frame(width:250).onAppear{
+                            let notificationAppoinments = UserDefaults.standard.object(forKey: "showAppoinment") as? Bool ?? true
+                            notConsultas = notificationAppoinments
+                        }
                     Toggle(isOn: $notMediciones) {
                         Text("Mediciones")
                     }.padding()
-                        .frame(width:250)
+                        .frame(width:250).onAppear{
+                           let notificationMeditions = UserDefaults.standard.object(forKey: "showMeditions") as? Bool ?? true
+                            notMediciones = notificationMeditions
+                        }
                     Toggle(isOn: $notReporteSemanal) {
                         Text("Reporte Semanal")
                     }.padding()
-                        .frame(width:250)
+                        .frame(width:250).onAppear{
+                           let notificationWeekReport = UserDefaults.standard.object(forKey: "showWeekReport") as? Bool ?? true
+                            notReporteSemanal = notificationWeekReport
+                        }
                     Toggle(isOn: $notReporteSalud) {
                         Text("Reporte de Salud")
                     }.padding()
-                        .frame(width:250)
+                        .frame(width:250).onAppear{
+                            let notificationHealhtreport = UserDefaults.standard.object(forKey: "showHealtReport") as? Bool ?? true
+                            notReporteSalud = notificationHealhtreport
+                        }
                 }
                 Spacer()
                 
@@ -60,10 +71,19 @@ struct SettingsView: View {
                                 .font(.system(size:  widthMenu == 375 ? 18 : 19, weight: .bold))
                                 .underline()
                         }
+                    }.popover(isPresented: $presentCredits){
+                        CreditsView()
                     }
                 }
-                .popover(isPresented: $presentCredits, content: { CreditsView() })
+                
                 .padding(.bottom, 100)
+            }.onDisappear{
+                if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                    UserDefaults.standard.set(notReporteSalud, forKey: "showHealtReport")
+                    UserDefaults.standard.set(notConsultas, forKey: "showAppoinment")
+                    UserDefaults.standard.set(notReporteSemanal, forKey: "showWeekReport")
+                    UserDefaults.standard.set(notMediciones, forKey: "showMeditions")
+                }
             }
             
             if menu {

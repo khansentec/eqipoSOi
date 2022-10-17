@@ -28,38 +28,43 @@ struct Home: View {
                 ZStack{
                     switch loginShow.showApp{
                     case "Home":
-                        AppsView().onAppear(){
+                        AppsView().environment(\.colorScheme, .light).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedicaments()
                                 
                             }
                         }
                     case "CapturesView":
-                        CapturesView().edgesIgnoringSafeArea(.all)
+                        CapturesView().environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all)
                     case "MedicamentsView":
-                        MedicamentsView().edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).onAppear(){
+                        MedicamentsView().environment(\.colorScheme, .light).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedicaments()
                             }
                         }
                     case "WeekReportView":
-                        WeekReportView().edgesIgnoringSafeArea(.all)
+                        WeekReportView().environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all)
                     case "HealthStateView":
-                        HealthStateView().edgesIgnoringSafeArea(.all)
+                        HealthStateView().environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all)
                     case "LikYourMedicView":
-                        LinkYourMedicView(listMedics: $login.medics).edgesIgnoringSafeArea(.all).onAppear(){
+                        LinkYourMedicView(listMedics: $login.medics).environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedics()
                             }
                         }
                     case "RemindersView":
-                        RemindersView(remindersList: [], medics: $login.medics).edgesIgnoringSafeArea(.all).onAppear{
+                        RemindersView(remindersList: [], medics: $login.medics).environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all).onAppear{
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedics()
                             }
                         }
                     default:
-                        AppsView()
+                        AppsView().environment(\.colorScheme, .light).onAppear(){
+                            if (UserDefaults.standard.object(forKey: "sesion")) != nil {
+                                login.getMedicaments()
+                                
+                            }
+                        }
                     }
                 }
                 

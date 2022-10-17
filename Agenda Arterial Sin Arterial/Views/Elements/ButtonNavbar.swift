@@ -26,6 +26,7 @@ struct ButtonNavbar: View {
                 if device == .phone{
                     menu.toggle()
                 }
+                
                 loginShow.showApp = "Home"
                 loginShow.show = whereto
                 
@@ -36,8 +37,7 @@ struct ButtonNavbar: View {
                     .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6) : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6))
                 Text(title)
                     .multilineTextAlignment(.leading)
-                    .font(.system(size: device == .pad ? 16 : widthMenu == 375 ? 18 : 20))
-                    .fontWeight(loginShow.showApp == "Home" ? index == title ? .bold : .none : .none)
+                    .font(.system(size: device == .pad ? 16 : widthMenu == 375 ? 18 : 20, weight: .heavy))
                     .foregroundColor(loginShow.showApp == "Home" ? index == title ? .black : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6) : device == .pad ? Color.white : Color("ButtonColor").opacity(0.6))
             }
         }

@@ -44,52 +44,40 @@ class Pacient {
         self.associatedMedic = associatedMedic ?? []
     }
     
-    func changeInfoPatient(newName : String, newPatName : String, newMatName : String, newPhoto : String, newSex : String, newBirthDate : Date, newPhone : String,  newHeight : Float, newWeight : Float, newCirAbdominal : Float, newMedDisease : String, newBloodType : String) -> (Bool,String) {
-        if newName == "" {
+    func changeInfoPatient() -> (Bool,String) {
+        if self.name == "" {
             return (false, "Se debe ingresar el nombre")
         }
         
-        if newPatName == "" {
+        if self.patName == "" {
             return (false, "Se debe ingresar el apellido Paterno")
         }
         
-        if newMatName == "" {
+        if self.matName == "" {
             return (false, "Se debe ingresar el apellido Materno")
         }
         
-        if newPhone != ""{
-            let phoneFormat  = "^((\\+)|(00))[0-9]{6,14}$"
+        if self.phoneNumber != ""{
+            let phoneFormat  = "[0-9]{10}$"
             let validatePhone = NSPredicate(format:"SELF MATCHES %@",  phoneFormat)
-            let validationPhone =  validatePhone.evaluate(with: newPhone)
+            let validationPhone =  validatePhone.evaluate(with: self.phoneNumber)
             if !validationPhone  {
                 return (false, "Se debe un teléfono válido")
             }
         }
         
-        if newHeight < 0 || newHeight > 999 {
+        if self.height < 0 || self.height > 999 {
             return (false, "La altura tiene que ser mayor a 0 y menor a 999")
         }
         
-        if newWeight  < 0 || newWeight > 999{
+        if self.weight  < 0 || self.weight > 999{
             return (false, "El peso tiene que ser mayor a 0 y menor a 999")
         }
         
-        if newCirAbdominal  < 0 ||  newCirAbdominal > 999{
+        if self.cirAbdominal  < 0 ||  self.cirAbdominal > 999{
             return (false, "La circunferencia abdominal tiene que ser mayor a 0 y menor a 999")
         }
         
-        self.name = newName
-        self.patName = newPatName
-        self.matName = newMatName
-        self.photo = newPhoto
-        self.sex = newSex
-        self.birthDate = newBirthDate
-        self.phoneNumber = newPhone
-        self.height = newHeight
-        self.weight = newWeight
-        self.cirAbdominal = newCirAbdominal
-        self.medDisease = newMedDisease
-        self.bloodType = newBloodType
         return (true, "")
     }
     

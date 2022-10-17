@@ -39,7 +39,8 @@ class FirebaseViewController: ObservableObject{
     func saveData(collectionName: String, id: String, info: [String: Any], completion: @escaping(_ done: Bool)->Void){
         
         let db = Firestore.firestore()
-        
+        print("Here3 \(collectionName)")
+        print("Here4 \(info)")
         db.collection(collectionName).document(id).setData(info){error in
             if let error = error?.localizedDescription{
                 print("Error al guardar en firestore ", error)
@@ -60,6 +61,34 @@ class FirebaseViewController: ObservableObject{
                 completion(false)
             }else{
                 print("Sucessfully delete info")
+                completion(true)
+            }
+        }
+    }
+    
+    func deleteAppointment(id: String, completion: @escaping(_ done: Bool)->Void){
+        let db = Firestore.firestore()
+        db.collection("consultas").document(id).delete{
+            error in
+                if let error = error?.localizedDescription{
+                    print("Error al borrar en firestore ", error)
+                    completion(false)
+                }else{
+                    print("Sucessfully delete info")
+                    completion(true)
+                }
+            }
+       
+    }
+    
+    func sendPasswordReset(withEmail email: String, completion: @escaping( _ done: Bool) -> Void){
+        Auth.auth().sendPasswordReset(withEmail: email){
+            (error) in
+            if let error = error?.localizedDescription{
+                print("Error  ", error)
+                completion(false)
+            }else{
+                print("Send email")
                 completion(true)
             }
         }
@@ -94,7 +123,7 @@ class FirebaseViewController: ObservableObject{
                     return
                 }
                 let pacient = Pacient(id: idUser, name: name, patName: ptName, matName: mtName, photo: "", sex: sex, pacientStatus: "", birthDate: bDate, phone: phone, height: 0, weight: 0, cirAbdominal: 0, medDisease: "", bloodType: "", vinculationCode: "", associatedMedic: [])
-                let info : [String: Any] = ["idUsuario":idUser,"apellidoMaterno":mtName, "apellidoPaterno": ptName, "email":email, "fechaNacimiento": bDate, "nombre":name, "sexo":sex, "telefono": phone, "altura":0, "circunferenciaAbdominal":0, "foto": "", "peso": 0, "tipoSangre": "", "padecimientosMedicos": "", "codigoVinculacion":"","estadoPaciente":"", "listaMedicosVinculados":[]]
+                let info : [String: Any] = ["idUsuario":idUser,"apellidoMaterno":mtName, "apellidoPaterno": ptName, "email":email, "fechaNacimiento": bDate, "nombre":name, "sexo":sex, "telefono": phone, "altura":0, "circunferenciaAbdominal":0, "foto": "", "peso": 0, "tipoSangre": "", "padecimientosMedicos": "Sin padecimientos ...", "codigoVinculacion":"","estadoPaciente":"", "listaMedicosVinculados":[]]
                 self.data = pacient
                 let id = UUID().uuidString
                 
@@ -152,7 +181,7 @@ class FirebaseViewController: ObservableObject{
         //End Saving Text
     }
     
-    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, editingPhoto: Bool, completion: @escaping(_ done: Bool)->Void){
+    func saveGD(name: String, lastNP: String, lastNM: String,  phone: String, sex: String, height: Float, abdominalCir: Float, diseases: String, weight: Float, bType: String, photo: Data, urlPhoto: String?, editingPhoto: Bool, birthDate: Date, completion: @escaping(_ done: Bool)->Void){
         let db = Firestore.firestore()
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
@@ -190,7 +219,7 @@ class FirebaseViewController: ObservableObject{
                                             // Get the download URL for each item storage location
                                             dir = String(describing: url!)
                                             print("url : \(dir)")
-                                            let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                            let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                             
                                             db.collection("pacientes").document(docId).updateData(info){error in
                                                 if let error = error?.localizedDescription{
@@ -222,67 +251,68 @@ class FirebaseViewController: ObservableObject{
                             storageImage.getData(maxSize: 1*1024*1024){
                                 (data, error) in
                                 if let error = error?.localizedDescription {
-                                   
-                                        print("foto here in third")
-                                        let deleteImage = Storage.storage().reference(forURL: image)
-                                        deleteImage.delete(completion: nil)
-                                        
-                                        let storage = Storage.storage().reference()
-                                        let profilepic = UUID()
-                                        let directory = storage.child("profilepics/\(profilepic)")
-                                        let metaData = StorageMetadata()
-                                        metaData.contentType = "image/png"
-                                        directory.putData(photo, metadata: metaData){data, error in
-                                            if error == nil{
-                                                print("saved image")
-                                                //Save Text
-                                                var dir = "a"
-                                                let db = Firestore.firestore()
-                                                directory.downloadURL{
-                                                    url, error in
-                                                    if let error = error {
-                                                        // Handle any errors
-                                                        print(error)
-                                                    } else {
-                                                        // Get the download URL for each item storage location
-                                                        dir = String(describing: url!)
-                                                        print("url : \(dir)")
-                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
-                                                        
-                                                        db.collection("pacientes").document(docId).updateData(info){error in
-                                                            if let error = error?.localizedDescription{
-                                                                print("Error al guardar en firestore ", error)
-                                                                completion(false)
-                                                            }else{
-                                                                print("Sucessfully save info")
-                                                                self.getPacient(){
-                                                                    (done)in
-                                                                    if done{
-                                                                        print("info succesfully update")
-                                                                        completion(true)
-                                                                    }
+                                    
+                                    print("foto here in third")
+                                    let deleteImage = Storage.storage().reference(forURL: image)
+                                    deleteImage.delete(completion: nil)
+                                    
+                                    let storage = Storage.storage().reference()
+                                    let profilepic = UUID()
+                                    let directory = storage.child("profilepics/\(profilepic)")
+                                    let metaData = StorageMetadata()
+                                    metaData.contentType = "image/png"
+                                    directory.putData(photo, metadata: metaData){data, error in
+                                        if error == nil{
+                                            print("saved image")
+                                            //Save Text
+                                            var dir = "a"
+                                            let db = Firestore.firestore()
+                                            directory.downloadURL{
+                                                url, error in
+                                                if let error = error {
+                                                    // Handle any errors
+                                                    print(error)
+                                                } else {
+                                                    // Get the download URL for each item storage location
+                                                    dir = String(describing: url!)
+                                                    print("url : \(dir)")
+                                                    let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                    
+                                                    db.collection("pacientes").document(docId).updateData(info){error in
+                                                        if let error = error?.localizedDescription{
+                                                            print("Error al guardar en firestore ", error)
+                                                            completion(false)
+                                                        }else{
+                                                            print("Sucessfully save info")
+                                                            self.getPacient(){
+                                                                (done)in
+                                                                if done{
+                                                                    print("info succesfully update")
+                                                                    completion(true)
                                                                 }
                                                             }
-                                                            
                                                         }
+                                                        
                                                     }
                                                 }
-                                                
-                                                
-                                                //End Saving Text
+                                            }
+                                            
+                                            
+                                            //End Saving Text
+                                        }else{
+                                            if let error = error?.localizedDescription{
+                                                print("Failes to upload image in storge", error)
                                             }else{
-                                                if let error = error?.localizedDescription{
-                                                    print("Failes to upload image in storge", error)
-                                                }else{
-                                                    print("app error")
-                                                }
+                                                print("app error")
                                             }
                                         }
+                                    }
                                     
-                                }else{
+                                }
+                                else{
                                     if !editingPhoto{
-                                        print("second")
-                                        let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                        print("foto: second")
+                                        let info : [String: Any] = ["apellidoMaterno":lastNP, "apellidoPaterno": lastNM, "nombre":name, "sexo":sex,"fechaNacimiento":birthDate, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                         
                                         db.collection("pacientes").document(docId).updateData(info){error in
                                             if let error = error?.localizedDescription{
@@ -326,7 +356,7 @@ class FirebaseViewController: ObservableObject{
                                                         // Get the download URL for each item storage location
                                                         dir = String(describing: url!)
                                                         print("url : \(dir)")
-                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
+                                                        let info : [String: Any] = ["apellidoMaterno":lastNM, "apellidoPaterno": lastNP, "nombre":name, "sexo":sex, "fechaNacimiento":birthDate,"telefono": phone,"altura":height,"circunferenciaAbdominal":abdominalCir,"foto": dir, "peso":weight, "tipoSangre": bType, "padecimientosMedicos":diseases]
                                                         
                                                         db.collection("pacientes").document(docId).updateData(info){error in
                                                             if let error = error?.localizedDescription{
@@ -357,11 +387,11 @@ class FirebaseViewController: ObservableObject{
                                                 }
                                             }
                                         }
-                                    
-                                }
+                                        
+                                    }
                                 }
                             }
-                           
+                            
                         }
                     }
                 }
@@ -446,6 +476,37 @@ class FirebaseViewController: ObservableObject{
             }
         
         return linkCode
+    }
+    
+    func deleteLinkCode(completion: @escaping(_ done: Bool)->Void){
+        
+        
+        var linkCodeS = ""
+        
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        db.collection("pacientes").whereField("idUsuario", isEqualTo: idUser)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let linkCodeF: [String: Any] = ["codigoVinculacion":linkCodeS]
+                        db.collection("pacientes").document(document.documentID).updateData(linkCodeF){error in
+                            if let error = error?.localizedDescription{
+                                print("Error al guardar en firestore ", error)
+                                completion(false)
+                            }else{
+                                print("Sucessfully save info")
+                                completion(true)
+                            }
+                        }
+                    }
+                }
+            }
+        
     }
     
     func getMedics(){
@@ -592,37 +653,57 @@ class FirebaseViewController: ObservableObject{
             }
     }
     
-    func checkPastDates(id: String,finishDate: Date, startDate: Date, information: String){
+    func checkPastDates(id: String,finishDate: Date, startDate: Date, information: String)->(Bool, String, String){
+        
+        print("dates: \(finishDate)")
+        print("dates: \(startDate)")
+        var submitted = false
+        var tittle = ""
+        var message = ""
         
         if finishDate < startDate {
+            print("Here1")
             self.editMedicament(id: id, finishDate: startDate, startDate: startDate, information: information){
                 (done) in
                 if done{
                     print("UPDATED")
+                    submitted = true
+                    tittle = "¡Éxito!"
+                    message = "La información se actualizado con exito"
                 }else{
-                    print("not updated")
+                    tittle = "¡Opps!"
+                    message = "Ha habido un error en la conexión, intentelo mas tarde"
                 }
             }
         }else if finishDate > startDate{
+            print("Here2")
             self.disableMedicament(idMedicament: id, endDate: finishDate){
                 (done) in
                 if done{
-                    print("UPDATED")
+                    submitted = true
+                    tittle = "¡Éxito!"
+                    message = "La información se actualizado con exito"
                 }else{
-                    print("not updated")
+                    tittle = "¡Opps!"
+                    message = "Ha habido un error en la conexión, intentelo mas tarde"
                 }
             }
         }else{
+            print("Here3")
             self.editMedicament(id: id, finishDate: finishDate, startDate: startDate, information: information){
                 (done) in
                 if done{
-                    print("UPDATED")
+                    submitted = true
+                    tittle = "¡Éxito!"
+                    message = "La información se actualizado con exito"
                 }else{
-                    print("not updated")
+                    tittle = "¡Opps!"
+                    message = "Ha habido un error en la conexión, intentelo mas tarde"
                 }
             }
             
         }
+        return(submitted,tittle,message)
     }
     
     func updateRemiders(date: Date, type: String, title:String, description : String){
@@ -669,10 +750,8 @@ class FirebaseViewController: ObservableObject{
         let year2 = calendar.component(.year, from: date2)
         
         if day1 == day2 && month1 == month2 && year1 == year2 {
-            print(true)
             return true
         } else {
-            print(false)
             return false
         }
     }
@@ -683,82 +762,123 @@ class FirebaseViewController: ObservableObject{
             return
         }
         
-        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
-            .getDocuments() {
-                (QuerySnapshot, error) in
-                if let error = error?.localizedDescription{
-                    print("error to show data ", error)
-                }else{
-                    for document in QuerySnapshot!.documents{
-                        let value = document.data()
-                        let typeNew = value["tipo"] as? String ?? ""
-                        let dateNew = (value["fechaDesactivacion"] as? Timestamp)?.dateValue() ?? Date()
-                        
-                        if type == typeNew &&  (dateNew < date || self.isSameDay(date1: date, date2: dateNew))  {
-                            DispatchQueue.main.async {
-                                self.deleteData(collectionName: "notificaciones", id: document.documentID){(done)
-                                    in
-                                    if done{
-                                        print("Sucessfully delete info")
+        if type == "medicion"{
+            
+            db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+                .getDocuments() {
+                    (QuerySnapshot, error) in
+                    if let error = error?.localizedDescription{
+                        print("error to show data ", error)
+                    }else{
+                        for document in QuerySnapshot!.documents{
+                            let value = document.data()
+                            let idS = value["id"] as? String ?? "no id"
+                            let type = value["tipo"] as? String ?? "no type"
+                            let dateS = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                            if type == "medicion" {
+                                if self.isSameDay(date1: date, date2: dateS){
+                                    self.deleteData(collectionName: "notificaciones", id: idS){(done)
+                                        in
+                                        if done{
+                                            print("Sucessfully delete one reminder")
+                                        }else{
+                                            
+                                        }
                                     }
+                                    
                                 }
                             }
+                        }
+                        
+                    }
+                }
+            
+        }else{
+            db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+                .getDocuments() {
+                    (QuerySnapshot, error) in
+                    if let error = error?.localizedDescription{
+                        print("error to show data ", error)
+                    }else{
+                        for document in QuerySnapshot!.documents{
+                            let value = document.data()
+                            let typeNew = value["tipo"] as? String ?? ""
+                            let dateNew = (value["fechaDesactivacion"] as? Timestamp)?.dateValue() ?? Date()
                             
+                            if type == typeNew &&  (dateNew < date || self.isSameDay(date1: date, date2: dateNew))  {
+                                DispatchQueue.main.async {
+                                    self.deleteData(collectionName: "notificaciones", id: document.documentID){(done)
+                                        in
+                                        if done{
+                                            print("Sucessfully delete info")
+                                        }
+                                    }
+                                }
+                                
+                            }
                         }
                     }
                 }
-            }
-        
+        }
     }
+    
+//    func getReminds(){
+//        var color = ""
+//
+//        let db = Firestore.firestore()
+//        guard let idUser = Auth.auth().currentUser?.uid else{
+//            return
+//        }
+//
+//        let notificationHealhtreport = UserDefaults.standard.object(forKey: "showHealtReport") as? Bool ?? true
+//        let notificationAppoinments = UserDefaults.standard.object(forKey: "showAppoinment") as? Bool ?? true
+//        let notificationWeekReport = UserDefaults.standard.object(forKey: "showWeekReport") as? Bool ?? true
+//        let notificationMeditions = UserDefaults.standard.object(forKey: "showMeditions") as? Bool ?? true
+//
+//        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
+//            .getDocuments() {
+//                (QuerySnapshot, error) in
+//                if let error = error?.localizedDescription{
+//                    print("error to show data ", error)
+//                }else{
+//                    print("Here67")
+//                    self.reminds.removeAll()
+//                    for document in QuerySnapshot!.documents{
+//                        let value = document.data()
+//                        let id = value["id"] as? String ?? "no id"
+//                        let type = value["tipo"] as? String ?? "no type"
+//                        print(id)
+//                        if (id != "no id" || type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments){
+//                            let title = value["titulo"] as? String ?? "title"
+//                            let description = value["descripcion"] as? String ?? "no description"
+//                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+//                            let consulta = value["idConsulta"] as? String ?? "no hay"
+//                            if type == "medicion"{
+//                                color = "Color.red"
+//                            }else if type == "reporteSalud"{
+//                                color = "Color.green"
+//
+//                            }else if type == "reporteSemanal"{
+//                                color = "Color.blue"
+//
+//                            }
+//
+//                            DispatchQueue.main.async {
+//                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
+//                                self.reminds.append(register)
+//
+//                            }
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//    }
     
     func getReminds(){
-        var color = ""
-        
-        let db = Firestore.firestore()
-        guard let idUser = Auth.auth().currentUser?.uid else{
-            return
-        }
-        
-        db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
-            .getDocuments() {
-                (QuerySnapshot, error) in
-                if let error = error?.localizedDescription{
-                    print("error to show data ", error)
-                }else{
-                    self.reminds.removeAll()
-                    for document in QuerySnapshot!.documents{
-                        let value = document.data()
-                        let id = value["id"] as? String ?? "no id"
-                        let type = value["tipo"] as? String ?? "no type"
-                        
-                        if (type == "medicion" && self.meditionsRem) || (type == "reporteSalud" && self.healthReportsRem) || (type == "reporteSemanal" && self.weekReportsRem){
-                            let title = value["titulo"] as? String ?? "title"
-                            let description = value["descripcion"] as? String ?? "no description"
-                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
-                            
-                            if type == "medicion"{
-                                color = "Color.red"
-                            }else if type == "reporteSalud"{
-                                color = "Color.green"
-                                
-                            }else if type == "reporteSemanal"{
-                                color = "Color.blue"
-                                
-                            }
-                            
-                            DispatchQueue.main.async {
-                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color)
-                                self.reminds.append(register)
-                                
-                            }
-                        }
-                        
-                    }
-                }
-            }
+      
         
     }
-    
-    
 }
 

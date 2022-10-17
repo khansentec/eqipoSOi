@@ -12,6 +12,7 @@ struct Login: View {
     @State private var tittlealert = "No se pudo iniciar sesión"
     @State private var messagealert = "La contraseña o el usuario es inválido"
     @State private var pass = ""
+    @State private var showPolitics = false
     @State private var widthMenu = UIScreen.main.bounds.width
     
     @StateObject var login = FirebaseViewController()
@@ -89,18 +90,29 @@ struct Login: View {
                     Text(messagealert)
                 }
                 if progress{
-                    Text("Please Wait One Moment...").foregroundColor(.black)
+                    Text("Por Favor espere...").foregroundColor(.black)
                     ProgressView()
                 }
                 Spacer()
                 HStack{
                     Button(action:{
-                        
+                        showPolitics.toggle()
                     }){
                         Text("Políticas")
                     }.padding(.leading, 30)
+                        .popover(isPresented: $showPolitics){
+                            Politics()
+                        }
                     Spacer()
                     HStack{
+                        Button(action:{
+                            withAnimation{
+                                loginShow.show = "RestorePassword"
+                            }
+                        }){
+                            Text("Olvidé mi contraseña").foregroundColor(.black).frame(width: 100)
+                        }
+                        Divider().frame(width: 1).overlay(.black)
                         Button(action:{
                             withAnimation{
                                 loginShow.show = "SignIn"

@@ -7,11 +7,13 @@
 import SwiftUI
 
 struct WeekReportView: View {
+    @EnvironmentObject var loginShow : FirebaseViewController
     @State var followDiet : Float = 5.0
     @State var saltConsumption : Float = 5.0
     @State var beveragesIntake = false
     @State var numBeverages = 0
     @State var physicalActivity : Float = 5.0
+    @State private var submitted = false
     @State var numPhysicalActivity = 0
     @State var sleepHours = 0
     @State var followMedicalPresciption = true
@@ -22,7 +24,6 @@ struct WeekReportView: View {
     @State var alertMessage = ""
     @State var alertTitle = ""
     @State var forgetTimes = 0
-    
     @StateObject var save = FirebaseViewController()
     
     var body: some View {
@@ -154,7 +155,7 @@ struct WeekReportView: View {
                             }.frame(width:widthMenu == 375 ? 290 : 310, height : 300)
                                 .onAppear{
                                     save.getMedicaments()
-                                }.padding()
+                                }.padding(.bottom,260)
                         }
                     }.padding(.bottom,5)
                     
@@ -172,12 +173,15 @@ struct WeekReportView: View {
 
                             let processResults = newWR.uploadWR()
                             
+                            print(processResults)
+                            
                             alertTitle = processResults.1
                             alertMessage =  processResults.2
 
                             weekReportSubmitted = true
 
                             if processResults.0 {
+                                submitted = true
                                 followDiet = 5.0
                                 saltConsumption = 5.0
                                 beveragesIntake = false
@@ -197,7 +201,10 @@ struct WeekReportView: View {
                         .alert(alertTitle, isPresented: $weekReportSubmitted){
                             
                             Button("OK"){
-                                //si se oprime quitar el ok
+                                if submitted{
+                                    loginShow.showApp = "Home"
+                                    loginShow.show = "Home"
+                                }
                             }
                         } message: {
                             Text(alertMessage)

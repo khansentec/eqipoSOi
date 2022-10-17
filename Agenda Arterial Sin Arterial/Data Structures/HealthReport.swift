@@ -43,8 +43,8 @@ class HealthReport: Identifiable {
     func uploadHR() -> (Bool, String, String){
         let validationResults = self.validateHR()
         
-        var reportIsValid = validationResults.0
-        var alertTitle = "¡Oops!"
+        let reportIsValid = validationResults.0
+        var alertTitle = "¡Exito!"
         var alertMessage = validationResults.1
         var healthRUploaded = false
         
@@ -52,7 +52,7 @@ class HealthReport: Identifiable {
         if reportIsValid {
             //método para subir a firebase regresa booleano
             let id = UUID().uuidString
-            
+            healthRUploaded = true
             guard let idUser = Auth.auth().currentUser?.uid else{
                 return (false, alertTitle, "Usuario no encontrado")
             }
@@ -61,8 +61,9 @@ class HealthReport: Identifiable {
             save.saveData(collectionName: "reportesSalud", id: id, info: info){(done)
                 in
                 if done{
+                    healthRUploaded = true
                     let id = UUID().uuidString
-                    var nextReportDate = Calendar.current.date(byAdding: DateComponents(day: 7), to: self.date)!
+                    let nextReportDate = Calendar.current.date(byAdding: DateComponents(day: 7), to: self.date)!
                     
                     
                     let info : [String: Any] = ["id": id, "idPaciente": idUser, "fecha":nextReportDate, "tipo":"reporteSalud","titulo":"Próximo Reporte Salud", "descripcion":"Próximo Reporte Salud"]
@@ -70,6 +71,7 @@ class HealthReport: Identifiable {
                     self.save.saveData(collectionName: "notificaciones", id: id, info: info){
                         (done)in
                         if done{
+                            healthRUploaded = true
                             print("Succesfully upload reminder of type health report")
                         }else{
                             print("ERROR saving info")
@@ -80,7 +82,10 @@ class HealthReport: Identifiable {
                 }
             }
             
+        }else{
+            alertTitle = "¡Oops!"
         }
+        print("desde: \(healthRUploaded)")
         return (healthRUploaded, alertTitle, alertMessage)
     }
     

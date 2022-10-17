@@ -98,9 +98,8 @@ struct LinkYourMedicView: View {
                     .foregroundColor(Color("ButtonColor"))
                     .frame(minWidth: 110,minHeight: 50))
             }
-            
-        }
-        .padding(.bottom, widthMenu == 375 ? 40 : 60)
+            .padding(.bottom, widthMenu == 375 ? 40 : 60)
+        }.environment(\.colorScheme, .light)
     }
 }
 }
