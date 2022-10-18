@@ -843,15 +843,31 @@ class FirebaseViewController: ObservableObject{
                 }else{
                     print("Here67")
                     self.reminds.removeAll()
+                    print(self.reminds)
                     for document in QuerySnapshot!.documents{
+                        print("testing iddoc: \(document.documentID)")
                         let value = document.data()
-                        let id = value["id"] as? String ?? "no id"
+                        let id = value["id"] as? String ?? "no id existeu"
                         let type = value["tipo"] as? String ?? "no type"
-                        print(id)
-                        if (id != "no id" || type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments){
+                        let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                        print("testing ID: \(id)")
+                        print("testing T: \(type)")
+                        print("testing M: \(notificationMeditions)")
+                        print("testing A: \(notificationAppoinments)")
+                        print("testing H: \(notificationHealhtreport)")
+                        print("testing W: \(notificationWeekReport)")
+                        print("testing D: \(date)")
+                        print("testing IDC: \(id != "no id")")
+                        print("testing MC: \(type == "medicion" && notificationMeditions)")
+                        print("testing RWC: \(type == "reporteSemanal" && notificationHealhtreport)")
+                        print("testing RHC: \(type == "reporteSalud" && notificationHealhtreport)")
+                        print("testing CC: \(type == "consulta" && notificationAppoinments)")
+                        print("testing -------------------------------")
+                        if ((id != "no id") && (type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments)){
+                            print("entro")
                             let title = value["titulo"] as? String ?? "title"
                             let description = value["descripcion"] as? String ?? "no description"
-                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                            
                             let consulta = value["idConsulta"] as? String ?? "no hay"
                             if type == "medicion"{
                                 color = "Color.red"
@@ -864,7 +880,9 @@ class FirebaseViewController: ObservableObject{
                             }
 
                             DispatchQueue.main.async {
-                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
+                                print(self.reminds)
+                                let register =  Remind(id:document.documentID, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
+                                print(register)
                                 self.reminds.append(register)
 
                             }
