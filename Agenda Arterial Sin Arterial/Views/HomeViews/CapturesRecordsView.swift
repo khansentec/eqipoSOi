@@ -37,12 +37,12 @@ struct CapturesRecordsView: View {
                     VStack(){
                         VStack(alignment: .center){
                             HStack{
-                                Text("Fecha de inicio: ").padding(.leading,60)
+                                Text("Fecha de inicio: ").padding(.leading,widthMenu == 375 ? 70 : 60)
                                 DatePicker("", selection: $startDate).padding(.trailing,60)
                             }
                             HStack{
-                                Text("Fecha de final: ").padding(.leading,55)
-                                DatePicker("", selection: $endDate).padding(.trailing,55)
+                                Text("Fecha de final: ").padding(.leading,widthMenu == 375 ? 80 : 60)
+                                DatePicker("", selection: $endDate).padding(.trailing,80)
                             }
                         }.padding(.bottom,10)
                         Button("Filtrar"){
