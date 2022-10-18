@@ -37,9 +37,9 @@ struct GeneralDataView: View {
     @State var lastNameP = ""
     @State var lastNameM = ""
     @State var phoneNumber = ""
-    @State private var height : Float
-    @State private var cirAbdominal : Float
-    @State private var weight : Float
+    @State var height : Float?
+    @State var cirAbdominal : Float?
+    @State var weight : Float?
     @State private var disease: String = "No hay padecimientos ..."
     @State private var email = Auth.auth().currentUser?.email
     @State private var date = Date()
@@ -190,7 +190,7 @@ struct GeneralDataView: View {
                         ProgressView()
                     }
                 Spacer(minLength: 20)
-                Button("Enviar"){
+                Button("Guardar"){
                     progress = true
                     let idUser = Auth.auth().currentUser?.uid
                     let pacientUpdate = Pacient(id: idUser! , name: name, patName: lastNameP, matName: lastNameP, photo: photourl, sex: selectedSex, pacientStatus: "", birthDate: date, phone: phoneNumber, height: height, weight: weight, cirAbdominal: cirAbdominal, medDisease: disease, bloodType: bloodType, vinculationCode: "", associatedMedic: [])
@@ -199,7 +199,7 @@ struct GeneralDataView: View {
                     print(valid.0)
                     print(valid.1)
                     if valid.0{
-                        save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height, abdominalCir: cirAbdominal, diseases: disease, weight: weight, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto, birthDate: date){
+                        save.saveGD(name: name, lastNP: lastNameP, lastNM: lastNameM, phone: phoneNumber, sex: selectedSex, height: height!, abdominalCir: cirAbdominal!, diseases: disease, weight: weight!, bType: bloodType, photo: imageData, urlPhoto: save.data.photo, editingPhoto: editingPhoto, birthDate: date){
                             (done)in
                             if done{
                                 dataSubmitted = true
