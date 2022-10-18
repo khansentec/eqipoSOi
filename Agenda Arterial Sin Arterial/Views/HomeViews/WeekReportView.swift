@@ -28,7 +28,7 @@ struct WeekReportView: View {
     
     var body: some View {
         VStack{
-            Text("Reporte Semanal").font(.title)
+            Text("Registro de Habitos").font(.title)
             ScrollView{
                 
                 VStack {

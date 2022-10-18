@@ -58,6 +58,8 @@ struct Home: View {
                                 login.getMedics()
                             }
                         }
+                    case "CapturesRecordsView":
+                        CapturesRecordsView()
                     default:
                         AppsView().environment(\.colorScheme, .light).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {

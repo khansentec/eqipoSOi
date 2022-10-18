@@ -101,7 +101,7 @@ struct SignIn: View {
                         let newUser = User(email: email, pass: pass, confPass: confPassword, name: name, ptName: patName, mtName: matName, bDate: date, phone: number, sex: selectedSex)
                         
                         let processResults = newUser.uploadUser()
-                        
+   
                         alertTitle = processResults.1
                         alertMessage =  processResults.2
                                                 
@@ -112,7 +112,8 @@ struct SignIn: View {
                                     UserDefaults.standard.set(true, forKey: "sesion")
                                     alertTitle = "¡Éxito!"
                                     alertMessage = "La cuenta se ha creado correctamente"
-                                    userSubmitted = true
+                                    userSubmitted = false
+                                    loginShow.show = "Home"
                                     complete = true
                                 } else {
                                     progress = false
@@ -124,6 +125,7 @@ struct SignIn: View {
                         } else {
                             userSubmitted = true
                         }
+
                         
                         if processResults.0 {
                             name = ""

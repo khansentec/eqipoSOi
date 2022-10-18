@@ -22,6 +22,8 @@ class FirebaseViewController: ObservableObject{
     @Published var reminds = [Remind]()
     @Published var remindUpdate : Remind!
     @Published var medics = [Medic]()
+    @Published var records = [MeditionRecord]()
+    @Published var updateRecord : MeditionRecord!
     
     var meditionsRem = true
     var healthReportsRem = true
@@ -34,6 +36,10 @@ class FirebaseViewController: ObservableObject{
     
     func sendRemind(item: Remind){
         remindUpdate = item
+    }
+    
+    func sendRecord(item: MeditionRecord){
+        updateRecord = item
     }
     
     func saveData(collectionName: String, id: String, info: [String: Any], completion: @escaping(_ done: Bool)->Void){
@@ -70,15 +76,15 @@ class FirebaseViewController: ObservableObject{
         let db = Firestore.firestore()
         db.collection("consultas").document(id).delete{
             error in
-                if let error = error?.localizedDescription{
-                    print("Error al borrar en firestore ", error)
-                    completion(false)
-                }else{
-                    print("Sucessfully delete info")
-                    completion(true)
-                }
+            if let error = error?.localizedDescription{
+                print("Error al borrar en firestore ", error)
+                completion(false)
+            }else{
+                print("Sucessfully delete info")
+                completion(true)
             }
-       
+        }
+        
     }
     
     func sendPasswordReset(withEmail email: String, completion: @escaping( _ done: Bool) -> Void){
@@ -825,17 +831,17 @@ class FirebaseViewController: ObservableObject{
     
     func getReminds(){
         var color = ""
-
+        
         let db = Firestore.firestore()
         guard let idUser = Auth.auth().currentUser?.uid else{
             return
         }
-
+        
         let notificationHealhtreport = UserDefaults.standard.object(forKey: "showHealtReport") as? Bool ?? true
         let notificationAppoinments = UserDefaults.standard.object(forKey: "showAppoinment") as? Bool ?? true
         let notificationWeekReport = UserDefaults.standard.object(forKey: "showWeekReport") as? Bool ?? true
         let notificationMeditions = UserDefaults.standard.object(forKey: "showMeditions") as? Bool ?? true
-
+        
         db.collection("notificaciones").whereField("idPaciente", isEqualTo: idUser)
             .getDocuments() {
                 (QuerySnapshot, error) in
@@ -844,42 +850,74 @@ class FirebaseViewController: ObservableObject{
                 }else{
                     print("Here67")
                     self.reminds.removeAll()
+                    print(self.reminds)
                     for document in QuerySnapshot!.documents{
+                        print("testing iddoc: \(document.documentID)")
                         let value = document.data()
                         let id = value["id"] as? String ?? "no id"
                         let type = value["tipo"] as? String ?? "no type"
-                        print(id)
-                        if (id != "no id" || type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments){
+                        let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                        if ((id != "no id") && (type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments)){
+                            print("entro")
                             let title = value["titulo"] as? String ?? "title"
                             let description = value["descripcion"] as? String ?? "no description"
-                            let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                            
                             let consulta = value["idConsulta"] as? String ?? "no hay"
-                            if type == "medicion"{
-                                color = "Color.red"
-                            }else if type == "reporteSalud"{
-                                color = "Color.green"
-
-                            }else if type == "reporteSemanal"{
-                                color = "Color.blue"
-
-                            }
-
+                            
+                            
                             DispatchQueue.main.async {
-                                let register =  Remind(id:id, date : date, type : type, title : title, description : description, color : color, idconsulta: consulta)
+                                print(self.reminds)
+                                let register =  Remind(id:document.documentID, date : date, type : type, title : title, description : description, idconsulta: consulta)
+                                print(register)
                                 self.reminds.append(register)
-
+                                
                             }
                         }
-
+                        
                     }
                 }
             }
-
+        
     }
     
-//    func getReminds(){
-//        reminds.removeAll()
-//
-//    }
+    func getRecords(startDate: Date, endDate: Date){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        db.collection("mediciones").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    self.records.removeAll()
+                    for document in QuerySnapshot!.documents{
+                        let value = document.data()
+                        let state = value["estado"] as? String ?? "Sin determinar"
+                        let pressureSup = value["presionSupPromedio"] as? Int ?? 0
+                        let pressureInf = value["presionInfPromedio"] as? Int ?? 0
+                        let pulse = value["pulsoPromedio"] as? Int ?? 0
+                        let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
+                        if date < endDate && date > startDate{
+                            
+                            DispatchQueue.main.async {
+                                let register = MeditionRecord(id: document.documentID, date: date, state: state, pressureInf: pressureInf, pressureSup: pressureSup, pulse: pulse)
+                                self.records.append(register)
+                                self.records = self.records.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        
+    }
+    
+    //    func getReminds(){
+    //        reminds.removeAll()
+    //
+    //    }
 }
 

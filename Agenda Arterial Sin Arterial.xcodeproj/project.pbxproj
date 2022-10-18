@@ -40,6 +40,9 @@
 		C00DF31528F08776008C7D45 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31228F08776008C7D45 /* Home.swift */; };
 		C00DF31628F08776008C7D45 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31328F08776008C7D45 /* Login.swift */; };
 		C00DF31728F08776008C7D45 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31428F08776008C7D45 /* SignIn.swift */; };
+		C031B6A728FE5A3F00D7361D /* CapturesRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6A628FE5A3F00D7361D /* CapturesRecordsView.swift */; };
+		C031B6A928FE5B8200D7361D /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6A828FE5B8200D7361D /* CaptureView.swift */; };
+		C031B6AB28FE5C8B00D7361D /* MeditionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */; };
 		C065D69C28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69B28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift */; };
 		C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065D69D28E0D2A900AC046F /* ContentView.swift */; };
 		C065D6A028E0D2A900AC046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C065D69F28E0D2A900AC046F /* Assets.xcassets */; };
@@ -99,6 +102,9 @@
 		C00DF31228F08776008C7D45 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = "Agenda Arterial Sin Arterial/Home.swift"; sourceTree = SOURCE_ROOT; };
 		C00DF31328F08776008C7D45 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = "Agenda Arterial Sin Arterial/Login.swift"; sourceTree = SOURCE_ROOT; };
 		C00DF31428F08776008C7D45 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignIn.swift; path = "Agenda Arterial Sin Arterial/SignIn.swift"; sourceTree = SOURCE_ROOT; };
+		C031B6A628FE5A3F00D7361D /* CapturesRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturesRecordsView.swift; sourceTree = "<group>"; };
+		C031B6A828FE5B8200D7361D /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditionRecord.swift; sourceTree = "<group>"; };
 		C065D69828E0D2A900AC046F /* Agenda Arterial Sin Arterial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agenda Arterial Sin Arterial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C065D69B28E0D2A900AC046F /* Agenda_Arterial_Sin_ArterialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda_Arterial_Sin_ArterialApp.swift; sourceTree = "<group>"; };
 		C065D69D28E0D2A900AC046F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				C00DF2D128F0862C008C7D45 /* Remind.swift */,
 				C00DF2D228F0862C008C7D45 /* Pacient.swift */,
 				C00DF2D328F0862C008C7D45 /* Medicament.swift */,
+				C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */,
 			);
 			path = "Data Structures";
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 				C0B65E6028FCBCD700EAFB29 /* Politics.swift */,
 				C0AA140428FCD9F400E12677 /* KeyboardManagment.swift */,
 				C00AD2CF28FD1A2700DEC7B7 /* RestorePasswordView.swift */,
+				C031B6A828FE5B8200D7361D /* CaptureView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 		C00DF2E128F0862C008C7D45 /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
+				C031B6A628FE5A3F00D7361D /* CapturesRecordsView.swift */,
 				C00DF30828F08731008C7D45 /* CapturesView.swift */,
 				C00DF30A28F08731008C7D45 /* HealthStateView.swift */,
 				C00DF30C28F08731008C7D45 /* LinkYourMedicView.swift */,
@@ -357,9 +366,11 @@
 				C00DF2EC28F0862C008C7D45 /* FirebaseViewController.swift in Sources */,
 				C0EE1E2528FA337F0069C41A /* ImageFirebaseViewController.swift in Sources */,
 				C0EE1E2128FA33720069C41A /* HealthReport.swift in Sources */,
+				C031B6AB28FE5C8B00D7361D /* MeditionRecord.swift in Sources */,
 				C00DF2E628F0862C008C7D45 /* WeekReport.swift in Sources */,
 				C00DF30F28F08731008C7D45 /* HealthStateView.swift in Sources */,
 				C0AA140528FCD9F400E12677 /* KeyboardManagment.swift in Sources */,
+				C031B6A928FE5B8200D7361D /* CaptureView.swift in Sources */,
 				C00DF30128F086D8008C7D45 /* NavBarHome.swift in Sources */,
 				C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */,
 				C00DF30328F086D8008C7D45 /* AddMedicView.swift in Sources */,
@@ -374,6 +385,7 @@
 				C00DF30428F086D8008C7D45 /* AddMedicamentView.swift in Sources */,
 				C0EE1E2228FA33720069C41A /* User.swift in Sources */,
 				C00DF2F428F0862C008C7D45 /* RemindersView.swift in Sources */,
+				C031B6A728FE5A3F00D7361D /* CapturesRecordsView.swift in Sources */,
 				C00DF2F528F0862C008C7D45 /* AppsView.swift in Sources */,
 				C00DF30628F086D8008C7D45 /* MedicamentDetailsView.swift in Sources */,
 				C065D69E28E0D2A900AC046F /* ContentView.swift in Sources */,
@@ -534,7 +546,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,7 +582,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

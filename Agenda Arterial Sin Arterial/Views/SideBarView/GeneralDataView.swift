@@ -141,22 +141,22 @@ struct GeneralDataView: View {
                     }
                     HStack{
                         Text("Fecha de Nacimiento").fontWeight(.bold)
-                        DatePicker("",selection: $date, displayedComponents: [.date])
+                        DatePicker("",selection: $date,displayedComponents: [.date])
                            
                     }
                     HStack{
                         Text("Altura")
-                        TextField("Centímetros",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("cm",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     
                     HStack {
                         Text("Peso")
-                        TextField("Kilograms",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("kg",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     
                     HStack {
                         Text("Circunferencia Abdominal")
-                        TextField("Centímetros",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Circunferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     HStack{
                         Text("Tipo de Sangre")

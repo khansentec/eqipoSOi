@@ -70,7 +70,7 @@ struct ReminderDetailsView: View {
                 
                 HStack{
                     Text("Fecha: ")
-                    DatePicker("", selection: $date, displayedComponents : .date)
+                    DatePicker("", selection: $date)
                         .padding(.trailing,70).disabled(!editing).onAppear{
                             date = reminder.date
                         }
