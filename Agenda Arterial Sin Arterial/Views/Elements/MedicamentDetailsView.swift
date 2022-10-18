@@ -82,12 +82,14 @@ struct MedicamentDetailsView: View {
                             startDate = medicament.startDate
                         }
                 }
-                HStack{
-                    Text("Fecha de Fin: ")
-                    DatePicker("", selection: $endDate, displayedComponents : .date)
-                        .padding(.trailing,70).disabled(!editing).onAppear{
-                            endDate = medicament.finishDate
-                        }
+                if editing{
+                    HStack{
+                        Text("Fecha de Fin: ")
+                        DatePicker("", selection: $endDate, displayedComponents : .date)
+                            .padding(.trailing,70).onAppear{
+                                endDate = medicament.finishDate
+                            }
+                    }
                 }
                 HStack{
                     TextEditor(text: $info)

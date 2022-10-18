@@ -31,7 +31,7 @@ struct SettingsView: View {
                 }
                 VStack(spacing: 10){
                     Text("Configuraciones").bold().font(.title)
-                    
+                    Text("Notificaciones").bold().font(.title2)
                     Toggle(isOn: $notConsultas) {
                         Text("Consultas")
                     }.padding()

@@ -23,6 +23,7 @@ class Medition{
         self.captures = captures ?? []
     }
     
+    
     func calculateAvg(captures: [Capture]) {
         var numPulse = 0
         var avgSup = 0

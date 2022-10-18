@@ -61,7 +61,7 @@ struct AppsView: View {
                     }){
                         VStack{
                             Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 65, height: 60)
-                            Text("Reporte Semanal").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
+                            Text("Registro de Habitos").font(.system(size: widthMenu == 375 ? 25 : 30)).bold().foregroundColor(.black)
                         }
                     }.fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
@@ -196,7 +196,7 @@ struct AppsView: View {
                             Image(systemName: "list.bullet.clipboard").resizable().padding(.trailing,10).foregroundColor(.orange).frame(width: 60, height: 60)
                         }.environment(\.colorScheme, .light)
                         .frame(width: 70, height: 60, alignment: .center)
-                        Text("Reporte semanal").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                        Text("Registro de Habitos").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
                     }.fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -241,6 +241,23 @@ struct AppsView: View {
                             .foregroundColor(.white)
                             .minimumScaleFactor(0.8)
                     }
+                    
+                    Button(action:{
+                        withAnimation{
+                            loginShow.showApp = "CapturesRecordsView"
+                        }
+                    }){
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath").resizable().padding(.trailing,10).foregroundColor(.gray).frame(width: 65, height: 50)
+                        }.environment(\.colorScheme, .light)
+                        .frame(width: 70, height: 60, alignment: .center)
+                        Text("Historial de Mediciones").font(.system(size: widthMenu == 375 ? 18 : 24)).bold().foregroundColor(.black)
+                    }.fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .frame(width: widthMenu == 375 ? 350 : 370, height: 90, alignment: .leading)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke( Color.gray,lineWidth: 1).shadow(radius: 3))
+                        .minimumScaleFactor(0.8)
                     
                     Button(action:{
                         if (UserDefaults.standard.object(forKey: "sesion")) != nil {

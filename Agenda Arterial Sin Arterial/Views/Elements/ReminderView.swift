@@ -20,11 +20,18 @@ struct ReminderView: View {
         VStack (alignment: .leading){
             HStack (spacing: 5) {
                 VStack(alignment:.leading, spacing : 5){
-                    Text(date)
-                        .fontWeight(.bold)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
-                    
+                    HStack{
+                        Text(date)
+                            .fontWeight(.bold)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
+                        if reminder.type == "consulta"{
+                            Text(reminder.date, style: .time)
+                                .fontWeight(.bold)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
+                        }
+                    }
                     HStack {
                         Text(reminder.title)
                             .padding(.leading, 20)
