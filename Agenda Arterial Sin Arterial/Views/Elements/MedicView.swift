@@ -19,6 +19,7 @@ struct MedicView: View {
                     .minimumScaleFactor(0.9).foregroundColor(Color("ButtonColor"))
                 Text(medic.proflicense).padding(.leading,20)
                     .lineLimit(1)
+                Text(medic.phone)
             }
             
         }.padding(.vertical,10)

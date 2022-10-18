@@ -77,7 +77,7 @@ struct SignIn: View {
                         HStack{
                             Text("Sexo").fontWeight(.bold)
                             Picker("", selection: $selectedSex) {
-                                Text("Selecione una opcion").tag("non selected")
+                                Text("").tag("none selected")
                                 Text("Masculino").tag("Masculino")
                                 Text("Femenino").tag("Femenino")
                                 Text("Prefiero no decir").tag("rathernot")
@@ -91,7 +91,7 @@ struct SignIn: View {
                         }
                         HStack{
                             Text("Teléfono").fontWeight(.bold)
-                            TextField("Numero",text: $number).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
+                            TextField("Opcional",text: $number).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle()).padding(.horizontal)
                             
                         }.padding(.bottom, 20)
                         //                    Spacer().frame(minHeight: 50, maxHeight: 100)

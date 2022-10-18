@@ -543,9 +543,10 @@ class FirebaseViewController: ObservableObject{
                                             let proflicense = value["cedulaProfesional"] as? String ?? "no proflicense"
                                             let email = value["email"] as? String ?? "no email"
                                             let foto = value["foto"] as? String ?? "no foto"
+                                            let phone = value["teléfono"] as? String ?? "no phone"
                                             
                                             DispatchQueue.main.async {
-                                                let register =  Medic(id: id, name: name, patName: patName, matName: matName, email: email, foto: foto, proflicense: proflicense)
+                                                let register =  Medic(id: id, name: name, patName: patName, matName: matName, email: email, foto: foto, proflicense: proflicense, phone: phone)
                                                 self.medics.append(register)
                                             }
                                             

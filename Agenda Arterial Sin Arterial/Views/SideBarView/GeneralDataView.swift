@@ -37,9 +37,9 @@ struct GeneralDataView: View {
     @State var lastNameP = ""
     @State var lastNameM = ""
     @State var phoneNumber = ""
-    @State var height :Float = 0.0
-    @State var cirAbdominal :Float = 0
-    @State var weight :Float = 0
+    @State private var height : Float
+    @State private var cirAbdominal : Float
+    @State private var weight : Float
     @State private var disease: String = "No hay padecimientos ..."
     @State private var email = Auth.auth().currentUser?.email
     @State private var date = Date()
@@ -141,22 +141,22 @@ struct GeneralDataView: View {
                     }
                     HStack{
                         Text("Fecha de Nacimiento").fontWeight(.bold)
-                        DatePicker("",selection: $date,displayedComponents: [.date])
+                        DatePicker("",selection: $date, displayedComponents: [.date])
                            
                     }
                     HStack{
                         Text("Altura")
-                        TextField("Altura",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Centímetros",value: $height,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     
                     HStack {
                         Text("Peso")
-                        TextField("Peso",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Kilograms",value: $weight,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     
                     HStack {
                         Text("Circunferencia Abdominal")
-                        TextField("Circunferencia Abdominal",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Centímetros",value: $cirAbdominal,formatter: NumberFormatter()).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     HStack{
                         Text("Tipo de Sangre")

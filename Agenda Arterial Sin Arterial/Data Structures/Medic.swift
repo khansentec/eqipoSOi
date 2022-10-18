@@ -16,8 +16,9 @@ struct Medic : Identifiable, Hashable {
     var name: String
     var photo: String
     var proflicense: String
+    var phone: String
 
-    init(id: String?, name: String, patName: String, matName: String, email: String, foto: String, proflicense: String){
+    init(id: String?, name: String, patName: String, matName: String, email: String, foto: String, proflicense: String, phone: String){
         self.id = id ?? ""
         self.email = email
         self.patName = patName
@@ -25,5 +26,6 @@ struct Medic : Identifiable, Hashable {
         self.name = name
         self.photo =  foto
         self.proflicense = proflicense
+        self.phone = phone
     }
 }

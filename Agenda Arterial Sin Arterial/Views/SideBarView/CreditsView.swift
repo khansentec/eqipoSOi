@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CreditsView: View {
+    
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             VStack (alignment: .leading, spacing: 20) {
@@ -34,6 +36,9 @@ struct CreditsView: View {
             Spacer()
         }
         .padding(.all, 30)
+        .onTapGesture {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

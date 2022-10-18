@@ -7,14 +7,15 @@
 
 import SwiftUI
 struct FrecuentlyAskedQuestions: View {
+    
     @State var questionList = [[String]]()
     @State private var index = "Preguntas Frecuentes"
     @State private var menu = false
     @State private var widthMenu = UIScreen.main.bounds.width
     @StateObject var login = FirebaseViewController()
     @EnvironmentObject var loginShow : FirebaseViewController
+    
     var body: some View {
-        
         ZStack(alignment: .leading){
             VStack{
                 NavBarHome(menu:$menu, index: $index).onTapGesture {
@@ -22,9 +23,14 @@ struct FrecuentlyAskedQuestions: View {
                         menu = false
                     }
                 }
-                VStack (alignment: .center) {
-                    Text("Preguntas Frecuentes").bold().font(.title)
+                
+                VStack (alignment: .leading) {
                     
+                    Text("Preguntas Frecuentes")
+                        .bold()
+                        .font(.title)
+                        .padding(.bottom, 30)
+                                        
                     ForEach(questionList, id: \.self) {
                         pregunta in
                         VStack (alignment: .leading, spacing: 10){
@@ -32,15 +38,13 @@ struct FrecuentlyAskedQuestions: View {
                                 .fontWeight(.bold)
                             Text(pregunta[1])
                         }
-                        .padding()
                         Divider()
                     }
                     VStack (alignment: .leading, spacing: 10){
-                        Text("P: ¿Como tomarme la Presión Arterial?").fontWeight(.bold)
-                        Link("Ve cómo tomar la presión arterial", destination: URL(string: "https://www.facebook.com/CentroMedicoABC/videos/aprende-a-tomar-la-presi%C3%B3n-arterial-correctamente/953165865261484/")!)
+                        Text("P: ¿Cómo tomarme la Presión Arterial?")
+                            .fontWeight(.bold)
+                        Link("Ve cómo tomar la presión arterial.", destination: URL(string: "https://www.facebook.com/CentroMedicoABC/videos/aprende-a-tomar-la-presi%C3%B3n-arterial-correctamente/953165865261484/")!)
                     }
-                    .padding()
-                    Divider()
                     Spacer()
                 }
                 .padding(30)
