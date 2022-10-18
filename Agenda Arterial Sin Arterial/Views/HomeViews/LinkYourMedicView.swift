@@ -22,8 +22,7 @@ struct LinkYourMedicView: View {
         ZStack {
             VStack {
                 VStack {
-                    
-                    HStack (alignment: .center) {
+                    HStack (alignment: .top) {
                         Text("Médicos Vinculados").font(.title)
                         Spacer()
                         Button(action:{
@@ -44,49 +43,53 @@ struct LinkYourMedicView: View {
                                     MedicView(medic: medic)
                                 }
                             }
+                            .padding(.leading, 30)
                             .background(Color.clear)
-                            .padding(.bottom,100)
-                            .overlay(Group{
+                            .overlay(Group {
                                 if listMedics.isEmpty{
                                     Text("No hay médicos vinculados")
                                 }
                                 
                             })
+
                         } else {
                             Text("Generando código...").foregroundColor(.black)
                             ProgressView()
                         }
                     }
-
-                Button("Vincular") {
-                    linkCode = login.generateLinkCode(){
-                        (done) in
-                        if done {
-                            linkMedic = true
-                        } else {
-                            showError = true
+                    
+                    Spacer()
+                    
+                    Button("Vincular") {
+                        linkCode = login.generateLinkCode(){
+                            (done) in
+                            if done {
+                                linkMedic = true
+                            } else {
+                                showError = true
+                            }
                         }
                     }
-                }
-                .sheet(isPresented: $linkMedic) {
-                    AddMedicView(linkCode: $linkCode)
-                }
-                .alert("¡Oops!", isPresented: $showError){
-                    Button("OK"){
-                        //si se oprime quitar el ok
+                    .sheet(isPresented: $linkMedic) {
+                        AddMedicView(linkCode: $linkCode)
                     }
-                } message: {
-                    Text("Hay un problema con la red. Favor de intentar de nuevo.")
+                    .alert("¡Oops!", isPresented: $showError){
+                        Button("OK"){
+                            //si se oprime quitar el ok
+                        }
+                    } message: {
+                        Text("Hay un problema con la red. Favor de intentar de nuevo.")
+                    }
+                    .font(.system(size: 20))
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(Color("ButtonColor"))
+                        .frame(minWidth: 110,minHeight: 50))
                 }
-                .font(.system(size: 20))
-                .foregroundColor(.white)
-                .background(RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(Color("ButtonColor"))
-                    .frame(minWidth: 110,minHeight: 50))
+                .padding(.bottom, widthMenu == 375 ? 50 : 70)
             }
-            .padding(.bottom, widthMenu == 375 ? 40 : 60)
-        }.environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .light)
+        }
     }
-}
 }
 
