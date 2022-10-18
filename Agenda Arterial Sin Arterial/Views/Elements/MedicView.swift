@@ -11,23 +11,22 @@ struct MedicView: View {
     var medic : Medic
     
     var body: some View {
-        HStack(spacing: 10){
+        HStack(spacing: 30){
             
             Image(systemName: "person")
             
             VStack (alignment: .leading){
                 Text(medic.name+" " + medic.patName)
-                    .fontWeight(.bold)
+                    .font(.title2)
                     .lineLimit(1)
                     .minimumScaleFactor(0.9)
                     .foregroundColor(Color("ButtonColor"))
+                    .padding(.bottom, 5)
                 Text(medic.proflicense)
-                    .padding(.leading,20)
                     .lineLimit(1)
                 Link(medic.phone, destination: URL(string: "tel:" + medic.phone)!)
-                    .padding(.leading,20)
             }
-            
-        }.padding(.vertical,10)
+        }
+        .padding(.vertical,10)
     }
 }

@@ -36,6 +36,7 @@ struct LinkYourMedicView: View {
                         }
                     }
                     .padding(30)
+                    
                     ScrollView(.vertical, showsIndicators: false){
                         if (!progress) {
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
@@ -43,7 +44,6 @@ struct LinkYourMedicView: View {
                                     MedicView(medic: medic)
                                 }
                             }
-                            
                             .background(Color.clear)
                             .padding(.bottom,100)
                             .overlay(Group{
@@ -52,13 +52,12 @@ struct LinkYourMedicView: View {
                                 }
                                 
                             })
-                        }else {
+                        } else {
                             Text("Generando código...").foregroundColor(.black)
                             ProgressView()
                         }
                     }
-                    
-                
+
                 Button("Vincular") {
                     linkCode = login.generateLinkCode(){
                         (done) in
@@ -73,14 +72,12 @@ struct LinkYourMedicView: View {
                     AddMedicView(linkCode: $linkCode)
                 }
                 .alert("¡Oops!", isPresented: $showError){
-                    
                     Button("OK"){
                         //si se oprime quitar el ok
                     }
                 } message: {
                     Text("Hay un problema con la red. Favor de intentar de nuevo.")
                 }
-                
                 .font(.system(size: 20))
                 .foregroundColor(.white)
                 .background(RoundedRectangle(cornerRadius: 5)
