@@ -42,7 +42,7 @@ struct CapturesRecordsView: View {
                             }
                             HStack{
                                 Text("Fecha de final: ").padding(.leading,widthMenu == 375 ? 80 : 60)
-                                DatePicker("", selection: $endDate).padding(.trailing,80)
+                                DatePicker("", selection: $endDate).padding(.trailing,widthMenu == 375 ? 60 : 60)
                             }
                         }.padding(.bottom,10)
                         Button("Filtrar"){
