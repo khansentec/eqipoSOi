@@ -36,36 +36,28 @@ struct LinkYourMedicView: View {
                         }
                     }
                     .padding(30)
-                    
-                    NavigationView{
+                    ScrollView(.vertical, showsIndicators: false){
                         if (!progress) {
-                            
-                            List(){
-                                ForEach(listMedics, id : \.self){
-                                    medic in
+                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 1), spacing: 5){
+                                ForEach(listMedics,id: \.self){ medic in
                                     MedicView(medic: medic)
-                                    
-                                }.onDelete(perform: { idxSet in
-                                    listMedics.remove(atOffsets: idxSet)
-                                })
-                                
+                                }
                             }
-                            .padding(.all)
+                            
                             .background(Color.clear)
-                            .padding(.bottom,10)
+                            .padding(.bottom,100)
                             .overlay(Group{
                                 if listMedics.isEmpty{
                                     Text("No hay médicos vinculados")
                                 }
+                                
                             })
-                        }
-                        else {
+                        }else {
                             Text("Generando código...").foregroundColor(.black)
                             ProgressView()
                         }
-                        
                     }
-                    .navigationViewStyle(StackNavigationViewStyle())
+                    
                 
                 Button("Vincular") {
                     linkCode = login.generateLinkCode(){
