@@ -40,6 +40,7 @@
 		C00DF31528F08776008C7D45 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31228F08776008C7D45 /* Home.swift */; };
 		C00DF31628F08776008C7D45 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31328F08776008C7D45 /* Login.swift */; };
 		C00DF31728F08776008C7D45 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DF31428F08776008C7D45 /* SignIn.swift */; };
+		C025116F28FF8F6300BF4B67 /* AppointmentRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C025116E28FF8F6300BF4B67 /* AppointmentRecord.swift */; };
 		C031B6A728FE5A3F00D7361D /* CapturesRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6A628FE5A3F00D7361D /* CapturesRecordsView.swift */; };
 		C031B6A928FE5B8200D7361D /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6A828FE5B8200D7361D /* CaptureView.swift */; };
 		C031B6AB28FE5C8B00D7361D /* MeditionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */; };
@@ -102,6 +103,7 @@
 		C00DF31228F08776008C7D45 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = "Agenda Arterial Sin Arterial/Home.swift"; sourceTree = SOURCE_ROOT; };
 		C00DF31328F08776008C7D45 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = "Agenda Arterial Sin Arterial/Login.swift"; sourceTree = SOURCE_ROOT; };
 		C00DF31428F08776008C7D45 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignIn.swift; path = "Agenda Arterial Sin Arterial/SignIn.swift"; sourceTree = SOURCE_ROOT; };
+		C025116E28FF8F6300BF4B67 /* AppointmentRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentRecord.swift; sourceTree = "<group>"; };
 		C031B6A628FE5A3F00D7361D /* CapturesRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturesRecordsView.swift; sourceTree = "<group>"; };
 		C031B6A828FE5B8200D7361D /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditionRecord.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				C00DF2D228F0862C008C7D45 /* Pacient.swift */,
 				C00DF2D328F0862C008C7D45 /* Medicament.swift */,
 				C031B6AA28FE5C8B00D7361D /* MeditionRecord.swift */,
+				C025116E28FF8F6300BF4B67 /* AppointmentRecord.swift */,
 			);
 			path = "Data Structures";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				C00DF30128F086D8008C7D45 /* NavBarHome.swift in Sources */,
 				C00DF2E528F0862C008C7D45 /* Medic.swift in Sources */,
 				C00DF30328F086D8008C7D45 /* AddMedicView.swift in Sources */,
+				C025116F28FF8F6300BF4B67 /* AppointmentRecord.swift in Sources */,
 				C00DF30028F086D8008C7D45 /* MedicamentView.swift in Sources */,
 				C0EE1E2B28FA33E40069C41A /* AddAppointment.swift in Sources */,
 				C00DF31028F08731008C7D45 /* WeekReportView.swift in Sources */,

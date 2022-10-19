@@ -17,7 +17,7 @@ struct AddMedicView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Vincular aquí:").foregroundColor(Color("Text"))
+            Text("Vincular aquí").foregroundColor(Color("Text"))
             Spacer().frame(maxHeight: 10)
             Text("Por código del paciente:").foregroundColor(Color("Text"))
             HStack{

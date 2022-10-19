@@ -16,17 +16,19 @@ struct MedicView: View {
             Image(systemName: "person")
             
             VStack (alignment: .leading){
-                Text(medic.name + " " + medic.patName)
+                Text(medic.name + " " + medic.patName+" " + medic.matName)
                     .font(.title2)
                     .lineLimit(1)
                     .minimumScaleFactor(0.9)
                     .foregroundColor(Color("ButtonColor"))
                     .padding(.bottom, 2)
-                Text("Cédula: " + medic.proflicense)
-                    .lineLimit(1)
-                HStack (spacing: 0){
-                    Text("Número de teléfono: ")
-                    Link(medic.phone, destination: URL(string: "tel:" + medic.phone)!)
+                Text("Cédula profesional: " + medic.proflicense)
+                    .lineLimit(1).padding(.bottom, 2)
+                if medic.phone != "no phone"{
+                    HStack (spacing: 0){
+                        Text("Número de teléfono: ")
+                        Link("+\(medic.phone)", destination: URL(string: "tel:" + medic.phone)!)
+                    }
                 }
             }
             

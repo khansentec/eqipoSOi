@@ -31,7 +31,8 @@ struct Home: View {
                         AppsView().environment(\.colorScheme, .light).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedicaments()
-                                
+                                login.getMedics()
+                                loginShow.getAppointments()
                             }
                         }
                     case "CapturesView":
@@ -49,13 +50,15 @@ struct Home: View {
                     case "LikYourMedicView":
                         LinkYourMedicView(listMedics: $login.medics).environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                                login.getMedics()
+                                print("reminder: \(loginShow.appointments)")
+                                loginShow.getMedics()
                             }
                         }
                     case "RemindersView":
-                        RemindersView(remindersList: [], medics: $login.medics).environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all).onAppear{
+                        RemindersView(remindersList: []).environment(\.colorScheme, .light).edgesIgnoringSafeArea(.all).onAppear{
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
-                                login.getMedics()
+                                loginShow.getMedics()
+                                loginShow.getAppointments()
                             }
                         }
                     case "CapturesRecordsView":
@@ -64,7 +67,8 @@ struct Home: View {
                         AppsView().environment(\.colorScheme, .light).onAppear(){
                             if (UserDefaults.standard.object(forKey: "sesion")) != nil {
                                 login.getMedicaments()
-                                
+                                login.getMedics()
+                                loginShow.getAppointments()
                             }
                         }
                     }

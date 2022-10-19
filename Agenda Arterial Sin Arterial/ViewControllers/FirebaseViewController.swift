@@ -24,6 +24,7 @@ class FirebaseViewController: ObservableObject{
     @Published var medics = [Medic]()
     @Published var records = [MeditionRecord]()
     @Published var updateRecord : MeditionRecord!
+    @Published var appointments = [AppointmentRecord]()
     
     var meditionsRem = true
     var healthReportsRem = true
@@ -98,6 +99,35 @@ class FirebaseViewController: ObservableObject{
                 completion(true)
             }
         }
+    }
+    
+    func getAppointments(){
+        let db = Firestore.firestore()
+        guard let idUser = Auth.auth().currentUser?.uid else{
+            return
+        }
+        db.collection("consultas").whereField("idPaciente", isEqualTo: idUser)
+            .getDocuments() {
+                
+                (QuerySnapshot, error) in
+                if let error = error?.localizedDescription{
+                    print("error to show data ", error)
+                }else{
+                    for document in QuerySnapshot!.documents{
+                        
+                        let value = document.data()
+                        let idMedic = value["idMedico"] as? String ?? "No hay medico"
+                        
+                        DispatchQueue.main.async {
+                            let register = AppointmentRecord(id: document.documentID, idMedic: idMedic)
+                            self.appointments.append(register)
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
     }
     
     func login( email: String, pass: String, completion: @escaping( _ done: Bool) -> Void)  {
@@ -193,7 +223,6 @@ class FirebaseViewController: ObservableObject{
             return
         }
         var docId = ""
-        print("foto before:")
         db.collection("pacientes").whereField("idUsuario", isEqualTo: idUser)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -847,18 +876,14 @@ class FirebaseViewController: ObservableObject{
                 (QuerySnapshot, error) in
                 if let error = error?.localizedDescription{
                     print("error to show data ", error)
-                }else{
-                    print("Here67")
-                    self.reminds.removeAll()
+                }else{                    self.reminds.removeAll()
                     print(self.reminds)
                     for document in QuerySnapshot!.documents{
-                        print("testing iddoc: \(document.documentID)")
                         let value = document.data()
                         let id = value["id"] as? String ?? "no id"
                         let type = value["tipo"] as? String ?? "no type"
                         let date = (value["fecha"] as? Timestamp)?.dateValue() ?? Date()
                         if ((id != "no id") && (type == "medicion" && notificationMeditions) || (type == "reporteSalud" && notificationHealhtreport) || (type == "reporteSemanal" && notificationWeekReport)||(type == "consulta" && notificationAppoinments)){
-                            print("entro")
                             let title = value["titulo"] as? String ?? "title"
                             let description = value["descripcion"] as? String ?? "no description"
                             
@@ -866,9 +891,7 @@ class FirebaseViewController: ObservableObject{
                             
                             
                             DispatchQueue.main.async {
-                                print(self.reminds)
                                 let register =  Remind(id:document.documentID, date : date, type : type, title : title, description : description, idconsulta: consulta)
-                                print(register)
                                 self.reminds.append(register)
                                 
                             }

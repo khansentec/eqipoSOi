@@ -9,10 +9,10 @@ import SwiftUI
 
 struct RemindersView: View {
     @State var remindersList = [Remind]()
-    @Binding var medics : [Medic]
+    @State var medic : Medic!
     @State var editing = false
     @StateObject var data = FirebaseViewController()
-    
+    @EnvironmentObject var controller : FirebaseViewController
     @State var showNavbar = true
     @State var addAppoinment = false
     var device = UIDevice.current.userInterfaceIdiom
@@ -31,14 +31,28 @@ struct RemindersView: View {
                             ReminderView(reminder: reminder).onTapGesture {
                                 if reminder.type == "consulta" || reminder.type == "medicion"{
                                     data.sendRemind(item: reminder)
+                                    print()
+                                    for appoinment in controller.appointments{
+                                        if appoinment.id ==  reminder.idconsulta{
+                                            for medicL in controller.medics {
+                                                if medicL.id == appoinment.idMedic{
+                                                    print("cita: \(appoinment)")
+                                                    medic = medicL
+                                                }
+                                            }
+                                        }
+                                    }
+                                    print("medics 2: \(medic)")
                                     editing.toggle()
+                                    
                                 }
                             }
                         }
                         .sheet(isPresented: $editing){
                             data.getReminds()
+                            controller.getAppointments()
                         } content: {
-                            ReminderDetailsView(reminder: data.remindUpdate, showNabar: $showNavbar)
+                            ReminderDetailsView(reminder: data.remindUpdate, showNabar: $showNavbar, medicForAppointment: medic)
                         }
                     }
                     .background(Color.clear)
@@ -51,10 +65,7 @@ struct RemindersView: View {
                     })
                 }.onAppear{
                     data.getReminds()
-                    for remind in data.reminds{
-                        print(remind.date)
-                    }
-                    print(data.reminds.count)
+                    
                 }
             }
             Button(action: {
@@ -67,10 +78,12 @@ struct RemindersView: View {
                 Circle().fill(Color("ButtonColor")).padding(.bottom,40).padding(.trailing,40)
             }.opacity(showNavbar ? 1 : 0).sheet(isPresented: $addAppoinment){
                 data.getReminds()
+                controller.getAppointments()
             }content:{
-                AddAppointment(medics: $medics, addAppointment: $addAppoinment)
+                AddAppointment(medics: $controller.medics, addAppointment: $addAppoinment)
             }
         }.onAppear{
+            print("appoint: \(controller.appointments)")
             showNavbar = true
         }
     }

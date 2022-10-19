@@ -224,6 +224,8 @@ struct AppsView: View {
                     if showReminders{
                         Button(action:{
                             login.getReminds()
+                            loginShow.getAppointments()
+                            print("reminder: \(loginShow.appointments)")
                             withAnimation{
                                 loginShow.showApp = "RemindersView"
                             }

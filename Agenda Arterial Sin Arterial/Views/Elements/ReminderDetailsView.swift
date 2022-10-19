@@ -12,13 +12,13 @@ struct ReminderDetailsView: View {
     @State var reminder : Remind
     @State var info = "No hay info"
     @Binding var showNabar : Bool
-    
+    @State var medicForAppointment : Medic!
+    @State var appoinment : AppointmentRecord!
     @State private var alertTittle = ""
     @State private var alertMessage = ""
-    
+    @EnvironmentObject var loginShow : FirebaseViewController
     @StateObject var login = FirebaseViewController()
     @State private var showAlert = false
-    
     var device = UIDevice.current.userInterfaceIdiom
     @State private var widthMenu = UIScreen.main.bounds.width
     @State private var submitted = false
@@ -68,6 +68,25 @@ struct ReminderDetailsView: View {
                 
                 Divider().frame(width : 250)
                 
+                if reminder.type == "consulta"{
+                    
+                    
+                    VStack(alignment: .center){
+                        
+                        Text(medicForAppointment.name+" "+medicForAppointment.patName+" "+medicForAppointment.matName)
+                            .font(.title2)
+                            .minimumScaleFactor(0.9)
+                            .foregroundColor(Color("ButtonColor"))
+                            .padding(.bottom, 2)
+                        Text("Cédula Profesional: \(medicForAppointment.proflicense)" )
+                            .lineLimit(1).padding(.bottom, 2)
+                        if medicForAppointment.phone != "no phone"{
+                            Text("Número de teléfono: ")
+                            Link("+ \(medicForAppointment.phone)", destination: URL(string: "tel:\(medicForAppointment.phone)")!)
+                        }
+                    }.padding(.leading, 30)
+                }
+                
                 HStack{
                     Text("Fecha: ")
                     DatePicker("", selection: $date)
@@ -90,36 +109,36 @@ struct ReminderDetailsView: View {
             }.padding(.leading, 60)
             
             VStack{
-               
-                    Button(action: {
-                        print(reminder)
-                        login.deleteData(collectionName: "notificaciones", id: reminder.id){
-                            (done) in
+                
+                Button(action: {
+                    print(reminder)
+                    login.deleteData(collectionName: "notificaciones", id: reminder.id){
+                        (done) in
+                        if done{
+                            print("succesfully delete")
+                        }
+                    }
+                    if reminder.type == "consulta"{
+                        login.deleteAppointment(id: reminder.idconsulta){
+                            (done)in
                             if done{
-                                print("succesfully delete")
+                                print("succesfully delete appointment")
                             }
                         }
-                        if reminder.type == "consulta"{
-                            login.deleteAppointment(id: reminder.idconsulta){
-                                (done)in
-                                    if done{
-                                        print("succesfully delete appointment")
-                                    }
-                            }
-                        }
-                        
-                        login.getReminds()
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
-                            .padding(.trailing, 5)
-                            .frame(width : 5)
-                        Text("Eliminar")
-                            .foregroundColor(.red)
-                            .padding(.top, 3.5)
-                        
-                    })
+                    }
+                    
+                    login.getReminds()
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .padding(.trailing, 5)
+                        .frame(width : 5)
+                    Text("Eliminar")
+                        .foregroundColor(.red)
+                        .padding(.top, 3.5)
+                    
+                })
                 
                 
             }
